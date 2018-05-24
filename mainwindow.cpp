@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-char appName[] = {'i', 'n', '.', 'D', 'e', 't', 'a', 'i', 'l', ' ', 'V', '1', '.', '0'};
+char appName[] = {'i', 'n', '.', 'D', 'e', 't', 'a', 'i', 'l', ' ','t','e','r','m',' ', 'V', '1', '.', '0'};
 
 profileStruct tProfileSave[MaxProfile];
 profileStruct pProfileSave[MaxProfile];
