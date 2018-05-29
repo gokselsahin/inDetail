@@ -105,7 +105,7 @@ QTableBar
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>0</number>
       </property>
       <property name="iconSize">
        <size>
@@ -123,59 +123,17 @@ QTableBar
        <attribute name="title">
         <string>Main</string>
        </attribute>
-       <widget class="QLabel" name="label_54">
-        <property name="geometry">
-         <rect>
-          <x>290</x>
-          <y>130</y>
-          <width>131</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Pipe Pressure</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="laTankLiquidErr">
-        <property name="geometry">
-         <rect>
-          <x>430</x>
-          <y>220</y>
-          <width>31</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>NOK</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
        <widget class="QLabel" name="label_57">
         <property name="geometry">
          <rect>
           <x>290</x>
-          <y>250</y>
+          <y>70</y>
           <width>131</width>
           <height>16</height>
          </rect>
         </property>
         <property name="text">
          <string>Communication</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_51">
-        <property name="geometry">
-         <rect>
-          <x>290</x>
-          <y>220</y>
-          <width>131</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Tank Liquid Level</string>
         </property>
        </widget>
        <widget class="QLabel" name="label_65">
@@ -189,35 +147,6 @@ QTableBar
         </property>
         <property name="text">
          <string>Time:</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="laCabinTempErr">
-        <property name="geometry">
-         <rect>
-          <x>430</x>
-          <y>70</y>
-          <width>31</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>NOK</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_56">
-        <property name="geometry">
-         <rect>
-          <x>290</x>
-          <y>100</y>
-          <width>131</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Tank Temperature</string>
         </property>
        </widget>
        <widget class="QLabel" name="laDate">
@@ -240,7 +169,7 @@ QTableBar
         <property name="geometry">
          <rect>
           <x>430</x>
-          <y>250</y>
+          <y>70</y>
           <width>31</width>
           <height>16</height>
          </rect>
@@ -268,51 +197,6 @@ QTableBar
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
        </widget>
-       <widget class="QLabel" name="laPipeErr">
-        <property name="geometry">
-         <rect>
-          <x>430</x>
-          <y>130</y>
-          <width>31</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>NOK</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-       <widget class="QLabel" name="laTankTempErr">
-        <property name="geometry">
-         <rect>
-          <x>430</x>
-          <y>100</y>
-          <width>31</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>NOK</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_55">
-        <property name="geometry">
-         <rect>
-          <x>290</x>
-          <y>70</y>
-          <width>131</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Cabin Temperature</string>
-        </property>
-       </widget>
        <widget class="QLabel" name="label_8">
         <property name="geometry">
          <rect>
@@ -330,7 +214,7 @@ QTableBar
         <property name="geometry">
          <rect>
           <x>285</x>
-          <y>350</y>
+          <y>220</y>
           <width>171</width>
           <height>41</height>
          </rect>
@@ -343,7 +227,7 @@ QTableBar
         <property name="geometry">
          <rect>
           <x>285</x>
-          <y>300</y>
+          <y>160</y>
           <width>171</width>
           <height>41</height>
          </rect>
@@ -355,22 +239,6 @@ QTableBar
          <bool>true</bool>
         </property>
        </widget>
-       <widget class="QSpinBox" name="sbVTotalCycle">
-        <property name="geometry">
-         <rect>
-          <x>180</x>
-          <y>110</y>
-          <width>61</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="minimum">
-         <number>1</number>
-        </property>
-        <property name="maximum">
-         <number>65535</number>
-        </property>
-       </widget>
        <widget class="QPushButton" name="bStartTest">
         <property name="enabled">
          <bool>false</bool>
@@ -378,7 +246,7 @@ QTableBar
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>250</y>
+          <y>220</y>
           <width>121</width>
           <height>41</height>
          </rect>
@@ -396,61 +264,6 @@ QTableBar
          </size>
         </property>
        </widget>
-       <widget class="QLabel" name="label_5">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>110</y>
-          <width>151</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Total Cycle for Vib. </string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_7">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>140</y>
-          <width>201</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Water Tank Temp. (°C)</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_108">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>170</y>
-          <width>201</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Elliptical Vibration</string>
-        </property>
-       </widget>
-       <widget class="QSpinBox" name="sbPTotalCycle">
-        <property name="geometry">
-         <rect>
-          <x>180</x>
-          <y>80</y>
-          <width>61</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="minimum">
-         <number>1</number>
-        </property>
-        <property name="maximum">
-         <number>65535</number>
-        </property>
-       </widget>
        <widget class="QPushButton" name="bStopTest">
         <property name="enabled">
          <bool>false</bool>
@@ -458,7 +271,7 @@ QTableBar
         <property name="geometry">
          <rect>
           <x>210</x>
-          <y>250</y>
+          <y>220</y>
           <width>61</width>
           <height>41</height>
          </rect>
@@ -585,24 +398,11 @@ QTableBar
          </property>
         </item>
        </widget>
-       <widget class="QLabel" name="label_4">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>80</y>
-          <width>161</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Total Cycle for Pres. </string>
-        </property>
-       </widget>
        <widget class="QLabel" name="label">
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>50</y>
+          <y>110</y>
           <width>161</width>
           <height>20</height>
          </rect>
@@ -611,49 +411,11 @@ QTableBar
          <string>Total Cycle for Temp. </string>
         </property>
        </widget>
-       <widget class="QCheckBox" name="chbEllipticalVibrationSet">
-        <property name="geometry">
-         <rect>
-          <x>200</x>
-          <y>170</y>
-          <width>21</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-       <widget class="QDoubleSpinBox" name="dsbTankTempSet">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>180</x>
-          <y>140</y>
-          <width>61</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="decimals">
-         <number>1</number>
-        </property>
-        <property name="minimum">
-         <double>50.000000000000000</double>
-        </property>
-        <property name="maximum">
-         <double>130.000000000000000</double>
-        </property>
-        <property name="singleStep">
-         <double>0.100000000000000</double>
-        </property>
-       </widget>
        <widget class="QSpinBox" name="sbTTotalCycle">
         <property name="geometry">
          <rect>
           <x>180</x>
-          <y>50</y>
+          <y>110</y>
           <width>61</width>
           <height>21</height>
          </rect>
@@ -671,7 +433,7 @@ QTableBar
           <x>470</x>
           <y>10</y>
           <width>291</width>
-          <height>391</height>
+          <height>381</height>
          </rect>
         </property>
         <property name="font">
@@ -697,7 +459,7 @@ QTableBar
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>200</y>
+          <y>160</y>
           <width>261</width>
           <height>41</height>
          </rect>
@@ -715,61 +477,11 @@ QTableBar
          </size>
         </property>
        </widget>
-       <widget class="QLabel" name="label_107">
-        <property name="geometry">
-         <rect>
-          <x>30</x>
-          <y>380</y>
-          <width>61</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Vib</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="laCurrentPRepeatMain">
-        <property name="geometry">
-         <rect>
-          <x>190</x>
-          <y>360</y>
-          <width>71</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>0</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-       <widget class="QLabel" name="laCurrentPCycleMain">
-        <property name="geometry">
-         <rect>
-          <x>90</x>
-          <y>360</y>
-          <width>31</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>0</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
        <widget class="QLabel" name="laSelectedProfileMain">
         <property name="geometry">
          <rect>
           <x>130</x>
-          <y>300</y>
+          <y>70</y>
           <width>141</width>
           <height>16</height>
          </rect>
@@ -781,207 +493,17 @@ QTableBar
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
        </widget>
-       <widget class="QLabel" name="laCurrentPStepMain">
-        <property name="geometry">
-         <rect>
-          <x>150</x>
-          <y>360</y>
-          <width>31</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>0</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-       <widget class="QLabel" name="laCurrentTCycleMain">
-        <property name="geometry">
-         <rect>
-          <x>90</x>
-          <y>340</y>
-          <width>31</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>0</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-       <widget class="QLabel" name="laCurrentVRepeatMain">
-        <property name="geometry">
-         <rect>
-          <x>190</x>
-          <y>380</y>
-          <width>71</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>0</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-       <widget class="QLabel" name="laCurrentVStepMain">
-        <property name="geometry">
-         <rect>
-          <x>150</x>
-          <y>380</y>
-          <width>31</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>0</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-       <widget class="QLabel" name="laCurrentVCycleMain">
-        <property name="geometry">
-         <rect>
-          <x>90</x>
-          <y>380</y>
-          <width>31</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>0</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
        <widget class="QLabel" name="label_3">
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>300</y>
+          <y>70</y>
           <width>121</width>
           <height>16</height>
          </rect>
         </property>
         <property name="text">
          <string>Selected Profile</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_109">
-        <property name="geometry">
-         <rect>
-          <x>30</x>
-          <y>340</y>
-          <width>61</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Temp.</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_106">
-        <property name="geometry">
-         <rect>
-          <x>30</x>
-          <y>360</y>
-          <width>61</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Pres. </string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="laCurrentTStepMain">
-        <property name="geometry">
-         <rect>
-          <x>150</x>
-          <y>340</y>
-          <width>31</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>0</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_124">
-        <property name="geometry">
-         <rect>
-          <x>290</x>
-          <y>160</y>
-          <width>131</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Vibration Motor 1</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_125">
-        <property name="geometry">
-         <rect>
-          <x>290</x>
-          <y>190</y>
-          <width>131</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Vibration Motor 2</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="laVibrationMotor1Err">
-        <property name="geometry">
-         <rect>
-          <x>430</x>
-          <y>160</y>
-          <width>31</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>NOK</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-       <widget class="QLabel" name="laVibrationMotor2Err">
-        <property name="geometry">
-         <rect>
-          <x>430</x>
-          <y>190</y>
-          <width>31</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>NOK</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
         </property>
        </widget>
        <widget class="QPushButton" name="bPauseTest">
@@ -991,7 +513,7 @@ QTableBar
         <property name="geometry">
          <rect>
           <x>140</x>
-          <y>250</y>
+          <y>220</y>
           <width>61</width>
           <height>41</height>
          </rect>
@@ -1007,105 +529,16 @@ QTableBar
         <property name="geometry">
          <rect>
           <x>220</x>
-          <y>50</y>
-          <width>47</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>1</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-       <widget class="QLabel" name="laVTotalCycleMain">
-        <property name="geometry">
-         <rect>
-          <x>220</x>
           <y>110</y>
           <width>47</width>
           <height>16</height>
          </rect>
         </property>
-        <property name="layoutDirection">
-         <enum>Qt::LeftToRight</enum>
-        </property>
         <property name="text">
          <string>1</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-       <widget class="QLabel" name="laPTotalCycleMain">
-        <property name="geometry">
-         <rect>
-          <x>220</x>
-          <y>80</y>
-          <width>47</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>1</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_131">
-        <property name="geometry">
-         <rect>
-          <x>100</x>
-          <y>320</y>
-          <width>41</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Cycle</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_132">
-        <property name="geometry">
-         <rect>
-          <x>220</x>
-          <y>320</y>
-          <width>51</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Repeat</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_133">
-        <property name="geometry">
-         <rect>
-          <x>160</x>
-          <y>320</y>
-          <width>41</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Step</string>
         </property>
        </widget>
       </widget>

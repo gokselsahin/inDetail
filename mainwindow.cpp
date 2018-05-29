@@ -133,8 +133,8 @@ MainWindow::MainWindow(QWidget *parent) :
     timer1000->start(1000);
 
     timer250 = new QTimer(this);
-    connect(timer250, SIGNAL(timeout()), this, SLOT(askOtherStuff()));
-    timer250->start(250);
+      connect(timer250, SIGNAL(timeout()), this, SLOT(askOtherStuff()));
+    timer250->start(1000);
 
     timerTemp = new QTimer(this);
     connect(timerTemp, SIGNAL(timeout()), this, SLOT(updateTPlot()));
@@ -391,10 +391,10 @@ void MainWindow::setupVisuals()
     ui->sbTLDuration->setButtonSymbols(QAbstractSpinBox::NoButtons);
     ui->dsbTLTarget->setButtonSymbols(QAbstractSpinBox::NoButtons);
 
-    ui->dsbTankTempSet->setButtonSymbols(QAbstractSpinBox::NoButtons);
+
 
     ui->dsbPStartValue->setButtonSymbols(QAbstractSpinBox::NoButtons);
-    ui->sbPTotalCycle->setButtonSymbols(QAbstractSpinBox::NoButtons);
+
     ui->dsbPLDuration->setButtonSymbols(QAbstractSpinBox::NoButtons);
     ui->dsbPLTarget->setButtonSymbols(QAbstractSpinBox::NoButtons);
     ui->dsbPTRise->setButtonSymbols(QAbstractSpinBox::NoButtons);
@@ -410,7 +410,7 @@ void MainWindow::setupVisuals()
     ui->dsbPRepeatTime->setButtonSymbols(QAbstractSpinBox::NoButtons);
 
     ui->dsbVStartValue->setButtonSymbols(QAbstractSpinBox::NoButtons);
-    ui->sbVTotalCycle->setButtonSymbols(QAbstractSpinBox::NoButtons);
+
     ui->sbVLDuration->setButtonSymbols(QAbstractSpinBox::NoButtons);
     ui->dsbVLTarget->setButtonSymbols(QAbstractSpinBox::NoButtons);
     ui->dsbVLogRate->setButtonSymbols(QAbstractSpinBox::NoButtons);
@@ -521,15 +521,15 @@ void MainWindow::serialMessage(uint command, QByteArray data)
         pipe6Pressure = quint8(data[5]) / 10.0;
 */
         pipe1Pressure = qint16(((data[1] & 0xff) << 8) | (data[0] & 0xff)) / 100.0;
-        pipe2Pressure = qint16(((data[3] & 0xff) << 8) | (data[2] & 0xff)) / 100.0;
+/*      pipe2Pressure = qint16(((data[3] & 0xff) << 8) | (data[2] & 0xff)) / 100.0;
         pipe3Pressure = qint16(((data[5] & 0xff) << 8) | (data[4] & 0xff)) / 100.0;
         pipe4Pressure = qint16(((data[7] & 0xff) << 8) | (data[6] & 0xff)) / 100.0;
         pipe5Pressure = qint16(((data[9] & 0xff) << 8) | (data[8] & 0xff)) / 100.0;
         pipe6Pressure = qint16(((data[11] & 0xff) << 8) | (data[10] & 0xff)) / 100.0;
-
+*/
         ui->dsbPipe1Pressure->setValue(pipe1Pressure);
         ui->dsbPipe1PressureMaintenance->setValue(pipe1Pressure);
-      ui->dsbPipe2Pressure->setValue(pipe2Pressure);
+ /*     ui->dsbPipe2Pressure->setValue(pipe2Pressure);
         ui->dsbPipe2PressureMaintenance->setValue(pipe2Pressure);
         ui->dsbPipe3Pressure->setValue(pipe3Pressure);
         ui->dsbPipe3PressureMaintenance->setValue(pipe3Pressure);
@@ -539,15 +539,15 @@ void MainWindow::serialMessage(uint command, QByteArray data)
         ui->dsbPipe5PressureMaintenance->setValue(pipe5Pressure);
         ui->dsbPipe6Pressure->setValue(pipe6Pressure);
         ui->dsbPipe6PressureMaintenance->setValue(pipe6Pressure);
-        break;
+*/        break;
 
     case 0x33:
 
-        waterTankLiquidLevel = quint8(data[0]);
-        waterTankTemperature = qint16(((data[2] & 0xff) << 8) | (data[1] & 0xff)) / 10.0;
-        cabinTopTemperature = qint16(((data[4] & 0xff) << 8) | (data[3] & 0xff)) / 10.0;
-        cabinBottomTemperature = qint16(((data[6] & 0xff) << 8) | (data[5] & 0xff)) / 10.0;
-        pipeVibrationFrequency = quint16(((data[8] & 0xff) << 8) | (data[7] & 0xff)) / 10.0;
+ //       waterTankLiquidLevel = quint8(data[0]);
+ //       waterTankTemperature = qint16(((data[2] & 0xff) << 8) | (data[1] & 0xff)) / 10.0;
+        cabinTopTemperature = qint16(((data[1] & 0xff) << 8) | (data[0] & 0xff)) / 10.0;
+        cabinBottomTemperature = qint16(((data[3] & 0xff) << 8) | (data[2] & 0xff)) / 10.0;
+ //       pipeVibrationFrequency = quint16(((data[8] & 0xff) << 8) | (data[7] & 0xff)) / 10.0;
 
         ui->dsbTankTemp->setValue(waterTankTemperature);
         ui->dsbTankTempMaintenance->setValue(waterTankTemperature);
@@ -556,24 +556,7 @@ void MainWindow::serialMessage(uint command, QByteArray data)
         ui->dsbPipeVibration->setValue(pipeVibrationFrequency);
         ui->dsbPipeVibrationMaintenance->setValue(pipeVibrationFrequency);
 
-        if (waterTankLiquidLevel == 1)
-        {
-            ui->laTankLiquid->setStyleSheet("QLabel { color : green; }");
-            ui->laTankLiquid->setText("OK");
-            ui->laTankLiquidErr->setStyleSheet("QLabel { color : green; }");
-            ui->laTankLiquidErr->setText("OK");
-            ui->laTankLiquidLevelMaintenance->setStyleSheet("QLabel { color : green; }");
-            ui->laTankLiquidLevelMaintenance->setText("OK");
-        }
-        else
-        {
-            ui->laTankLiquid->setStyleSheet("QLabel { color : red; }");
-            ui->laTankLiquid->setText("NOK");
-            ui->laTankLiquidErr->setStyleSheet("QLabel { color : red; }");
-            ui->laTankLiquidErr->setText("NOK");
-            ui->laTankLiquidLevelMaintenance->setStyleSheet("QLabel { color : red; }");
-            ui->laTankLiquidLevelMaintenance->setText("NOK");
-        }
+
 
         break;
 
@@ -591,7 +574,7 @@ void MainWindow::prepareTestTimers()
        timerTemp->start(tempPeriod);
     }
 
-    if (myPLC.pressureTestActive)
+    if (myPLC.temperatureTestActive)
     {
         timerPressure->start(pressurePeriod);
     }
@@ -633,10 +616,9 @@ void MainWindow::updateInfo(quint8 index, QByteArray data)
                     ui->bPauseTest->setEnabled(false);
 
                     ui->sbTTotalCycle->setEnabled(true);
-                    ui->sbPTotalCycle->setEnabled(true);
-                    ui->sbVTotalCycle->setEnabled(true);
-                    ui->dsbTankTempSet->setEnabled(true);
-                    ui->chbEllipticalVibrationSet->setEnabled(true);
+
+
+
 
                     ui->cbSelectProfileManual->setCurrentIndex(0);
                     ui->cbSelectProfileManual->setEnabled(true);
@@ -691,10 +673,7 @@ void MainWindow::updateInfo(quint8 index, QByteArray data)
                     ui->bPauseTest->setEnabled(true);
 
                     ui->sbTTotalCycle->setEnabled(false);
-                    ui->sbPTotalCycle->setEnabled(false);
-                    ui->sbVTotalCycle->setEnabled(false);
-                    ui->dsbTankTempSet->setEnabled(false);
-                    ui->chbEllipticalVibrationSet->setEnabled(false);
+
 
                     ui->cbSelectProfileManual->setEnabled(false);
                     ui->bStartTestManual->setEnabled(false);
@@ -962,18 +941,7 @@ void MainWindow::updateInfo(quint8 index, QByteArray data)
         {
             myPLC.cabinTemperatureStat = (data[2] & 0b00000100) >> 2;
 
-            if (myPLC.cabinTemperatureStat)
-            {
-                writeToLogTable("Cabin temp. OK.");
-                ui->laCabinTempErr->setStyleSheet("QLabel { color : green; }");
-                ui->laCabinTempErr->setText("OK");
-            }
-            else
-            {
-                writeToLogTable("Cabin temp. NOK.");
-                ui->laCabinTempErr->setStyleSheet("QLabel { color : red; }");
-                ui->laCabinTempErr->setText("NOK");
-            }
+
         }
 
         if (myPLC.tankTemperatureStat == (data[2] & 0b00001000) >> 3)
@@ -984,18 +952,7 @@ void MainWindow::updateInfo(quint8 index, QByteArray data)
         {
             myPLC.tankTemperatureStat = (data[2] & 0b00001000) >> 3;
 
-            if (myPLC.tankTemperatureStat)
-            {
-                writeToLogTable("Tank temp. OK.");
-                ui->laTankTempErr->setStyleSheet("QLabel { color : green; }");
-                ui->laTankTempErr->setText("OK");
-            }
-            else
-            {
-                writeToLogTable("Tank temp. NOK.");
-                ui->laTankTempErr->setStyleSheet("QLabel { color : red; }");
-                ui->laTankTempErr->setText("NOK");
-            }
+
         }
 
         if (myPLC.pipePressureStat == (data[2] & 0b00010000) >> 4)
@@ -1006,18 +963,7 @@ void MainWindow::updateInfo(quint8 index, QByteArray data)
         {
             myPLC.pipePressureStat = (data[2] & 0b00010000) >> 4;
 
-            if (myPLC.pipePressureStat)
-            {
-                writeToLogTable("Pipe pressure OK.");
-                ui->laPipeErr->setStyleSheet("QLabel { color : green; }");
-                ui->laPipeErr->setText("OK");
-            }
-            else
-            {
-                writeToLogTable("Pipe pressure NOK.");
-                ui->laPipeErr->setStyleSheet("QLabel { color : red; }");
-                ui->laPipeErr->setText("NOK");
-            }
+
         }
 
         if (myPLC.vibrationMotor1Stat == (data[2] & 0b00100000) >> 5)
@@ -1028,18 +974,7 @@ void MainWindow::updateInfo(quint8 index, QByteArray data)
         {
             myPLC.vibrationMotor1Stat = (data[2] & 0b00100000) >> 5;
 
-            if (myPLC.vibrationMotor1Stat)
-            {
-                writeToLogTable("Vibration Motor-1 OK.");
-                ui->laVibrationMotor1Err->setStyleSheet("QLabel { color : green; }");
-                ui->laVibrationMotor1Err->setText("OK");
-            }
-            else
-            {
-                writeToLogTable("Vibration Motor-1 NOK.");
-                ui->laVibrationMotor1Err->setStyleSheet("QLabel { color : red; }");
-                ui->laVibrationMotor1Err->setText("NOK");
-            }
+
         }
 
         if (myPLC.vibrationMotor2Stat == (data[2] & 0b01000000) >> 6)
@@ -1048,25 +983,13 @@ void MainWindow::updateInfo(quint8 index, QByteArray data)
         }
         else
         {
-            myPLC.vibrationMotor2Stat = (data[2] & 0b01000000) >> 6;
-            if (myPLC.vibrationMotor2Stat)
-            {
-                writeToLogTable("Vibration Motor-2 OK.");
-                ui->laVibrationMotor2Err->setStyleSheet("QLabel { color : green; }");
-                ui->laVibrationMotor2Err->setText("OK");
-            }
-            else
-            {
-                writeToLogTable("Vibration Motor-2 NOK.");
-                ui->laVibrationMotor2Err->setStyleSheet("QLabel { color : red; }");
-                ui->laVibrationMotor2Err->setText("NOK");
-            }
+
         }
 
         if (tCycle != quint16(((data[4] & 0xff) << 8) | (data[3] & 0xff)))
         {
             tCycle = quint16(((data[4] & 0xff) << 8) | (data[3] & 0xff));
-            ui->laCurrentTCycleMain->setText(QString::number(tCycle));
+  //          ui->laCurrentTCycleMain->setText(QString::number(tCycle));
             if (tCycle != 0)
             {
                 tKey = 0;
@@ -1078,7 +1001,7 @@ void MainWindow::updateInfo(quint8 index, QByteArray data)
         {
 
             pCycle = quint16(((data[6] & 0xff) << 8) | (data[5] & 0xff));
-            ui->laCurrentPCycleMain->setText(QString::number(pCycle));
+
             if (pCycle != 0)
             {
                 pKey = 0;
@@ -1089,7 +1012,7 @@ void MainWindow::updateInfo(quint8 index, QByteArray data)
         if ( vCycle != quint16(((data[8] & 0xff) << 8) | (data[7] & 0xff)) )
         {
             vCycle = quint16(((data[8] & 0xff) << 8) | (data[7] & 0xff));
-            ui->laCurrentVCycleMain->setText(QString::number(vCycle));
+
             if (vCycle != 0)
             {
                 vKey = 0;
@@ -1137,11 +1060,8 @@ void MainWindow::updateInfo(quint8 index, QByteArray data)
         vStepRepeat = (data[6] & 0xFF) | ((data[7] & 0xFF) <<  8) |
                 ((data[8] & 0xFF) << 16);
 
-        ui->laCurrentTStepMain->setText(QString::number(tStep));
-        ui->laCurrentPStepMain->setText(QString::number(pStep));
-        ui->laCurrentPRepeatMain->setText(QString::number(pStepRepeat));
-        ui->laCurrentVStepMain->setText(QString::number(vStep));
-        ui->laCurrentVRepeatMain->setText(QString::number(vStepRepeat));
+     //   ui->laCurrentTStepMain->setText(QString::number(tStep));
+
         ui->laTCycleCounterDetails->setText(QString::number(tCycle));
         ui->laTStepCounterDetails->setText(QString::number(tStep));
         ui->laPCycleCounterDetails->setText(QString::number(pCycle));
@@ -3928,12 +3848,10 @@ void MainWindow::on_cbSelectSUnitEdit_currentIndexChanged(int index)
 
 void MainWindow::on_cbSelectProfileMain_currentIndexChanged(int index)
 {
-    ui->laCurrentTCycleMain->setText("0");
-    ui->laCurrentPCycleMain->setText("0");
-    ui->laCurrentVCycleMain->setText("0");
+    //ui->laCurrentTCycleMain->setText("0");
+
     ui->sbTTotalCycle->setValue(1);
-    ui->sbPTotalCycle->setValue(1);
-    ui->sbVTotalCycle->setValue(1);
+
     ui->bStartTest->setEnabled(false);
 
     ui->cbSelectProfileManual->setCurrentIndex(0);
@@ -3960,29 +3878,9 @@ void MainWindow::on_cbSelectProfileMain_currentIndexChanged(int index)
                 ui->sbTTotalCycle->setEnabled(true);
             }
 
-            if (pProfileLoad[index-1].active == 0)
-            {
-                ui->sbPTotalCycle->setValue(0);
-                ui->sbPTotalCycle->setEnabled(false);
-            }
-            else
-            {
-                ui->sbPTotalCycle->setEnabled(true);
-            }
 
-            if (vProfileLoad[index-1].active == 0)
-            {
-                ui->sbVTotalCycle->setValue(0);
-                ui->sbVTotalCycle->setEnabled(false);
-                ui->chbEllipticalVibrationSet->setChecked(false);
-                ui->chbEllipticalVibrationSet->setEnabled(false);
-            }
-            else
-            {
-                ui->sbVTotalCycle->setEnabled(true);
-                ui->chbEllipticalVibrationSet->setChecked(false);
-                ui->chbEllipticalVibrationSet->setEnabled(true);
-            }
+
+
         }
     }
 
@@ -4004,7 +3902,7 @@ bool MainWindow::sendProfileOverSerial(QString mode, int index)
     {
         tTotalCycle = ui->sbTTotalCycle->value();
         ui->laTTotalCycleMain->setText(QString::number(tTotalCycle));
-        tWaterTank = ui->dsbTankTempSet->value()*10.0;
+
     }
     else if (mode == "manual")
     {
@@ -4051,20 +3949,11 @@ bool MainWindow::sendProfileOverSerial(QString mode, int index)
 
     cantTouchThis.clear();
 
-    float pStart = pProfileLoad[index-1].startValue*10.0;
+/*    float pStart = pProfileLoad[index-1].startValue*10.0;
     float pTotalStep = pProfileLoad[index-1].totalStep;
     quint16 pTotalCycle;
 
-    if (mode == "main")
-    {
-        pTotalCycle = ui->sbPTotalCycle->value();
-        ui->laPTotalCycleMain->setText(QString::number(pTotalCycle));
-    }
-    else if (mode == "manual")
-    {
-        pTotalCycle = ui->sbPTotalCycleManual->value();
-        ui->laPTotalCycleMain->setText(QString::number(pTotalCycle));
-    }
+
 
     cantTouchThis.append(pProfileLoad[index-1].active);
     cantTouchThis.append(quint16(pStart) & 0x00FF);
@@ -4160,10 +4049,10 @@ bool MainWindow::sendProfileOverSerial(QString mode, int index)
             cantTouchThis.append(quint16(pRepeatDuration) >> 8);
 
             proc->insertProfileMessage(mySerial::makeMessage(0x68,cantTouchThis));
-        }
-    }
-
-    cantTouchThis.clear();
+      }
+  }
+*/
+ /*   cantTouchThis.clear();
 
     proc->insertProfileMessage(mySerial::makeMessage(0x69,cantTouchThis));
 
@@ -4174,18 +4063,7 @@ bool MainWindow::sendProfileOverSerial(QString mode, int index)
     quint16 vTotalCycle;
     bool vEllipticalActive;
 
-    if (mode == "main")
-    {
-        vTotalCycle = ui->sbVTotalCycle->value();
-        ui->laVTotalCycleMain->setText(QString::number(vTotalCycle));
-        vEllipticalActive = ui->chbEllipticalVibrationSet->isChecked();
-    }
-    else if (mode == "manual")
-    {
-        vTotalCycle = ui->sbVTotalCycleManual->value();
-        ui->laVTotalCycleMain->setText(QString::number(vTotalCycle));
-        vEllipticalActive = ui->chbEllipticalVibrationSetManual->isChecked();
-    }
+
 
     cantTouchThis.append(vProfileLoad[index-1].active);
     cantTouchThis.append(quint16(vStart) & 0x00FF);
@@ -4247,10 +4125,10 @@ bool MainWindow::sendProfileOverSerial(QString mode, int index)
             proc->insertProfileMessage(mySerial::makeMessage(0x6B,cantTouchThis));
         }
     }
+*/
+//    cantTouchThis.clear();
 
-    cantTouchThis.clear();
-
-    proc->insertProfileMessage(mySerial::makeMessage(0x6C,cantTouchThis));
+//    proc->insertProfileMessage(mySerial::makeMessage(0x6C,cantTouchThis));
 
     if (mode == "main")
     {
@@ -4271,17 +4149,17 @@ bool MainWindow::sendProfileOverSerial(QString mode, int index)
     else if (mode == "manual")
     {
         quint16 tCycleToStart = ui->sbTCycleSetManual->value();
-        quint16 pCycleToStart = ui->sbPCycleSetManual->value();
-        quint16 vCycleToStart = ui->sbVCycleSetManual->value();
+  //      quint16 pCycleToStart = ui->sbPCycleSetManual->value();
+ //       quint16 vCycleToStart = ui->sbVCycleSetManual->value();
 
         if (ui->cbSelectMethodManual->currentIndex() == 1)
         {
             quint32 tSecondsToStart = ui->dsbTTimeSetManual->value();
-            quint32 pSecondsToStart = ui->dsbPTimeSetManual->value();
-            quint32 vSecondsToStart = ui->dsbVTimeSetManual->value();
+   //         quint32 pSecondsToStart = ui->dsbPTimeSetManual->value();
+   //         quint32 vSecondsToStart = ui->dsbVTimeSetManual->value();
             quint16 tCycleToStart = ui->sbTCycleSetManual->value();
-            quint16 pCycleToStart = ui->sbPCycleSetManual->value();
-            quint16 vCycleToStart = ui->sbVCycleSetManual->value();
+   //         quint16 pCycleToStart = ui->sbPCycleSetManual->value();
+    //        quint16 vCycleToStart = ui->sbVCycleSetManual->value();
 
             cantTouchThis.clear();
             cantTouchThis.append(0x01);
@@ -4289,7 +4167,7 @@ bool MainWindow::sendProfileOverSerial(QString mode, int index)
             cantTouchThis.append( (tSecondsToStart) & 0xFF );
             cantTouchThis.append( (tSecondsToStart >> 8) & 0xFF );
             cantTouchThis.append( (tSecondsToStart >> 16) & 0xFF );
-
+/*
             cantTouchThis.append( (pSecondsToStart) & 0xFF );
             cantTouchThis.append( (pSecondsToStart >> 8) & 0xFF );
             cantTouchThis.append( (pSecondsToStart >> 16) & 0xFF );
@@ -4297,14 +4175,14 @@ bool MainWindow::sendProfileOverSerial(QString mode, int index)
             cantTouchThis.append( (vSecondsToStart) & 0xFF );
             cantTouchThis.append( (vSecondsToStart >> 8) & 0xFF );
             cantTouchThis.append( (vSecondsToStart >> 16) & 0xFF );
-
+*/
             cantTouchThis.append( (tCycleToStart) & 0x00FF);
             cantTouchThis.append( (tCycleToStart) >> 8);
-            cantTouchThis.append( (pCycleToStart) & 0x00FF);
+/*            cantTouchThis.append( (pCycleToStart) & 0x00FF);
             cantTouchThis.append( (pCycleToStart) >> 8);
             cantTouchThis.append( (vCycleToStart) & 0x00FF);
             cantTouchThis.append( (vCycleToStart) >> 8);
-
+*/
             proc->insertProfileMessage(mySerial::makeMessage(0x6D,cantTouchThis));
 
             cantTouchThis.clear();
@@ -4314,11 +4192,11 @@ bool MainWindow::sendProfileOverSerial(QString mode, int index)
         else if (ui->cbSelectMethodManual->currentIndex() == 2)
         {
             quint8 tStepToStart = ui->sbTStepSetManual->value();
-            quint8 pStepToStart = ui->sbPStepSetManual->value();
-            quint8 vStepToStart = ui->sbVStepSetManual->value();
+//            quint8 pStepToStart = ui->sbPStepSetManual->value();
+ //           quint8 vStepToStart = ui->sbVStepSetManual->value();
             quint16 tStepSecondToStart = ui->sbTStepRepeatSetManual->value();
-            quint16 pStepSecondToStart = ui->sbPStepRepeatSetManual->value();
-            quint16 vStepSecondToStart = ui->sbVStepRepeatSetManual->value();
+ //           quint16 pStepSecondToStart = ui->sbPStepRepeatSetManual->value();
+ //           quint16 vStepSecondToStart = ui->sbVStepRepeatSetManual->value();
 
             cantTouchThis.clear();
             cantTouchThis.append(char(0x00));
@@ -4327,21 +4205,21 @@ bool MainWindow::sendProfileOverSerial(QString mode, int index)
             cantTouchThis.clear();
             cantTouchThis.append(0x01);
             cantTouchThis.append(tStepToStart);
-            cantTouchThis.append(pStepToStart);
-            cantTouchThis.append(vStepToStart);
+//            cantTouchThis.append(pStepToStart);
+//            cantTouchThis.append(vStepToStart);
             cantTouchThis.append( (tStepSecondToStart) & 0x00FF);
             cantTouchThis.append( (tStepSecondToStart) >> 8);
-            cantTouchThis.append( (pStepSecondToStart) & 0x00FF);
+  /*          cantTouchThis.append( (pStepSecondToStart) & 0x00FF);
             cantTouchThis.append( (pStepSecondToStart) >> 8);
             cantTouchThis.append( (vStepSecondToStart) & 0x00FF);
             cantTouchThis.append( (vStepSecondToStart) >> 8);
-            cantTouchThis.append( (tCycleToStart) & 0x00FF);
+ */           cantTouchThis.append( (tCycleToStart) & 0x00FF);
             cantTouchThis.append( (tCycleToStart) >> 8);
-            cantTouchThis.append( (pCycleToStart) & 0x00FF);
+ /*           cantTouchThis.append( (pCycleToStart) & 0x00FF);
             cantTouchThis.append( (pCycleToStart) >> 8);
             cantTouchThis.append( (vCycleToStart) & 0x00FF);
             cantTouchThis.append( (vCycleToStart) >> 8);
-
+*/
             proc->insertProfileMessage(mySerial::makeMessage(0x6E,cantTouchThis));
         }
 
@@ -5201,8 +5079,7 @@ void MainWindow::on_cbSelectProfileManual_currentIndexChanged(int index)
     ui->sbPTotalCycleManual->setValue(1);
     ui->sbVTotalCycleManual->setValue(1);
     ui->laTTotalCycleMain->setText(QString::number(1));
-    ui->laPTotalCycleMain->setText(QString::number(1));
-    ui->laVTotalCycleMain->setText(QString::number(1));
+
 
     if (index == 0)
     {
@@ -5212,8 +5089,7 @@ void MainWindow::on_cbSelectProfileManual_currentIndexChanged(int index)
         ui->cbSelectMethodManual->setCurrentIndex(0);
         ui->cbSelectMethodManual->setEnabled(false);
         ui->laTTotalCycleMain->setText(QString::number(1));
-        ui->laPTotalCycleMain->setText(QString::number(1));
-        ui->laVTotalCycleMain->setText(QString::number(1));
+
     }
     else
     {
