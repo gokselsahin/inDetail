@@ -151,6 +151,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     askSensorValues();
 
+
+
 }
 
 MainWindow::~MainWindow()
@@ -224,7 +226,10 @@ void MainWindow::setupTGraph()
     // make temperature plot general settings
     ui->tTestGraph->addGraph();
     ui->tTestGraph->graph(0)->setPen(QPen(Qt::red));
-    ui->tTestGraph->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom | QCP::iSelectPlottables);
+    ui->tTestGraph->addGraph();
+    ui->tTestGraph->graph(1)->setPen(QPen(Qt::black));
+    ui->tTestGraph->setInteractions(QCP::iRangeDrag | QCP::iSelectAxes |
+                                    QCP::iSelectLegend| QCP::iRangeZoom | QCP::iSelectPlottables);
     ui->tTestGraph->axisRect()->setRangeDrag(Qt::Horizontal);
     ui->tTestGraph->axisRect()->setRangeZoom(Qt::Horizontal);
 
@@ -238,6 +243,7 @@ void MainWindow::setupTGraph()
     ui->tTestGraph->yAxis->setLabel("Cabin Temperature (°C)");
     ui->tTestGraph->yAxis->setRange(-50.0, 250.0);
     ui->tTestGraph->setBackground(Qt::white);
+    connect(ui->tTestGraph, SIGNAL(selectionChangedByUser()), this, SLOT(selectionChanged()));
     // make left and bottom axes transfer their ranges to right and top axes:
     connect(ui->tTestGraph->xAxis, SIGNAL(rangeChanged(QCPRange)), ui->tTestGraph->xAxis2, SLOT(setRange(QCPRange)));
     connect(ui->tTestGraph->yAxis, SIGNAL(rangeChanged(QCPRange)), ui->tTestGraph->yAxis2, SLOT(setRange(QCPRange)));
@@ -298,25 +304,25 @@ void MainWindow::setupVGraph()
     vTicker->setTickCount(12);
 
     // make vibration plot general settings
-    ui->vTestGraph->addGraph();
-    ui->vTestGraph->graph(0)->setPen(QPen(Qt::yellow));
-    ui->vTestGraph->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom | QCP::iSelectPlottables);
-    ui->vTestGraph->axisRect()->setRangeDrag(Qt::Horizontal);
-    ui->vTestGraph->axisRect()->setRangeZoom(Qt::Horizontal);
+    //ui->vTestGraph->addGraph();
+    //ui->vTestGraph->graph(0)->setPen(QPen(Qt::yellow));
+    //ui->vTestGraph->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom | QCP::iSelectPlottables);
+    //ui->vTestGraph->axisRect()->setRangeDrag(Qt::Horizontal);
+    //ui->vTestGraph->axisRect()->setRangeZoom(Qt::Horizontal);
 
     // make Y axis vibration ticker
-    ui->vTestGraph->yAxis->setTicker(vTicker);
+    //ui->vTestGraph->yAxis->setTicker(vTicker);
 
     // make X axis as time ticker
-    ui->vTestGraph->xAxis->setTicker(timeTicker);
-    ui->vTestGraph->axisRect()->setupFullAxesBox();
-    ui->vTestGraph->xAxis->setLabel("Time (hh:mm:ss)");
-    ui->vTestGraph->yAxis->setLabel("Vibration Frequency (Hz)");
-    ui->vTestGraph->yAxis->setRange(0, 60.0);
-    ui->vTestGraph->setBackground(Qt::white);
+    //ui->vTestGraph->xAxis->setTicker(timeTicker);
+    //ui->vTestGraph->axisRect()->setupFullAxesBox();
+    //ui->vTestGraph->xAxis->setLabel("Time (hh:mm:ss)");
+    //ui->vTestGraph->yAxis->setLabel("Vibration Frequency (Hz)");
+    //ui->vTestGraph->yAxis->setRange(0, 60.0);
+    //ui->vTestGraph->setBackground(Qt::white);
     // make left and bottom axes transfer their ranges to right and top axes:
-    connect(ui->vTestGraph->xAxis, SIGNAL(rangeChanged(QCPRange)), ui->vTestGraph->xAxis2, SLOT(setRange(QCPRange)));
-    connect(ui->vTestGraph->yAxis, SIGNAL(rangeChanged(QCPRange)), ui->vTestGraph->yAxis2, SLOT(setRange(QCPRange)));
+    //connect(ui->vTestGraph->xAxis, SIGNAL(rangeChanged(QCPRange)), ui->vTestGraph->xAxis2, SLOT(setRange(QCPRange)));
+    //connect(ui->vTestGraph->yAxis, SIGNAL(rangeChanged(QCPRange)), ui->vTestGraph->yAxis2, SLOT(setRange(QCPRange)));
 
 }
 
@@ -374,7 +380,7 @@ void MainWindow::setupVisuals()
 
     ui->tTestGraph->setVisible(false);
     ui->pTestGraph->setVisible(false);
-    ui->vTestGraph->setVisible(false);
+    //ui->vTestGraph->setVisible(false);
 
     ui->tWidget->setCurrentIndex(0);
     ui->pWidget->setCurrentIndex(0);
@@ -438,13 +444,13 @@ void MainWindow::setupVisuals()
 
     ui->dsbCabinTopTemp->setButtonSymbols(QAbstractSpinBox::NoButtons);
     ui->dsbPipe1Pressure->setButtonSymbols(QAbstractSpinBox::NoButtons);
-    ui->dsbPipe2Pressure->setButtonSymbols(QAbstractSpinBox::NoButtons);
-    ui->dsbPipe3Pressure->setButtonSymbols(QAbstractSpinBox::NoButtons);
-    ui->dsbPipe4Pressure->setButtonSymbols(QAbstractSpinBox::NoButtons);
-    ui->dsbPipe5Pressure->setButtonSymbols(QAbstractSpinBox::NoButtons);
-    ui->dsbPipe6Pressure->setButtonSymbols(QAbstractSpinBox::NoButtons);
-    ui->dsbPipeVibration->setButtonSymbols(QAbstractSpinBox::NoButtons);
-    ui->dsbTankTemp->setButtonSymbols(QAbstractSpinBox::NoButtons);
+    //ui->dsbPipe2Pressure->setButtonSymbols(QAbstractSpinBox::NoButtons);
+    //ui->dsbPipe3Pressure->setButtonSymbols(QAbstractSpinBox::NoButtons);
+    //ui->dsbPipe4Pressure->setButtonSymbols(QAbstractSpinBox::NoButtons);
+    //ui->dsbPipe5Pressure->setButtonSymbols(QAbstractSpinBox::NoButtons);
+    //ui->dsbPipe6Pressure->setButtonSymbols(QAbstractSpinBox::NoButtons);
+    //ui->dsbPipeVibration->setButtonSymbols(QAbstractSpinBox::NoButtons);
+    //ui->dsbTankTemp->setButtonSymbols(QAbstractSpinBox::NoButtons);
 
     ui->dsbCabinTopTempMaintenance->setButtonSymbols(QAbstractSpinBox::NoButtons);
     ui->dsbPipe1PressureMaintenance->setButtonSymbols(QAbstractSpinBox::NoButtons);
@@ -549,11 +555,11 @@ void MainWindow::serialMessage(uint command, QByteArray data)
         cabinBottomTemperature = qint16(((data[3] & 0xff) << 8) | (data[2] & 0xff)) / 10.0;
  //       pipeVibrationFrequency = quint16(((data[8] & 0xff) << 8) | (data[7] & 0xff)) / 10.0;
 
-        ui->dsbTankTemp->setValue(waterTankTemperature);
+        //ui->dsbTankTemp->setValue(waterTankTemperature);
         ui->dsbTankTempMaintenance->setValue(waterTankTemperature);
         ui->dsbCabinTopTemp->setValue(cabinTopTemperature);
         ui->dsbCabinTopTempMaintenance->setValue(cabinTopTemperature);
-        ui->dsbPipeVibration->setValue(pipeVibrationFrequency);
+        //ui->dsbPipeVibration->setValue(pipeVibrationFrequency);
         ui->dsbPipeVibrationMaintenance->setValue(pipeVibrationFrequency);
 
 
@@ -565,9 +571,9 @@ void MainWindow::serialMessage(uint command, QByteArray data)
 
 void MainWindow::prepareTestTimers()
 {
-    tempPeriod = 60000;
+    tempPeriod = 10000;
     vibPeriod = 1000;
-    pressurePeriod = 1000;
+    pressurePeriod = 250;
 
     if (myPLC.temperatureTestActive)
     {
@@ -1016,8 +1022,8 @@ void MainWindow::updateInfo(quint8 index, QByteArray data)
             if (vCycle != 0)
             {
                 vKey = 0;
-                ui->vTestGraph->clearPlottables();
-                setupVGraph();
+                //ui->vTestGraph->clearPlottables();
+                //setupVGraph();
             }
         }
 
@@ -1119,7 +1125,7 @@ void MainWindow::on_cbSelectGraph_currentIndexChanged(int index)
     {
         ui->tTestGraph->setVisible(false);
         ui->pTestGraph->setVisible(false);
-        ui->vTestGraph->setVisible(false);
+        //ui->vTestGraph->setVisible(false);
         ui->laCycleCounterDetails->setVisible(false);
         ui->laStepCounterDetails->setVisible(false);
         ui->laRepeatCounterDetails->setVisible(false);
@@ -1136,7 +1142,7 @@ void MainWindow::on_cbSelectGraph_currentIndexChanged(int index)
     {
         ui->tTestGraph->setVisible(false);
         ui->pTestGraph->setVisible(false);
-        ui->vTestGraph->setVisible(false);
+        //ui->vTestGraph->setVisible(false);
         ui->tTestGraph->setVisible(true);
         ui->laTCycleCounterDetails->setVisible(true);
         ui->laTStepCounterDetails->setVisible(true);
@@ -1152,7 +1158,7 @@ void MainWindow::on_cbSelectGraph_currentIndexChanged(int index)
     {
         ui->pTestGraph->setVisible(false);
         ui->tTestGraph->setVisible(false);
-        ui->vTestGraph->setVisible(false);
+        //ui->vTestGraph->setVisible(false);
         ui->pTestGraph->setVisible(true);
         ui->laTCycleCounterDetails->setVisible(false);
         ui->laTStepCounterDetails->setVisible(false);
@@ -1166,10 +1172,10 @@ void MainWindow::on_cbSelectGraph_currentIndexChanged(int index)
     }
     else if (index == 3)
     {
-        ui->vTestGraph->setVisible(false);
+        //ui->vTestGraph->setVisible(false);
         ui->tTestGraph->setVisible(false);
         ui->pTestGraph->setVisible(false);
-        ui->vTestGraph->setVisible(true);
+        //ui->vTestGraph->setVisible(true);
         ui->laTCycleCounterDetails->setVisible(false);
         ui->laTStepCounterDetails->setVisible(false);
         ui->laPCycleCounterDetails->setVisible(false);
@@ -4258,7 +4264,7 @@ void MainWindow::on_bStartTest_clicked()
 
         ui->tTestGraph->clearPlottables();
         ui->pTestGraph->clearPlottables();
-        ui->vTestGraph->clearPlottables();
+        //ui->vTestGraph->clearPlottables();
 
         setupTGraph();
         setupPGraphs();
@@ -4337,6 +4343,7 @@ void MainWindow::updateTPlot()
 
     // add data to lines:
     ui->tTestGraph->graph(0)->addData(tKey, cabinTopTemperature);
+    ui->tTestGraph->graph(1)->addData(tKey, cabinBottomTemperature);
     // rescale key (horizontal) axis to fit the current data:
     ui->tTestGraph->graph(0)->rescaleKeyAxis();
     // replot the graph with the added data
@@ -4403,7 +4410,7 @@ void MainWindow::updatePPlots()
     }
 
 }
-
+/*
 void MainWindow::updateVPlot()
 {
     vKey = vKey + (double(vibPeriod)/1000.0);
@@ -4436,7 +4443,7 @@ void MainWindow::updateVPlot()
     file.close();
     }
 }
-
+*/
 void MainWindow::on_bScreenshot_clicked()
 {
     QScreen *screen = QGuiApplication::primaryScreen();
@@ -5211,7 +5218,7 @@ void MainWindow::on_bStartTestManual_clicked()
 
         ui->tTestGraph->clearPlottables();
         ui->pTestGraph->clearPlottables();
-        ui->vTestGraph->clearPlottables();
+        //ui->vTestGraph->clearPlottables();
 
         setupTGraph();
         setupPGraphs();
@@ -5281,5 +5288,4 @@ void MainWindow::on_bPauseTest_clicked()
     cantTouchThis.append(0x03);
     proc->insertCommandMessage(mySerial::makeMessage(0x0A,cantTouchThis));
 }
-
 

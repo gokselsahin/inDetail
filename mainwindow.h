@@ -132,6 +132,7 @@ private slots:
     void on_bPauseTest_clicked();
     void on_bStartMaintenance_clicked();
 
+
 private:
     Ui::MainWindow *ui;
 
