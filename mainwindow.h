@@ -90,7 +90,7 @@ private slots:
 
     void updateTPlot();
     void updatePPlots();
-    void updateVPlot();
+ //   void updateVPlot();
 
     void profileSent();
 
@@ -104,8 +104,8 @@ private slots:
     void on_bScreenshot_clicked();
 
     void on_bStartCooler_clicked();
-    void on_bStartVibration_clicked();
-    void on_bStartPressure_clicked();
+  //  void on_bStartVibration_clicked();
+  //  void on_bStartPressure_clicked();
     void on_bRes_clicked();
     void on_bFan_clicked();
     void on_bLightsMain_clicked();

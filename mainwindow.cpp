@@ -138,10 +138,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
     timerTemp = new QTimer(this);
     connect(timerTemp, SIGNAL(timeout()), this, SLOT(updateTPlot()));
-
+/*
     timerVib = new QTimer(this);
     connect(timerVib, SIGNAL(timeout()), this, SLOT(updateVPlot()));
-
+*/
     timerPressure = new QTimer(this);
     connect(timerPressure, SIGNAL(timeout()), this, SLOT(updatePPlots()));
 
@@ -243,7 +243,7 @@ void MainWindow::setupTGraph()
     ui->tTestGraph->yAxis->setLabel("Cabin Temperature (°C)");
     ui->tTestGraph->yAxis->setRange(-50.0, 250.0);
     ui->tTestGraph->setBackground(Qt::white);
-    connect(ui->tTestGraph, SIGNAL(selectionChangedByUser()), this, SLOT(selectionChanged()));
+ //   connect(ui->tTestGraph, SIGNAL(selectionChangedByUser()), this, SLOT(selectionChanged()));
     // make left and bottom axes transfer their ranges to right and top axes:
     connect(ui->tTestGraph->xAxis, SIGNAL(rangeChanged(QCPRange)), ui->tTestGraph->xAxis2, SLOT(setRange(QCPRange)));
     connect(ui->tTestGraph->yAxis, SIGNAL(rangeChanged(QCPRange)), ui->tTestGraph->yAxis2, SLOT(setRange(QCPRange)));
@@ -454,32 +454,32 @@ void MainWindow::setupVisuals()
 
     ui->dsbCabinTopTempMaintenance->setButtonSymbols(QAbstractSpinBox::NoButtons);
     ui->dsbPipe1PressureMaintenance->setButtonSymbols(QAbstractSpinBox::NoButtons);
-    ui->dsbPipe2PressureMaintenance->setButtonSymbols(QAbstractSpinBox::NoButtons);
-    ui->dsbPipe3PressureMaintenance->setButtonSymbols(QAbstractSpinBox::NoButtons);
-    ui->dsbPipe4PressureMaintenance->setButtonSymbols(QAbstractSpinBox::NoButtons);
-    ui->dsbPipe5PressureMaintenance->setButtonSymbols(QAbstractSpinBox::NoButtons);
-    ui->dsbPipe6PressureMaintenance->setButtonSymbols(QAbstractSpinBox::NoButtons);
-    ui->dsbPipeVibrationMaintenance->setButtonSymbols(QAbstractSpinBox::NoButtons);
-    ui->dsbTankTempMaintenance->setButtonSymbols(QAbstractSpinBox::NoButtons);
-    ui->dsbVibrationMaintenance->setButtonSymbols(QAbstractSpinBox::NoButtons);
-    ui->dsbPressureMaintenance->setButtonSymbols(QAbstractSpinBox::NoButtons);
+    //ui->dsbPipe2PressureMaintenance->setButtonSymbols(QAbstractSpinBox::NoButtons);
+    //ui->dsbPipe3PressureMaintenance->setButtonSymbols(QAbstractSpinBox::NoButtons);
+    //ui->dsbPipe4PressureMaintenance->setButtonSymbols(QAbstractSpinBox::NoButtons);
+    //ui->dsbPipe5PressureMaintenance->setButtonSymbols(QAbstractSpinBox::NoButtons);
+    //ui->dsbPipe6PressureMaintenance->setButtonSymbols(QAbstractSpinBox::NoButtons);
+    //ui->dsbPipeVibrationMaintenance->setButtonSymbols(QAbstractSpinBox::NoButtons);
+    //ui->dsbTankTempMaintenance->setButtonSymbols(QAbstractSpinBox::NoButtons);
+    //ui->dsbVibrationMaintenance->setButtonSymbols(QAbstractSpinBox::NoButtons);
+    //ui->dsbPressureMaintenance->setButtonSymbols(QAbstractSpinBox::NoButtons);
 
     ui->sbTTotalCycleManual->setButtonSymbols(QAbstractSpinBox::NoButtons);
-    ui->sbPTotalCycleManual->setButtonSymbols(QAbstractSpinBox::NoButtons);
-    ui->sbVTotalCycleManual->setButtonSymbols(QAbstractSpinBox::NoButtons);
-    ui->dsbTankTempSetManual->setButtonSymbols(QAbstractSpinBox::NoButtons);
+    //ui->sbPTotalCycleManual->setButtonSymbols(QAbstractSpinBox::NoButtons);
+    //ui->sbVTotalCycleManual->setButtonSymbols(QAbstractSpinBox::NoButtons);
+    //ui->dsbTankTempSetManual->setButtonSymbols(QAbstractSpinBox::NoButtons);
     ui->dsbTTimeSetManual->setButtonSymbols(QAbstractSpinBox::NoButtons);
-    ui->dsbPTimeSetManual->setButtonSymbols(QAbstractSpinBox::NoButtons);
-    ui->dsbVTimeSetManual->setButtonSymbols(QAbstractSpinBox::NoButtons);
+    //ui->dsbPTimeSetManual->setButtonSymbols(QAbstractSpinBox::NoButtons);
+    //ui->dsbVTimeSetManual->setButtonSymbols(QAbstractSpinBox::NoButtons);
     ui->sbTStepSetManual->setButtonSymbols(QAbstractSpinBox::NoButtons);
-    ui->sbPStepSetManual->setButtonSymbols(QAbstractSpinBox::NoButtons);
-    ui->sbVStepSetManual->setButtonSymbols(QAbstractSpinBox::NoButtons);
+    //ui->sbPStepSetManual->setButtonSymbols(QAbstractSpinBox::NoButtons);
+    //ui->sbVStepSetManual->setButtonSymbols(QAbstractSpinBox::NoButtons);
     ui->sbTStepRepeatSetManual->setButtonSymbols(QAbstractSpinBox::NoButtons);
-    ui->sbPStepRepeatSetManual->setButtonSymbols(QAbstractSpinBox::NoButtons);
-    ui->sbVStepRepeatSetManual->setButtonSymbols(QAbstractSpinBox::NoButtons);
+    //ui->sbPStepRepeatSetManual->setButtonSymbols(QAbstractSpinBox::NoButtons);
+    //ui->sbVStepRepeatSetManual->setButtonSymbols(QAbstractSpinBox::NoButtons);
     ui->sbTCycleSetManual->setButtonSymbols(QAbstractSpinBox::NoButtons);
-    ui->sbPCycleSetManual->setButtonSymbols(QAbstractSpinBox::NoButtons);
-    ui->sbVCycleSetManual->setButtonSymbols(QAbstractSpinBox::NoButtons);
+    //ui->sbPCycleSetManual->setButtonSymbols(QAbstractSpinBox::NoButtons);
+    //ui->sbVCycleSetManual->setButtonSymbols(QAbstractSpinBox::NoButtons);
 
     ui->laTestStartEdit->setText("");
 
@@ -556,11 +556,11 @@ void MainWindow::serialMessage(uint command, QByteArray data)
  //       pipeVibrationFrequency = quint16(((data[8] & 0xff) << 8) | (data[7] & 0xff)) / 10.0;
 
         //ui->dsbTankTemp->setValue(waterTankTemperature);
-        ui->dsbTankTempMaintenance->setValue(waterTankTemperature);
+        //ui->dsbTankTempMaintenance->setValue(waterTankTemperature);
         ui->dsbCabinTopTemp->setValue(cabinTopTemperature);
         ui->dsbCabinTopTempMaintenance->setValue(cabinTopTemperature);
         //ui->dsbPipeVibration->setValue(pipeVibrationFrequency);
-        ui->dsbPipeVibrationMaintenance->setValue(pipeVibrationFrequency);
+        //ui->dsbPipeVibrationMaintenance->setValue(pipeVibrationFrequency);
 
 
 
@@ -584,12 +584,12 @@ void MainWindow::prepareTestTimers()
     {
         timerPressure->start(pressurePeriod);
     }
-
+/*
     if (myPLC.vibrationTestActive)
     {
        timerVib->start(vibPeriod);
     }
-
+*/
 }
 
 void MainWindow::updateInfo(quint8 index, QByteArray data)
@@ -609,7 +609,7 @@ void MainWindow::updateInfo(quint8 index, QByteArray data)
                 if (myPLC.deviceState)
                 {
                     timerTemp->stop();
-                    timerVib->stop();
+                /*    timerVib->stop(); */
                     timerPressure->stop();
 
                     writeToLogTable("Device idle.");
@@ -634,10 +634,10 @@ void MainWindow::updateInfo(quint8 index, QByteArray data)
                     ui->bPauseTestManual->setEnabled(false);
 
                     ui->sbTTotalCycleManual->setEnabled(true);
-                    ui->sbPTotalCycleManual->setEnabled(true);
-                    ui->sbVTotalCycleManual->setEnabled(true);
-                    ui->dsbTankTempSetManual->setEnabled(true);
-                    ui->chbEllipticalVibrationSetManual->setEnabled(true);
+               //     ui->sbPTotalCycleManual->setEnabled(true);
+               //     ui->sbVTotalCycleManual->setEnabled(true);
+               //     ui->dsbTankTempSetManual->setEnabled(true);
+               //     ui->chbEllipticalVibrationSetManual->setEnabled(true);
                 }
             }
         }
@@ -687,10 +687,10 @@ void MainWindow::updateInfo(quint8 index, QByteArray data)
                     ui->bPauseTestManual->setEnabled(true);
 
                     ui->sbTTotalCycleManual->setEnabled(false);
-                    ui->sbPTotalCycleManual->setEnabled(false);
-                    ui->sbVTotalCycleManual->setEnabled(false);
-                    ui->dsbTankTempSetManual->setEnabled(false);
-                    ui->chbEllipticalVibrationSetManual->setEnabled(false);
+                //    ui->sbPTotalCycleManual->setEnabled(false);
+                //    ui->sbVTotalCycleManual->setEnabled(false);
+                //    ui->dsbTankTempSetManual->setEnabled(false);
+                //    ui->chbEllipticalVibrationSetManual->setEnabled(false);
                 }
             }
         }
@@ -706,7 +706,7 @@ void MainWindow::updateInfo(quint8 index, QByteArray data)
                 if (myPLC.deviceState)
                 {
                    timerTemp->stop();
-                   timerVib->stop();
+                 /*  timerVib->stop();*/
                    timerPressure->stop();
 
                    writeToLogTable("Test paused.");
@@ -1846,7 +1846,7 @@ void MainWindow::on_bPForward3_clicked()
                                                 "(UYARI! Cihaz garanti kapsamı dışında kalır.)"), 0, 0, 9999, 1, &ok);
                 if (ok)
                 {
-                    if (adminPass = 1881)
+                    if (adminPass == 1881)
                     {
                         writeToLogTable("Pressure Rise Value Out off limits");
                         pProfileSave[currentProfile].stepDuration[currentPStep] = ( period ) * 1;
@@ -1870,7 +1870,7 @@ void MainWindow::on_bPForward3_clicked()
                                                 "(Cihaz garanti kapsamı dışında kalır)"), 0, 0, 9999, 1, &ok);
                 if (ok)
                 {
-                    if (adminPass = 1881)
+                    if (adminPass == 1881)
                     {
                         writeToLogTable("Pressure Fall Value Out off limits");
                         pProfileSave[currentProfile].stepDuration[currentPStep] = ( period ) * 1;
@@ -3914,7 +3914,7 @@ bool MainWindow::sendProfileOverSerial(QString mode, int index)
     {
         tTotalCycle = ui->sbTTotalCycleManual->value();
         ui->laTTotalCycleMain->setText(QString::number(tTotalCycle));
-        tWaterTank = ui->dsbTankTempSetManual->value()*10.0;
+ //       tWaterTank = ui->dsbTankTempSetManual->value()*10.0;
     }
 
     cantTouchThis.append(tProfileLoad[index-1].active);
@@ -4281,7 +4281,7 @@ void MainWindow::on_bStartTest_clicked()
 void MainWindow::on_bStopTest_clicked()
 {
     timerTemp->stop();
-    timerVib->stop();
+  //  timerVib->stop();
     timerPressure->stop();
 
     proc->stop();
@@ -4490,10 +4490,10 @@ void MainWindow::on_bStartMaintenance_clicked()
                 ui->tabWidget->setTabEnabled(4, false);
 
                 ui->bStartCooler->setEnabled(true);
-                ui->bStartVibration->setEnabled(true);
-                ui->dsbVibrationMaintenance->setEnabled(true);
-                ui->bStartPressure->setEnabled(true);
-                ui->dsbPressureMaintenance->setEnabled(true);
+              //  ui->bStartVibration->setEnabled(true);
+              //  ui->dsbVibrationMaintenance->setEnabled(true);
+              //  ui->bStartPressure->setEnabled(true);
+              //  ui->dsbPressureMaintenance->setEnabled(true);
                 ui->bRes->setEnabled(true);
                 ui->chbRes1->setEnabled(true);
                 ui->chbRes2->setEnabled(true);
@@ -4528,10 +4528,10 @@ void MainWindow::on_bStartMaintenance_clicked()
         ui->tabWidget->setTabEnabled(4, true);
 
         ui->bStartCooler->setEnabled(false);
-        ui->bStartVibration->setEnabled(false);
-        ui->dsbVibrationMaintenance->setEnabled(false);
-        ui->bStartPressure->setEnabled(false);
-        ui->dsbPressureMaintenance->setEnabled(false);
+       // ui->bStartVibration->setEnabled(false);
+       // ui->dsbVibrationMaintenance->setEnabled(false);
+       // ui->bStartPressure->setEnabled(false);
+       // ui->dsbPressureMaintenance->setEnabled(false);
         ui->bRes->setEnabled(false);
         ui->chbRes1->setEnabled(false);
         ui->chbRes2->setEnabled(false);
@@ -4610,7 +4610,7 @@ void MainWindow::on_bStartCooler_clicked()
         proc->insertCommandMessage(mySerial::makeMessage(0x98,cantTouchThis));
     }
 }
-
+/*
 void MainWindow::on_bStartPressure_clicked()
 {
     if (ui->bStartPressure->isChecked())
@@ -4666,7 +4666,7 @@ void MainWindow::on_bStartVibration_clicked()
         proc->insertCommandMessage(mySerial::makeMessage(0x9A,cantTouchThis));
     }
 }
-
+*/
 void MainWindow::on_bFan_clicked()
 {
     QByteArray cantTouchThis;
@@ -4938,51 +4938,51 @@ void MainWindow::on_cbSelectMethodManual_currentIndexChanged(int index)
     if (index == 0)
     {
         ui->dsbTTimeSetManual->setValue(0);
-        ui->dsbPTimeSetManual->setValue(0);
-        ui->dsbVTimeSetManual->setValue(0);
+    //    ui->dsbPTimeSetManual->setValue(0);
+    //    ui->dsbVTimeSetManual->setValue(0);
         ui->sbTStepSetManual->setValue(1);
-        ui->sbPStepSetManual->setValue(1);
-        ui->sbVStepSetManual->setValue(1);
+    //    ui->sbPStepSetManual->setValue(1);
+    //    ui->sbVStepSetManual->setValue(1);
         ui->sbTStepRepeatSetManual->setValue(0);
-        ui->sbPStepRepeatSetManual->setValue(0);
-        ui->sbVStepRepeatSetManual->setValue(0);
+    //    ui->sbPStepRepeatSetManual->setValue(0);
+    //    ui->sbVStepRepeatSetManual->setValue(0);
         ui->sbTCycleSetManual->setValue(0);
-        ui->sbPCycleSetManual->setValue(0);
-        ui->sbVCycleSetManual->setValue(0);
+    //    ui->sbPCycleSetManual->setValue(0);
+    //    ui->sbVCycleSetManual->setValue(0);
 
         ui->dsbTTimeSetManual->setEnabled(false);
-        ui->dsbPTimeSetManual->setEnabled(false);
-        ui->dsbVTimeSetManual->setEnabled(false);
+    //    ui->dsbPTimeSetManual->setEnabled(false);
+    //    ui->dsbVTimeSetManual->setEnabled(false);
         ui->sbTStepSetManual->setEnabled(false);
-        ui->sbPStepSetManual->setEnabled(false);
-        ui->sbVStepSetManual->setEnabled(false);
+    //    ui->sbPStepSetManual->setEnabled(false);
+    //    ui->sbVStepSetManual->setEnabled(false);
         ui->sbTStepRepeatSetManual->setEnabled(false);
-        ui->sbPStepRepeatSetManual->setEnabled(false);
-        ui->sbVStepRepeatSetManual->setEnabled(false);
+    //    ui->sbPStepRepeatSetManual->setEnabled(false);
+    //    ui->sbVStepRepeatSetManual->setEnabled(false);
         ui->sbTCycleSetManual->setEnabled(false);
-        ui->sbPCycleSetManual->setEnabled(false);
-        ui->sbVCycleSetManual->setEnabled(false);
+    //    ui->sbPCycleSetManual->setEnabled(false);
+    //    ui->sbVCycleSetManual->setEnabled(false);
     }
     else if (index == 1)
     {
         ui->dsbTTimeSetManual->setValue(0);
-        ui->dsbPTimeSetManual->setValue(0);
-        ui->dsbVTimeSetManual->setValue(0);
+   //     ui->dsbPTimeSetManual->setValue(0);
+   //     ui->dsbVTimeSetManual->setValue(0);
         ui->sbTStepSetManual->setValue(0);
-        ui->sbPStepSetManual->setValue(0);
-        ui->sbVStepSetManual->setValue(0);
+   //     ui->sbPStepSetManual->setValue(0);
+   //     ui->sbVStepSetManual->setValue(0);
         ui->sbTStepRepeatSetManual->setValue(1);
-        ui->sbPStepRepeatSetManual->setValue(1);
-        ui->sbVStepRepeatSetManual->setValue(1);
+   //     ui->sbPStepRepeatSetManual->setValue(1);
+   //     ui->sbVStepRepeatSetManual->setValue(1);
         ui->sbTCycleSetManual->setValue(0);
-        ui->sbPCycleSetManual->setValue(0);
-        ui->sbVCycleSetManual->setValue(0);
+   //     ui->sbPCycleSetManual->setValue(0);
+   //     ui->sbVCycleSetManual->setValue(0);
         ui->sbTStepSetManual->setEnabled(false);
-        ui->sbPStepSetManual->setEnabled(false);
-        ui->sbVStepSetManual->setEnabled(false);
+   //     ui->sbPStepSetManual->setEnabled(false);
+   //     ui->sbVStepSetManual->setEnabled(false);
         ui->sbTStepRepeatSetManual->setEnabled(false);
-        ui->sbPStepRepeatSetManual->setEnabled(false);
-        ui->sbVStepRepeatSetManual->setEnabled(false);
+   //     ui->sbPStepRepeatSetManual->setEnabled(false);
+   //     ui->sbVStepRepeatSetManual->setEnabled(false);
 
         quint8 profileNumber = ui->cbSelectProfileManual->currentIndex() - 1;
 
@@ -4998,45 +4998,46 @@ void MainWindow::on_cbSelectMethodManual_currentIndexChanged(int index)
         }
         if (pProfileLoad[profileNumber].active)
         {
-            ui->dsbPTimeSetManual->setEnabled(true);
-            ui->sbPCycleSetManual->setEnabled(true);
+    //        ui->dsbPTimeSetManual->setEnabled(true);
+    //        ui->sbPCycleSetManual->setEnabled(true);
         }
         else
         {
-            ui->dsbPTimeSetManual->setEnabled(false);
-            ui->sbPCycleSetManual->setEnabled(false);
+    //        ui->dsbPTimeSetManual->setEnabled(false);
+    //        ui->sbPCycleSetManual->setEnabled(false);
         }
-        if (vProfileLoad[profileNumber].active)
+    /*    if (vProfileLoad[profileNumber].active)
         {
-            ui->dsbVTimeSetManual->setEnabled(true);
-            ui->sbVCycleSetManual->setEnabled(true);
+    //        ui->dsbVTimeSetManual->setEnabled(true);
+    //        ui->sbVCycleSetManual->setEnabled(true);
         }
         else
         {
             ui->dsbVTimeSetManual->setEnabled(false);
             ui->sbVCycleSetManual->setEnabled(false);
         }
+        */
         // there could be a code which checks the total profile seconds and limit the max value of
         // elapsed seconds spinbox
     }
     else if (index == 2)
     {
         ui->dsbTTimeSetManual->setValue(0);
-        ui->dsbPTimeSetManual->setValue(0);
-        ui->dsbVTimeSetManual->setValue(0);
+      //  ui->dsbPTimeSetManual->setValue(0);
+      //  ui->dsbVTimeSetManual->setValue(0);
         ui->sbTStepSetManual->setValue(0);
-        ui->sbPStepSetManual->setValue(0);
-        ui->sbVStepSetManual->setValue(0);
+      //  ui->sbPStepSetManual->setValue(0);
+      //  ui->sbVStepSetManual->setValue(0);
         ui->sbTStepRepeatSetManual->setValue(1);
-        ui->sbPStepRepeatSetManual->setValue(1);
-        ui->sbVStepRepeatSetManual->setValue(1);
+      //  ui->sbPStepRepeatSetManual->setValue(1);
+      //  ui->sbVStepRepeatSetManual->setValue(1);
         ui->sbTCycleSetManual->setValue(0);
-        ui->sbPCycleSetManual->setValue(0);
-        ui->sbVCycleSetManual->setValue(0);
+      //  ui->sbPCycleSetManual->setValue(0);
+      //  ui->sbVCycleSetManual->setValue(0);
 
         ui->dsbTTimeSetManual->setEnabled(false);
-        ui->dsbPTimeSetManual->setEnabled(false);
-        ui->dsbVTimeSetManual->setEnabled(false);
+      //  ui->dsbPTimeSetManual->setEnabled(false);
+      //  ui->dsbVTimeSetManual->setEnabled(false);
 
         quint8 profileNumber = ui->cbSelectProfileManual->currentIndex() - 1;
         if (tProfileLoad[profileNumber].active)
@@ -5051,7 +5052,7 @@ void MainWindow::on_cbSelectMethodManual_currentIndexChanged(int index)
             ui->sbTStepRepeatSetManual->setEnabled(false);
             ui->sbTCycleSetManual->setEnabled(false);
         }
-        if (pProfileLoad[profileNumber].active)
+     /*   if (pProfileLoad[profileNumber].active)
         {
             ui->sbPStepSetManual->setEnabled(true);
             ui->sbPStepRepeatSetManual->setEnabled(true);
@@ -5063,6 +5064,8 @@ void MainWindow::on_cbSelectMethodManual_currentIndexChanged(int index)
             ui->sbPStepRepeatSetManual->setEnabled(false);
             ui->sbPCycleSetManual->setEnabled(false);
         }
+        */
+        /*
         if (vProfileLoad[profileNumber].active)
         {
             ui->sbVStepSetManual->setEnabled(true);
@@ -5075,6 +5078,7 @@ void MainWindow::on_cbSelectMethodManual_currentIndexChanged(int index)
             ui->sbVStepRepeatSetManual->setEnabled(false);
             ui->sbVCycleSetManual->setEnabled(false);
         }
+        */
     }
 }
 
@@ -5083,8 +5087,8 @@ void MainWindow::on_cbSelectProfileManual_currentIndexChanged(int index)
     ui->bStartTestManual->setEnabled(false);
     ui->cbSelectProfileMain->setCurrentIndex(0);
     ui->sbTTotalCycleManual->setValue(1);
-    ui->sbPTotalCycleManual->setValue(1);
-    ui->sbVTotalCycleManual->setValue(1);
+  //  ui->sbPTotalCycleManual->setValue(1);
+  //  ui->sbVTotalCycleManual->setValue(1);
     ui->laTTotalCycleMain->setText(QString::number(1));
 
 
@@ -5115,7 +5119,7 @@ void MainWindow::on_cbSelectProfileManual_currentIndexChanged(int index)
             {
                 ui->sbTTotalCycleManual->setEnabled(true);
             }
-
+/*
             if (pProfileLoad[index-1].active == 0)
             {
                 ui->sbPTotalCycleManual->setValue(0);
@@ -5125,7 +5129,8 @@ void MainWindow::on_cbSelectProfileManual_currentIndexChanged(int index)
             {
                 ui->sbPTotalCycleManual->setEnabled(true);
             }
-
+*/
+            /*
             if (vProfileLoad[index-1].active == 0)
             {
                 ui->sbVTotalCycleManual->setValue(0);
@@ -5139,6 +5144,7 @@ void MainWindow::on_cbSelectProfileManual_currentIndexChanged(int index)
                 ui->chbEllipticalVibrationSetManual->setChecked(false);
                 ui->chbEllipticalVibrationSetManual->setEnabled(true);
             }
+            */
         }
 
         ui->bSendProfileManual->setEnabled(true);
@@ -5234,7 +5240,7 @@ void MainWindow::on_bStartTestManual_clicked()
 void MainWindow::on_bStopTestManual_clicked()
 {
     timerTemp->stop();
-    timerVib->stop();
+//    timerVib->stop();
     timerPressure->stop();
 
     proc->stop();
@@ -5264,7 +5270,7 @@ void MainWindow::on_bSendProfileManual_clicked()
 void MainWindow::on_bPauseTestManual_clicked()
 {
     timerTemp->stop();
-    timerVib->stop();
+ //   timerVib->stop();
     timerPressure->stop();
 
     proc->stop();
@@ -5278,7 +5284,7 @@ void MainWindow::on_bPauseTestManual_clicked()
 void MainWindow::on_bPauseTest_clicked()
 {
     timerTemp->stop();
-    timerVib->stop();
+ //   timerVib->stop();
     timerPressure->stop();
 
     proc->stop();

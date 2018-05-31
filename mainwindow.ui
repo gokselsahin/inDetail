@@ -105,7 +105,7 @@ QTableBar
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>3</number>
       </property>
       <property name="iconSize">
        <size>
@@ -139,10 +139,10 @@ QTableBar
        <widget class="QLabel" name="label_65">
         <property name="geometry">
          <rect>
-          <x>290</x>
-          <y>30</y>
-          <width>91</width>
-          <height>16</height>
+          <x>640</x>
+          <y>10</y>
+          <width>41</width>
+          <height>21</height>
          </rect>
         </property>
         <property name="text">
@@ -152,7 +152,7 @@ QTableBar
        <widget class="QLabel" name="laDate">
         <property name="geometry">
          <rect>
-          <x>385</x>
+          <x>540</x>
           <y>10</y>
           <width>71</width>
           <height>20</height>
@@ -184,8 +184,8 @@ QTableBar
        <widget class="QLabel" name="laTime">
         <property name="geometry">
          <rect>
-          <x>385</x>
-          <y>30</y>
+          <x>670</x>
+          <y>10</y>
           <width>71</width>
           <height>20</height>
          </rect>
@@ -200,10 +200,10 @@ QTableBar
        <widget class="QLabel" name="label_8">
         <property name="geometry">
          <rect>
-          <x>290</x>
+          <x>480</x>
           <y>10</y>
-          <width>91</width>
-          <height>16</height>
+          <width>51</width>
+          <height>21</height>
          </rect>
         </property>
         <property name="text">
@@ -213,9 +213,9 @@ QTableBar
        <widget class="QPushButton" name="bClearLogTable">
         <property name="geometry">
          <rect>
-          <x>285</x>
-          <y>220</y>
-          <width>171</width>
+          <x>470</x>
+          <y>370</y>
+          <width>291</width>
           <height>41</height>
          </rect>
         </property>
@@ -226,10 +226,10 @@ QTableBar
        <widget class="QPushButton" name="bLightsMain">
         <property name="geometry">
          <rect>
-          <x>285</x>
-          <y>160</y>
-          <width>171</width>
-          <height>41</height>
+          <x>10</x>
+          <y>280</y>
+          <width>211</width>
+          <height>71</height>
          </rect>
         </property>
         <property name="text">
@@ -246,9 +246,9 @@ QTableBar
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>220</y>
-          <width>121</width>
-          <height>41</height>
+          <y>210</y>
+          <width>211</width>
+          <height>61</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -270,10 +270,10 @@ QTableBar
         </property>
         <property name="geometry">
          <rect>
-          <x>210</x>
-          <y>220</y>
-          <width>61</width>
-          <height>41</height>
+          <x>350</x>
+          <y>210</y>
+          <width>101</width>
+          <height>61</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -402,7 +402,7 @@ QTableBar
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>110</y>
+          <y>100</y>
           <width>161</width>
           <height>20</height>
          </rect>
@@ -415,7 +415,7 @@ QTableBar
         <property name="geometry">
          <rect>
           <x>180</x>
-          <y>110</y>
+          <y>100</y>
           <width>61</width>
           <height>21</height>
          </rect>
@@ -431,9 +431,9 @@ QTableBar
         <property name="geometry">
          <rect>
           <x>470</x>
-          <y>10</y>
+          <y>40</y>
           <width>291</width>
-          <height>381</height>
+          <height>321</height>
          </rect>
         </property>
         <property name="font">
@@ -459,9 +459,9 @@ QTableBar
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>160</y>
-          <width>261</width>
-          <height>41</height>
+          <y>140</y>
+          <width>211</width>
+          <height>61</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -512,10 +512,10 @@ QTableBar
         </property>
         <property name="geometry">
          <rect>
-          <x>140</x>
-          <y>220</y>
-          <width>61</width>
-          <height>41</height>
+          <x>240</x>
+          <y>210</y>
+          <width>101</width>
+          <height>61</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -529,7 +529,7 @@ QTableBar
         <property name="geometry">
          <rect>
           <x>220</x>
-          <y>110</y>
+          <y>100</y>
           <width>47</width>
           <height>16</height>
          </rect>
@@ -539,6 +539,22 @@ QTableBar
         </property>
         <property name="alignment">
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="bCabinDoor">
+        <property name="geometry">
+         <rect>
+          <x>240</x>
+          <y>280</y>
+          <width>211</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Cabin Door</string>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
         </property>
        </widget>
       </widget>
@@ -701,7 +717,6 @@ QTableBar
         <property name="autoFillBackground">
          <bool>false</bool>
         </property>
-        <zorder>pTestGraph</zorder>
        </widget>
        <widget class="QCustomPlot" name="pTestGraph" native="true">
         <property name="geometry">
@@ -2434,7 +2449,7 @@ QTableBar
          <enum>QFrame::StyledPanel</enum>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="page">
          <widget class="QPushButton" name="bNewTStep">
@@ -5167,36 +5182,10 @@ QTableBar
        <attribute name="title">
         <string>Manual Control</string>
        </attribute>
-       <widget class="QLabel" name="label_114">
-        <property name="geometry">
-         <rect>
-          <x>420</x>
-          <y>370</y>
-          <width>151</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Vib. Elapsed Cycle To Start</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_110">
-        <property name="geometry">
-         <rect>
-          <x>300</x>
-          <y>250</y>
-          <width>151</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Vib. Step To Start</string>
-        </property>
-       </widget>
        <widget class="QLabel" name="label_122">
         <property name="geometry">
          <rect>
-          <x>410</x>
+          <x>10</x>
           <y>80</y>
           <width>151</width>
           <height>16</height>
@@ -5206,97 +5195,15 @@ QTableBar
          <string>Temp. Time Value To Start</string>
         </property>
        </widget>
-       <widget class="QSpinBox" name="sbVStepSetManual">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>460</x>
-          <y>250</y>
-          <width>51</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="minimum">
-         <number>1</number>
-        </property>
-        <property name="maximum">
-         <number>20</number>
-        </property>
-       </widget>
-       <widget class="QSpinBox" name="sbPCycleSetManual">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>580</x>
-          <y>340</y>
-          <width>61</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="minimum">
-         <number>0</number>
-        </property>
-        <property name="maximum">
-         <number>65535</number>
-        </property>
-        <property name="value">
-         <number>0</number>
-        </property>
-       </widget>
        <widget class="QSpinBox" name="sbTCycleSetManual">
         <property name="enabled">
          <bool>false</bool>
         </property>
         <property name="geometry">
          <rect>
-          <x>580</x>
-          <y>310</y>
+          <x>210</x>
+          <y>300</y>
           <width>61</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="minimum">
-         <number>0</number>
-        </property>
-        <property name="maximum">
-         <number>65535</number>
-        </property>
-        <property name="value">
-         <number>0</number>
-        </property>
-       </widget>
-       <widget class="QSpinBox" name="sbPStepSetManual">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>460</x>
-          <y>220</y>
-          <width>51</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="minimum">
-         <number>1</number>
-        </property>
-        <property name="maximum">
-         <number>20</number>
-        </property>
-       </widget>
-       <widget class="QSpinBox" name="sbPStepRepeatSetManual">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>710</x>
-          <y>220</y>
-          <width>51</width>
           <height>21</height>
          </rect>
         </property>
@@ -5313,8 +5220,8 @@ QTableBar
        <widget class="QLabel" name="label_113">
         <property name="geometry">
          <rect>
-          <x>300</x>
-          <y>190</y>
+          <x>10</x>
+          <y>200</y>
           <width>151</width>
           <height>16</height>
          </rect>
@@ -5329,9 +5236,9 @@ QTableBar
         </property>
         <property name="geometry">
          <rect>
-          <x>710</x>
-          <y>190</y>
-          <width>51</width>
+          <x>210</x>
+          <y>250</y>
+          <width>61</width>
           <height>21</height>
          </rect>
         </property>
@@ -5345,24 +5252,11 @@ QTableBar
          <number>0</number>
         </property>
        </widget>
-       <widget class="QLabel" name="label_52">
-        <property name="geometry">
-         <rect>
-          <x>420</x>
-          <y>340</y>
-          <width>151</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Pres. Elapsed Cycle To Start</string>
-        </property>
-       </widget>
        <widget class="QLabel" name="label_121">
         <property name="geometry">
          <rect>
-          <x>540</x>
-          <y>190</y>
+          <x>10</x>
+          <y>250</y>
           <width>161</width>
           <height>16</height>
          </rect>
@@ -5374,28 +5268,15 @@ QTableBar
          <string>Temp. Step Elapsed Seconds</string>
         </property>
        </widget>
-       <widget class="QLabel" name="label_115">
-        <property name="geometry">
-         <rect>
-          <x>300</x>
-          <y>220</y>
-          <width>151</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Pres. Step To Start</string>
-        </property>
-       </widget>
        <widget class="QSpinBox" name="sbTStepSetManual">
         <property name="enabled">
          <bool>false</bool>
         </property>
         <property name="geometry">
          <rect>
-          <x>460</x>
-          <y>190</y>
-          <width>51</width>
+          <x>210</x>
+          <y>200</y>
+          <width>61</width>
           <height>21</height>
          </rect>
         </property>
@@ -5406,50 +5287,15 @@ QTableBar
          <number>20</number>
         </property>
        </widget>
-       <widget class="QSpinBox" name="sbVStepRepeatSetManual">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>710</x>
-          <y>250</y>
-          <width>51</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="minimum">
-         <number>0</number>
-        </property>
-        <property name="maximum">
-         <number>65535</number>
-        </property>
-        <property name="value">
-         <number>0</number>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_119">
-        <property name="geometry">
-         <rect>
-          <x>540</x>
-          <y>250</y>
-          <width>161</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Vib. Step Elapsed Seconds</string>
-        </property>
-       </widget>
        <widget class="QComboBox" name="cbSelectMethodManual">
         <property name="enabled">
          <bool>false</bool>
         </property>
         <property name="geometry">
          <rect>
-          <x>390</x>
-          <y>20</y>
-          <width>301</width>
+          <x>0</x>
+          <y>10</y>
+          <width>291</width>
           <height>31</height>
          </rect>
         </property>
@@ -5472,33 +5318,11 @@ QTableBar
          </property>
         </item>
        </widget>
-       <widget class="QSpinBox" name="sbVCycleSetManual">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>580</x>
-          <y>370</y>
-          <width>61</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="minimum">
-         <number>0</number>
-        </property>
-        <property name="maximum">
-         <number>65535</number>
-        </property>
-        <property name="value">
-         <number>0</number>
-        </property>
-       </widget>
        <widget class="QLabel" name="label_117">
         <property name="geometry">
          <rect>
-          <x>420</x>
-          <y>310</y>
+          <x>10</x>
+          <y>300</y>
           <width>151</width>
           <height>16</height>
          </rect>
@@ -5507,53 +5331,11 @@ QTableBar
          <string>Temp. Elapsed Cycle To Start</string>
         </property>
        </widget>
-       <widget class="QLabel" name="label_120">
-        <property name="geometry">
-         <rect>
-          <x>540</x>
-          <y>220</y>
-          <width>161</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Pres. Step Elapsed Seconds</string>
-        </property>
-       </widget>
-       <widget class="QSpinBox" name="sbVTotalCycleManual">
-        <property name="geometry">
-         <rect>
-          <x>210</x>
-          <y>170</y>
-          <width>61</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="minimum">
-         <number>1</number>
-        </property>
-        <property name="maximum">
-         <number>65535</number>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_63">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>220</y>
-          <width>191</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Water Tank Temp. Value (°C)</string>
-        </property>
-       </widget>
        <widget class="QSpinBox" name="sbTTotalCycleManual">
         <property name="geometry">
          <rect>
           <x>210</x>
-          <y>110</y>
+          <y>150</y>
           <width>61</width>
           <height>21</height>
          </rect>
@@ -5563,73 +5345,6 @@ QTableBar
         </property>
         <property name="maximum">
          <number>65535</number>
-        </property>
-       </widget>
-       <widget class="QSpinBox" name="sbPTotalCycleManual">
-        <property name="geometry">
-         <rect>
-          <x>210</x>
-          <y>140</y>
-          <width>61</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="minimum">
-         <number>1</number>
-        </property>
-        <property name="maximum">
-         <number>65535</number>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_111">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>140</y>
-          <width>191</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Total Cycle for Pres. Profile</string>
-        </property>
-       </widget>
-       <widget class="QDoubleSpinBox" name="dsbTankTempSetManual">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>210</x>
-          <y>220</y>
-          <width>61</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="decimals">
-         <number>1</number>
-        </property>
-        <property name="minimum">
-         <double>50.000000000000000</double>
-        </property>
-        <property name="maximum">
-         <double>130.000000000000000</double>
-        </property>
-        <property name="singleStep">
-         <double>0.100000000000000</double>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_53">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>170</y>
-          <width>191</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Total Cycle for Vib. Profile</string>
         </property>
        </widget>
        <widget class="QPushButton" name="bStartTestManual">
@@ -5638,10 +5353,10 @@ QTableBar
         </property>
         <property name="geometry">
          <rect>
-          <x>10</x>
-          <y>340</y>
-          <width>121</width>
-          <height>51</height>
+          <x>370</x>
+          <y>210</y>
+          <width>171</width>
+          <height>61</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -5663,10 +5378,10 @@ QTableBar
         </property>
         <property name="geometry">
          <rect>
-          <x>210</x>
-          <y>340</y>
-          <width>61</width>
-          <height>51</height>
+          <x>670</x>
+          <y>210</y>
+          <width>101</width>
+          <height>61</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -5679,8 +5394,8 @@ QTableBar
        <widget class="QLabel" name="laSelectedProfileManual">
         <property name="geometry">
          <rect>
-          <x>130</x>
-          <y>70</y>
+          <x>480</x>
+          <y>80</y>
           <width>141</width>
           <height>16</height>
          </rect>
@@ -5695,8 +5410,8 @@ QTableBar
        <widget class="QComboBox" name="cbSelectProfileManual">
         <property name="geometry">
          <rect>
-          <x>10</x>
-          <y>20</y>
+          <x>380</x>
+          <y>10</y>
           <width>261</width>
           <height>31</height>
          </rect>
@@ -5807,24 +5522,11 @@ QTableBar
          </property>
         </item>
        </widget>
-       <widget class="QCheckBox" name="chbEllipticalVibrationSetManual">
-        <property name="geometry">
-         <rect>
-          <x>230</x>
-          <y>250</y>
-          <width>21</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
        <widget class="QLabel" name="label_116">
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>110</y>
+          <y>150</y>
           <width>191</width>
           <height>20</height>
          </rect>
@@ -5833,24 +5535,11 @@ QTableBar
          <string>Total Cycle for Temp. Profile</string>
         </property>
        </widget>
-       <widget class="QLabel" name="label_118">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>250</y>
-          <width>191</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Elliptical Vibration</string>
-        </property>
-       </widget>
        <widget class="QLabel" name="label_112">
         <property name="geometry">
          <rect>
-          <x>10</x>
-          <y>70</y>
+          <x>370</x>
+          <y>80</y>
           <width>101</width>
           <height>16</height>
          </rect>
@@ -5865,10 +5554,10 @@ QTableBar
         </property>
         <property name="geometry">
          <rect>
-          <x>10</x>
-          <y>290</y>
-          <width>261</width>
-          <height>41</height>
+          <x>370</x>
+          <y>140</y>
+          <width>171</width>
+          <height>61</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -5887,7 +5576,7 @@ QTableBar
        <widget class="Line" name="line_25">
         <property name="geometry">
          <rect>
-          <x>280</x>
+          <x>310</x>
           <y>10</y>
           <width>20</width>
           <height>401</height>
@@ -5900,23 +5589,10 @@ QTableBar
        <widget class="Line" name="line_26">
         <property name="geometry">
          <rect>
-          <x>290</x>
-          <y>160</y>
-          <width>481</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-       <widget class="Line" name="line_27">
-        <property name="geometry">
-         <rect>
-          <x>290</x>
-          <y>280</y>
-          <width>481</width>
-          <height>16</height>
+          <x>0</x>
+          <y>110</y>
+          <width>321</width>
+          <height>20</height>
          </rect>
         </property>
         <property name="orientation">
@@ -5926,27 +5602,14 @@ QTableBar
        <widget class="Line" name="line_28">
         <property name="geometry">
          <rect>
-          <x>290</x>
-          <y>60</y>
-          <width>481</width>
-          <height>16</height>
+          <x>0</x>
+          <y>50</y>
+          <width>321</width>
+          <height>20</height>
          </rect>
         </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-       <widget class="Line" name="line_29">
-        <property name="geometry">
-         <rect>
-          <x>520</x>
-          <y>170</y>
-          <width>20</width>
-          <height>121</height>
-         </rect>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
         </property>
        </widget>
        <widget class="QDoubleSpinBox" name="dsbTTimeSetManual">
@@ -5955,7 +5618,7 @@ QTableBar
         </property>
         <property name="geometry">
          <rect>
-          <x>580</x>
+          <x>210</x>
           <y>80</y>
           <width>62</width>
           <height>21</height>
@@ -5974,10 +5637,10 @@ QTableBar
         </property>
         <property name="geometry">
          <rect>
-          <x>140</x>
-          <y>340</y>
-          <width>61</width>
-          <height>51</height>
+          <x>560</x>
+          <y>210</y>
+          <width>101</width>
+          <height>61</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -5985,70 +5648,6 @@ QTableBar
         </property>
         <property name="text">
          <string>Pause</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_129">
-        <property name="geometry">
-         <rect>
-          <x>410</x>
-          <y>110</y>
-          <width>151</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Pres. Time Value To Start</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_130">
-        <property name="geometry">
-         <rect>
-          <x>410</x>
-          <y>140</y>
-          <width>151</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Vib. Time Value To Start</string>
-        </property>
-       </widget>
-       <widget class="QDoubleSpinBox" name="dsbPTimeSetManual">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>580</x>
-          <y>110</y>
-          <width>62</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="decimals">
-         <number>0</number>
-        </property>
-        <property name="maximum">
-         <double>4294967295.000000000000000</double>
-        </property>
-       </widget>
-       <widget class="QDoubleSpinBox" name="dsbVTimeSetManual">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>580</x>
-          <y>140</y>
-          <width>62</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="decimals">
-         <number>0</number>
-        </property>
-        <property name="maximum">
-         <double>4294967295.000000000000000</double>
         </property>
        </widget>
       </widget>
@@ -6059,188 +5658,17 @@ QTableBar
        <attribute name="title">
         <string>Maintenance</string>
        </attribute>
-       <widget class="QDoubleSpinBox" name="dsbPipe3PressureMaintenance">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>140</x>
-          <y>140</y>
-          <width>51</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="readOnly">
-         <bool>true</bool>
-        </property>
-        <property name="decimals">
-         <number>2</number>
-        </property>
-        <property name="maximum">
-         <double>10.000000000000000</double>
-        </property>
-        <property name="singleStep">
-         <double>0.100000000000000</double>
-        </property>
-       </widget>
-       <widget class="QDoubleSpinBox" name="dsbPipe4PressureMaintenance">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>140</x>
-          <y>170</y>
-          <width>51</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="readOnly">
-         <bool>true</bool>
-        </property>
-        <property name="decimals">
-         <number>2</number>
-        </property>
-        <property name="maximum">
-         <double>10.000000000000000</double>
-        </property>
-        <property name="singleStep">
-         <double>0.100000000000000</double>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_60">
-        <property name="geometry">
-         <rect>
-          <x>19</x>
-          <y>200</y>
-          <width>111</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Pipe-5 Pressure</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_61">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>320</y>
-          <width>111</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Tank Temp.</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_62">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>290</y>
-          <width>111</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Pipe Vibration Freq.</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="laTankLiquidLevelMaintenance">
-        <property name="geometry">
-         <rect>
-          <x>146</x>
-          <y>360</y>
-          <width>31</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>NOK</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
        <widget class="QLabel" name="label_64">
         <property name="geometry">
          <rect>
           <x>19</x>
-          <y>80</y>
+          <y>190</y>
           <width>111</width>
           <height>21</height>
          </rect>
         </property>
         <property name="text">
          <string>Pipe-1 Pressure</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_66">
-        <property name="geometry">
-         <rect>
-          <x>19</x>
-          <y>230</y>
-          <width>111</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Pipe-6 Pressure</string>
-        </property>
-       </widget>
-       <widget class="QDoubleSpinBox" name="dsbTankTempMaintenance">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>141</x>
-          <y>320</y>
-          <width>51</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="readOnly">
-         <bool>true</bool>
-        </property>
-        <property name="decimals">
-         <number>1</number>
-        </property>
-        <property name="minimum">
-         <double>-40.000000000000000</double>
-        </property>
-        <property name="maximum">
-         <double>250.000000000000000</double>
-        </property>
-        <property name="singleStep">
-         <double>0.100000000000000</double>
-        </property>
-       </widget>
-       <widget class="QDoubleSpinBox" name="dsbPipeVibrationMaintenance">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>141</x>
-          <y>290</y>
-          <width>51</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="readOnly">
-         <bool>true</bool>
-        </property>
-        <property name="decimals">
-         <number>1</number>
-        </property>
-        <property name="maximum">
-         <double>90.000000000000000</double>
-        </property>
-        <property name="singleStep">
-         <double>0.100000000000000</double>
         </property>
        </widget>
        <widget class="QDoubleSpinBox" name="dsbCabinTopTempMaintenance">
@@ -6250,7 +5678,7 @@ QTableBar
         <property name="geometry">
          <rect>
           <x>140</x>
-          <y>20</y>
+          <y>150</y>
           <width>51</width>
           <height>21</height>
          </rect>
@@ -6271,108 +5699,6 @@ QTableBar
          <double>0.100000000000000</double>
         </property>
        </widget>
-       <widget class="QLabel" name="label_2">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>360</y>
-          <width>111</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Tank Liquid Level</string>
-        </property>
-       </widget>
-       <widget class="QDoubleSpinBox" name="dsbPipe6PressureMaintenance">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>140</x>
-          <y>230</y>
-          <width>51</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="readOnly">
-         <bool>true</bool>
-        </property>
-        <property name="decimals">
-         <number>2</number>
-        </property>
-        <property name="maximum">
-         <double>10.000000000000000</double>
-        </property>
-        <property name="singleStep">
-         <double>0.100000000000000</double>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_71">
-        <property name="geometry">
-         <rect>
-          <x>19</x>
-          <y>170</y>
-          <width>111</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Pipe-4 Pressure</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_79">
-        <property name="geometry">
-         <rect>
-          <x>19</x>
-          <y>140</y>
-          <width>111</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Pipe-3 Pressure</string>
-        </property>
-       </widget>
-       <widget class="QDoubleSpinBox" name="dsbPipe5PressureMaintenance">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>140</x>
-          <y>200</y>
-          <width>51</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="readOnly">
-         <bool>true</bool>
-        </property>
-        <property name="decimals">
-         <number>2</number>
-        </property>
-        <property name="maximum">
-         <double>10.000000000000000</double>
-        </property>
-        <property name="singleStep">
-         <double>0.100000000000000</double>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_93">
-        <property name="geometry">
-         <rect>
-          <x>19</x>
-          <y>110</y>
-          <width>111</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Pipe-2 Pressure</string>
-        </property>
-       </widget>
        <widget class="QDoubleSpinBox" name="dsbPipe1PressureMaintenance">
         <property name="enabled">
          <bool>false</bool>
@@ -6380,32 +5706,7 @@ QTableBar
         <property name="geometry">
          <rect>
           <x>140</x>
-          <y>80</y>
-          <width>51</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="readOnly">
-         <bool>true</bool>
-        </property>
-        <property name="decimals">
-         <number>2</number>
-        </property>
-        <property name="maximum">
-         <double>10.000000000000000</double>
-        </property>
-        <property name="singleStep">
-         <double>0.100000000000000</double>
-        </property>
-       </widget>
-       <widget class="QDoubleSpinBox" name="dsbPipe2PressureMaintenance">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>140</x>
-          <y>110</y>
+          <y>190</y>
           <width>51</width>
           <height>21</height>
          </rect>
@@ -6427,7 +5728,7 @@ QTableBar
         <property name="geometry">
          <rect>
           <x>19</x>
-          <y>20</y>
+          <y>150</y>
           <width>111</width>
           <height>21</height>
          </rect>
@@ -6442,7 +5743,7 @@ QTableBar
         </property>
         <property name="geometry">
          <rect>
-          <x>220</x>
+          <x>370</x>
           <y>20</y>
           <width>261</width>
           <height>71</height>
@@ -6480,8 +5781,8 @@ QTableBar
         </property>
         <property name="geometry">
          <rect>
-          <x>520</x>
-          <y>160</y>
+          <x>440</x>
+          <y>290</y>
           <width>121</width>
           <height>71</height>
          </rect>
@@ -6500,7 +5801,7 @@ QTableBar
         <property name="geometry">
          <rect>
           <x>580</x>
-          <y>20</y>
+          <y>160</y>
           <width>121</width>
           <height>71</height>
          </rect>
@@ -6510,104 +5811,6 @@ QTableBar
         </property>
         <property name="checkable">
          <bool>true</bool>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="bStartPressure">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>520</x>
-          <y>320</y>
-          <width>121</width>
-          <height>71</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Start Pressure</string>
-        </property>
-        <property name="checkable">
-         <bool>true</bool>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="bStartVibration">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>220</x>
-          <y>320</y>
-          <width>121</width>
-          <height>71</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Start Vibration</string>
-        </property>
-        <property name="checkable">
-         <bool>true</bool>
-        </property>
-       </widget>
-       <widget class="QDoubleSpinBox" name="dsbPressureMaintenance">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>670</x>
-          <y>340</y>
-          <width>71</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>16</pointsize>
-         </font>
-        </property>
-        <property name="readOnly">
-         <bool>false</bool>
-        </property>
-        <property name="decimals">
-         <number>1</number>
-        </property>
-        <property name="maximum">
-         <double>4.700000000000000</double>
-        </property>
-        <property name="singleStep">
-         <double>0.100000000000000</double>
-        </property>
-       </widget>
-       <widget class="QDoubleSpinBox" name="dsbVibrationMaintenance">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>360</x>
-          <y>340</y>
-          <width>71</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>16</pointsize>
-         </font>
-        </property>
-        <property name="readOnly">
-         <bool>false</bool>
-        </property>
-        <property name="decimals">
-         <number>1</number>
-        </property>
-        <property name="maximum">
-         <double>60.000000000000000</double>
-        </property>
-        <property name="singleStep">
-         <double>0.100000000000000</double>
         </property>
        </widget>
        <widget class="Line" name="line_13">
@@ -6677,10 +5880,10 @@ QTableBar
         </property>
         <property name="geometry">
          <rect>
-          <x>660</x>
-          <y>135</y>
+          <x>290</x>
+          <y>370</y>
           <width>91</width>
-          <height>21</height>
+          <height>31</height>
          </rect>
         </property>
         <property name="text">
@@ -6693,8 +5896,8 @@ QTableBar
         </property>
         <property name="geometry">
          <rect>
-          <x>660</x>
-          <y>180</y>
+          <x>470</x>
+          <y>370</y>
           <width>91</width>
           <height>31</height>
          </rect>
@@ -6709,8 +5912,8 @@ QTableBar
         </property>
         <property name="geometry">
          <rect>
-          <x>660</x>
-          <y>230</y>
+          <x>620</x>
+          <y>370</y>
           <width>91</width>
           <height>31</height>
          </rect>
@@ -6752,9 +5955,9 @@ QTableBar
         <property name="geometry">
          <rect>
           <x>490</x>
-          <y>10</y>
+          <y>110</y>
           <width>20</width>
-          <height>401</height>
+          <height>171</height>
          </rect>
         </property>
         <property name="orientation">
