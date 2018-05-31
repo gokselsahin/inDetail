@@ -341,7 +341,7 @@ void MainWindow::setupPreviewGraphs()
     ui->tPreview->yAxis->setLabel("Cabin Temperature (°C)");
     ui->tPreview->setBackground(Qt::white);
     ui->tPreview->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom | QCP::iSelectPlottables);
-
+/*
     ui->pPreview->addGraph();
     QPen pPen;
     pPen.setWidth(3);
@@ -369,6 +369,8 @@ void MainWindow::setupPreviewGraphs()
     ui->vPreview->yAxis->setLabel("Vibration Frequency (Hz)");
     ui->vPreview->setBackground(Qt::white);
     ui->vPreview->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom | QCP::iSelectPlottables);
+
+*/
 }
 
 void MainWindow::setupVisuals()
@@ -383,8 +385,8 @@ void MainWindow::setupVisuals()
     //ui->vTestGraph->setVisible(false);
 
     ui->tWidget->setCurrentIndex(0);
-    ui->pWidget->setCurrentIndex(0);
-    ui->vWidget->setCurrentIndex(0);
+ //   ui->pWidget->setCurrentIndex(0);
+ //   ui->vWidget->setCurrentIndex(0);
 
     ui->wdRepeatEdit->setVisible(false);
     ui->wdLinearEdit->setVisible(false);
@@ -398,7 +400,7 @@ void MainWindow::setupVisuals()
     ui->dsbTLTarget->setButtonSymbols(QAbstractSpinBox::NoButtons);
 
 
-
+/*
     ui->dsbPStartValue->setButtonSymbols(QAbstractSpinBox::NoButtons);
 
     ui->dsbPLDuration->setButtonSymbols(QAbstractSpinBox::NoButtons);
@@ -424,7 +426,7 @@ void MainWindow::setupVisuals()
     ui->dsbVLogMax->setButtonSymbols(QAbstractSpinBox::NoButtons);
     ui->dsbVRepeatValue->setButtonSymbols(QAbstractSpinBox::NoButtons);
     ui->dsbVRepeatTime->setButtonSymbols(QAbstractSpinBox::NoButtons);
-
+*/
     ui->dsbRepeatDurationEdit->setButtonSymbols(QAbstractSpinBox::NoButtons);
     ui->dsbStartValueEdit->setButtonSymbols(QAbstractSpinBox::NoButtons);
     ui->dsbLDurationEdit->setButtonSymbols(QAbstractSpinBox::NoButtons);
@@ -1210,19 +1212,19 @@ void MainWindow::on_bEditPro_clicked()
     ui->bEditPro->setEnabled(false);
 
     ui->bNewTStep->setEnabled(true);
-    ui->bNewPStep->setEnabled(true);
-    ui->bNewVStep->setEnabled(true);
+  //  ui->bNewPStep->setEnabled(true);
+  //  ui->bNewVStep->setEnabled(true);
 
     ui->cbTSelectSUnit->setEnabled(true);
-    ui->cbPSelectSUnit->setEnabled(true);
-    ui->cbVSelectSUnit->setEnabled(true);
+  //  ui->cbPSelectSUnit->setEnabled(true);
+  // ui->cbVSelectSUnit->setEnabled(true);
     ui->cbTSelectSType->setEnabled(true);
-    ui->cbPSelectSType->setEnabled(true);
-    ui->cbVSelectSType->setEnabled(true);
+  //  ui->cbPSelectSType->setEnabled(true);
+  //  ui->cbVSelectSType->setEnabled(true);
 
     ui->dsbTStartValue->setEnabled(true);
-    ui->dsbPStartValue->setEnabled(true);
-    ui->dsbVStartValue->setEnabled(true);
+  //  ui->dsbPStartValue->setEnabled(true);
+  //  ui->dsbVStartValue->setEnabled(true);
 
     ui->leProfileName->setEnabled(true);
 }
@@ -1241,29 +1243,29 @@ void MainWindow::on_bClearPro_clicked()
 
     ui->dsbTStartValue->setValue(0);
     ui->dsbTStartValue->setEnabled(false);
-    ui->dsbPStartValue->setValue(0);
-    ui->dsbPStartValue->setEnabled(false);
-    ui->dsbVStartValue->setValue(0);
-    ui->dsbVStartValue->setEnabled(false);
+  //  ui->dsbPStartValue->setValue(0);
+  //  ui->dsbPStartValue->setEnabled(false);
+  //  ui->dsbVStartValue->setValue(0);
+  //  ui->dsbVStartValue->setEnabled(false);
 
     ui->laTTotalStep->setText("0");
-    ui->laPTotalStep->setText("0");
-    ui->laVTotalStep->setText("0");
+  //  ui->laPTotalStep->setText("0");
+  //  ui->laVTotalStep->setText("0");
 
     ui->tWidget->setCurrentIndex(0);
-    ui->pWidget->setCurrentIndex(0);
-    ui->vWidget->setCurrentIndex(0);
+  //  ui->pWidget->setCurrentIndex(0);
+  //  ui->vWidget->setCurrentIndex(0);
 
     ui->cbTSelectSUnit->setEnabled(false);
-    ui->cbPSelectSUnit->setEnabled(false);
-    ui->cbVSelectSUnit->setEnabled(false);
+  //  ui->cbPSelectSUnit->setEnabled(false);
+  //  ui->cbVSelectSUnit->setEnabled(false);
     ui->cbTSelectSType->setEnabled(false);
-    ui->cbPSelectSType->setEnabled(false);
-    ui->cbVSelectSType->setEnabled(false);
+  //  ui->cbPSelectSType->setEnabled(false);
+  //  ui->cbVSelectSType->setEnabled(false);
 
     ui->tPreview->clearPlottables();
-    ui->pPreview->clearPlottables();
-    ui->vPreview->clearPlottables();
+  //  ui->pPreview->clearPlottables();
+  //  ui->vPreview->clearPlottables();
 
     currentTStep = 0;
     currentPStep = 0;
@@ -1285,8 +1287,8 @@ void MainWindow::on_cbSelectProfile_currentIndexChanged(int index)
         ui->bSavePro->setEnabled(false);
         ui->bClearPro->setEnabled(false);
         ui->bNewTStep->setEnabled(false);
-        ui->bNewPStep->setEnabled(false);
-        ui->bNewVStep->setEnabled(false);
+  //      ui->bNewPStep->setEnabled(false);
+  //      ui->bNewVStep->setEnabled(false);
     }
     else
     {
@@ -1503,7 +1505,7 @@ void MainWindow::updateTPreview()
     }
 }
 
-
+/*
 void MainWindow::on_bNewVStep_clicked()
 {
     ui->dsbVRepeatValue->setValue(0);
@@ -1579,7 +1581,8 @@ void MainWindow::on_bNewVStep_clicked()
 
     }
 }
-
+*/
+/*
 void MainWindow::on_bNewPStep_clicked()
 {
     ui->dsbPRepeatValue->setValue(0);
@@ -1705,7 +1708,8 @@ void MainWindow::on_bNewPStep_clicked()
         }
     }
 }
-
+*/
+/*
 void MainWindow::on_bPForward2_clicked()
 {  
     if ( ( ui->dsbPLTarget->value() >= 0 ) && ( ui->dsbPLTarget->value() <= 10 ) )
@@ -1781,12 +1785,14 @@ void MainWindow::on_bPForward2_clicked()
     }
     qApp->processEvents();
 }
-
+*/
+/*
 void MainWindow::on_bPBack2_clicked()
 {
     ui->pWidget->setCurrentIndex(ui->pWidget->currentIndex() - 1);
 }
-
+*/
+/*
 void MainWindow::on_bPForward3_clicked()
 {
     ui->laOldPValue->setText(QString::number(oldPValue));
@@ -1918,12 +1924,14 @@ void MainWindow::on_bPForward3_clicked()
 
     }
 }
-
+*/
+/*
 void MainWindow::on_bPBack3_clicked()
 {
     ui->pWidget->setCurrentIndex(ui->pWidget->currentIndex() - 2);
 }
-
+*/
+/*
 void MainWindow::on_bPForward4_clicked()
 {
     if ( ( ui->dsbPSMean->value() == oldPValue ) && ( ( ui->dsbPSMean->value() - ui->dsbPSAmp->value() ) >= 0 ) &&
@@ -1998,12 +2006,14 @@ void MainWindow::on_bPForward4_clicked()
         // (mean + amp) value cannot be greater than 10 bar
     }
 }
-
+*/
+/*
 void MainWindow::on_bPBack4_clicked()
 {
     ui->pWidget->setCurrentIndex(ui->pWidget->currentIndex() - 3);
 }
-
+*/
+/*
 void MainWindow::on_bPForward5_clicked()
 {
     QString arg1 = ui->cbPStepRepeatUnit->currentText();
@@ -2037,7 +2047,8 @@ void MainWindow::on_bPForward5_clicked()
     updatePPreview();
     ui->pWidget->setCurrentIndex(ui->pWidget->currentIndex() + 1);
 }
-
+*/
+/*
 void MainWindow::on_bPBack5_clicked()
 {
     if ( ui->cbPSelectSType->currentIndex() == 1 )
@@ -2053,7 +2064,8 @@ void MainWindow::on_bPBack5_clicked()
         ui->pWidget->setCurrentIndex(ui->pWidget->currentIndex() - 1);
     }
 }
-
+*/
+/*
 void MainWindow::on_bPSaveStep_clicked()
 {
     ui->dsbPStartValue->setEnabled(false);
@@ -2101,7 +2113,8 @@ void MainWindow::on_bPSaveStep_clicked()
 
     ui->pWidget->setCurrentIndex(0);
 }
-
+*/
+/*
 void MainWindow::on_bPBack6_clicked()
 {
     if ( ui->cbPSelectSType->currentIndex() == 1 )
@@ -2114,7 +2127,8 @@ void MainWindow::on_bPBack6_clicked()
     }
 
 }
-
+*/
+/*
 void MainWindow::on_cbPStepRepeatUnit_currentIndexChanged(const QString &arg1)
 {
     ui->dsbPRepeatValue->setValue(0);
@@ -2145,7 +2159,8 @@ void MainWindow::on_cbPStepRepeatUnit_currentIndexChanged(const QString &arg1)
     }
 
 }
-
+*/
+/*
 void MainWindow::on_dsbPRepeatValue_valueChanged(double arg1)
 {
     float result;
@@ -2192,7 +2207,8 @@ void MainWindow::on_dsbPRepeatValue_valueChanged(double arg1)
         ui->bPForward5->setEnabled(true);
     }
 }
-
+*/
+/*
 void MainWindow::updatePPreview()
 {
     //ui->pPreview->clearPlottables();
@@ -2289,7 +2305,7 @@ void MainWindow::updatePPreview()
             pPreviewX[i] = float(i) / 10;
         }
 
-        /*
+
         for(int i = segment3; i < segment4; i++)    // stay at amp*(-1)
         {
             pPreviewY[i] = mean - amp;
@@ -2301,7 +2317,7 @@ void MainWindow::updatePPreview()
             pPreviewY[i] = pPreviewY[i-1] + ( amp / ( rise * 10 ) );
             pPreviewX[i] = float(i) / 10;
         }
-        */
+
 
         ui->pPreview->graph(0)->setData(pPreviewX, pPreviewY);
         ui->pPreview->graph(0)->rescaleAxes();
@@ -2330,8 +2346,8 @@ void MainWindow::updatePPreview()
         ui->pPreview->replot();
     }
 }
-
-
+*/
+/*
 void MainWindow::on_bVForward2_clicked()
 {
     float delta;
@@ -2387,7 +2403,8 @@ void MainWindow::on_bVForward2_clicked()
         }
     }
 }
-
+*/
+/*
 void MainWindow::on_bVBack2_clicked()
 {
     ui->vWidget->setCurrentIndex(ui->vWidget->currentIndex() - 1);
@@ -2431,7 +2448,8 @@ void MainWindow::on_bVForward3_clicked()
         }
     }
 }
-
+*/
+/*
 void MainWindow::on_bVForward4_clicked()
 {
     QString arg1 = ui->cbVStepRepeatUnit->currentText();
@@ -2473,7 +2491,8 @@ void MainWindow::on_bVBack4_clicked()
         ui->vWidget->setCurrentIndex(ui->vWidget->currentIndex() - 1);
     }
 }
-
+*/
+/*
 void MainWindow::on_bVBack5_clicked()
 {
     if ( ui->cbVSelectSType->currentIndex() == 1 )
@@ -2485,7 +2504,8 @@ void MainWindow::on_bVBack5_clicked()
         ui->vWidget->setCurrentIndex(ui->vWidget->currentIndex() - 1);
     }
 }
-
+*/
+/*
 void MainWindow::on_bVSaveStep_clicked()
 {
     ui->dsbVStartValue->setEnabled(false);
@@ -2522,7 +2542,8 @@ void MainWindow::on_bVSaveStep_clicked()
 
     ui->vWidget->setCurrentIndex(0);
 }
-
+*/
+/*
 void MainWindow::on_cbVStepRepeatUnit_currentIndexChanged(const QString &arg1)
 {
     ui->dsbVRepeatValue->setValue(0);
@@ -2553,7 +2574,8 @@ void MainWindow::on_cbVStepRepeatUnit_currentIndexChanged(const QString &arg1)
     }
 
 }
-
+*/
+/*
 void MainWindow::on_dsbVRepeatValue_valueChanged(double arg1)
 {
     float result;
@@ -2600,7 +2622,8 @@ void MainWindow::on_dsbVRepeatValue_valueChanged(double arg1)
         ui->bVForward4->setEnabled(true);
     }
 }
-
+*/
+/*
 void MainWindow::updateVPreview()
 {
     //ui->vPreview->clearPlottables();
@@ -2695,7 +2718,7 @@ void MainWindow::updateVPreview()
 
     }
 }
-
+*/
 
 bool MainWindow::readProfiles(char rType, int index)
 {
@@ -3234,29 +3257,29 @@ void MainWindow::on_bSavePro_clicked()
 
     ui->dsbTStartValue->setValue(0);
     ui->dsbTStartValue->setEnabled(false);
-    ui->dsbPStartValue->setValue(0);
-    ui->dsbPStartValue->setEnabled(false);
-    ui->dsbVStartValue->setValue(0);
-    ui->dsbVStartValue->setEnabled(false);
+  //  ui->dsbPStartValue->setValue(0);
+  //  ui->dsbPStartValue->setEnabled(false);
+  //  ui->dsbVStartValue->setValue(0);
+  //  ui->dsbVStartValue->setEnabled(false);
 
     ui->laTTotalStep->setText("0");
-    ui->laPTotalStep->setText("0");
-    ui->laVTotalStep->setText("0");
+  //  ui->laPTotalStep->setText("0");
+  //  ui->laVTotalStep->setText("0");
 
     ui->tWidget->setCurrentIndex(0);
-    ui->pWidget->setCurrentIndex(0);
-    ui->vWidget->setCurrentIndex(0);
+  //  ui->pWidget->setCurrentIndex(0);
+  //  ui->vWidget->setCurrentIndex(0);
 
     ui->cbTSelectSUnit->setEnabled(false);
-    ui->cbPSelectSUnit->setEnabled(false);
-    ui->cbVSelectSUnit->setEnabled(false);
+  //  ui->cbPSelectSUnit->setEnabled(false);
+  //  ui->cbVSelectSUnit->setEnabled(false);
     ui->cbTSelectSType->setEnabled(false);
-    ui->cbPSelectSType->setEnabled(false);
-    ui->cbVSelectSType->setEnabled(false);
+  //  ui->cbPSelectSType->setEnabled(false);
+  //  ui->cbVSelectSType->setEnabled(false);
 
     ui->tPreview->clearPlottables();
-    ui->pPreview->clearPlottables();
-    ui->vPreview->clearPlottables();
+  //  ui->pPreview->clearPlottables();
+  //  ui->vPreview->clearPlottables();
 
     currentTStep = 0;
     currentPStep = 0;
@@ -4719,7 +4742,7 @@ void MainWindow::on_bLightsMain_clicked()
         proc->insertCommandMessage(mySerial::makeMessage(0x9C,cantTouchThis));
     }
 }
-
+/*
 void MainWindow::on_cbVSelectSUnit_currentIndexChanged(int index)
 {
     if (ui->cbVSelectSType->currentIndex() == 2)
@@ -4727,7 +4750,8 @@ void MainWindow::on_cbVSelectSUnit_currentIndexChanged(int index)
         ui->cbVSelectSUnit->setCurrentIndex(1);
     }
 }
-
+*/
+/*
 void MainWindow::on_cbVSelectSType_currentIndexChanged(int index)
 {
     if (ui->cbVSelectSType->currentIndex() == 2)
@@ -4735,7 +4759,7 @@ void MainWindow::on_cbVSelectSType_currentIndexChanged(int index)
         ui->cbVSelectSUnit->setCurrentIndex(1);
     }
 }
-
+*/
 void MainWindow::on_bClearLogTable_clicked()
 {
     ui->warningTable->setRowCount(0);
