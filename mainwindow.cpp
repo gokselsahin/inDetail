@@ -230,11 +230,14 @@ void MainWindow::setupTGraph()
     ui->tTestGraph->graph(1)->setPen(QPen(Qt::black));
     ui->tTestGraph->setInteractions(QCP::iRangeDrag | QCP::iSelectAxes |
                                     QCP::iSelectLegend| QCP::iRangeZoom | QCP::iSelectPlottables);
-    ui->tTestGraph->axisRect()->setRangeDrag(Qt::Horizontal);
-    ui->tTestGraph->axisRect()->setRangeZoom(Qt::Horizontal);
+    //ui->tTestGraph->axisRect()->setRangeDrag(Qt::Horizontal);
+    //ui->tTestGraph->axisRect()->setRangeZoom(Qt::Horizontal);
+
+
 
     // make Y axis temperature ticker
     ui->tTestGraph->yAxis->setTicker(tTicker);
+
 
     // make X axis as time ticker
     ui->tTestGraph->xAxis->setTicker(timeTicker);
@@ -245,6 +248,8 @@ void MainWindow::setupTGraph()
     ui->tTestGraph->setBackground(Qt::white);
  //   connect(ui->tTestGraph, SIGNAL(selectionChangedByUser()), this, SLOT(selectionChanged()));
     // make left and bottom axes transfer their ranges to right and top axes:
+    connect(ui->tTestGraph, SIGNAL(mousePress(QMouseEvent*)), this, SLOT(mousePress()));
+    connect(ui->tTestGraph, SIGNAL(mouseWheel(QWheelEvent*)), this, SLOT(mouseWheel()));
     connect(ui->tTestGraph->xAxis, SIGNAL(rangeChanged(QCPRange)), ui->tTestGraph->xAxis2, SLOT(setRange(QCPRange)));
     connect(ui->tTestGraph->yAxis, SIGNAL(rangeChanged(QCPRange)), ui->tTestGraph->yAxis2, SLOT(setRange(QCPRange)));
 }
@@ -341,6 +346,20 @@ void MainWindow::setupPreviewGraphs()
     ui->tPreview->yAxis->setLabel("Cabin Temperature (°C)");
     ui->tPreview->setBackground(Qt::white);
     ui->tPreview->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom | QCP::iSelectPlottables);
+
+    ui->tPreview_2->addGraph();
+    QPen tPen_2;
+    tPen_2.setWidth(3);
+    tPen_2.setColor(Qt::red);
+    tPen_2.setStyle(Qt::SolidLine);
+    ui->tPreview_2->graph(0)->setPen(tPen);
+    ui->tPreview_2->xAxis2->setVisible(true);
+    ui->tPreview_2->xAxis2->setTickLabels(false);
+    ui->tPreview_2->yAxis2->setVisible(true);
+    ui->tPreview_2->yAxis2->setTickLabels(false);
+    ui->tPreview_2->yAxis->setLabel("Cabin Temperature (°C)");
+    ui->tPreview_2->setBackground(Qt::white);
+    ui->tPreview_2->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom | QCP::iSelectPlottables);
 /*
     ui->pPreview->addGraph();
     QPen pPen;
@@ -1087,6 +1106,7 @@ void MainWindow::updateInfo(quint8 index, QByteArray data)
                 ((data[5] & 0xFF) << 16);
         vElapsedSeconds = (data[6] & 0xFF) | ((data[7] & 0xFF) <<  8) |
                 ((data[8] & 0xFF) << 16);
+        ui->laTTestElepsedSecond->setText(QString::number(tElapsedSeconds));
     }
 }
 
@@ -1386,7 +1406,7 @@ void MainWindow::on_bTForward2_clicked()
 
     if ( ui->cbTSelectSUnit->currentIndex() == 1 )
     {
-        if ( ( delta * 60 / 2 ) <= ( duration * 1 ) )
+        if ( ( delta * 60 / 5 ) <= ( duration * 1 ) )
         {
             ui->tWidget->setCurrentIndex(ui->tWidget->currentIndex() + 1);
             updateTPreview();
@@ -1394,7 +1414,7 @@ void MainWindow::on_bTForward2_clicked()
     }
     else if ( ui->cbTSelectSUnit->currentIndex() == 2 )
     {
-        if ( ( delta * 60 / 2 ) <= ( duration * 60 ) )
+        if ( ( delta * 60 / 5 ) <= ( duration * 60 ) )
         {
             ui->tWidget->setCurrentIndex(ui->tWidget->currentIndex() + 1);
             updateTPreview();
@@ -1402,7 +1422,7 @@ void MainWindow::on_bTForward2_clicked()
     }
     else if ( ui->cbTSelectSUnit->currentIndex() == 3 )
     {
-        if ( ( delta * 60 / 2 ) <= ( duration * 60 * 60 ) )
+        if ( ( delta * 60 / 5 ) <= ( duration * 60 * 60 ) )
         {
             ui->tWidget->setCurrentIndex(ui->tWidget->currentIndex() + 1);
             updateTPreview();
@@ -1410,7 +1430,7 @@ void MainWindow::on_bTForward2_clicked()
     }
     else if ( ui->cbTSelectSUnit->currentIndex() == 4 )
     {
-        if ( ( delta * 60 / 2 ) <= ( duration * 60 * 60 * 24 ) )
+        if ( ( delta * 60 / 5 ) <= ( duration * 60 * 60 * 24 ) )
         {
             ui->tWidget->setCurrentIndex(ui->tWidget->currentIndex() + 1);
             updateTPreview();
@@ -1457,18 +1477,22 @@ void MainWindow::updateTPreview()
     if (tProfileSave[currentProfile].step[currentTStep].stepUnit == 1)
     {
         ui->tPreview->xAxis->setLabel("Time (seconds)");
+        ui->tPreview_2->xAxis->setLabel("Time (seconds)");
     }
     else if (tProfileSave[currentProfile].step[currentTStep].stepUnit == 2)
     {
         ui->tPreview->xAxis->setLabel("Time (minutes)");
+        ui->tPreview_2->xAxis->setLabel("Time (minutes)");
     }
     else if (tProfileSave[currentProfile].step[currentTStep].stepUnit == 3)
     {
         ui->tPreview->xAxis->setLabel("Time (hours)");
+        ui->tPreview_2->xAxis->setLabel("Time (hours)");
     }
     else if (tProfileSave[currentProfile].step[currentTStep].stepUnit == 4)
     {
         ui->tPreview->xAxis->setLabel("Time (days)");
+        ui->tPreview_2->xAxis->setLabel("Time (days)");
     }
 
     if (tProfileSave[currentProfile].step[currentTStep].stepType == 1)
@@ -1479,7 +1503,14 @@ void MainWindow::updateTPreview()
         float oldTarget = tProfileSave[currentProfile].step[currentTStep-1].lTarget;
         float target = tProfileSave[currentProfile].step[currentTStep].lTarget;
 
+        float delta_2;
+        float duration_2 = tProfileSave[currentProfile].step[currentTStep-1].lDuration;
+        float startValue_2 = tProfileSave[currentProfile].startValue;
+        float oldTarget_2 = tProfileSave[currentProfile].step[currentTStep-2].lTarget;
+        float target_2 = tProfileSave[currentProfile].step[currentTStep-2].lTarget;
+
         QVector<double> tPreviewX( ( duration * 10 ) + 1 ), tPreviewY( ( duration * 10 ) + 1 );
+        QVector<double> tPreviewX_2( ( duration_2 * 10 ) + 1 ), tPreviewY_2( ( duration_2 * 10 ) + 1 );
 
         if (currentTStep == 0)
         {
@@ -1492,6 +1523,10 @@ void MainWindow::updateTPreview()
             tPreviewY[0] = oldTarget;
             tPreviewX[0] = 0;
             delta = target - oldTarget;
+            if (currentStep == 1)
+            {
+
+            }
         }
         for(int i=1; i < ( duration * 10) + 1; i++)
         {
@@ -1502,6 +1537,9 @@ void MainWindow::updateTPreview()
         ui->tPreview->graph(0)->setData(tPreviewX, tPreviewY);
         ui->tPreview->graph(0)->rescaleAxes();
         ui->tPreview->replot();
+        ui->tPreview_2->graph(0)->setData(tPreviewX, tPreviewY);
+        ui->tPreview_2->graph(0)->rescaleAxes();
+        ui->tPreview_2->replot();
     }
 }
 
@@ -4362,13 +4400,13 @@ void MainWindow::getCurrentDateTime()
 
 void MainWindow::updateTPlot()
 {
-    tKey = tKey + (double(tempPeriod)/1000.0);
+    tKey = tElapsedSeconds + (double(tempPeriod)/1000.0) ;
 
     // add data to lines:
     ui->tTestGraph->graph(0)->addData(tKey, cabinTopTemperature);
     ui->tTestGraph->graph(1)->addData(tKey, cabinBottomTemperature);
     // rescale key (horizontal) axis to fit the current data:
-    ui->tTestGraph->graph(0)->rescaleKeyAxis();
+  //  ui->tTestGraph->graph(0)->rescaleKeyAxis();
     // replot the graph with the added data
     ui->tTestGraph->replot();
 
@@ -5319,3 +5357,28 @@ void MainWindow::on_bPauseTest_clicked()
     proc->insertCommandMessage(mySerial::makeMessage(0x0A,cantTouchThis));
 }
 
+void MainWindow::mousePress()
+{
+  // if an axis is selected, only allow the direction of that axis to be dragged
+  // if no axis is selected, both directions may be dragged
+
+  if (ui->tTestGraph->xAxis->selectedParts().testFlag(QCPAxis::spAxis))
+    ui->tTestGraph->axisRect()->setRangeDrag(ui->tTestGraph->xAxis->orientation());
+  else if (ui->tTestGraph->yAxis->selectedParts().testFlag(QCPAxis::spAxis))
+    ui->tTestGraph->axisRect()->setRangeDrag(ui->tTestGraph->yAxis->orientation());
+  else
+    ui->tTestGraph->axisRect()->setRangeDrag(Qt::Horizontal|Qt::Vertical);
+}
+
+void MainWindow::mouseWheel()
+{
+  // if an axis is selected, only allow the direction of that axis to be zoomed
+  // if no axis is selected, both directions may be zoomed
+
+  if (ui->tTestGraph->xAxis->selectedParts().testFlag(QCPAxis::spAxis))
+    ui->tTestGraph->axisRect()->setRangeZoom(ui->tTestGraph->xAxis->orientation());
+  else if (ui->tTestGraph->yAxis->selectedParts().testFlag(QCPAxis::spAxis))
+    ui->tTestGraph->axisRect()->setRangeZoom(ui->tTestGraph->yAxis->orientation());
+  else
+    ui->tTestGraph->axisRect()->setRangeZoom(Qt::Horizontal|Qt::Vertical);
+}

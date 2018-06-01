@@ -123,19 +123,6 @@ QTableBar
        <attribute name="title">
         <string>Main</string>
        </attribute>
-       <widget class="QLabel" name="label_57">
-        <property name="geometry">
-         <rect>
-          <x>290</x>
-          <y>70</y>
-          <width>131</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Communication</string>
-        </property>
-       </widget>
        <widget class="QLabel" name="label_65">
         <property name="geometry">
          <rect>
@@ -163,22 +150,6 @@ QTableBar
         </property>
         <property name="alignment">
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-       <widget class="QLabel" name="laCommErr">
-        <property name="geometry">
-         <rect>
-          <x>430</x>
-          <y>70</y>
-          <width>31</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>NOK</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
         </property>
        </widget>
        <widget class="QLabel" name="laTime">
@@ -229,7 +200,7 @@ QTableBar
           <x>10</x>
           <y>280</y>
           <width>211</width>
-          <height>71</height>
+          <height>61</height>
          </rect>
         </property>
         <property name="text">
@@ -402,7 +373,7 @@ QTableBar
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>100</y>
+          <y>80</y>
           <width>161</width>
           <height>20</height>
          </rect>
@@ -415,7 +386,7 @@ QTableBar
         <property name="geometry">
          <rect>
           <x>180</x>
-          <y>100</y>
+          <y>80</y>
           <width>61</width>
           <height>21</height>
          </rect>
@@ -481,7 +452,7 @@ QTableBar
         <property name="geometry">
          <rect>
           <x>130</x>
-          <y>70</y>
+          <y>50</y>
           <width>141</width>
           <height>16</height>
          </rect>
@@ -497,7 +468,7 @@ QTableBar
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>70</y>
+          <y>50</y>
           <width>121</width>
           <height>16</height>
          </rect>
@@ -529,7 +500,7 @@ QTableBar
         <property name="geometry">
          <rect>
           <x>220</x>
-          <y>100</y>
+          <y>80</y>
           <width>47</width>
           <height>16</height>
          </rect>
@@ -547,7 +518,7 @@ QTableBar
           <x>240</x>
           <y>280</y>
           <width>211</width>
-          <height>71</height>
+          <height>61</height>
          </rect>
         </property>
         <property name="text">
@@ -556,6 +527,69 @@ QTableBar
         <property name="checkable">
          <bool>true</bool>
         </property>
+       </widget>
+       <widget class="QLabel" name="laTTestElepsedSecond">
+        <property name="geometry">
+         <rect>
+          <x>220</x>
+          <y>110</y>
+          <width>47</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>1</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+       <widget class="QWidget" name="">
+        <property name="geometry">
+         <rect>
+          <x>300</x>
+          <y>10</y>
+          <width>128</width>
+          <height>33</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout" stretch="12,12">
+         <property name="spacing">
+          <number>15</number>
+         </property>
+         <property name="sizeConstraint">
+          <enum>QLayout::SetDefaultConstraint</enum>
+         </property>
+         <property name="leftMargin">
+          <number>10</number>
+         </property>
+         <property name="topMargin">
+          <number>10</number>
+         </property>
+         <property name="rightMargin">
+          <number>10</number>
+         </property>
+         <property name="bottomMargin">
+          <number>10</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="label_57">
+           <property name="text">
+            <string>Communication</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="laCommErr">
+           <property name="text">
+            <string>NOK</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </widget>
       </widget>
       <widget class="QWidget" name="tab_Details">
@@ -2436,9 +2470,9 @@ QTableBar
        <widget class="QStackedWidget" name="tWidget">
         <property name="geometry">
          <rect>
-          <x>0</x>
-          <y>100</y>
-          <width>741</width>
+          <x>260</x>
+          <y>90</y>
+          <width>251</width>
           <height>311</height>
          </rect>
         </property>
@@ -2449,7 +2483,7 @@ QTableBar
          <enum>QFrame::StyledPanel</enum>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>2</number>
         </property>
         <widget class="QWidget" name="page">
          <widget class="QPushButton" name="bNewTStep">
@@ -3096,6 +3130,16 @@ QTableBar
          <string>Create New Profile</string>
         </property>
        </widget>
+       <widget class="QCustomPlot" name="tPreview_2" native="true">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>140</y>
+          <width>231</width>
+          <height>181</height>
+         </rect>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="tab_Manual">
        <property name="autoFillBackground">
@@ -3108,7 +3152,7 @@ QTableBar
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>80</y>
+          <y>140</y>
           <width>151</width>
           <height>16</height>
          </rect>
@@ -3124,7 +3168,7 @@ QTableBar
         <property name="geometry">
          <rect>
           <x>210</x>
-          <y>300</y>
+          <y>290</y>
           <width>61</width>
           <height>21</height>
          </rect>
@@ -3159,7 +3203,7 @@ QTableBar
         <property name="geometry">
          <rect>
           <x>210</x>
-          <y>250</y>
+          <y>230</y>
           <width>61</width>
           <height>21</height>
          </rect>
@@ -3178,7 +3222,7 @@ QTableBar
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>250</y>
+          <y>230</y>
           <width>161</width>
           <height>16</height>
          </rect>
@@ -3215,9 +3259,9 @@ QTableBar
         </property>
         <property name="geometry">
          <rect>
-          <x>0</x>
-          <y>10</y>
-          <width>291</width>
+          <x>10</x>
+          <y>80</y>
+          <width>301</width>
           <height>31</height>
          </rect>
         </property>
@@ -3244,7 +3288,7 @@ QTableBar
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>300</y>
+          <y>290</y>
           <width>151</width>
           <height>16</height>
          </rect>
@@ -3257,7 +3301,7 @@ QTableBar
         <property name="geometry">
          <rect>
           <x>210</x>
-          <y>150</y>
+          <y>260</y>
           <width>61</width>
           <height>21</height>
          </rect>
@@ -3275,8 +3319,8 @@ QTableBar
         </property>
         <property name="geometry">
          <rect>
-          <x>370</x>
-          <y>210</y>
+          <x>360</x>
+          <y>330</y>
           <width>171</width>
           <height>61</height>
          </rect>
@@ -3301,7 +3345,7 @@ QTableBar
         <property name="geometry">
          <rect>
           <x>670</x>
-          <y>210</y>
+          <y>330</y>
           <width>101</width>
           <height>61</height>
          </rect>
@@ -3316,8 +3360,8 @@ QTableBar
        <widget class="QLabel" name="laSelectedProfileManual">
         <property name="geometry">
          <rect>
-          <x>480</x>
-          <y>80</y>
+          <x>170</x>
+          <y>50</y>
           <width>141</width>
           <height>16</height>
          </rect>
@@ -3332,9 +3376,9 @@ QTableBar
        <widget class="QComboBox" name="cbSelectProfileManual">
         <property name="geometry">
          <rect>
-          <x>380</x>
+          <x>10</x>
           <y>10</y>
-          <width>261</width>
+          <width>301</width>
           <height>31</height>
          </rect>
         </property>
@@ -3448,7 +3492,7 @@ QTableBar
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>150</y>
+          <y>260</y>
           <width>191</width>
           <height>20</height>
          </rect>
@@ -3460,8 +3504,8 @@ QTableBar
        <widget class="QLabel" name="label_112">
         <property name="geometry">
          <rect>
-          <x>370</x>
-          <y>80</y>
+          <x>10</x>
+          <y>50</y>
           <width>101</width>
           <height>16</height>
          </rect>
@@ -3476,8 +3520,8 @@ QTableBar
         </property>
         <property name="geometry">
          <rect>
-          <x>370</x>
-          <y>140</y>
+          <x>50</x>
+          <y>330</y>
           <width>171</width>
           <height>61</height>
          </rect>
@@ -3512,7 +3556,7 @@ QTableBar
         <property name="geometry">
          <rect>
           <x>0</x>
-          <y>110</y>
+          <y>160</y>
           <width>321</width>
           <height>20</height>
          </rect>
@@ -3525,7 +3569,7 @@ QTableBar
         <property name="geometry">
          <rect>
           <x>0</x>
-          <y>50</y>
+          <y>110</y>
           <width>321</width>
           <height>20</height>
          </rect>
@@ -3541,7 +3585,7 @@ QTableBar
         <property name="geometry">
          <rect>
           <x>210</x>
-          <y>80</y>
+          <y>140</y>
           <width>62</width>
           <height>21</height>
          </rect>
@@ -3559,8 +3603,8 @@ QTableBar
         </property>
         <property name="geometry">
          <rect>
-          <x>560</x>
-          <y>210</y>
+          <x>550</x>
+          <y>330</y>
           <width>101</width>
           <height>61</height>
          </rect>

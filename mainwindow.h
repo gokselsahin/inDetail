@@ -131,6 +131,8 @@ private slots:
     void on_bPauseTestManual_clicked();
     void on_bPauseTest_clicked();
     void on_bStartMaintenance_clicked();
+    void mousePress();
+    void mouseWheel();
 
 
 private:
