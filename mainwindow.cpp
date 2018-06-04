@@ -1297,6 +1297,9 @@ void MainWindow::on_bClearPro_clicked()
     ui->tabWidget->setTabEnabled(4, true);
     ui->tabWidget->setTabEnabled(5, true);
 
+    ui->tPreview_2->clearPlottables();
+    ui->tPreview_2->replot();
+
 }
 
 void MainWindow::on_cbSelectProfile_currentIndexChanged(int index)
@@ -1503,31 +1506,30 @@ void MainWindow::updateTPreview()
         float oldTarget = tProfileSave[currentProfile].step[currentTStep-1].lTarget;
         float target = tProfileSave[currentProfile].step[currentTStep].lTarget;
 
-        float delta_2;
-        float duration_2 = tProfileSave[currentProfile].step[currentTStep-1].lDuration;
-        float startValue_2 = tProfileSave[currentProfile].startValue;
-        float oldTarget_2 = tProfileSave[currentProfile].step[currentTStep-2].lTarget;
-        float target_2 = tProfileSave[currentProfile].step[currentTStep-2].lTarget;
-
+        float totalDuration;
         QVector<double> tPreviewX( ( duration * 10 ) + 1 ), tPreviewY( ( duration * 10 ) + 1 );
-        QVector<double> tPreviewX_2( ( duration_2 * 10 ) + 1 ), tPreviewY_2( ( duration_2 * 10 ) + 1 );
+        QVector<double> tPreviewX_2(20), tPreviewY_2( (duration * 10) + 1 );
 
         if (currentTStep == 0)
         {
+            totalDuration = 0;
+
             tPreviewY[0] = startValue;
             tPreviewX[0] = 0;
             delta = target - startValue;
+
+            tPreviewY_2[0] = startValue;
+            tPreviewX_2[0] = 0;
         }
         else
         {
             tPreviewY[0] = oldTarget;
             tPreviewX[0] = 0;
             delta = target - oldTarget;
-            if (currentStep == 1)
-            {
-
-            }
+            tPreviewY_2[currentTStep] = target;
+            tPreviewX_2[currentTStep] = totalDuration;
         }
+
         for(int i=1; i < ( duration * 10) + 1; i++)
         {
             tPreviewY[i] = tPreviewY[i-1] + ( delta / ( duration * 10 ) );
@@ -1537,8 +1539,10 @@ void MainWindow::updateTPreview()
         ui->tPreview->graph(0)->setData(tPreviewX, tPreviewY);
         ui->tPreview->graph(0)->rescaleAxes();
         ui->tPreview->replot();
-        ui->tPreview_2->graph(0)->setData(tPreviewX, tPreviewY);
-        ui->tPreview_2->graph(0)->rescaleAxes();
+
+        connect(ui->tPreview_2->xAxis, SIGNAL(rangeChanged(QCPRange)), ui->tPreview_2->xAxis2, SLOT(setRange(QCPRange)));
+        connect(ui->tPreview_2->yAxis, SIGNAL(rangeChanged(QCPRange)), ui->tPreview_2->yAxis2, SLOT(setRange(QCPRange)));
+        ui->tPreview_2->graph(0)->setData(tPreviewX_2, tPreviewY_2);
         ui->tPreview_2->replot();
     }
 }
