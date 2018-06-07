@@ -1505,10 +1505,11 @@ void MainWindow::updateTPreview()
         float startValue = tProfileSave[currentProfile].startValue;
         float oldTarget = tProfileSave[currentProfile].step[currentTStep-1].lTarget;
         float target = tProfileSave[currentProfile].step[currentTStep].lTarget;
+        float oldDuration= tProfileSave[currentProfile].step[currentTStep-1].lDuration;
 
         float totalDuration;
         QVector<double> tPreviewX( ( duration * 10 ) + 1 ), tPreviewY( ( duration * 10 ) + 1 );
-        QVector<double> tPreviewX_2(20), tPreviewY_2( (duration * 10) + 1 );
+        QVector<double> tPreviewX_2(200), tPreviewY_2( (duration*10 ) + 1 );
 
         if (currentTStep == 0)
         {
@@ -1518,16 +1519,64 @@ void MainWindow::updateTPreview()
             tPreviewX[0] = 0;
             delta = target - startValue;
 
+            totalDuration = totalDuration + duration;
             tPreviewY_2[0] = startValue;
-            tPreviewX_2[0] = 0;
+            tPreviewX_2[0] = 1;
+
+            tPreviewY_2[1] = target;
+            tPreviewX_2[1] = totalDuration;
+
         }
         else
         {
             tPreviewY[0] = oldTarget;
             tPreviewX[0] = 0;
             delta = target - oldTarget;
-            tPreviewY_2[currentTStep] = target;
-            tPreviewX_2[currentTStep] = totalDuration;
+            if (currentTStep == 1)
+            {
+                tPreviewY_2[0] = startValue;
+                tPreviewX_2[0] = 1;
+                tPreviewY_2[1] = oldTarget;
+                tPreviewX_2[1] = oldDuration;
+                tPreviewY_2[2] = target;
+                tPreviewX_2[2] = tPreviewX_2[1] + duration;
+            }
+            else if (currentTStep == 2)
+            {
+                tPreviewY_2[0] = startValue;
+                tPreviewX_2[0] = 1;
+                tPreviewY_2[1] = tProfileSave[currentProfile].step[currentTStep-2].lTarget;
+                tPreviewX_2[1] = tProfileSave[currentProfile].step[currentTStep-2].lDuration;
+                tPreviewY_2[2] = tProfileSave[currentProfile].step[currentTStep-1].lTarget;
+                tPreviewX_2[2] = tPreviewX_2[1] + tProfileSave[currentProfile].step[currentTStep-1].lDuration;
+                tPreviewY_2[3] = target;
+                tPreviewX_2[3] = tPreviewX_2[2] + duration ;
+            }
+            else if (currentTStep == 3)
+            {
+                tPreviewY_2[0] = startValue;
+                tPreviewX_2[0] = 1;
+                tPreviewY_2[1] = tProfileSave[currentProfile].step[currentTStep-3].lTarget;
+                tPreviewX_2[1] = tProfileSave[currentProfile].step[currentTStep-3].lDuration;
+                tPreviewY_2[2] = tProfileSave[currentProfile].step[currentTStep-2].lTarget;
+                tPreviewX_2[2] = tPreviewX_2[currentTStep - 2] + tProfileSave[currentProfile].step[currentTStep-2].lDuration;
+                tPreviewY_2[3] = tProfileSave[currentProfile].step[currentTStep-1].lTarget;
+                tPreviewX_2[3] = tPreviewX_2[currentTStep - 1] + tProfileSave[currentProfile].step[currentTStep-1].lDuration;
+                tPreviewY_2[4] = target;
+                tPreviewX_2[4] = tPreviewX_2[currentTStep] + duration ;
+            }
+            else if (currentTStep >= 4)
+            {
+                tPreviewY_2[0] = startValue;
+                tPreviewX_2[0] = 1;
+                for(int j=1; j < (currentTStep ); j++)
+                {
+                    tPreviewY_2[j] = tProfileSave[currentProfile].step[j-1].lTarget;
+                    tPreviewX_2[j] = tPreviewX_2[j-1] + tProfileSave[currentProfile].step[j-1].lDuration;
+                }
+                tPreviewY_2[currentTStep + 1] = target;
+                tPreviewX_2[currentTStep + 1] = tPreviewX_2[currentTStep] + duration ;
+            }
         }
 
         for(int i=1; i < ( duration * 10) + 1; i++)
@@ -1543,6 +1592,7 @@ void MainWindow::updateTPreview()
         connect(ui->tPreview_2->xAxis, SIGNAL(rangeChanged(QCPRange)), ui->tPreview_2->xAxis2, SLOT(setRange(QCPRange)));
         connect(ui->tPreview_2->yAxis, SIGNAL(rangeChanged(QCPRange)), ui->tPreview_2->yAxis2, SLOT(setRange(QCPRange)));
         ui->tPreview_2->graph(0)->setData(tPreviewX_2, tPreviewY_2);
+        ui->tPreview_2->graph(0)->rescaleAxes();
         ui->tPreview_2->replot();
     }
 }
