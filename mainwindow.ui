@@ -105,7 +105,7 @@ QTableBar
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>3</number>
       </property>
       <property name="iconSize">
        <size>
@@ -2470,8 +2470,8 @@ QTableBar
        <widget class="QStackedWidget" name="tWidget">
         <property name="geometry">
          <rect>
-          <x>260</x>
-          <y>90</y>
+          <x>520</x>
+          <y>100</y>
           <width>251</width>
           <height>311</height>
          </rect>
@@ -2483,7 +2483,7 @@ QTableBar
          <enum>QFrame::StyledPanel</enum>
         </property>
         <property name="currentIndex">
-         <number>2</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="page">
          <widget class="QPushButton" name="bNewTStep">
@@ -2621,29 +2621,6 @@ QTableBar
           <item>
            <property name="text">
             <string>Days</string>
-           </property>
-          </item>
-         </widget>
-         <widget class="QComboBox" name="cbTSelectSType">
-          <property name="enabled">
-           <bool>false</bool>
-          </property>
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>180</y>
-            <width>231</width>
-            <height>41</height>
-           </rect>
-          </property>
-          <item>
-           <property name="text">
-            <string>Select a step type...</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Linear</string>
            </property>
           </item>
          </widget>
@@ -3134,9 +3111,9 @@ QTableBar
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>140</y>
-          <width>231</width>
-          <height>181</height>
+          <y>100</y>
+          <width>501</width>
+          <height>311</height>
          </rect>
         </property>
        </widget>

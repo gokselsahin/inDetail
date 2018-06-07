@@ -70,47 +70,47 @@ MainWindow::MainWindow(QWidget *parent) :
 
     this->setWindowTitle(appName);
 
-//    QPixmap bkgnd("png\\background.jpg");
-//    bkgnd = bkgnd.scaled(this->size(), Qt::IgnoreAspectRatio);
-//    QPalette palette;
-//    palette.setBrush(QPalette::Background, bkgnd);
-//    ui->tab_Main->setPalette(palette);
-//    ui->tab_Details->setPalette(palette);
-//    ui->tab_EditPro->setPalette(palette);
-//    ui->tab_NewPro->setPalette(palette);
-//    ui->tab_Manual->setPalette(palette);
-//    ui->tab_Maintenance->setPalette(palette);
+    //    QPixmap bkgnd("png\\background.jpg");
+    //    bkgnd = bkgnd.scaled(this->size(), Qt::IgnoreAspectRatio);
+    //    QPalette palette;
+    //    palette.setBrush(QPalette::Background, bkgnd);
+    //    ui->tab_Main->setPalette(palette);
+    //    ui->tab_Details->setPalette(palette);
+    //    ui->tab_EditPro->setPalette(palette);
+    //    ui->tab_NewPro->setPalette(palette);
+    //    ui->tab_Manual->setPalette(palette);
+    //    ui->tab_Maintenance->setPalette(palette);
 
-    #ifdef Q_OS_LINUX
-        //linux code goes here
-        if (!QDir("/home/pi/InDetail/profiles").exists())
-        {
-            QDir().mkdir("/home/pi/InDetail/profiles");
-        }
-        if (!QDir("/home/pi/InDetail/records").exists())
-        {
-            QDir().mkdir("/home/pi/InDetail/records");
-        }
-        if (!QDir("/home/pi/InDetail/screenshots").exists())
-        {
-            QDir().mkdir("/home/pi/InDetail/screenshots");
-        }
-    #endif
-    #ifdef Q_OS_WIN
-        // windows code goes here
-        if (!QDir("profiles").exists())
-        {
-            QDir().mkdir("profiles");
-        }
-        if (!QDir("records").exists())
-        {
-            QDir().mkdir("records");
-        }
-        if (!QDir("screenshots").exists())
-        {
-            QDir().mkdir("screenshots");
-        }
-    #endif
+#ifdef Q_OS_LINUX
+    //linux code goes here
+    if (!QDir("/home/pi/InDetail/profiles").exists())
+    {
+        QDir().mkdir("/home/pi/InDetail/profiles");
+    }
+    if (!QDir("/home/pi/InDetail/records").exists())
+    {
+        QDir().mkdir("/home/pi/InDetail/records");
+    }
+    if (!QDir("/home/pi/InDetail/screenshots").exists())
+    {
+        QDir().mkdir("/home/pi/InDetail/screenshots");
+    }
+#endif
+#ifdef Q_OS_WIN
+    // windows code goes here
+    if (!QDir("profiles").exists())
+    {
+        QDir().mkdir("profiles");
+    }
+    if (!QDir("records").exists())
+    {
+        QDir().mkdir("records");
+    }
+    if (!QDir("screenshots").exists())
+    {
+        QDir().mkdir("screenshots");
+    }
+#endif
 
     serial = new mySerial(this);
 
@@ -133,12 +133,12 @@ MainWindow::MainWindow(QWidget *parent) :
     timer1000->start(1000);
 
     timer250 = new QTimer(this);
-      connect(timer250, SIGNAL(timeout()), this, SLOT(askOtherStuff()));
+    connect(timer250, SIGNAL(timeout()), this, SLOT(askOtherStuff()));
     timer250->start(1000);
 
     timerTemp = new QTimer(this);
     connect(timerTemp, SIGNAL(timeout()), this, SLOT(updateTPlot()));
-/*
+    /*
     timerVib = new QTimer(this);
     connect(timerVib, SIGNAL(timeout()), this, SLOT(updateVPlot()));
 */
@@ -246,7 +246,7 @@ void MainWindow::setupTGraph()
     ui->tTestGraph->yAxis->setLabel("Cabin Temperature (°C)");
     ui->tTestGraph->yAxis->setRange(-50.0, 250.0);
     ui->tTestGraph->setBackground(Qt::white);
- //   connect(ui->tTestGraph, SIGNAL(selectionChangedByUser()), this, SLOT(selectionChanged()));
+    //   connect(ui->tTestGraph, SIGNAL(selectionChangedByUser()), this, SLOT(selectionChanged()));
     // make left and bottom axes transfer their ranges to right and top axes:
     connect(ui->tTestGraph, SIGNAL(mousePress(QMouseEvent*)), this, SLOT(mousePress()));
     connect(ui->tTestGraph, SIGNAL(mouseWheel(QWheelEvent*)), this, SLOT(mouseWheel()));
@@ -360,7 +360,7 @@ void MainWindow::setupPreviewGraphs()
     ui->tPreview_2->yAxis->setLabel("Cabin Temperature (°C)");
     ui->tPreview_2->setBackground(Qt::white);
     ui->tPreview_2->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom | QCP::iSelectPlottables);
-/*
+    /*
     ui->pPreview->addGraph();
     QPen pPen;
     pPen.setWidth(3);
@@ -404,8 +404,8 @@ void MainWindow::setupVisuals()
     //ui->vTestGraph->setVisible(false);
 
     ui->tWidget->setCurrentIndex(0);
- //   ui->pWidget->setCurrentIndex(0);
- //   ui->vWidget->setCurrentIndex(0);
+    //   ui->pWidget->setCurrentIndex(0);
+    //   ui->vWidget->setCurrentIndex(0);
 
     ui->wdRepeatEdit->setVisible(false);
     ui->wdLinearEdit->setVisible(false);
@@ -419,7 +419,7 @@ void MainWindow::setupVisuals()
     ui->dsbTLTarget->setButtonSymbols(QAbstractSpinBox::NoButtons);
 
 
-/*
+    /*
     ui->dsbPStartValue->setButtonSymbols(QAbstractSpinBox::NoButtons);
 
     ui->dsbPLDuration->setButtonSymbols(QAbstractSpinBox::NoButtons);
@@ -539,7 +539,7 @@ void MainWindow::serialMessage(uint command, QByteArray data)
         break;
 
     case 0x32:
-/*
+        /*
         pipe1Pressure = quint8(data[0]) / 10.0;
         pipe2Pressure = quint8(data[1]) / 10.0;
         pipe3Pressure = quint8(data[2]) / 10.0;
@@ -548,7 +548,7 @@ void MainWindow::serialMessage(uint command, QByteArray data)
         pipe6Pressure = quint8(data[5]) / 10.0;
 */
         pipe1Pressure = qint16(((data[1] & 0xff) << 8) | (data[0] & 0xff)) / 100.0;
-/*      pipe2Pressure = qint16(((data[3] & 0xff) << 8) | (data[2] & 0xff)) / 100.0;
+        /*      pipe2Pressure = qint16(((data[3] & 0xff) << 8) | (data[2] & 0xff)) / 100.0;
         pipe3Pressure = qint16(((data[5] & 0xff) << 8) | (data[4] & 0xff)) / 100.0;
         pipe4Pressure = qint16(((data[7] & 0xff) << 8) | (data[6] & 0xff)) / 100.0;
         pipe5Pressure = qint16(((data[9] & 0xff) << 8) | (data[8] & 0xff)) / 100.0;
@@ -556,7 +556,7 @@ void MainWindow::serialMessage(uint command, QByteArray data)
 */
         ui->dsbPipe1Pressure->setValue(pipe1Pressure);
         ui->dsbPipe1PressureMaintenance->setValue(pipe1Pressure);
- /*     ui->dsbPipe2Pressure->setValue(pipe2Pressure);
+        /*     ui->dsbPipe2Pressure->setValue(pipe2Pressure);
         ui->dsbPipe2PressureMaintenance->setValue(pipe2Pressure);
         ui->dsbPipe3Pressure->setValue(pipe3Pressure);
         ui->dsbPipe3PressureMaintenance->setValue(pipe3Pressure);
@@ -570,11 +570,11 @@ void MainWindow::serialMessage(uint command, QByteArray data)
 
     case 0x33:
 
- //       waterTankLiquidLevel = quint8(data[0]);
- //       waterTankTemperature = qint16(((data[2] & 0xff) << 8) | (data[1] & 0xff)) / 10.0;
+        //       waterTankLiquidLevel = quint8(data[0]);
+        //       waterTankTemperature = qint16(((data[2] & 0xff) << 8) | (data[1] & 0xff)) / 10.0;
         cabinTopTemperature = qint16(((data[1] & 0xff) << 8) | (data[0] & 0xff)) / 10.0;
         cabinBottomTemperature = qint16(((data[3] & 0xff) << 8) | (data[2] & 0xff)) / 10.0;
- //       pipeVibrationFrequency = quint16(((data[8] & 0xff) << 8) | (data[7] & 0xff)) / 10.0;
+        //       pipeVibrationFrequency = quint16(((data[8] & 0xff) << 8) | (data[7] & 0xff)) / 10.0;
 
         //ui->dsbTankTemp->setValue(waterTankTemperature);
         //ui->dsbTankTempMaintenance->setValue(waterTankTemperature);
@@ -598,14 +598,14 @@ void MainWindow::prepareTestTimers()
 
     if (myPLC.temperatureTestActive)
     {
-       timerTemp->start(tempPeriod);
+        timerTemp->start(tempPeriod);
     }
 
     if (myPLC.temperatureTestActive)
     {
         timerPressure->start(pressurePeriod);
     }
-/*
+    /*
     if (myPLC.vibrationTestActive)
     {
        timerVib->start(vibPeriod);
@@ -630,7 +630,7 @@ void MainWindow::updateInfo(quint8 index, QByteArray data)
                 if (myPLC.deviceState)
                 {
                     timerTemp->stop();
-                /*    timerVib->stop(); */
+                    /*    timerVib->stop(); */
                     timerPressure->stop();
 
                     writeToLogTable("Device idle.");
@@ -655,10 +655,10 @@ void MainWindow::updateInfo(quint8 index, QByteArray data)
                     ui->bPauseTestManual->setEnabled(false);
 
                     ui->sbTTotalCycleManual->setEnabled(true);
-               //     ui->sbPTotalCycleManual->setEnabled(true);
-               //     ui->sbVTotalCycleManual->setEnabled(true);
-               //     ui->dsbTankTempSetManual->setEnabled(true);
-               //     ui->chbEllipticalVibrationSetManual->setEnabled(true);
+                    //     ui->sbPTotalCycleManual->setEnabled(true);
+                    //     ui->sbVTotalCycleManual->setEnabled(true);
+                    //     ui->dsbTankTempSetManual->setEnabled(true);
+                    //     ui->chbEllipticalVibrationSetManual->setEnabled(true);
                 }
             }
         }
@@ -677,20 +677,20 @@ void MainWindow::updateInfo(quint8 index, QByteArray data)
                     testFolder = ui->laSelectedProfileMain->text() + "-" +
                             QDate::currentDate().toString("yy.MM.dd") + "-" +
                             QTime::currentTime().toString("hh.mm.ss");
-                    #ifdef Q_OS_LINUX
-                        //linux code goes here
-                        if (!QDir("/home/pi/InDetail/records/" + testFolder).exists())
-                        {
-                            QDir().mkdir("/home/pi/InDetail/records/" + testFolder);
-                        }
-                    #endif
-                    #ifdef Q_OS_WIN
-                        // windows code goes here
-                        if (!QDir("records\\" + testFolder).exists())
-                        {
-                            QDir().mkdir("records\\" + testFolder);
-                        }
-                    #endif
+#ifdef Q_OS_LINUX
+                    //linux code goes here
+                    if (!QDir("/home/pi/InDetail/records/" + testFolder).exists())
+                    {
+                        QDir().mkdir("/home/pi/InDetail/records/" + testFolder);
+                    }
+#endif
+#ifdef Q_OS_WIN
+                    // windows code goes here
+                    if (!QDir("records\\" + testFolder).exists())
+                    {
+                        QDir().mkdir("records\\" + testFolder);
+                    }
+#endif
 
                     writeToLogTable("Test started.");
 
@@ -708,10 +708,10 @@ void MainWindow::updateInfo(quint8 index, QByteArray data)
                     ui->bPauseTestManual->setEnabled(true);
 
                     ui->sbTTotalCycleManual->setEnabled(false);
-                //    ui->sbPTotalCycleManual->setEnabled(false);
-                //    ui->sbVTotalCycleManual->setEnabled(false);
-                //    ui->dsbTankTempSetManual->setEnabled(false);
-                //    ui->chbEllipticalVibrationSetManual->setEnabled(false);
+                    //    ui->sbPTotalCycleManual->setEnabled(false);
+                    //    ui->sbVTotalCycleManual->setEnabled(false);
+                    //    ui->dsbTankTempSetManual->setEnabled(false);
+                    //    ui->chbEllipticalVibrationSetManual->setEnabled(false);
                 }
             }
         }
@@ -726,17 +726,17 @@ void MainWindow::updateInfo(quint8 index, QByteArray data)
                 myPLC.deviceState = data[0];
                 if (myPLC.deviceState)
                 {
-                   timerTemp->stop();
-                 /*  timerVib->stop();*/
-                   timerPressure->stop();
+                    timerTemp->stop();
+                    /*  timerVib->stop();*/
+                    timerPressure->stop();
 
-                   writeToLogTable("Test paused.");
+                    writeToLogTable("Test paused.");
 
-                   ui->bPauseTestManual->setEnabled(false);
-                   ui->bPauseTest->setEnabled(false);
+                    ui->bPauseTestManual->setEnabled(false);
+                    ui->bPauseTest->setEnabled(false);
 
-                   ui->bStartTest->setEnabled(true);
-                   ui->bStartTestManual->setEnabled(true);
+                    ui->bStartTest->setEnabled(true);
+                    ui->bStartTestManual->setEnabled(true);
 
 
                 }
@@ -1016,7 +1016,7 @@ void MainWindow::updateInfo(quint8 index, QByteArray data)
         if (tCycle != quint16(((data[4] & 0xff) << 8) | (data[3] & 0xff)))
         {
             tCycle = quint16(((data[4] & 0xff) << 8) | (data[3] & 0xff));
-  //          ui->laCurrentTCycleMain->setText(QString::number(tCycle));
+            //          ui->laCurrentTCycleMain->setText(QString::number(tCycle));
             if (tCycle != 0)
             {
                 tKey = 0;
@@ -1050,14 +1050,14 @@ void MainWindow::updateInfo(quint8 index, QByteArray data)
 
         if ( myPLC.deviceState == char(0x02) )
         {
-            #ifdef Q_OS_LINUX
-                //linux code goes here
-                QString filePath = "/home/pi/InDetail/records/" + testFolder + "/" + "testProgress.txt";
-            #endif
-            #ifdef Q_OS_WIN
-                // windows code goes here
-                QString filePath = "records\\" + testFolder + "\\" + "testProgress.txt";
-            #endif
+#ifdef Q_OS_LINUX
+            //linux code goes here
+            QString filePath = "/home/pi/InDetail/records/" + testFolder + "/" + "testProgress.txt";
+#endif
+#ifdef Q_OS_WIN
+            // windows code goes here
+            QString filePath = "records\\" + testFolder + "\\" + "testProgress.txt";
+#endif
 
             QFile file(filePath);
 
@@ -1087,7 +1087,7 @@ void MainWindow::updateInfo(quint8 index, QByteArray data)
         vStepRepeat = (data[6] & 0xFF) | ((data[7] & 0xFF) <<  8) |
                 ((data[8] & 0xFF) << 16);
 
-     //   ui->laCurrentTStepMain->setText(QString::number(tStep));
+        //   ui->laCurrentTStepMain->setText(QString::number(tStep));
 
         ui->laTCycleCounterDetails->setText(QString::number(tCycle));
         ui->laTStepCounterDetails->setText(QString::number(tStep));
@@ -1119,14 +1119,14 @@ void MainWindow::writeToLogTable(QString info)
                                   QTime::currentTime().toString("hh.mm.ss")));
     if ( myPLC.deviceState == char(0x02) )
     {
-        #ifdef Q_OS_LINUX
-            //linux code goes here
-            QString filePath = "/home/pi/InDetail/records/" + testFolder + "/" + "testLogs.txt";
-        #endif
-        #ifdef Q_OS_WIN
-            // windows code goes here
-            QString filePath = "records\\" + testFolder + "\\" + "testLogs.txt";
-        #endif
+#ifdef Q_OS_LINUX
+        //linux code goes here
+        QString filePath = "/home/pi/InDetail/records/" + testFolder + "/" + "testLogs.txt";
+#endif
+#ifdef Q_OS_WIN
+        // windows code goes here
+        QString filePath = "records\\" + testFolder + "\\" + "testLogs.txt";
+#endif
 
         QFile file(filePath);
 
@@ -1209,6 +1209,7 @@ void MainWindow::on_cbSelectGraph_currentIndexChanged(int index)
 
     }
 }
+
 void MainWindow::on_bEditPro_clicked()
 {
     clearProfileSlot('s', 't', currentProfile);
@@ -1232,19 +1233,19 @@ void MainWindow::on_bEditPro_clicked()
     ui->bEditPro->setEnabled(false);
 
     ui->bNewTStep->setEnabled(true);
-  //  ui->bNewPStep->setEnabled(true);
-  //  ui->bNewVStep->setEnabled(true);
+    //  ui->bNewPStep->setEnabled(true);
+    //  ui->bNewVStep->setEnabled(true);
 
     ui->cbTSelectSUnit->setEnabled(true);
-  //  ui->cbPSelectSUnit->setEnabled(true);
-  // ui->cbVSelectSUnit->setEnabled(true);
-    ui->cbTSelectSType->setEnabled(true);
-  //  ui->cbPSelectSType->setEnabled(true);
-  //  ui->cbVSelectSType->setEnabled(true);
+    //  ui->cbPSelectSUnit->setEnabled(true);
+    // ui->cbVSelectSUnit->setEnabled(true);
+    //  ui->cbTSelectSType->setEnabled(true);
+    //  ui->cbPSelectSType->setEnabled(true);
+    //  ui->cbVSelectSType->setEnabled(true);
 
     ui->dsbTStartValue->setEnabled(true);
-  //  ui->dsbPStartValue->setEnabled(true);
-  //  ui->dsbVStartValue->setEnabled(true);
+    //  ui->dsbPStartValue->setEnabled(true);
+    //  ui->dsbVStartValue->setEnabled(true);
 
     ui->leProfileName->setEnabled(true);
 }
@@ -1263,29 +1264,29 @@ void MainWindow::on_bClearPro_clicked()
 
     ui->dsbTStartValue->setValue(0);
     ui->dsbTStartValue->setEnabled(false);
-  //  ui->dsbPStartValue->setValue(0);
-  //  ui->dsbPStartValue->setEnabled(false);
-  //  ui->dsbVStartValue->setValue(0);
-  //  ui->dsbVStartValue->setEnabled(false);
+    //  ui->dsbPStartValue->setValue(0);
+    //  ui->dsbPStartValue->setEnabled(false);
+    //  ui->dsbVStartValue->setValue(0);
+    //  ui->dsbVStartValue->setEnabled(false);
 
     ui->laTTotalStep->setText("0");
-  //  ui->laPTotalStep->setText("0");
-  //  ui->laVTotalStep->setText("0");
+    //  ui->laPTotalStep->setText("0");
+    //  ui->laVTotalStep->setText("0");
 
     ui->tWidget->setCurrentIndex(0);
-  //  ui->pWidget->setCurrentIndex(0);
-  //  ui->vWidget->setCurrentIndex(0);
+    //  ui->pWidget->setCurrentIndex(0);
+    //  ui->vWidget->setCurrentIndex(0);
 
     ui->cbTSelectSUnit->setEnabled(false);
-  //  ui->cbPSelectSUnit->setEnabled(false);
-  //  ui->cbVSelectSUnit->setEnabled(false);
-    ui->cbTSelectSType->setEnabled(false);
-  //  ui->cbPSelectSType->setEnabled(false);
-  //  ui->cbVSelectSType->setEnabled(false);
+    //  ui->cbPSelectSUnit->setEnabled(false);
+    //  ui->cbVSelectSUnit->setEnabled(false);
+    //  ui->cbTSelectSType->setEnabled(false);
+    //  ui->cbPSelectSType->setEnabled(false);
+    //  ui->cbVSelectSType->setEnabled(false);
 
     ui->tPreview->clearPlottables();
-  //  ui->pPreview->clearPlottables();
-  //  ui->vPreview->clearPlottables();
+    //  ui->pPreview->clearPlottables();
+    //  ui->vPreview->clearPlottables();
 
     currentTStep = 0;
     currentPStep = 0;
@@ -1310,8 +1311,8 @@ void MainWindow::on_cbSelectProfile_currentIndexChanged(int index)
         ui->bSavePro->setEnabled(false);
         ui->bClearPro->setEnabled(false);
         ui->bNewTStep->setEnabled(false);
-  //      ui->bNewPStep->setEnabled(false);
-  //      ui->bNewVStep->setEnabled(false);
+        //      ui->bNewPStep->setEnabled(false);
+        //      ui->bNewVStep->setEnabled(false);
     }
     else
     {
@@ -1319,7 +1320,6 @@ void MainWindow::on_cbSelectProfile_currentIndexChanged(int index)
         currentProfile = index - 1;
     }
 }
-
 
 void MainWindow::on_bNewTStep_clicked()
 {
@@ -1329,7 +1329,7 @@ void MainWindow::on_bNewTStep_clicked()
         ui->laOldTValue->setText(QString::number(oldTValue));
     }
 
-    if ( ( ui->cbTSelectSType->currentIndex() == 0 ) || ( ui->cbTSelectSUnit->currentIndex() == 0 ) )
+    if (  ( ui->cbTSelectSUnit->currentIndex() == 0 ) )
     {
         //nothing selected for neither step type nor step time unit. Going forward should be banned.
     }
@@ -1375,14 +1375,8 @@ void MainWindow::on_bNewTStep_clicked()
 
             ui->laTLinDurationSave->setText("d.");
         }
-
-        if ( ui->cbTSelectSType->currentIndex() == 1 )
-        {
-            //linear step type selected do what you gotta do.
-
-            tProfileSave[currentProfile].step[currentTStep].stepType = 1;
-            ui->tWidget->setCurrentIndex(ui->tWidget->currentIndex() + 1);
-        }
+        tProfileSave[currentProfile].step[currentTStep].stepType = 1;
+        ui->tWidget->setCurrentIndex(ui->tWidget->currentIndex() + 1);
     }
 }
 
@@ -1465,7 +1459,7 @@ void MainWindow::on_bTSaveStep_clicked()
     ui->sbTLDuration->setValue(1);
     ui->dsbTLTarget->setValue(0);
 
-    ui->cbTSelectSType->setCurrentIndex(0);
+    //ui->cbTSelectSType->setCurrentIndex(0);
     ui->cbTSelectSUnit->setCurrentIndex(0);
 
     ui->tWidget->setCurrentIndex(0);
@@ -1498,103 +1492,95 @@ void MainWindow::updateTPreview()
         ui->tPreview_2->xAxis->setLabel("Time (days)");
     }
 
-    if (tProfileSave[currentProfile].step[currentTStep].stepType == 1)
+
+    float delta;
+    float duration = tProfileSave[currentProfile].step[currentTStep].lDuration;
+    float startValue = tProfileSave[currentProfile].startValue;
+    float oldTarget = tProfileSave[currentProfile].step[currentTStep-1].lTarget;
+    float target = tProfileSave[currentProfile].step[currentTStep].lTarget;
+    float oldDuration= tProfileSave[currentProfile].step[currentTStep-1].lDuration;
+
+    QVector<double> tPreviewX( ( duration * 10 ) + 1 ), tPreviewY( ( duration * 10 ) + 1 );
+    QVector<double> tPreviewX_2(21), tPreviewY_2( 21 );
+
+    if (currentTStep == 0)
     {
-        float delta;
-        float duration = tProfileSave[currentProfile].step[currentTStep].lDuration;
-        float startValue = tProfileSave[currentProfile].startValue;
-        float oldTarget = tProfileSave[currentProfile].step[currentTStep-1].lTarget;
-        float target = tProfileSave[currentProfile].step[currentTStep].lTarget;
-        float oldDuration= tProfileSave[currentProfile].step[currentTStep-1].lDuration;
-
-        float totalDuration;
-        QVector<double> tPreviewX( ( duration * 10 ) + 1 ), tPreviewY( ( duration * 10 ) + 1 );
-        QVector<double> tPreviewX_2(200), tPreviewY_2( (duration*10 ) + 1 );
-
-        if (currentTStep == 0)
+        tPreviewY[0] = startValue;
+        tPreviewX[0] = 0;
+        delta = target - startValue;
+        tPreviewY_2[1] = target;
+        tPreviewX_2[1] = duration;
+        tPreviewY_2[0] = startValue;
+        tPreviewX_2[0] = 0.1;
+    }
+    else
+    {
+        tPreviewY[0] = oldTarget;
+        tPreviewX[0] = 0;
+        delta = target - oldTarget;
+        if (currentTStep == 1)
         {
-            totalDuration = 0;
-
-            tPreviewY[0] = startValue;
-            tPreviewX[0] = 0;
-            delta = target - startValue;
-
-            totalDuration = totalDuration + duration;
             tPreviewY_2[0] = startValue;
             tPreviewX_2[0] = 1;
-
-            tPreviewY_2[1] = target;
-            tPreviewX_2[1] = totalDuration;
-
+            tPreviewY_2[1] = oldTarget;
+            tPreviewX_2[1] = oldDuration;
+            tPreviewY_2[2] = target;
+            tPreviewX_2[2] = tPreviewX_2[1] + duration;
         }
-        else
+        else if (currentTStep == 2)
         {
-            tPreviewY[0] = oldTarget;
-            tPreviewX[0] = 0;
-            delta = target - oldTarget;
-            if (currentTStep == 1)
-            {
-                tPreviewY_2[0] = startValue;
-                tPreviewX_2[0] = 1;
-                tPreviewY_2[1] = oldTarget;
-                tPreviewX_2[1] = oldDuration;
-                tPreviewY_2[2] = target;
-                tPreviewX_2[2] = tPreviewX_2[1] + duration;
-            }
-            else if (currentTStep == 2)
-            {
-                tPreviewY_2[0] = startValue;
-                tPreviewX_2[0] = 1;
-                tPreviewY_2[1] = tProfileSave[currentProfile].step[currentTStep-2].lTarget;
-                tPreviewX_2[1] = tProfileSave[currentProfile].step[currentTStep-2].lDuration;
-                tPreviewY_2[2] = tProfileSave[currentProfile].step[currentTStep-1].lTarget;
-                tPreviewX_2[2] = tPreviewX_2[1] + tProfileSave[currentProfile].step[currentTStep-1].lDuration;
-                tPreviewY_2[3] = target;
-                tPreviewX_2[3] = tPreviewX_2[2] + duration ;
-            }
-            else if (currentTStep == 3)
-            {
-                tPreviewY_2[0] = startValue;
-                tPreviewX_2[0] = 1;
-                tPreviewY_2[1] = tProfileSave[currentProfile].step[currentTStep-3].lTarget;
-                tPreviewX_2[1] = tProfileSave[currentProfile].step[currentTStep-3].lDuration;
-                tPreviewY_2[2] = tProfileSave[currentProfile].step[currentTStep-2].lTarget;
-                tPreviewX_2[2] = tPreviewX_2[currentTStep - 2] + tProfileSave[currentProfile].step[currentTStep-2].lDuration;
-                tPreviewY_2[3] = tProfileSave[currentProfile].step[currentTStep-1].lTarget;
-                tPreviewX_2[3] = tPreviewX_2[currentTStep - 1] + tProfileSave[currentProfile].step[currentTStep-1].lDuration;
-                tPreviewY_2[4] = target;
-                tPreviewX_2[4] = tPreviewX_2[currentTStep] + duration ;
-            }
-            else if (currentTStep >= 4)
-            {
-                tPreviewY_2[0] = startValue;
-                tPreviewX_2[0] = 1;
-                for(int j=1; j < (currentTStep ); j++)
-                {
-                    tPreviewY_2[j] = tProfileSave[currentProfile].step[j-1].lTarget;
-                    tPreviewX_2[j] = tPreviewX_2[j-1] + tProfileSave[currentProfile].step[j-1].lDuration;
-                }
-                tPreviewY_2[currentTStep + 1] = target;
-                tPreviewX_2[currentTStep + 1] = tPreviewX_2[currentTStep] + duration ;
-            }
+            tPreviewY_2[0] = startValue;
+            tPreviewX_2[0] = 1;
+            tPreviewY_2[1] = tProfileSave[currentProfile].step[currentTStep-2].lTarget;
+            tPreviewX_2[1] = tProfileSave[currentProfile].step[currentTStep-2].lDuration;
+            tPreviewY_2[2] = tProfileSave[currentProfile].step[currentTStep-1].lTarget;
+            tPreviewX_2[2] = tPreviewX_2[1] + tProfileSave[currentProfile].step[currentTStep-1].lDuration;
+            tPreviewY_2[3] = target;
+            tPreviewX_2[3] = tPreviewX_2[2] + duration ;
         }
-
-        for(int i=1; i < ( duration * 10) + 1; i++)
+        else if (currentTStep == 3)
         {
-            tPreviewY[i] = tPreviewY[i-1] + ( delta / ( duration * 10 ) );
-            tPreviewX[i] = float(i) / 10;
+            tPreviewY_2[0] = startValue;
+            tPreviewX_2[0] = 1;
+            tPreviewY_2[1] = tProfileSave[currentProfile].step[currentTStep-3].lTarget;
+            tPreviewX_2[1] = tProfileSave[currentProfile].step[currentTStep-3].lDuration;
+            tPreviewY_2[2] = tProfileSave[currentProfile].step[currentTStep-2].lTarget;
+            tPreviewX_2[2] = tPreviewX_2[currentTStep - 2] + tProfileSave[currentProfile].step[currentTStep-2].lDuration;
+            tPreviewY_2[3] = tProfileSave[currentProfile].step[currentTStep-1].lTarget;
+            tPreviewX_2[3] = tPreviewX_2[currentTStep - 1] + tProfileSave[currentProfile].step[currentTStep-1].lDuration;
+            tPreviewY_2[4] = target;
+            tPreviewX_2[4] = tPreviewX_2[currentTStep] + duration ;
         }
-
-        ui->tPreview->graph(0)->setData(tPreviewX, tPreviewY);
-        ui->tPreview->graph(0)->rescaleAxes();
-        ui->tPreview->replot();
-
-        connect(ui->tPreview_2->xAxis, SIGNAL(rangeChanged(QCPRange)), ui->tPreview_2->xAxis2, SLOT(setRange(QCPRange)));
-        connect(ui->tPreview_2->yAxis, SIGNAL(rangeChanged(QCPRange)), ui->tPreview_2->yAxis2, SLOT(setRange(QCPRange)));
-        ui->tPreview_2->graph(0)->setData(tPreviewX_2, tPreviewY_2);
-        ui->tPreview_2->graph(0)->rescaleAxes();
-        ui->tPreview_2->replot();
+        else if (currentTStep >= 4)
+        {
+            tPreviewY_2[0] = startValue;
+            tPreviewX_2[0] = 1;
+            for(int j=1; j < (currentTStep + 1 ); j++)
+            {
+                tPreviewY_2[j] = tProfileSave[currentProfile].step[j-1].lTarget;
+                tPreviewX_2[j] = tPreviewX_2[j-1] + tProfileSave[currentProfile].step[j-1].lDuration;
+            }
+            tPreviewY_2[currentTStep + 1] = target;
+            tPreviewX_2[currentTStep + 1] = tPreviewX_2[currentTStep] + duration ;
+        }
     }
+
+    for(int i=1; i < ( duration * 10) + 1; i++)
+    {
+        tPreviewY[i] = tPreviewY[i-1] + ( delta / ( duration * 10 ) );
+        tPreviewX[i] = float(i) / 10;
+    }
+
+    ui->tPreview->graph(0)->setData(tPreviewX, tPreviewY);
+    ui->tPreview->graph(0)->rescaleAxes();
+    ui->tPreview->replot();
+
+    connect(ui->tPreview_2->xAxis, SIGNAL(rangeChanged(QCPRange)), ui->tPreview_2->xAxis2, SLOT(setRange(QCPRange)));
+    connect(ui->tPreview_2->yAxis, SIGNAL(rangeChanged(QCPRange)), ui->tPreview_2->yAxis2, SLOT(setRange(QCPRange)));
+    ui->tPreview_2->graph(0)->setData(tPreviewX_2, tPreviewY_2);
+    ui->tPreview_2->graph(0)->rescaleAxes();
+    ui->tPreview_2->replot();
+
 }
 
 /*
@@ -3349,29 +3335,29 @@ void MainWindow::on_bSavePro_clicked()
 
     ui->dsbTStartValue->setValue(0);
     ui->dsbTStartValue->setEnabled(false);
-  //  ui->dsbPStartValue->setValue(0);
-  //  ui->dsbPStartValue->setEnabled(false);
-  //  ui->dsbVStartValue->setValue(0);
-  //  ui->dsbVStartValue->setEnabled(false);
+    //  ui->dsbPStartValue->setValue(0);
+    //  ui->dsbPStartValue->setEnabled(false);
+    //  ui->dsbVStartValue->setValue(0);
+    //  ui->dsbVStartValue->setEnabled(false);
 
     ui->laTTotalStep->setText("0");
-  //  ui->laPTotalStep->setText("0");
-  //  ui->laVTotalStep->setText("0");
+    //  ui->laPTotalStep->setText("0");
+    //  ui->laVTotalStep->setText("0");
 
     ui->tWidget->setCurrentIndex(0);
-  //  ui->pWidget->setCurrentIndex(0);
-  //  ui->vWidget->setCurrentIndex(0);
+    //  ui->pWidget->setCurrentIndex(0);
+    //  ui->vWidget->setCurrentIndex(0);
 
     ui->cbTSelectSUnit->setEnabled(false);
-  //  ui->cbPSelectSUnit->setEnabled(false);
-  //  ui->cbVSelectSUnit->setEnabled(false);
-    ui->cbTSelectSType->setEnabled(false);
-  //  ui->cbPSelectSType->setEnabled(false);
-  //  ui->cbVSelectSType->setEnabled(false);
+    //  ui->cbPSelectSUnit->setEnabled(false);
+    //  ui->cbVSelectSUnit->setEnabled(false);
+    //ui->cbTSelectSType->setEnabled(false);
+    //  ui->cbPSelectSType->setEnabled(false);
+    //  ui->cbVSelectSType->setEnabled(false);
 
     ui->tPreview->clearPlottables();
-  //  ui->pPreview->clearPlottables();
-  //  ui->vPreview->clearPlottables();
+    //  ui->pPreview->clearPlottables();
+    //  ui->vPreview->clearPlottables();
 
     currentTStep = 0;
     currentPStep = 0;
@@ -3966,7 +3952,6 @@ void MainWindow::on_cbSelectSUnitEdit_currentIndexChanged(int index)
 
 }
 
-
 void MainWindow::on_cbSelectProfileMain_currentIndexChanged(int index)
 {
     //ui->laCurrentTCycleMain->setText("0");
@@ -4029,7 +4014,7 @@ bool MainWindow::sendProfileOverSerial(QString mode, int index)
     {
         tTotalCycle = ui->sbTTotalCycleManual->value();
         ui->laTTotalCycleMain->setText(QString::number(tTotalCycle));
- //       tWaterTank = ui->dsbTankTempSetManual->value()*10.0;
+        //       tWaterTank = ui->dsbTankTempSetManual->value()*10.0;
     }
 
     cantTouchThis.append(tProfileLoad[index-1].active);
@@ -4070,7 +4055,7 @@ bool MainWindow::sendProfileOverSerial(QString mode, int index)
 
     cantTouchThis.clear();
 
-/*    float pStart = pProfileLoad[index-1].startValue*10.0;
+    /*    float pStart = pProfileLoad[index-1].startValue*10.0;
     float pTotalStep = pProfileLoad[index-1].totalStep;
     quint16 pTotalCycle;
 
@@ -4173,7 +4158,7 @@ bool MainWindow::sendProfileOverSerial(QString mode, int index)
       }
   }
 */
- /*   cantTouchThis.clear();
+    /*   cantTouchThis.clear();
 
     proc->insertProfileMessage(mySerial::makeMessage(0x69,cantTouchThis));
 
@@ -4247,9 +4232,9 @@ bool MainWindow::sendProfileOverSerial(QString mode, int index)
         }
     }
 */
-//    cantTouchThis.clear();
+    //    cantTouchThis.clear();
 
-//    proc->insertProfileMessage(mySerial::makeMessage(0x6C,cantTouchThis));
+    //    proc->insertProfileMessage(mySerial::makeMessage(0x6C,cantTouchThis));
 
     if (mode == "main")
     {
@@ -4270,17 +4255,17 @@ bool MainWindow::sendProfileOverSerial(QString mode, int index)
     else if (mode == "manual")
     {
         quint16 tCycleToStart = ui->sbTCycleSetManual->value();
-  //      quint16 pCycleToStart = ui->sbPCycleSetManual->value();
- //       quint16 vCycleToStart = ui->sbVCycleSetManual->value();
+        //      quint16 pCycleToStart = ui->sbPCycleSetManual->value();
+        //       quint16 vCycleToStart = ui->sbVCycleSetManual->value();
 
         if (ui->cbSelectMethodManual->currentIndex() == 1)
         {
             quint32 tSecondsToStart = ui->dsbTTimeSetManual->value();
-   //         quint32 pSecondsToStart = ui->dsbPTimeSetManual->value();
-   //         quint32 vSecondsToStart = ui->dsbVTimeSetManual->value();
+            //         quint32 pSecondsToStart = ui->dsbPTimeSetManual->value();
+            //         quint32 vSecondsToStart = ui->dsbVTimeSetManual->value();
             quint16 tCycleToStart = ui->sbTCycleSetManual->value();
-   //         quint16 pCycleToStart = ui->sbPCycleSetManual->value();
-    //        quint16 vCycleToStart = ui->sbVCycleSetManual->value();
+            //         quint16 pCycleToStart = ui->sbPCycleSetManual->value();
+            //        quint16 vCycleToStart = ui->sbVCycleSetManual->value();
 
             cantTouchThis.clear();
             cantTouchThis.append(0x01);
@@ -4288,7 +4273,7 @@ bool MainWindow::sendProfileOverSerial(QString mode, int index)
             cantTouchThis.append( (tSecondsToStart) & 0xFF );
             cantTouchThis.append( (tSecondsToStart >> 8) & 0xFF );
             cantTouchThis.append( (tSecondsToStart >> 16) & 0xFF );
-/*
+            /*
             cantTouchThis.append( (pSecondsToStart) & 0xFF );
             cantTouchThis.append( (pSecondsToStart >> 8) & 0xFF );
             cantTouchThis.append( (pSecondsToStart >> 16) & 0xFF );
@@ -4299,7 +4284,7 @@ bool MainWindow::sendProfileOverSerial(QString mode, int index)
 */
             cantTouchThis.append( (tCycleToStart) & 0x00FF);
             cantTouchThis.append( (tCycleToStart) >> 8);
-/*            cantTouchThis.append( (pCycleToStart) & 0x00FF);
+            /*            cantTouchThis.append( (pCycleToStart) & 0x00FF);
             cantTouchThis.append( (pCycleToStart) >> 8);
             cantTouchThis.append( (vCycleToStart) & 0x00FF);
             cantTouchThis.append( (vCycleToStart) >> 8);
@@ -4313,11 +4298,11 @@ bool MainWindow::sendProfileOverSerial(QString mode, int index)
         else if (ui->cbSelectMethodManual->currentIndex() == 2)
         {
             quint8 tStepToStart = ui->sbTStepSetManual->value();
-//            quint8 pStepToStart = ui->sbPStepSetManual->value();
- //           quint8 vStepToStart = ui->sbVStepSetManual->value();
+            //            quint8 pStepToStart = ui->sbPStepSetManual->value();
+            //           quint8 vStepToStart = ui->sbVStepSetManual->value();
             quint16 tStepSecondToStart = ui->sbTStepRepeatSetManual->value();
- //           quint16 pStepSecondToStart = ui->sbPStepRepeatSetManual->value();
- //           quint16 vStepSecondToStart = ui->sbVStepRepeatSetManual->value();
+            //           quint16 pStepSecondToStart = ui->sbPStepRepeatSetManual->value();
+            //           quint16 vStepSecondToStart = ui->sbVStepRepeatSetManual->value();
 
             cantTouchThis.clear();
             cantTouchThis.append(char(0x00));
@@ -4326,17 +4311,17 @@ bool MainWindow::sendProfileOverSerial(QString mode, int index)
             cantTouchThis.clear();
             cantTouchThis.append(0x01);
             cantTouchThis.append(tStepToStart);
-//            cantTouchThis.append(pStepToStart);
-//            cantTouchThis.append(vStepToStart);
+            //            cantTouchThis.append(pStepToStart);
+            //            cantTouchThis.append(vStepToStart);
             cantTouchThis.append( (tStepSecondToStart) & 0x00FF);
             cantTouchThis.append( (tStepSecondToStart) >> 8);
-  /*          cantTouchThis.append( (pStepSecondToStart) & 0x00FF);
+            /*          cantTouchThis.append( (pStepSecondToStart) & 0x00FF);
             cantTouchThis.append( (pStepSecondToStart) >> 8);
             cantTouchThis.append( (vStepSecondToStart) & 0x00FF);
             cantTouchThis.append( (vStepSecondToStart) >> 8);
  */           cantTouchThis.append( (tCycleToStart) & 0x00FF);
             cantTouchThis.append( (tCycleToStart) >> 8);
- /*           cantTouchThis.append( (pCycleToStart) & 0x00FF);
+            /*           cantTouchThis.append( (pCycleToStart) & 0x00FF);
             cantTouchThis.append( (pCycleToStart) >> 8);
             cantTouchThis.append( (vCycleToStart) & 0x00FF);
             cantTouchThis.append( (vCycleToStart) >> 8);
@@ -4396,7 +4381,7 @@ void MainWindow::on_bStartTest_clicked()
 void MainWindow::on_bStopTest_clicked()
 {
     timerTemp->stop();
-  //  timerVib->stop();
+    //  timerVib->stop();
     timerPressure->stop();
 
     proc->stop();
@@ -4426,19 +4411,19 @@ void MainWindow::askOtherStuff()
         cantTouchThis.clear();
         if (askCounter == 1)
         {
-           cantTouchThis.append(mySerial::makeMessage(0x0C,empty));
+            cantTouchThis.append(mySerial::makeMessage(0x0C,empty));
         }
         else if (askCounter == 2)
         {
-          cantTouchThis.append(mySerial::makeMessage(0x0D,empty));
+            cantTouchThis.append(mySerial::makeMessage(0x0D,empty));
         }
         else if (askCounter == 3)
         {
-          cantTouchThis.append(mySerial::makeMessage(0x0E,empty));
+            cantTouchThis.append(mySerial::makeMessage(0x0E,empty));
         }
         else if (askCounter == 4)
         {
-           cantTouchThis.append(mySerial::makeMessage(0x33,empty));
+            cantTouchThis.append(mySerial::makeMessage(0x33,empty));
         }
         askCounter++;
         if (askCounter == 5) askCounter = 1;
@@ -4460,7 +4445,7 @@ void MainWindow::updateTPlot()
     ui->tTestGraph->graph(0)->addData(tKey, cabinTopTemperature);
     ui->tTestGraph->graph(1)->addData(tKey, cabinBottomTemperature);
     // rescale key (horizontal) axis to fit the current data:
-  //  ui->tTestGraph->graph(0)->rescaleKeyAxis();
+    //  ui->tTestGraph->graph(0)->rescaleKeyAxis();
     // replot the graph with the added data
     ui->tTestGraph->replot();
 
@@ -4477,9 +4462,9 @@ void MainWindow::updateTPlot()
 
     if (file.open(QFile::WriteOnly|QFile::Append))
     {
-    QTextStream stream(&file);
-    stream << tKey << "," << cabinTopTemperature << "\n";
-    file.close();
+        QTextStream stream(&file);
+        stream << tKey << "," << cabinTopTemperature << "\n";
+        file.close();
     }
 }
 
@@ -4518,10 +4503,10 @@ void MainWindow::updatePPlots()
 
     if (file.open(QFile::WriteOnly|QFile::Append))
     {
-    QTextStream stream(&file);
-    stream << pKey << "," << pipe1Pressure << "," << pipe2Pressure << "," << pipe3Pressure << "," <<
-              pipe4Pressure << "," << pipe5Pressure << "," << pipe6Pressure << "\n";
-    file.close();
+        QTextStream stream(&file);
+        stream << pKey << "," << pipe1Pressure << "," << pipe2Pressure << "," << pipe3Pressure << "," <<
+                  pipe4Pressure << "," << pipe5Pressure << "," << pipe6Pressure << "\n";
+        file.close();
     }
 
 }
@@ -4605,10 +4590,10 @@ void MainWindow::on_bStartMaintenance_clicked()
                 ui->tabWidget->setTabEnabled(4, false);
 
                 ui->bStartCooler->setEnabled(true);
-              //  ui->bStartVibration->setEnabled(true);
-              //  ui->dsbVibrationMaintenance->setEnabled(true);
-              //  ui->bStartPressure->setEnabled(true);
-              //  ui->dsbPressureMaintenance->setEnabled(true);
+                //  ui->bStartVibration->setEnabled(true);
+                //  ui->dsbVibrationMaintenance->setEnabled(true);
+                //  ui->bStartPressure->setEnabled(true);
+                //  ui->dsbPressureMaintenance->setEnabled(true);
                 ui->bRes->setEnabled(true);
                 ui->chbRes1->setEnabled(true);
                 ui->chbRes2->setEnabled(true);
@@ -4643,10 +4628,10 @@ void MainWindow::on_bStartMaintenance_clicked()
         ui->tabWidget->setTabEnabled(4, true);
 
         ui->bStartCooler->setEnabled(false);
-       // ui->bStartVibration->setEnabled(false);
-       // ui->dsbVibrationMaintenance->setEnabled(false);
-       // ui->bStartPressure->setEnabled(false);
-       // ui->dsbPressureMaintenance->setEnabled(false);
+        // ui->bStartVibration->setEnabled(false);
+        // ui->dsbVibrationMaintenance->setEnabled(false);
+        // ui->bStartPressure->setEnabled(false);
+        // ui->dsbPressureMaintenance->setEnabled(false);
         ui->bRes->setEnabled(false);
         ui->chbRes1->setEnabled(false);
         ui->chbRes2->setEnabled(false);
@@ -5054,51 +5039,51 @@ void MainWindow::on_cbSelectMethodManual_currentIndexChanged(int index)
     if (index == 0)
     {
         ui->dsbTTimeSetManual->setValue(0);
-    //    ui->dsbPTimeSetManual->setValue(0);
-    //    ui->dsbVTimeSetManual->setValue(0);
+        //    ui->dsbPTimeSetManual->setValue(0);
+        //    ui->dsbVTimeSetManual->setValue(0);
         ui->sbTStepSetManual->setValue(1);
-    //    ui->sbPStepSetManual->setValue(1);
-    //    ui->sbVStepSetManual->setValue(1);
+        //    ui->sbPStepSetManual->setValue(1);
+        //    ui->sbVStepSetManual->setValue(1);
         ui->sbTStepRepeatSetManual->setValue(0);
-    //    ui->sbPStepRepeatSetManual->setValue(0);
-    //    ui->sbVStepRepeatSetManual->setValue(0);
+        //    ui->sbPStepRepeatSetManual->setValue(0);
+        //    ui->sbVStepRepeatSetManual->setValue(0);
         ui->sbTCycleSetManual->setValue(0);
-    //    ui->sbPCycleSetManual->setValue(0);
-    //    ui->sbVCycleSetManual->setValue(0);
+        //    ui->sbPCycleSetManual->setValue(0);
+        //    ui->sbVCycleSetManual->setValue(0);
 
         ui->dsbTTimeSetManual->setEnabled(false);
-    //    ui->dsbPTimeSetManual->setEnabled(false);
-    //    ui->dsbVTimeSetManual->setEnabled(false);
+        //    ui->dsbPTimeSetManual->setEnabled(false);
+        //    ui->dsbVTimeSetManual->setEnabled(false);
         ui->sbTStepSetManual->setEnabled(false);
-    //    ui->sbPStepSetManual->setEnabled(false);
-    //    ui->sbVStepSetManual->setEnabled(false);
+        //    ui->sbPStepSetManual->setEnabled(false);
+        //    ui->sbVStepSetManual->setEnabled(false);
         ui->sbTStepRepeatSetManual->setEnabled(false);
-    //    ui->sbPStepRepeatSetManual->setEnabled(false);
-    //    ui->sbVStepRepeatSetManual->setEnabled(false);
+        //    ui->sbPStepRepeatSetManual->setEnabled(false);
+        //    ui->sbVStepRepeatSetManual->setEnabled(false);
         ui->sbTCycleSetManual->setEnabled(false);
-    //    ui->sbPCycleSetManual->setEnabled(false);
-    //    ui->sbVCycleSetManual->setEnabled(false);
+        //    ui->sbPCycleSetManual->setEnabled(false);
+        //    ui->sbVCycleSetManual->setEnabled(false);
     }
     else if (index == 1)
     {
         ui->dsbTTimeSetManual->setValue(0);
-   //     ui->dsbPTimeSetManual->setValue(0);
-   //     ui->dsbVTimeSetManual->setValue(0);
+        //     ui->dsbPTimeSetManual->setValue(0);
+        //     ui->dsbVTimeSetManual->setValue(0);
         ui->sbTStepSetManual->setValue(0);
-   //     ui->sbPStepSetManual->setValue(0);
-   //     ui->sbVStepSetManual->setValue(0);
+        //     ui->sbPStepSetManual->setValue(0);
+        //     ui->sbVStepSetManual->setValue(0);
         ui->sbTStepRepeatSetManual->setValue(1);
-   //     ui->sbPStepRepeatSetManual->setValue(1);
-   //     ui->sbVStepRepeatSetManual->setValue(1);
+        //     ui->sbPStepRepeatSetManual->setValue(1);
+        //     ui->sbVStepRepeatSetManual->setValue(1);
         ui->sbTCycleSetManual->setValue(0);
-   //     ui->sbPCycleSetManual->setValue(0);
-   //     ui->sbVCycleSetManual->setValue(0);
+        //     ui->sbPCycleSetManual->setValue(0);
+        //     ui->sbVCycleSetManual->setValue(0);
         ui->sbTStepSetManual->setEnabled(false);
-   //     ui->sbPStepSetManual->setEnabled(false);
-   //     ui->sbVStepSetManual->setEnabled(false);
+        //     ui->sbPStepSetManual->setEnabled(false);
+        //     ui->sbVStepSetManual->setEnabled(false);
         ui->sbTStepRepeatSetManual->setEnabled(false);
-   //     ui->sbPStepRepeatSetManual->setEnabled(false);
-   //     ui->sbVStepRepeatSetManual->setEnabled(false);
+        //     ui->sbPStepRepeatSetManual->setEnabled(false);
+        //     ui->sbVStepRepeatSetManual->setEnabled(false);
 
         quint8 profileNumber = ui->cbSelectProfileManual->currentIndex() - 1;
 
@@ -5114,15 +5099,15 @@ void MainWindow::on_cbSelectMethodManual_currentIndexChanged(int index)
         }
         if (pProfileLoad[profileNumber].active)
         {
-    //        ui->dsbPTimeSetManual->setEnabled(true);
-    //        ui->sbPCycleSetManual->setEnabled(true);
+            //        ui->dsbPTimeSetManual->setEnabled(true);
+            //        ui->sbPCycleSetManual->setEnabled(true);
         }
         else
         {
-    //        ui->dsbPTimeSetManual->setEnabled(false);
-    //        ui->sbPCycleSetManual->setEnabled(false);
+            //        ui->dsbPTimeSetManual->setEnabled(false);
+            //        ui->sbPCycleSetManual->setEnabled(false);
         }
-    /*    if (vProfileLoad[profileNumber].active)
+        /*    if (vProfileLoad[profileNumber].active)
         {
     //        ui->dsbVTimeSetManual->setEnabled(true);
     //        ui->sbVCycleSetManual->setEnabled(true);
@@ -5139,21 +5124,21 @@ void MainWindow::on_cbSelectMethodManual_currentIndexChanged(int index)
     else if (index == 2)
     {
         ui->dsbTTimeSetManual->setValue(0);
-      //  ui->dsbPTimeSetManual->setValue(0);
-      //  ui->dsbVTimeSetManual->setValue(0);
+        //  ui->dsbPTimeSetManual->setValue(0);
+        //  ui->dsbVTimeSetManual->setValue(0);
         ui->sbTStepSetManual->setValue(0);
-      //  ui->sbPStepSetManual->setValue(0);
-      //  ui->sbVStepSetManual->setValue(0);
+        //  ui->sbPStepSetManual->setValue(0);
+        //  ui->sbVStepSetManual->setValue(0);
         ui->sbTStepRepeatSetManual->setValue(1);
-      //  ui->sbPStepRepeatSetManual->setValue(1);
-      //  ui->sbVStepRepeatSetManual->setValue(1);
+        //  ui->sbPStepRepeatSetManual->setValue(1);
+        //  ui->sbVStepRepeatSetManual->setValue(1);
         ui->sbTCycleSetManual->setValue(0);
-      //  ui->sbPCycleSetManual->setValue(0);
-      //  ui->sbVCycleSetManual->setValue(0);
+        //  ui->sbPCycleSetManual->setValue(0);
+        //  ui->sbVCycleSetManual->setValue(0);
 
         ui->dsbTTimeSetManual->setEnabled(false);
-      //  ui->dsbPTimeSetManual->setEnabled(false);
-      //  ui->dsbVTimeSetManual->setEnabled(false);
+        //  ui->dsbPTimeSetManual->setEnabled(false);
+        //  ui->dsbVTimeSetManual->setEnabled(false);
 
         quint8 profileNumber = ui->cbSelectProfileManual->currentIndex() - 1;
         if (tProfileLoad[profileNumber].active)
@@ -5168,7 +5153,7 @@ void MainWindow::on_cbSelectMethodManual_currentIndexChanged(int index)
             ui->sbTStepRepeatSetManual->setEnabled(false);
             ui->sbTCycleSetManual->setEnabled(false);
         }
-     /*   if (pProfileLoad[profileNumber].active)
+        /*   if (pProfileLoad[profileNumber].active)
         {
             ui->sbPStepSetManual->setEnabled(true);
             ui->sbPStepRepeatSetManual->setEnabled(true);
@@ -5203,8 +5188,8 @@ void MainWindow::on_cbSelectProfileManual_currentIndexChanged(int index)
     ui->bStartTestManual->setEnabled(false);
     ui->cbSelectProfileMain->setCurrentIndex(0);
     ui->sbTTotalCycleManual->setValue(1);
-  //  ui->sbPTotalCycleManual->setValue(1);
-  //  ui->sbVTotalCycleManual->setValue(1);
+    //  ui->sbPTotalCycleManual->setValue(1);
+    //  ui->sbVTotalCycleManual->setValue(1);
     ui->laTTotalCycleMain->setText(QString::number(1));
 
 
@@ -5235,7 +5220,7 @@ void MainWindow::on_cbSelectProfileManual_currentIndexChanged(int index)
             {
                 ui->sbTTotalCycleManual->setEnabled(true);
             }
-/*
+            /*
             if (pProfileLoad[index-1].active == 0)
             {
                 ui->sbPTotalCycleManual->setValue(0);
@@ -5356,7 +5341,7 @@ void MainWindow::on_bStartTestManual_clicked()
 void MainWindow::on_bStopTestManual_clicked()
 {
     timerTemp->stop();
-//    timerVib->stop();
+    //    timerVib->stop();
     timerPressure->stop();
 
     proc->stop();
@@ -5386,7 +5371,7 @@ void MainWindow::on_bSendProfileManual_clicked()
 void MainWindow::on_bPauseTestManual_clicked()
 {
     timerTemp->stop();
- //   timerVib->stop();
+    //   timerVib->stop();
     timerPressure->stop();
 
     proc->stop();
@@ -5400,7 +5385,7 @@ void MainWindow::on_bPauseTestManual_clicked()
 void MainWindow::on_bPauseTest_clicked()
 {
     timerTemp->stop();
- //   timerVib->stop();
+    //   timerVib->stop();
     timerPressure->stop();
 
     proc->stop();
@@ -5413,26 +5398,26 @@ void MainWindow::on_bPauseTest_clicked()
 
 void MainWindow::mousePress()
 {
-  // if an axis is selected, only allow the direction of that axis to be dragged
-  // if no axis is selected, both directions may be dragged
+    // if an axis is selected, only allow the direction of that axis to be dragged
+    // if no axis is selected, both directions may be dragged
 
-  if (ui->tTestGraph->xAxis->selectedParts().testFlag(QCPAxis::spAxis))
-    ui->tTestGraph->axisRect()->setRangeDrag(ui->tTestGraph->xAxis->orientation());
-  else if (ui->tTestGraph->yAxis->selectedParts().testFlag(QCPAxis::spAxis))
-    ui->tTestGraph->axisRect()->setRangeDrag(ui->tTestGraph->yAxis->orientation());
-  else
-    ui->tTestGraph->axisRect()->setRangeDrag(Qt::Horizontal|Qt::Vertical);
+    if (ui->tTestGraph->xAxis->selectedParts().testFlag(QCPAxis::spAxis))
+        ui->tTestGraph->axisRect()->setRangeDrag(ui->tTestGraph->xAxis->orientation());
+    else if (ui->tTestGraph->yAxis->selectedParts().testFlag(QCPAxis::spAxis))
+        ui->tTestGraph->axisRect()->setRangeDrag(ui->tTestGraph->yAxis->orientation());
+    else
+        ui->tTestGraph->axisRect()->setRangeDrag(Qt::Horizontal|Qt::Vertical);
 }
 
 void MainWindow::mouseWheel()
 {
-  // if an axis is selected, only allow the direction of that axis to be zoomed
-  // if no axis is selected, both directions may be zoomed
+    // if an axis is selected, only allow the direction of that axis to be zoomed
+    // if no axis is selected, both directions may be zoomed
 
-  if (ui->tTestGraph->xAxis->selectedParts().testFlag(QCPAxis::spAxis))
-    ui->tTestGraph->axisRect()->setRangeZoom(ui->tTestGraph->xAxis->orientation());
-  else if (ui->tTestGraph->yAxis->selectedParts().testFlag(QCPAxis::spAxis))
-    ui->tTestGraph->axisRect()->setRangeZoom(ui->tTestGraph->yAxis->orientation());
-  else
-    ui->tTestGraph->axisRect()->setRangeZoom(Qt::Horizontal|Qt::Vertical);
+    if (ui->tTestGraph->xAxis->selectedParts().testFlag(QCPAxis::spAxis))
+        ui->tTestGraph->axisRect()->setRangeZoom(ui->tTestGraph->xAxis->orientation());
+    else if (ui->tTestGraph->yAxis->selectedParts().testFlag(QCPAxis::spAxis))
+        ui->tTestGraph->axisRect()->setRangeZoom(ui->tTestGraph->yAxis->orientation());
+    else
+        ui->tTestGraph->axisRect()->setRangeZoom(Qt::Horizontal|Qt::Vertical);
 }
