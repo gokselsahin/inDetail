@@ -63,7 +63,7 @@ QTableBar
     <string notr="true"/>
    </property>
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="1">
+    <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="autoFillBackground">
        <bool>false</bool>
@@ -105,7 +105,7 @@ QTableBar
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>0</number>
       </property>
       <property name="iconSize">
        <size>
@@ -253,121 +253,6 @@ QTableBar
         <property name="text">
          <string>Stop</string>
         </property>
-       </widget>
-       <widget class="QComboBox" name="cbSelectProfileMain">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>10</y>
-          <width>261</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <item>
-         <property name="text">
-          <string>Select a profile from list...</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 1</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 2</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 3</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 4</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 5</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 6</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 7</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 8</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 9</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 10</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 11</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 12</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 13</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 14</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 15</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 16</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 17</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 18</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 19</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 20</string>
-         </property>
-        </item>
        </widget>
        <widget class="QLabel" name="label">
         <property name="geometry">
@@ -590,6 +475,21 @@ QTableBar
           </widget>
          </item>
         </layout>
+       </widget>
+       <widget class="QComboBox" name="cbSelectProfileMain">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>261</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <item>
+         <property name="text">
+          <string>Select a profile from list...</string>
+         </property>
+        </item>
        </widget>
       </widget>
       <widget class="QWidget" name="tab_Details">
@@ -2467,13 +2367,224 @@ QTableBar
        <attribute name="title">
         <string>New Profile</string>
        </attribute>
+       <widget class="QLabel" name="label_29">
+        <property name="geometry">
+         <rect>
+          <x>520</x>
+          <y>20</y>
+          <width>91</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Profile Name</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="leProfileName">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>630</x>
+          <y>20</y>
+          <width>141</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="maxLength">
+         <number>20</number>
+        </property>
+        <property name="readOnly">
+         <bool>false</bool>
+        </property>
+        <property name="clearButtonEnabled">
+         <bool>false</bool>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="cbSelectProfile">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>10</y>
+          <width>231</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <item>
+         <property name="text">
+          <string>Select a profile slot...</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Profile 1</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Profile 2</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Profile 3</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Profile 4</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Profile 5</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Profile 6</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Profile 7</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Profile 8</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Profile 9</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Profile 10</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Profile 11</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Profile 12</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Profile 13</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Profile 14</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Profile 15</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Profile 16</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Profile 17</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Profile 18</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Profile 19</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Profile 20</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QPushButton" name="bSavePro">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>660</x>
+          <y>360</y>
+          <width>101</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Save Profile</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="bClearPro">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>530</x>
+          <y>360</y>
+          <width>101</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Clear/Exit</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="bEditPro">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>270</x>
+          <y>10</y>
+          <width>231</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Create New Profile</string>
+        </property>
+       </widget>
+       <widget class="QCustomPlot" name="tPreview_2" native="true">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>50</y>
+          <width>501</width>
+          <height>351</height>
+         </rect>
+        </property>
+       </widget>
        <widget class="QStackedWidget" name="tWidget">
         <property name="geometry">
          <rect>
           <x>520</x>
-          <y>100</y>
+          <y>50</y>
           <width>251</width>
-          <height>311</height>
+          <height>301</height>
          </rect>
         </property>
         <property name="autoFillBackground">
@@ -2483,7 +2594,7 @@ QTableBar
          <enum>QFrame::StyledPanel</enum>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>2</number>
         </property>
         <widget class="QWidget" name="page">
          <widget class="QPushButton" name="bNewTStep">
@@ -2593,7 +2704,7 @@ QTableBar
           <property name="geometry">
            <rect>
             <x>10</x>
-            <y>110</y>
+            <y>190</y>
             <width>231</width>
             <height>41</height>
            </rect>
@@ -2905,217 +3016,6 @@ QTableBar
           </property>
          </widget>
         </widget>
-       </widget>
-       <widget class="QLabel" name="label_29">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>70</y>
-          <width>91</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Profile Name</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="leProfileName">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>100</x>
-          <y>70</y>
-          <width>141</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="maxLength">
-         <number>20</number>
-        </property>
-        <property name="readOnly">
-         <bool>false</bool>
-        </property>
-        <property name="clearButtonEnabled">
-         <bool>false</bool>
-        </property>
-       </widget>
-       <widget class="QComboBox" name="cbSelectProfile">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>20</y>
-          <width>231</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <item>
-         <property name="text">
-          <string>Select a profile slot...</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 1</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 2</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 3</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 4</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 5</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 6</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 7</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 8</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 9</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 10</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 11</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 12</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 13</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 14</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 15</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 16</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 17</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 18</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 19</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 20</string>
-         </property>
-        </item>
-       </widget>
-       <widget class="QPushButton" name="bSavePro">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>660</x>
-          <y>20</y>
-          <width>101</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Save Profile</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="bClearPro">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>530</x>
-          <y>20</y>
-          <width>101</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Clear/Exit</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="bEditPro">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>270</x>
-          <y>20</y>
-          <width>231</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Create New Profile</string>
-        </property>
-       </widget>
-       <widget class="QCustomPlot" name="tPreview_2" native="true">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>100</y>
-          <width>501</width>
-          <height>311</height>
-         </rect>
-        </property>
        </widget>
       </widget>
       <widget class="QWidget" name="tab_Manual">

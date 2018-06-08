@@ -133,7 +133,9 @@ private slots:
     void on_bStartMaintenance_clicked();
     void mousePress();
     void mouseWheel();
+    void setupComboBoxes();
 
+    void on_cbSelectProfileMain_2_currentIndexChanged(int index);
 
 private:
     Ui::MainWindow *ui;

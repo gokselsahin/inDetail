@@ -128,6 +128,8 @@ MainWindow::MainWindow(QWidget *parent) :
     setupPreviewGraphs();
     setupVisuals();
 
+    setupComboBoxes();
+
     timer1000 = new QTimer(this);
     connect(timer1000, SIGNAL(timeout()), this, SLOT(getCurrentDateTime()));
     timer1000->start(1000);
@@ -2822,11 +2824,19 @@ bool MainWindow::readProfiles(char rType, int index)
 
         if(!file.open(QIODevice::ReadOnly))
         {
+            if (rType != 'g')
+            {
             QMessageBox::information(
                         this,
                         tr(appName),
                         tr("Could not open profile file to be read.") );
             return false;
+            }
+            else
+            {
+                ui->cbSelectProfileMain->addItem(QString::number(index) + " - empty slot");
+                ui->cbSelectProfileMain->setItemData(index, QColor( Qt::gray ), Qt::TextColorRole );
+            }
         }
         else
         {
@@ -3136,6 +3146,26 @@ bool MainWindow::readProfiles(char rType, int index)
                     pos = pos + 3;
                 }
             }
+            else if(rType == 'g')
+            {
+                pos = 0;
+
+                if (rProfile[pos] == '/')
+                {
+                    ui->cbSelectProfileMain->addItem(QString::number(index) + " - " + "isimsiz");
+
+                }
+                else
+                {
+                    while (rProfile[pos] != '/')
+                    {
+                        name.append(char(rProfile[pos]));
+                        pos++;
+                    }
+                    ui->cbSelectProfileMain->addItem( QString::number(index) + " - " + name);
+                }
+
+            }
         }
     }
     return true;
@@ -3327,6 +3357,10 @@ void MainWindow::on_bSavePro_clicked()
 
     profile.append("/End of Profile.");
 
+
+    QString name = QString::number(currentProfile + 1) +" - "+ ui->leProfileName->text();
+    ui->cbSelectProfileMain->setItemText(currentProfile + 1, name);
+
     ui->cbSelectProfile->setCurrentIndex(0);
     ui->cbSelectProfile->setEnabled(true);
 
@@ -3395,6 +3429,7 @@ void MainWindow::on_bSavePro_clicked()
     ui->tabWidget->setTabEnabled(2, true);
     ui->tabWidget->setTabEnabled(4, true);
     ui->tabWidget->setTabEnabled(5, true);
+
 }
 
 void MainWindow::on_cbSelectProfileEdit_currentIndexChanged(int index)
@@ -3983,10 +4018,6 @@ void MainWindow::on_cbSelectProfileMain_currentIndexChanged(int index)
             {
                 ui->sbTTotalCycle->setEnabled(true);
             }
-
-
-
-
         }
     }
 
@@ -5421,3 +5452,16 @@ void MainWindow::mouseWheel()
     else
         ui->tTestGraph->axisRect()->setRangeZoom(Qt::Horizontal|Qt::Vertical);
 }
+
+void MainWindow::setupComboBoxes()
+{
+    for (int i = 0; i <= 20; i++)
+    {
+       if( readProfiles('g', i))
+       {
+
+       }
+    }
+}
+
+
