@@ -58,6 +58,8 @@ quint16 tCycle;
 quint16 pCycle;
 quint16 vCycle;
 
+quint32 totalTestDuration;
+
 quint8 askCounter = 1;
 
 QString testFolder;
@@ -4003,6 +4005,7 @@ void MainWindow::on_cbSelectProfileMain_currentIndexChanged(int index)
         ui->laSelectedProfileMain->setText("No Profile Selected");
         ui->laSelectedProfileManual->setText("No Profile Selected");
         ui->bSendProfileMain->setEnabled(false);
+        totalTestDuration = 0;
     }
     else
     {
@@ -4017,6 +4020,14 @@ void MainWindow::on_cbSelectProfileMain_currentIndexChanged(int index)
             else
             {
                 ui->sbTTotalCycle->setEnabled(true);
+                for(int j=1; j <= (tProfileLoad[index-1].totalStep ); j++)
+                {
+                    totalTestDuration = totalTestDuration + tProfileLoad[index-1].step[j-1].lDuration;
+                }
+                ui->laTotalTestSecond->setText(QString::number(totalTestDuration)) ;
+                ui->progressBar->setValue(0);
+                ui->progressBar->setMinimum(0);
+                ui->progressBar->setMaximum(totalTestDuration);
             }
         }
     }
@@ -4479,6 +4490,7 @@ void MainWindow::updateTPlot()
     //  ui->tTestGraph->graph(0)->rescaleKeyAxis();
     // replot the graph with the added data
     ui->tTestGraph->replot();
+    ui->progressBar->setValue(tElapsedSeconds);
 
 #ifdef Q_OS_LINUX
     //linux code goes here
