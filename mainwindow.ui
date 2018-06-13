@@ -162,9 +162,9 @@ radius: 2, stop: 0 #A8EB12, stop: 1 #65BAAB );
         <property name="geometry">
          <rect>
           <x>470</x>
-          <y>360</y>
+          <y>350</y>
           <width>291</width>
-          <height>41</height>
+          <height>51</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -205,9 +205,9 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>340</y>
+          <y>350</y>
           <width>211</width>
-          <height>61</height>
+          <height>51</height>
          </rect>
         </property>
         <property name="font">
@@ -259,10 +259,10 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
         </property>
         <property name="geometry">
          <rect>
-          <x>10</x>
-          <y>270</y>
+          <x>20</x>
+          <y>200</y>
           <width>211</width>
-          <height>61</height>
+          <height>51</height>
          </rect>
         </property>
         <property name="font">
@@ -317,10 +317,10 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
         </property>
         <property name="geometry">
          <rect>
-          <x>350</x>
-          <y>270</y>
+          <x>360</x>
+          <y>200</y>
           <width>101</width>
-          <height>61</height>
+          <height>51</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -423,10 +423,10 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
         </property>
         <property name="geometry">
          <rect>
-          <x>10</x>
-          <y>200</y>
+          <x>20</x>
+          <y>140</y>
           <width>211</width>
-          <height>61</height>
+          <height>51</height>
          </rect>
         </property>
         <property name="font">
@@ -525,10 +525,10 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
         </property>
         <property name="geometry">
          <rect>
-          <x>240</x>
-          <y>270</y>
+          <x>250</x>
+          <y>200</y>
           <width>101</width>
-          <height>61</height>
+          <height>51</height>
          </rect>
         </property>
         <property name="font">
@@ -571,29 +571,13 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
          <string>Pause</string>
         </property>
        </widget>
-       <widget class="QLabel" name="laTTotalCycleMain">
-        <property name="geometry">
-         <rect>
-          <x>260</x>
-          <y>90</y>
-          <width>47</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>1</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
        <widget class="QPushButton" name="bCabinDoor">
         <property name="geometry">
          <rect>
           <x>240</x>
-          <y>340</y>
+          <y>350</y>
           <width>211</width>
-          <height>61</height>
+          <height>51</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -631,22 +615,6 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
         </property>
         <property name="checkable">
          <bool>true</bool>
-        </property>
-       </widget>
-       <widget class="QLabel" name="laTTestElepsedSecond">
-        <property name="geometry">
-         <rect>
-          <x>260</x>
-          <y>120</y>
-          <width>47</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>1</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
        </widget>
        <widget class="QWidget" name="layoutWidget">
@@ -711,34 +679,174 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
          </property>
         </item>
        </widget>
-       <widget class="QLabel" name="laTotalTestSecond">
-        <property name="geometry">
-         <rect>
-          <x>330</x>
-          <y>120</y>
-          <width>41</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>1</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
        <widget class="QProgressBar" name="progressBar">
         <property name="geometry">
          <rect>
-          <x>90</x>
-          <y>150</y>
-          <width>118</width>
+          <x>40</x>
+          <y>260</y>
+          <width>391</width>
           <height>23</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QProgressBar {
+    border: 2px solid grey;
+    border-radius: 5px;
+    text-align: center;
+}
+
+QProgressBar::chunk {
+    background-color: #05B8CC;
+    width: 20px;
+}</string>
         </property>
         <property name="value">
          <number>24</number>
         </property>
+       </widget>
+       <widget class="QWidget" name="">
+        <property name="geometry">
+         <rect>
+          <x>250</x>
+          <y>290</y>
+          <width>191</width>
+          <height>29</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QLabel" name="label_5">
+           <property name="styleSheet">
+            <string notr="true">QLabel{
+color : #fff;
+font: 75 14pt &quot;Gill Sans MT&quot;;
+}</string>
+           </property>
+           <property name="text">
+            <string>İşlenen Test Süresi</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>28</width>
+             <height>18</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLabel" name="laTTestElepsedSecond">
+           <property name="text">
+            <string>1</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>290</y>
+          <width>190</width>
+          <height>29</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <widget class="QLabel" name="label_4">
+           <property name="styleSheet">
+            <string notr="true">QLabel{
+color : #fff;
+font: 75 14pt &quot;Gill Sans MT&quot;;
+}</string>
+           </property>
+           <property name="text">
+            <string>Toplam Test Süresi</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>28</width>
+             <height>18</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLabel" name="laTotalTestSecond">
+           <property name="text">
+            <string>1</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>320</y>
+          <width>190</width>
+          <height>29</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <item>
+          <widget class="QLabel" name="label_7">
+           <property name="styleSheet">
+            <string notr="true">QLabel{
+color : #fff;
+font: 75 14pt &quot;Gill Sans MT&quot;;
+}</string>
+           </property>
+           <property name="text">
+            <string>İşlenen Cycle</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>28</width>
+             <height>18</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLabel" name="laTTotalCycleMain">
+           <property name="text">
+            <string>1</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </widget>
       </widget>
       <widget class="QWidget" name="tab_Details">

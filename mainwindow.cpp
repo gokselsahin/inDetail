@@ -22,6 +22,8 @@ quint8 currentTStep = 0;
 quint8 currentPStep = 0;
 quint8 currentVStep = 0;
 
+quint16 profileId = 0;
+
 double oldTValue = 0;
 double oldPValue = 0;
 double oldVValue = 0;
@@ -621,6 +623,11 @@ void MainWindow::updateInfo(quint8 index, QByteArray data)
 {
     if (index == 3)
     {
+        if (profileId != data[5])
+        {
+            profileId = quint16(data[5]);
+            ui->cbSelectProfileMain->setCurrentIndex(profileId);
+        }
         if (data[0] == char(0x01))
         {
             if (myPLC.deviceState == (data[0]))
@@ -1028,7 +1035,13 @@ void MainWindow::updateInfo(quint8 index, QByteArray data)
                 setupTGraph();
             }
         }
-        if ( pCycle != quint16(((data[6] & 0xff) << 8) | (data[5] & 0xff)) )
+        if (profileId != data[5])
+        {
+            profileId = quint16(data[5]);
+            ui->cbSelectProfileMain->setCurrentIndex(profileId);
+        }
+
+        /*     if ( pCycle != quint16(((data[6] & 0xff) << 8) | (data[5] & 0xff)) )
         {
 
             pCycle = quint16(((data[6] & 0xff) << 8) | (data[5] & 0xff));
@@ -1051,7 +1064,7 @@ void MainWindow::updateInfo(quint8 index, QByteArray data)
                 //setupVGraph();
             }
         }
-
+*/
         if ( myPLC.deviceState == char(0x02) )
         {
 #ifdef Q_OS_LINUX
@@ -4022,11 +4035,15 @@ void MainWindow::on_cbSelectProfileMain_currentIndexChanged(int index)
                 ui->sbTTotalCycle->setEnabled(true);
                 for(int j=1; j <= (tProfileLoad[index-1].totalStep ); j++)
                 {
-                    totalTestDuration = totalTestDuration + tProfileLoad[index-1].step[j-1].lDuration;
+                   if (tProfileLoad[index-1].step[j-1].stepUnit == 2 )
+                   {
+                    totalTestDuration = totalTestDuration + (tProfileLoad[index-1].step[j-1].lDuration * 60);
+                   }
                 }
                 ui->laTotalTestSecond->setText(QString::number(totalTestDuration)) ;
                 ui->progressBar->setValue(0);
                 ui->progressBar->setMinimum(0);
+
                 ui->progressBar->setMaximum(totalTestDuration);
             }
         }
@@ -4044,7 +4061,7 @@ bool MainWindow::sendProfileOverSerial(QString mode, int index)
     float tStart = tProfileLoad[index-1].startValue*10.0;
     float tTotalStep = tProfileLoad[index-1].totalStep;
     quint16 tTotalCycle;
-    float tWaterTank;
+//    float tWaterTank;
 
     if (mode == "main")
     {
@@ -4066,9 +4083,10 @@ bool MainWindow::sendProfileOverSerial(QString mode, int index)
     cantTouchThis.append(quint16(tTotalStep) >> 8);
     cantTouchThis.append(quint16(tTotalCycle) & 0x00FF);
     cantTouchThis.append(quint16(tTotalCycle) >> 8);
-    cantTouchThis.append(quint16(tWaterTank) & 0x00FF);
+    cantTouchThis.append(index);
+/*    cantTouchThis.append(quint16(tWaterTank) & 0x00FF);
     cantTouchThis.append(quint16(tWaterTank) >> 8);
-
+*/
     proc->insertProfileMessage(mySerial::makeMessage(0x64,cantTouchThis));
 
     for(int i=0; i<tProfileLoad[index-1].totalStep; i++)
