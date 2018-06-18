@@ -75,14 +75,15 @@ font: 87 8pt &quot;Segoe UI Black&quot;;
 border: none;
 background: qradialgradient(cx: 0.7, cy: -0.4,
 fx: 0.7, fy: -0.4,
-radius: 2, stop: 0 #A8EB12, stop: 1 #65BAAB );
+/*radius: 2, stop: 0 #A8EB12, stop: 1 #65BAAB );*/
+radius: 2, stop: 0 #fff, stop: 1 #222 );
 }</string>
       </property>
       <property name="tabShape">
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <property name="iconSize">
        <size>
@@ -204,7 +205,7 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
        <widget class="QPushButton" name="bLightsMain">
         <property name="geometry">
          <rect>
-          <x>10</x>
+          <x>20</x>
           <y>350</y>
           <width>211</width>
           <height>51</height>
@@ -260,7 +261,7 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
         <property name="geometry">
          <rect>
           <x>20</x>
-          <y>200</y>
+          <y>190</y>
           <width>211</width>
           <height>51</height>
          </rect>
@@ -317,8 +318,8 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
         </property>
         <property name="geometry">
          <rect>
-          <x>360</x>
-          <y>200</y>
+          <x>350</x>
+          <y>190</y>
           <width>101</width>
           <height>51</height>
          </rect>
@@ -424,7 +425,7 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
         <property name="geometry">
          <rect>
           <x>20</x>
-          <y>140</y>
+          <y>130</y>
           <width>211</width>
           <height>51</height>
          </rect>
@@ -525,8 +526,8 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
         </property>
         <property name="geometry">
          <rect>
-          <x>250</x>
-          <y>200</y>
+          <x>240</x>
+          <y>190</y>
           <width>101</width>
           <height>51</height>
          </rect>
@@ -683,7 +684,7 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
         <property name="geometry">
          <rect>
           <x>40</x>
-          <y>260</y>
+          <y>250</y>
           <width>391</width>
           <height>23</height>
          </rect>
@@ -694,21 +695,17 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
     border-radius: 5px;
     text-align: center;
 }
-
-QProgressBar::chunk {
-    background-color: #05B8CC;
-    width: 20px;
-}</string>
+</string>
         </property>
         <property name="value">
-         <number>24</number>
+         <number>0</number>
         </property>
        </widget>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>250</x>
-          <y>290</y>
+          <y>280</y>
           <width>191</width>
           <height>29</height>
          </rect>
@@ -752,11 +749,11 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
          </item>
         </layout>
        </widget>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>20</x>
-          <y>290</y>
+          <y>280</y>
           <width>190</width>
           <height>29</height>
          </rect>
@@ -800,11 +797,11 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
          </item>
         </layout>
        </widget>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>20</x>
-          <y>320</y>
+          <y>310</y>
           <width>190</width>
           <height>29</height>
          </rect>
@@ -1419,16 +1416,6 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
           <string>Temperature</string>
          </property>
         </item>
-        <item>
-         <property name="text">
-          <string>Pressure</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Vibration</string>
-         </property>
-        </item>
        </widget>
        <widget class="QComboBox" name="cbSelectStepEdit">
         <property name="enabled">
@@ -1448,211 +1435,13 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
          </property>
         </item>
        </widget>
-       <widget class="QLabel" name="label_13">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>90</y>
-          <width>281</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Total Steps</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="laTotalStepEdit">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>300</x>
-          <y>90</y>
-          <width>71</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>0</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_80">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>140</y>
-          <width>151</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Step Time Unit</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_81">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>190</y>
-          <width>151</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Step Type</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_84">
-        <property name="geometry">
-         <rect>
-          <x>410</x>
-          <y>130</y>
-          <width>291</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Test Start Value</string>
-        </property>
-       </widget>
-       <widget class="QDoubleSpinBox" name="dsbStartValueEdit">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>680</x>
-          <y>130</y>
-          <width>41</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="decimals">
-         <number>1</number>
-        </property>
-        <property name="minimum">
-         <double>-40.000000000000000</double>
-        </property>
-        <property name="maximum">
-         <double>250.000000000000000</double>
-        </property>
-        <property name="singleStep">
-         <double>0.100000000000000</double>
-        </property>
-       </widget>
-       <widget class="QComboBox" name="cbSelectSUnitEdit">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>160</x>
-          <y>140</y>
-          <width>211</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <item>
-         <property name="text">
-          <string>Select a step time unit...</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Seconds</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Minutes</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Hours</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Days</string>
-         </property>
-        </item>
-       </widget>
-       <widget class="QComboBox" name="cbSelectSTypeEdit">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>160</x>
-          <y>190</y>
-          <width>211</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <item>
-         <property name="text">
-          <string>Select a step type...</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Linear</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Trapezoid</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Sinusoid</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Logarithmic Sweep</string>
-         </property>
-        </item>
-       </widget>
-       <widget class="Line" name="line">
-        <property name="geometry">
-         <rect>
-          <x>180</x>
-          <y>230</y>
-          <width>20</width>
-          <height>191</height>
-         </rect>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-       </widget>
-       <widget class="Line" name="line_2">
-        <property name="geometry">
-         <rect>
-          <x>380</x>
-          <y>230</y>
-          <width>20</width>
-          <height>191</height>
-         </rect>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-       </widget>
        <widget class="Line" name="line_3">
         <property name="geometry">
          <rect>
-          <x>380</x>
+          <x>260</x>
           <y>50</y>
           <width>20</width>
-          <height>181</height>
+          <height>361</height>
          </rect>
         </property>
         <property name="orientation">
@@ -1663,8 +1452,8 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
         <property name="geometry">
          <rect>
           <x>0</x>
-          <y>220</y>
-          <width>781</width>
+          <y>330</y>
+          <width>271</width>
           <height>21</height>
          </rect>
         </property>
@@ -1672,50 +1461,12 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
          <enum>Qt::Horizontal</enum>
         </property>
        </widget>
-       <widget class="QLineEdit" name="leProfileNameEdit">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>160</x>
-          <y>60</y>
-          <width>211</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="maxLength">
-         <number>20</number>
-        </property>
-        <property name="readOnly">
-         <bool>false</bool>
-        </property>
-        <property name="clearButtonEnabled">
-         <bool>false</bool>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_32">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>60</y>
-          <width>141</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Profile Name</string>
-        </property>
-       </widget>
        <widget class="Line" name="line_5">
         <property name="geometry">
          <rect>
           <x>0</x>
           <y>110</y>
-          <width>781</width>
+          <width>271</width>
           <height>21</height>
          </rect>
         </property>
@@ -1736,54 +1487,6 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
          <enum>Qt::Horizontal</enum>
         </property>
        </widget>
-       <widget class="QPushButton" name="bEditStep">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>410</x>
-          <y>70</y>
-          <width>91</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Edit</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="bCancelEdit">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>540</x>
-          <y>70</y>
-          <width>91</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Cancel/Exit</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="bSaveEdit">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>670</x>
-          <y>70</y>
-          <width>91</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Save/Exit</string>
-        </property>
-       </widget>
        <widget class="Line" name="line_18">
         <property name="geometry">
          <rect>
@@ -1797,924 +1500,352 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
          <enum>Qt::Horizontal</enum>
         </property>
        </widget>
-       <widget class="Line" name="line_9">
-        <property name="geometry">
-         <rect>
-          <x>570</x>
-          <y>230</y>
-          <width>20</width>
-          <height>191</height>
-         </rect>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-       </widget>
-       <widget class="QWidget" name="wdSinEdit" native="true">
-        <property name="geometry">
-         <rect>
-          <x>400</x>
-          <y>240</y>
-          <width>171</width>
-          <height>81</height>
-         </rect>
-        </property>
-        <widget class="QDoubleSpinBox" name="dsbSMeanEdit">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="geometry">
-          <rect>
-           <x>90</x>
-           <y>30</y>
-           <width>41</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="decimals">
-          <number>1</number>
-         </property>
-         <property name="minimum">
-          <double>0.100000000000000</double>
-         </property>
-         <property name="maximum">
-          <double>9.900000000000000</double>
-         </property>
-         <property name="singleStep">
-          <double>0.100000000000000</double>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_92">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>60</y>
-           <width>81</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Sin. Amp.</string>
-         </property>
-        </widget>
-        <widget class="QDoubleSpinBox" name="dsbSPeriodEdit">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="geometry">
-          <rect>
-           <x>90</x>
-           <y>0</y>
-           <width>41</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="decimals">
-          <number>1</number>
-         </property>
-         <property name="minimum">
-          <double>0.100000000000000</double>
-         </property>
-         <property name="maximum">
-          <double>6553.000000000000000</double>
-         </property>
-         <property name="singleStep">
-          <double>0.100000000000000</double>
-         </property>
-         <property name="value">
-          <double>0.100000000000000</double>
-         </property>
-        </widget>
-        <widget class="QDoubleSpinBox" name="dsbSAmpEdit">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="geometry">
-          <rect>
-           <x>90</x>
-           <y>60</y>
-           <width>41</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="decimals">
-          <number>1</number>
-         </property>
-         <property name="minimum">
-          <double>0.100000000000000</double>
-         </property>
-         <property name="maximum">
-          <double>5.000000000000000</double>
-         </property>
-         <property name="singleStep">
-          <double>0.100000000000000</double>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_90">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>0</y>
-           <width>81</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Sin. Period</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_91">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>30</y>
-           <width>81</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Sin. Mean</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="laSinPeriodEdit">
-         <property name="geometry">
-          <rect>
-           <x>140</x>
-           <y>0</y>
-           <width>31</width>
-           <height>16</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>x</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="laSinMeanEdit">
-         <property name="geometry">
-          <rect>
-           <x>140</x>
-           <y>30</y>
-           <width>31</width>
-           <height>16</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>x</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="laSinAmplitudeEdit">
-         <property name="geometry">
-          <rect>
-           <x>140</x>
-           <y>60</y>
-           <width>31</width>
-           <height>16</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>x</string>
-         </property>
-        </widget>
-       </widget>
-       <widget class="QWidget" name="wdTrapEdit" native="true">
-        <property name="geometry">
-         <rect>
-          <x>200</x>
-          <y>240</y>
-          <width>181</width>
-          <height>171</height>
-         </rect>
-        </property>
-        <widget class="QDoubleSpinBox" name="dsbTRiseEdit">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="geometry">
-          <rect>
-           <x>90</x>
-           <y>0</y>
-           <width>41</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="decimals">
-          <number>1</number>
-         </property>
-         <property name="minimum">
-          <double>0.100000000000000</double>
-         </property>
-         <property name="maximum">
-          <double>6553.000000000000000</double>
-         </property>
-         <property name="singleStep">
-          <double>0.100000000000000</double>
-         </property>
-         <property name="value">
-          <double>0.100000000000000</double>
-         </property>
-        </widget>
-        <widget class="QDoubleSpinBox" name="dsbTFallEdit">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="geometry">
-          <rect>
-           <x>90</x>
-           <y>60</y>
-           <width>41</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="decimals">
-          <number>1</number>
-         </property>
-         <property name="minimum">
-          <double>0.100000000000000</double>
-         </property>
-         <property name="maximum">
-          <double>6553.000000000000000</double>
-         </property>
-         <property name="singleStep">
-          <double>0.100000000000000</double>
-         </property>
-         <property name="value">
-          <double>0.100000000000000</double>
-         </property>
-        </widget>
-        <widget class="QDoubleSpinBox" name="dsbTLowEdit">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="geometry">
-          <rect>
-           <x>90</x>
-           <y>120</y>
-           <width>41</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="decimals">
-          <number>1</number>
-         </property>
-         <property name="minimum">
-          <double>0.100000000000000</double>
-         </property>
-         <property name="maximum">
-          <double>9.900000000000000</double>
-         </property>
-         <property name="singleStep">
-          <double>0.100000000000000</double>
-         </property>
-         <property name="value">
-          <double>0.100000000000000</double>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_88">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>120</y>
-           <width>81</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Trap. Low</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_89">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>150</y>
-           <width>81</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Trap. High</string>
-         </property>
-        </widget>
-        <widget class="QDoubleSpinBox" name="dsbTUpEdit">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="geometry">
-          <rect>
-           <x>90</x>
-           <y>30</y>
-           <width>41</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="decimals">
-          <number>1</number>
-         </property>
-         <property name="minimum">
-          <double>0.000000000000000</double>
-         </property>
-         <property name="maximum">
-          <double>6553.000000000000000</double>
-         </property>
-         <property name="singleStep">
-          <double>0.100000000000000</double>
-         </property>
-         <property name="value">
-          <double>0.100000000000000</double>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_87">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>60</y>
-           <width>81</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Trap. Fall</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_85">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>30</y>
-           <width>81</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Trap. Up</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_86">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>0</y>
-           <width>81</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Trap. Rise</string>
-         </property>
-        </widget>
-        <widget class="QDoubleSpinBox" name="dsbTHighEdit">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="geometry">
-          <rect>
-           <x>90</x>
-           <y>150</y>
-           <width>41</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="decimals">
-          <number>1</number>
-         </property>
-         <property name="minimum">
-          <double>0.100000000000000</double>
-         </property>
-         <property name="maximum">
-          <double>5.000000000000000</double>
-         </property>
-         <property name="singleStep">
-          <double>0.100000000000000</double>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_126">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>90</y>
-           <width>81</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Trap. Down</string>
-         </property>
-        </widget>
-        <widget class="QDoubleSpinBox" name="dsbTDownEdit">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="geometry">
-          <rect>
-           <x>90</x>
-           <y>90</y>
-           <width>41</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="decimals">
-          <number>1</number>
-         </property>
-         <property name="minimum">
-          <double>0.100000000000000</double>
-         </property>
-         <property name="maximum">
-          <double>9.900000000000000</double>
-         </property>
-         <property name="singleStep">
-          <double>0.100000000000000</double>
-         </property>
-         <property name="value">
-          <double>0.100000000000000</double>
-         </property>
-        </widget>
-        <widget class="QLabel" name="laTrapRiseEdit">
-         <property name="geometry">
-          <rect>
-           <x>140</x>
-           <y>0</y>
-           <width>31</width>
-           <height>16</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>x</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="laTrapUpEdit">
-         <property name="geometry">
-          <rect>
-           <x>140</x>
-           <y>30</y>
-           <width>31</width>
-           <height>16</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>x</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="laTrapFallEdit">
-         <property name="geometry">
-          <rect>
-           <x>140</x>
-           <y>60</y>
-           <width>31</width>
-           <height>16</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>x</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="laTrapDownEdit">
-         <property name="geometry">
-          <rect>
-           <x>140</x>
-           <y>90</y>
-           <width>31</width>
-           <height>16</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>x</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="laTrapLowEdit">
-         <property name="geometry">
-          <rect>
-           <x>140</x>
-           <y>120</y>
-           <width>31</width>
-           <height>16</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>x</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="laTrapHighEdit">
-         <property name="geometry">
-          <rect>
-           <x>140</x>
-           <y>150</y>
-           <width>31</width>
-           <height>16</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>x</string>
-         </property>
-        </widget>
-       </widget>
        <widget class="QWidget" name="wdLinearEdit" native="true">
         <property name="geometry">
          <rect>
           <x>10</x>
           <y>240</y>
-          <width>171</width>
-          <height>51</height>
-         </rect>
-        </property>
-        <widget class="QLabel" name="label_83">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>30</y>
-           <width>81</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Lin. Target</string>
-         </property>
-        </widget>
-        <widget class="QDoubleSpinBox" name="dsbLTargetEdit">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="geometry">
-          <rect>
-           <x>90</x>
-           <y>30</y>
-           <width>41</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="decimals">
-          <number>1</number>
-         </property>
-         <property name="minimum">
-          <double>-40.000000000000000</double>
-         </property>
-         <property name="maximum">
-          <double>250.000000000000000</double>
-         </property>
-         <property name="singleStep">
-          <double>0.100000000000000</double>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_82">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>0</y>
-           <width>81</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Lin. Duration</string>
-         </property>
-        </widget>
-        <widget class="QDoubleSpinBox" name="dsbLDurationEdit">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="geometry">
-          <rect>
-           <x>90</x>
-           <y>0</y>
-           <width>41</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="decimals">
-          <number>1</number>
-         </property>
-         <property name="minimum">
-          <double>0.100000000000000</double>
-         </property>
-         <property name="maximum">
-          <double>6553.000000000000000</double>
-         </property>
-         <property name="singleStep">
-          <double>0.100000000000000</double>
-         </property>
-         <property name="value">
-          <double>0.100000000000000</double>
-         </property>
-        </widget>
-        <widget class="QLabel" name="laLinDurationEdit">
-         <property name="geometry">
-          <rect>
-           <x>140</x>
-           <y>0</y>
-           <width>31</width>
-           <height>16</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>x</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="laLinTargetEdit">
-         <property name="geometry">
-          <rect>
-           <x>140</x>
-           <y>30</y>
-           <width>31</width>
-           <height>16</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>x</string>
-         </property>
-        </widget>
-       </widget>
-       <widget class="QWidget" name="wdLogEdit" native="true">
-        <property name="geometry">
-         <rect>
-          <x>590</x>
-          <y>240</y>
-          <width>171</width>
-          <height>81</height>
-         </rect>
-        </property>
-        <widget class="QLabel" name="label_105">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>30</y>
-           <width>81</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Log. Min.</string>
-         </property>
-        </widget>
-        <widget class="QDoubleSpinBox" name="dsbLogMinEdit">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="geometry">
-          <rect>
-           <x>90</x>
-           <y>30</y>
-           <width>41</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="decimals">
-          <number>1</number>
-         </property>
-         <property name="minimum">
-          <double>0.000000000000000</double>
-         </property>
-         <property name="maximum">
-          <double>60.000000000000000</double>
-         </property>
-         <property name="singleStep">
-          <double>0.100000000000000</double>
-         </property>
-        </widget>
-        <widget class="QDoubleSpinBox" name="dsbLogMaxEdit">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="geometry">
-          <rect>
-           <x>90</x>
-           <y>60</y>
-           <width>41</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="decimals">
-          <number>1</number>
-         </property>
-         <property name="minimum">
-          <double>0.000000000000000</double>
-         </property>
-         <property name="maximum">
-          <double>60.000000000000000</double>
-         </property>
-         <property name="singleStep">
-          <double>0.100000000000000</double>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_103">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>0</y>
-           <width>81</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Log. Rate</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_104">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>60</y>
-           <width>81</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Log. Max.</string>
-         </property>
-        </widget>
-        <widget class="QDoubleSpinBox" name="dsbLogRateEdit">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="geometry">
-          <rect>
-           <x>90</x>
-           <y>0</y>
-           <width>41</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="decimals">
-          <number>3</number>
-         </property>
-         <property name="minimum">
-          <double>0.100000000000000</double>
-         </property>
-         <property name="maximum">
-          <double>2.000000000000000</double>
-         </property>
-         <property name="singleStep">
-          <double>0.100000000000000</double>
-         </property>
-         <property name="value">
-          <double>0.100000000000000</double>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_256">
-         <property name="geometry">
-          <rect>
-           <x>140</x>
-           <y>0</y>
-           <width>31</width>
-           <height>16</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>o./m.</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="laLogMinEdit">
-         <property name="geometry">
-          <rect>
-           <x>140</x>
-           <y>30</y>
-           <width>31</width>
-           <height>16</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>x</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="laLogMaxEdit">
-         <property name="geometry">
-          <rect>
-           <x>140</x>
-           <y>60</y>
-           <width>31</width>
-           <height>16</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>x</string>
-         </property>
-        </widget>
-       </widget>
-       <widget class="QWidget" name="wdRepeatEdit" native="true">
-        <property name="geometry">
-         <rect>
-          <x>410</x>
-          <y>150</y>
-          <width>351</width>
+          <width>181</width>
           <height>71</height>
          </rect>
         </property>
-        <widget class="QLabel" name="label_123">
+        <widget class="QWidget" name="">
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>50</y>
-           <width>301</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Step Repeat Duration</string>
-         </property>
-        </widget>
-        <widget class="QDoubleSpinBox" name="dsbRepeatDurationEdit">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="geometry">
-          <rect>
-           <x>270</x>
-           <y>50</y>
-           <width>41</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="decimals">
-          <number>1</number>
-         </property>
-         <property name="minimum">
-          <double>0.000000000000000</double>
-         </property>
-         <property name="maximum">
-          <double>6553.000000000000000</double>
-         </property>
-         <property name="singleStep">
-          <double>0.100000000000000</double>
-         </property>
-         <property name="value">
-          <double>0.000000000000000</double>
-         </property>
-        </widget>
-        <widget class="QComboBox" name="cbSRepeatUnitEdit">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="geometry">
-          <rect>
-           <x>140</x>
-           <y>10</y>
-           <width>211</width>
+           <y>0</y>
+           <width>181</width>
            <height>31</height>
           </rect>
          </property>
-         <item>
-          <property name="text">
-           <string>Select a repeat time unit...</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Seconds</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Minutes</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Hours</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Days</string>
-          </property>
-         </item>
+         <layout class="QHBoxLayout" name="horizontalLayout_9">
+          <item>
+           <widget class="QLabel" name="label_82">
+            <property name="text">
+             <string>Lin. Duration</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_8">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QDoubleSpinBox" name="dsbLDurationEdit">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="decimals">
+             <number>1</number>
+            </property>
+            <property name="minimum">
+             <double>0.100000000000000</double>
+            </property>
+            <property name="maximum">
+             <double>6553.000000000000000</double>
+            </property>
+            <property name="singleStep">
+             <double>0.100000000000000</double>
+            </property>
+            <property name="value">
+             <double>0.100000000000000</double>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="laLinDurationEdit">
+            <property name="text">
+             <string>x</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
-        <widget class="QLabel" name="label_95">
+        <widget class="QWidget" name="">
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>10</y>
-           <width>141</width>
+           <y>40</y>
+           <width>181</width>
            <height>31</height>
           </rect>
          </property>
-         <property name="text">
-          <string>Step Repeat Unit</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="laStepDurationEdit">
-         <property name="geometry">
-          <rect>
-           <x>320</x>
-           <y>50</y>
-           <width>31</width>
-           <height>16</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>x</string>
-         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_10">
+          <item>
+           <widget class="QLabel" name="label_83">
+            <property name="text">
+             <string>Lin. Target</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_11">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QDoubleSpinBox" name="dsbLTargetEdit">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="decimals">
+             <number>1</number>
+            </property>
+            <property name="minimum">
+             <double>-40.000000000000000</double>
+            </property>
+            <property name="maximum">
+             <double>250.000000000000000</double>
+            </property>
+            <property name="singleStep">
+             <double>0.100000000000000</double>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="laLinTargetEdit">
+            <property name="text">
+             <string>x</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </widget>
-       <widget class="QLabel" name="laTestStartEdit">
+       <widget class="QWidget" name="">
         <property name="geometry">
          <rect>
-          <x>730</x>
-          <y>130</y>
-          <width>31</width>
-          <height>16</height>
+          <x>10</x>
+          <y>200</y>
+          <width>241</width>
+          <height>31</height>
          </rect>
         </property>
-        <property name="text">
-         <string>x</string>
+        <layout class="QHBoxLayout" name="horizontalLayout_5">
+         <item>
+          <widget class="QLabel" name="label_80">
+           <property name="text">
+            <string>Step Time Unit</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_7">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QComboBox" name="cbSelectSUnitEdit">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <item>
+            <property name="text">
+             <string>Select a step time unit...</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Seconds</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Minutes</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Hours</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Days</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>130</y>
+          <width>191</width>
+          <height>31</height>
+         </rect>
         </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_6">
+         <item>
+          <widget class="QLabel" name="label_84">
+           <property name="text">
+            <string>Test Start Value</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_4">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QDoubleSpinBox" name="dsbStartValueEdit">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="decimals">
+            <number>1</number>
+           </property>
+           <property name="minimum">
+            <double>-40.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>250.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="laTestStartEdit">
+           <property name="text">
+            <string>x</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>60</y>
+          <width>247</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_7">
+         <item>
+          <widget class="QLabel" name="label_32">
+           <property name="text">
+            <string>Profile Name</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_6">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="leProfileNameEdit">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="maxLength">
+            <number>20</number>
+           </property>
+           <property name="readOnly">
+            <bool>false</bool>
+           </property>
+           <property name="clearButtonEnabled">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>90</y>
+          <width>114</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_8">
+         <item>
+          <widget class="QLabel" name="label_13">
+           <property name="text">
+            <string>Total Steps</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_5">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLabel" name="laTotalStepEdit">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>0</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </widget>
       </widget>
       <widget class="QWidget" name="tab_NewPro">

@@ -413,11 +413,11 @@ void MainWindow::setupVisuals()
     //   ui->pWidget->setCurrentIndex(0);
     //   ui->vWidget->setCurrentIndex(0);
 
-    ui->wdRepeatEdit->setVisible(false);
+    //ui->wdRepeatEdit->setVisible(false);
     ui->wdLinearEdit->setVisible(false);
-    ui->wdTrapEdit->setVisible(false);
-    ui->wdSinEdit->setVisible(false);
-    ui->wdLogEdit->setVisible(false);
+    //ui->wdTrapEdit->setVisible(false);
+    //ui->wdSinEdit->setVisible(false);
+    //ui->wdLogEdit->setVisible(false);
 
     ui->dsbTStartValue->setButtonSymbols(QAbstractSpinBox::NoButtons);
     ui->sbTTotalCycle->setButtonSymbols(QAbstractSpinBox::NoButtons);
@@ -452,11 +452,11 @@ void MainWindow::setupVisuals()
     ui->dsbVRepeatValue->setButtonSymbols(QAbstractSpinBox::NoButtons);
     ui->dsbVRepeatTime->setButtonSymbols(QAbstractSpinBox::NoButtons);
 */
-    ui->dsbRepeatDurationEdit->setButtonSymbols(QAbstractSpinBox::NoButtons);
+   // ui->dsbRepeatDurationEdit->setButtonSymbols(QAbstractSpinBox::NoButtons);
     ui->dsbStartValueEdit->setButtonSymbols(QAbstractSpinBox::NoButtons);
     ui->dsbLDurationEdit->setButtonSymbols(QAbstractSpinBox::NoButtons);
     ui->dsbLTargetEdit->setButtonSymbols(QAbstractSpinBox::NoButtons);
-    ui->dsbTRiseEdit->setButtonSymbols(QAbstractSpinBox::NoButtons);
+   /* ui->dsbTRiseEdit->setButtonSymbols(QAbstractSpinBox::NoButtons);
     ui->dsbTUpEdit->setButtonSymbols(QAbstractSpinBox::NoButtons);
     ui->dsbTFallEdit->setButtonSymbols(QAbstractSpinBox::NoButtons);
     ui->dsbTDownEdit->setButtonSymbols(QAbstractSpinBox::NoButtons);
@@ -468,7 +468,7 @@ void MainWindow::setupVisuals()
     ui->dsbLogRateEdit->setButtonSymbols(QAbstractSpinBox::NoButtons);
     ui->dsbLogMinEdit->setButtonSymbols(QAbstractSpinBox::NoButtons);
     ui->dsbLogMaxEdit->setButtonSymbols(QAbstractSpinBox::NoButtons);
-
+*/
     ui->dsbCabinTopTemp->setButtonSymbols(QAbstractSpinBox::NoButtons);
     ui->dsbPipe1Pressure->setButtonSymbols(QAbstractSpinBox::NoButtons);
     //ui->dsbPipe2Pressure->setButtonSymbols(QAbstractSpinBox::NoButtons);
@@ -3457,15 +3457,15 @@ void MainWindow::on_cbSelectProfileEdit_currentIndexChanged(int index)
         ui->cbSelectStepEdit->setEnabled(false);
         ui->cbSelectStepEdit->setCurrentIndex(0);
 
-        ui->cbSelectSTypeEdit->setEnabled(false);
-        ui->cbSelectSTypeEdit->setCurrentIndex(0);
+//        ui->cbSelectSTypeEdit->setEnabled(false);
+//        ui->cbSelectSTypeEdit->setCurrentIndex(0);
     }
     else
     {
         ui->cbSelectPTypeEdit->setEnabled(true);
         ui->cbSelectPTypeEdit->setCurrentIndex(0);
         ui->cbSelectStepEdit->setCurrentIndex(0);
-        ui->cbSelectSTypeEdit->setCurrentIndex(0);
+//        ui->cbSelectSTypeEdit->setCurrentIndex(0);
 
         readProfiles('e', index);
     }
@@ -3481,8 +3481,8 @@ void MainWindow::on_cbSelectPTypeEdit_currentIndexChanged(int index)
         ui->laTotalStepEdit->setText("");
         ui->laTotalStepEdit->setEnabled(false);
 
-        ui->cbSelectSTypeEdit->setCurrentIndex(0);
-        ui->cbSelectSTypeEdit->setEnabled(false);
+    //    ui->cbSelectSTypeEdit->setCurrentIndex(0);
+    //    ui->cbSelectSTypeEdit->setEnabled(false);
 
         ui->cbSelectStepEdit->setCurrentIndex(0);
         ui->cbSelectStepEdit->setEnabled(false);
@@ -3498,10 +3498,10 @@ void MainWindow::on_cbSelectPTypeEdit_currentIndexChanged(int index)
         ui->dsbStartValueEdit->setValue(tProfileEdit[ui->cbSelectProfileEdit->currentIndex()-1].startValue);
         ui->laTotalStepEdit->setText(QString::number(tProfileEdit[ui->cbSelectProfileEdit->currentIndex()-1].totalStep));
 
-        ui->cbSelectSTypeEdit->clear();
-        ui->cbSelectSTypeEdit->addItem("Select a step type...");
-        ui->cbSelectSTypeEdit->addItem("Linear");
-        ui->cbSelectSTypeEdit->setCurrentIndex(0);
+ //       ui->cbSelectSTypeEdit->clear();
+ //       ui->cbSelectSTypeEdit->addItem("Select a step type...");
+ //       ui->cbSelectSTypeEdit->addItem("Linear");
+ //      ui->cbSelectSTypeEdit->setCurrentIndex(0);
 
         ui->cbSelectStepEdit->clear();
         ui->cbSelectStepEdit->addItem("Select a step number...");
@@ -3514,6 +3514,7 @@ void MainWindow::on_cbSelectPTypeEdit_currentIndexChanged(int index)
 
         ui->laTestStartEdit->setText("°C");
     }
+ /*
     else if (index == 2)
     {
         ui->cbSelectStepEdit->setEnabled(true);
@@ -3521,12 +3522,12 @@ void MainWindow::on_cbSelectPTypeEdit_currentIndexChanged(int index)
         ui->dsbStartValueEdit->setValue(pProfileEdit[ui->cbSelectProfileEdit->currentIndex()-1].startValue);
         ui->laTotalStepEdit->setText(QString::number(pProfileEdit[ui->cbSelectProfileEdit->currentIndex()-1].totalStep));
 
-        ui->cbSelectSTypeEdit->clear();
-        ui->cbSelectSTypeEdit->addItem("Select a step type...");
-        ui->cbSelectSTypeEdit->addItem("Linear");
-        ui->cbSelectSTypeEdit->addItem("Trapezoid");
-        ui->cbSelectSTypeEdit->addItem("Sinusoid");
-        ui->cbSelectSTypeEdit->setCurrentIndex(0);
+  //      ui->cbSelectSTypeEdit->clear();
+  //      ui->cbSelectSTypeEdit->addItem("Select a step type...");
+  //      ui->cbSelectSTypeEdit->addItem("Linear");
+  //      ui->cbSelectSTypeEdit->addItem("Trapezoid");
+  //      ui->cbSelectSTypeEdit->addItem("Sinusoid");
+ //       ui->cbSelectSTypeEdit->setCurrentIndex(0);
 
         ui->cbSelectStepEdit->clear();
         ui->cbSelectStepEdit->addItem("Select a step number...");
@@ -3546,11 +3547,11 @@ void MainWindow::on_cbSelectPTypeEdit_currentIndexChanged(int index)
         ui->dsbStartValueEdit->setValue(vProfileEdit[ui->cbSelectProfileEdit->currentIndex()-1].startValue);
         ui->laTotalStepEdit->setText(QString::number(vProfileEdit[ui->cbSelectProfileEdit->currentIndex()-1].totalStep));
 
-        ui->cbSelectSTypeEdit->clear();
-        ui->cbSelectSTypeEdit->addItem("Select a step type...");
-        ui->cbSelectSTypeEdit->addItem("Linear");
-        ui->cbSelectSTypeEdit->addItem("Logarithmic Sweep");
-        ui->cbSelectSTypeEdit->setCurrentIndex(0);
+   //     ui->cbSelectSTypeEdit->clear();
+   //     ui->cbSelectSTypeEdit->addItem("Select a step type...");
+   //     ui->cbSelectSTypeEdit->addItem("Linear");
+   //     ui->cbSelectSTypeEdit->addItem("Logarithmic Sweep");
+   //     ui->cbSelectSTypeEdit->setCurrentIndex(0);
 
         ui->cbSelectStepEdit->clear();
         ui->cbSelectStepEdit->addItem("Select a step number...");
@@ -3563,6 +3564,7 @@ void MainWindow::on_cbSelectPTypeEdit_currentIndexChanged(int index)
 
         ui->laTestStartEdit->setText("Hz");
     }
+*/
 }
 
 void MainWindow::on_cbSelectStepEdit_currentIndexChanged(int index)
@@ -3570,54 +3572,55 @@ void MainWindow::on_cbSelectStepEdit_currentIndexChanged(int index)
     if (ui->cbSelectPTypeEdit->currentIndex() == 0)
     {
         ui->cbSelectSUnitEdit->setCurrentIndex(0);
-        ui->cbSelectSTypeEdit->setCurrentIndex(0);
+   //    ui->cbSelectSTypeEdit->setCurrentIndex(0);
 
         ui->dsbLDurationEdit->setValue(0);
         ui->dsbLTargetEdit->setValue(0);
 
-        ui->dsbTRiseEdit->setValue(0);
-        ui->dsbTUpEdit->setValue(0);
-        ui->dsbTFallEdit->setValue(0);
-        ui->dsbTDownEdit->setValue(0);
-        ui->dsbTLowEdit->setValue(0);
-        ui->dsbTHighEdit->setValue(0);
+   //     ui->dsbTRiseEdit->setValue(0);
+    //    ui->dsbTUpEdit->setValue(0);
+   //     ui->dsbTFallEdit->setValue(0);
+    //    ui->dsbTDownEdit->setValue(0);
+   //     ui->dsbTLowEdit->setValue(0);
+    //    ui->dsbTHighEdit->setValue(0);
 
-        ui->dsbSPeriodEdit->setValue(0);
-        ui->dsbSMeanEdit->setValue(0);
-        ui->dsbSAmpEdit->setValue(0);
+  //      ui->dsbSPeriodEdit->setValue(0);
+   //     ui->dsbSMeanEdit->setValue(0);
+  //      ui->dsbSAmpEdit->setValue(0);
 
-        ui->dsbLogRateEdit->setValue(0);
-        ui->dsbLogMinEdit->setValue(0);
-        ui->dsbLogMaxEdit->setValue(0);
+   //     ui->dsbLogRateEdit->setValue(0);
+   //     ui->dsbLogMinEdit->setValue(0);
+   //     ui->dsbLogMaxEdit->setValue(0);
 
-        ui->dsbRepeatDurationEdit->setValue(0);
-        ui->laStepDurationEdit->setText("");
-        ui->cbSRepeatUnitEdit->setCurrentIndex(0);
+    //    ui->dsbRepeatDurationEdit->setValue(0);
+   //     ui->laStepDurationEdit->setText("");
+//        ui->cbSRepeatUnitEdit->setCurrentIndex(0);
 
     }
     else if (ui->cbSelectPTypeEdit->currentIndex() == 1)
     {
         ui->cbSelectSUnitEdit->setCurrentIndex(tProfileEdit[ui->cbSelectProfileEdit->currentIndex()-1].step[index-1].stepUnit);
-        ui->cbSelectSTypeEdit->setCurrentIndex(tProfileEdit[ui->cbSelectProfileEdit->currentIndex()-1].step[index-1].stepType);
+    //    ui->cbSelectSTypeEdit->setCurrentIndex(tProfileEdit[ui->cbSelectProfileEdit->currentIndex()-1].step[index-1].stepType);
 
         ui->dsbLDurationEdit->setValue(tProfileEdit[ui->cbSelectProfileEdit->currentIndex()-1].step[index-1].lDuration);
         ui->dsbLTargetEdit->setValue(tProfileEdit[ui->cbSelectProfileEdit->currentIndex()-1].step[index-1].lTarget);
 
-        ui->dsbTRiseEdit->setValue(0);
-        ui->dsbTUpEdit->setValue(0);
-        ui->dsbTFallEdit->setValue(0);
-        ui->dsbTDownEdit->setValue(0);
-        ui->dsbTLowEdit->setValue(0);
-        ui->dsbTHighEdit->setValue(0);
+   //     ui->dsbTRiseEdit->setValue(0);
+   //     ui->dsbTUpEdit->setValue(0);
+   //     ui->dsbTFallEdit->setValue(0);
+   //     ui->dsbTDownEdit->setValue(0);
+   //     ui->dsbTLowEdit->setValue(0);
+   //     ui->dsbTHighEdit->setValue(0);
 
-        ui->dsbSPeriodEdit->setValue(0);
-        ui->dsbSMeanEdit->setValue(0);
-        ui->dsbSAmpEdit->setValue(0);
+   //     ui->dsbSPeriodEdit->setValue(0);
+   //     ui->dsbSMeanEdit->setValue(0);
+   //     ui->dsbSAmpEdit->setValue(0);
 
-        ui->dsbRepeatDurationEdit->setValue(0);
-        ui->laStepDurationEdit->setText("");
-        ui->cbSRepeatUnitEdit->setCurrentIndex(0);
-    }
+   //     ui->dsbRepeatDurationEdit->setValue(0);
+   //    ui->laStepDurationEdit->setText("");
+   //     ui->cbSRepeatUnitEdit->setCurrentIndex(0);
+    } 
+/*
     else if (ui->cbSelectPTypeEdit->currentIndex() == 2)
     {
         ui->cbSelectSUnitEdit->setCurrentIndex(pProfileEdit[ui->cbSelectProfileEdit->currentIndex()-1].step[index-1].stepUnit);
@@ -3642,6 +3645,7 @@ void MainWindow::on_cbSelectStepEdit_currentIndexChanged(int index)
         {
             ui->laStepDurationEdit->setText("d.");
         }
+
 
         if (pProfileEdit[ui->cbSelectProfileEdit->currentIndex()-1].step[index-1].stepType == 1)
         {
@@ -3691,7 +3695,6 @@ void MainWindow::on_cbSelectStepEdit_currentIndexChanged(int index)
 
             ui->dsbLDurationEdit->setValue(tProfileEdit[ui->cbSelectProfileEdit->currentIndex()-1].step[index-1].lDuration);
             ui->dsbLTargetEdit->setValue(tProfileEdit[ui->cbSelectProfileEdit->currentIndex()-1].step[index-1].lTarget);
-
             ui->dsbTRiseEdit->setValue(0);
             ui->dsbTUpEdit->setValue(0);
             ui->dsbTFallEdit->setValue(0);
@@ -3702,7 +3705,8 @@ void MainWindow::on_cbSelectStepEdit_currentIndexChanged(int index)
             ui->dsbLogRateEdit->setValue(0);
             ui->dsbLogMinEdit->setValue(0);
             ui->dsbLogMaxEdit->setValue(0);
-        }
+
+        }      
     }
     else if (ui->cbSelectPTypeEdit->currentIndex() == 3)
     {
@@ -3710,7 +3714,7 @@ void MainWindow::on_cbSelectStepEdit_currentIndexChanged(int index)
 
         if (vProfileEdit[ui->cbSelectProfileEdit->currentIndex()-1].step[index-1].stepType == 1)
         {
-            ui->cbSelectSTypeEdit->setCurrentIndex(vProfileEdit[ui->cbSelectProfileEdit->currentIndex()-1].step[index-1].stepType);
+       //     ui->cbSelectSTypeEdit->setCurrentIndex(vProfileEdit[ui->cbSelectProfileEdit->currentIndex()-1].step[index-1].stepType);
 
             ui->dsbLDurationEdit->setValue(vProfileEdit[ui->cbSelectProfileEdit->currentIndex()-1].step[index-1].lDuration);
             ui->dsbLTargetEdit->setValue(vProfileEdit[ui->cbSelectProfileEdit->currentIndex()-1].step[index-1].lTarget);
@@ -3733,7 +3737,9 @@ void MainWindow::on_cbSelectStepEdit_currentIndexChanged(int index)
             ui->dsbRepeatDurationEdit->setValue(0);
             ui->laStepDurationEdit->setText("");
             ui->cbSRepeatUnitEdit->setCurrentIndex(0);
+
         }
+
         else if (vProfileEdit[ui->cbSelectProfileEdit->currentIndex()-1].step[index-1].stepType == 4)
         {
             ui->cbSelectSTypeEdit->setCurrentIndex(vProfileEdit[ui->cbSelectProfileEdit->currentIndex()-1].step[index-1].stepType - 2);
@@ -3775,10 +3781,14 @@ void MainWindow::on_cbSelectStepEdit_currentIndexChanged(int index)
             {
                 ui->laStepDurationEdit->setText("d.");
             }
+
         }
+
     }
+*/
 }
 
+/*
 void MainWindow::on_cbSelectSTypeEdit_currentIndexChanged(int index)
 {
     if (index == 0)
@@ -3941,6 +3951,7 @@ void MainWindow::on_cbSelectSTypeEdit_currentIndexChanged(int index)
         }
     }
 }
+*/
 
 void MainWindow::on_cbSelectSUnitEdit_currentIndexChanged(int index)
 {
@@ -3948,56 +3959,55 @@ void MainWindow::on_cbSelectSUnitEdit_currentIndexChanged(int index)
     {
         ui->laLinDurationEdit->setText("");
 
-        ui->laTrapRiseEdit->setText("");
-        ui->laTrapUpEdit->setText("");
-        ui->laTrapFallEdit->setText("");
-        ui->laTrapDownEdit->setText("");
-
-        ui->laSinPeriodEdit->setText("");
+  //      ui->laTrapRiseEdit->setText("");
+  //      ui->laTrapUpEdit->setText("");
+  //      ui->laTrapFallEdit->setText("");
+  //      ui->laTrapDownEdit->setText("");
+  //      ui->laSinPeriodEdit->setText("");
     }
     else if (index == 1)
     {
         ui->laLinDurationEdit->setText("s.");
 
-        ui->laTrapRiseEdit->setText("s.");
-        ui->laTrapUpEdit->setText("s.");
-        ui->laTrapFallEdit->setText("s.");
-        ui->laTrapDownEdit->setText("s.");
+   //     ui->laTrapRiseEdit->setText("s.");
+   //     ui->laTrapUpEdit->setText("s.");
+   //     ui->laTrapFallEdit->setText("s.");
+   //     ui->laTrapDownEdit->setText("s.");
 
-        ui->laSinPeriodEdit->setText("s.");
+   //     ui->laSinPeriodEdit->setText("s.");
     }
     else if (index == 2)
     {
         ui->laLinDurationEdit->setText("m.");
 
-        ui->laTrapRiseEdit->setText("m.");
-        ui->laTrapUpEdit->setText("m.");
-        ui->laTrapFallEdit->setText("m.");
-        ui->laTrapDownEdit->setText("m.");
+   //     ui->laTrapRiseEdit->setText("m.");
+   //     ui->laTrapUpEdit->setText("m.");
+   //    ui->laTrapFallEdit->setText("m.");
+   //     ui->laTrapDownEdit->setText("m.");
 
-        ui->laSinPeriodEdit->setText("m.");
+   //     ui->laSinPeriodEdit->setText("m.");
     }
     else if (index == 3)
     {
         ui->laLinDurationEdit->setText("h.");
 
-        ui->laTrapRiseEdit->setText("h.");
-        ui->laTrapUpEdit->setText("h.");
-        ui->laTrapFallEdit->setText("h.");
-        ui->laTrapDownEdit->setText("h.");
+  //      ui->laTrapRiseEdit->setText("h.");
+  //      ui->laTrapUpEdit->setText("h.");
+  //      ui->laTrapFallEdit->setText("h.");
+  //      ui->laTrapDownEdit->setText("h.");
 
-        ui->laSinPeriodEdit->setText("h.");
+  //      ui->laSinPeriodEdit->setText("h.");
     }
     else if (index == 4)
     {
         ui->laLinDurationEdit->setText("d.");
 
-        ui->laTrapRiseEdit->setText("d.");
-        ui->laTrapUpEdit->setText("d.");
-        ui->laTrapFallEdit->setText("d.");
-        ui->laTrapDownEdit->setText("d.");
+   //     ui->laTrapRiseEdit->setText("d.");
+   //     ui->laTrapUpEdit->setText("d.");
+   //     ui->laTrapFallEdit->setText("d.");
+   //     ui->laTrapDownEdit->setText("d.");
 
-        ui->laSinPeriodEdit->setText("d.");
+   //     ui->laSinPeriodEdit->setText("d.");
     }
 
 }
