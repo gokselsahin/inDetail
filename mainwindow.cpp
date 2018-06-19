@@ -1124,6 +1124,7 @@ void MainWindow::updateInfo(quint8 index, QByteArray data)
         vElapsedSeconds = (data[6] & 0xFF) | ((data[7] & 0xFF) <<  8) |
                 ((data[8] & 0xFF) << 16);
         ui->laTTestElepsedSecond->setText(QString::number(tElapsedSeconds));
+        ui->progressBar->setValue(tElapsedSeconds);
     }
 }
 
@@ -3793,45 +3794,46 @@ void MainWindow::on_cbSelectSTypeEdit_currentIndexChanged(int index)
 {
     if (index == 0)
     {
-        ui->wdRepeatEdit->setVisible(false);
+    //    ui->wdRepeatEdit->setVisible(false);
         ui->wdLinearEdit->setVisible(false);
-        ui->wdTrapEdit->setVisible(false);
-        ui->wdSinEdit->setVisible(false);
-        ui->wdLogEdit->setVisible(false);
+    //    ui->wdTrapEdit->setVisible(false);
+    //    ui->wdSinEdit->setVisible(false);
+    //    ui->wdLogEdit->setVisible(false);
 
         ui->laLinTargetEdit->setText("");
 
-        ui->laTrapLowEdit->setText("");
-        ui->laTrapHighEdit->setText("");
+    //    ui->laTrapLowEdit->setText("");
+    //    ui->laTrapHighEdit->setText("");
 
-        ui->laSinMeanEdit->setText("");
-        ui->laSinAmplitudeEdit->setText("");
+    //    ui->laSinMeanEdit->setText("");
+    //    ui->laSinAmplitudeEdit->setText("");
 
-        ui->laLogMinEdit->setText("");
-        ui->laLogMaxEdit->setText("");
+    //    ui->laLogMinEdit->setText("");
+    //    ui->laLogMaxEdit->setText("");
 
     }
     else if (index == 1)
     {
-        ui->wdRepeatEdit->setVisible(false);
+    //    ui->wdRepeatEdit->setVisible(false);
         ui->wdLinearEdit->setVisible(true);
-        ui->wdTrapEdit->setVisible(false);
-        ui->wdSinEdit->setVisible(false);
-        ui->wdLogEdit->setVisible(false);
+    //    ui->wdTrapEdit->setVisible(false);
+    //    ui->wdSinEdit->setVisible(false);
+    //    ui->wdLogEdit->setVisible(false);
 
         if (ui->cbSelectPTypeEdit->currentIndex() == 1)
         {
             ui->laLinTargetEdit->setText("°C");
 
-            ui->laTrapLowEdit->setText("");
-            ui->laTrapHighEdit->setText("");
+    //        ui->laTrapLowEdit->setText("");
+    //        ui->laTrapHighEdit->setText("");
 
-            ui->laSinMeanEdit->setText("");
-            ui->laSinAmplitudeEdit->setText("");
+    //        ui->laSinMeanEdit->setText("");
+    //        ui->laSinAmplitudeEdit->setText("");
 
-            ui->laLogMinEdit->setText("");
-            ui->laLogMaxEdit->setText("");
+    //        ui->laLogMinEdit->setText("");
+    //        ui->laLogMaxEdit->setText("");
         }
+
         else if (ui->cbSelectPTypeEdit->currentIndex() == 2)
         {
             ui->laLinTargetEdit->setText("bar");
@@ -3949,7 +3951,9 @@ void MainWindow::on_cbSelectSTypeEdit_currentIndexChanged(int index)
             ui->laLogMinEdit->setText("");
             ui->laLogMaxEdit->setText("");
         }
+
     }
+
 }
 */
 
@@ -4518,7 +4522,7 @@ void MainWindow::updateTPlot()
     //  ui->tTestGraph->graph(0)->rescaleKeyAxis();
     // replot the graph with the added data
     ui->tTestGraph->replot();
-    ui->progressBar->setValue(tElapsedSeconds);
+
 
 #ifdef Q_OS_LINUX
     //linux code goes here
@@ -5503,5 +5507,4 @@ void MainWindow::setupComboBoxes()
        }
     }
 }
-
 
