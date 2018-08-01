@@ -157,8 +157,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     askSensorValues();
 
-
-
 }
 
 MainWindow::~MainWindow()
@@ -198,6 +196,9 @@ void MainWindow::profileSent()
 {
     ui->bStartTest->setEnabled(true);
     ui->bStartTestManual->setEnabled(true);
+
+    ui->bSetTemperatureStart->setEnabled(true);
+
     proc->start();
 }
 
@@ -250,6 +251,8 @@ void MainWindow::setupTGraph()
     ui->tTestGraph->axisRect()->setupFullAxesBox();
     ui->tTestGraph->xAxis->setLabel("Time (hh:mm:ss)");
     ui->tTestGraph->yAxis->setLabel("Cabin Temperature (°C)");
+    ui->tTestGraph->xAxis->setTickLabelFont(QFont(QFont().family(), 12));
+    ui->tTestGraph->yAxis->setTickLabelFont(QFont(QFont().family(), 12));
     ui->tTestGraph->yAxis->setRange(-50.0, 250.0);
     ui->tTestGraph->setBackground(Qt::white);
     //   connect(ui->tTestGraph, SIGNAL(selectionChangedByUser()), this, SLOT(selectionChanged()));
@@ -510,6 +513,9 @@ void MainWindow::setupVisuals()
 
     ui->laTestStartEdit->setText("");
 
+     ui->bTemperatureSet->setEnabled(true);
+     ui->dsbSetTempValue->setEnabled(true);
+
 }
 
 void MainWindow::serialMessage(uint command, QByteArray data)
@@ -644,7 +650,7 @@ void MainWindow::updateInfo(quint8 index, QByteArray data)
                     /*    timerVib->stop(); */
                     timerPressure->stop();
 
-                    writeToLogTable("Device idle.");
+                    writeToLogTable("Cihaz Boşta");
 
                     ui->cbSelectProfileMain->setCurrentIndex(0);
                     ui->cbSelectProfileMain->setEnabled(true);
@@ -703,7 +709,7 @@ void MainWindow::updateInfo(quint8 index, QByteArray data)
                     }
 #endif
 
-                    writeToLogTable("Test started.");
+                    writeToLogTable("Test Başladı.");
 
                     ui->cbSelectProfileMain->setEnabled(false);
                     ui->bStartTest->setEnabled(false);
@@ -723,6 +729,8 @@ void MainWindow::updateInfo(quint8 index, QByteArray data)
                     //    ui->sbVTotalCycleManual->setEnabled(false);
                     //    ui->dsbTankTempSetManual->setEnabled(false);
                     //    ui->chbEllipticalVibrationSetManual->setEnabled(false);
+
+
                 }
             }
         }
@@ -741,7 +749,7 @@ void MainWindow::updateInfo(quint8 index, QByteArray data)
                     /*  timerVib->stop();*/
                     timerPressure->stop();
 
-                    writeToLogTable("Test paused.");
+                    writeToLogTable("Test beklemede.");
 
                     ui->bPauseTestManual->setEnabled(false);
                     ui->bPauseTest->setEnabled(false);
@@ -764,7 +772,23 @@ void MainWindow::updateInfo(quint8 index, QByteArray data)
                 myPLC.deviceState = data[0];
                 if (myPLC.deviceState)
                 {
-                    writeToLogTable("Maintenance mode activated.");
+                    writeToLogTable("Bakım modu aktif");
+                    ui->bSetTemperatureStop->setEnabled(true);
+                }
+            }
+        }
+        else if (data[0] = char(0x05))
+        {
+            if (myPLC.deviceState == (data[0]))
+            {
+
+            }
+            else
+            {
+                myPLC.deviceState = data[0];
+                if (myPLC.deviceState)
+                {
+                    writeToLogTable("Sıcaklık sabitleme modu aktif");
                 }
             }
         }
@@ -4027,6 +4051,7 @@ void MainWindow::on_cbSelectProfileMain_currentIndexChanged(int index)
     ui->cbSelectProfileManual->setCurrentIndex(0);
 
 
+
     if (index == 0)
     {
         ui->laSelectedProfileMain->setText("No Profile Selected");
@@ -5508,3 +5533,132 @@ void MainWindow::setupComboBoxes()
     }
 }
 
+void MainWindow::on_bStartTest_3_pressed()
+{
+ /*
+      proc->stop();
+
+      QByteArray cantTouchThis;           // bu satırda artık mıcıtmıyorum
+      float tStart = tProfileLoad[index-1].startValue*10.0;
+
+      cantTouchThis.append(tProfileLoad[index-1].active);
+      cantTouchThis.append(qint16(tStart) & 0x00FF);
+      cantTouchThis.append(qint16(tStart) >> 8);
+
+      proc->insertProfileMessage(mySerial::makeMessage(0x64,cantTouchThis));
+
+      cantTouchThis.clear();
+
+      proc->setProfile();
+
+      return true;     
+      */
+}
+
+void MainWindow::on_ZoomInHor_clicked()
+{
+    ui->tTestGraph->xAxis->scaleRange(.85, ui->tTestGraph->xAxis->range().center());
+    ui->tTestGraph->replot();
+}
+
+void MainWindow::on_ZoomOutHor_clicked()
+{
+    ui->tTestGraph->xAxis->scaleRange(1.15, ui->tTestGraph->xAxis->range().center());
+    ui->tTestGraph->replot();
+}
+
+void MainWindow::on_ZoomInVer_clicked()
+{
+    ui->tTestGraph->yAxis->scaleRange(.85, ui->tTestGraph->yAxis->range().center());
+    ui->tTestGraph->replot();
+}
+
+void MainWindow::on_ZoomOutVer_clicked()
+{
+    ui->tTestGraph->yAxis->scaleRange(1.15, ui->tTestGraph->yAxis->range().center());
+    ui->tTestGraph->replot();
+}
+
+bool MainWindow::on_bTemperatureSet_clicked()
+{
+    proc->stop();
+
+    QByteArray cantTouchThis;           // bu satırda artık mıcıtmıyorum
+    float tStart;
+    float tTotalStep = 0;
+    quint16 tTotalCycle = 0;
+    int index = 51;
+    tStart = (ui->dsbSetTempValue->value() * 10);
+    cantTouchThis.append(tProfileLoad[index-1].active);
+    cantTouchThis.append(qint16(tStart) & 0x00FF);
+    cantTouchThis.append(qint16(tStart) >> 8);
+    cantTouchThis.append(quint16(tTotalStep) & 0x00FF);
+    cantTouchThis.append(quint16(tTotalStep) >> 8);
+    cantTouchThis.append(quint16(tTotalCycle) & 0x00FF);
+    cantTouchThis.append(quint16(tTotalCycle) >> 8);
+    cantTouchThis.append(index);
+
+    proc->insertProfileMessage(mySerial::makeMessage(0x64,cantTouchThis));
+
+    cantTouchThis.clear();
+
+    proc->setProfile();
+
+    return true;
+
+}
+
+void MainWindow::on_bSetTemperatureStart_clicked()
+{
+        proc->stop();
+
+        if (myPLC.deviceState == char(0x03))
+        {
+
+        }
+        else
+        {
+            tKey = 0;
+            pKey = 0;
+            vKey = 0;
+
+            //    ui->tTestGraph->graph(0)->data().clear();
+            //    ui->pTestGraph->graph(0)->data().clear();
+            //    ui->pTestGraph->graph(1)->data().clear();
+            //    ui->pTestGraph->graph(2)->data().clear();
+            //    ui->pTestGraph->graph(3)->data().clear();
+            //    ui->pTestGraph->graph(4)->data().clear();
+            //    ui->pTestGraph->graph(5)->data().clear();
+            //    ui->vTestGraph->graph(0)->data().clear();
+            //    ui->tTestGraph->replot();
+            //    ui->pTestGraph->replot();
+            //    ui->vTestGraph->replot();
+
+            ui->tTestGraph->clearPlottables();
+            ui->pTestGraph->clearPlottables();
+            //ui->vTestGraph->clearPlottables();
+
+            setupTGraph();
+            setupPGraphs();
+            setupVGraph();
+        }
+
+        QByteArray cantTouchThis;
+        cantTouchThis.clear();
+        cantTouchThis.append(0x05);
+        proc->insertCommandMessage(mySerial::makeMessage(0x0A,cantTouchThis));
+}
+
+void MainWindow::on_bSetTemperatureStop_clicked()
+{
+    timerTemp->stop();
+    //    timerVib->stop();
+    timerPressure->stop();
+
+    proc->stop();
+
+    QByteArray cantTouchThis;
+    cantTouchThis.clear();
+    cantTouchThis.append(0x01);
+    proc->insertCommandMessage(mySerial::makeMessage(0x0A,cantTouchThis));
+}

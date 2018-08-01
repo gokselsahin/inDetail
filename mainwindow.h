@@ -50,28 +50,7 @@ private slots:
     void on_bTBack2_clicked();
     void on_bTBack3_clicked();
     void on_bTSaveStep_clicked();
-    void updateVPreview();
-    void on_bNewVStep_clicked();
-    void on_bVForward2_clicked();
-    void on_bVBack2_clicked();
-    void on_bVForward3_clicked();
-    void on_bVBack3_clicked();
-    void on_bVBack5_clicked();
-    void on_bVSaveStep_clicked();
-    void on_cbPStepRepeatUnit_currentIndexChanged(const QString &arg1);
-    void on_dsbPRepeatValue_valueChanged(double arg1);
-    void updatePPreview();
-    void on_bNewPStep_clicked();
-    void on_bPForward2_clicked();
-    void on_bPBack2_clicked();
-    void on_bPForward3_clicked();
-    void on_bPBack3_clicked();
-    void on_bPForward4_clicked();
-    void on_bPBack4_clicked();
-    void on_bPForward5_clicked();
-    void on_bPBack5_clicked();
-    void on_bPBack6_clicked();
-    void on_bPSaveStep_clicked();
+
     bool readProfiles(char rType, int index);
     void on_cbSelectProfileEdit_currentIndexChanged(int index);
     void on_cbSelectStepEdit_currentIndexChanged(int index);
@@ -110,11 +89,7 @@ private slots:
     void on_bFan_clicked();
     void on_bLightsMain_clicked();
 
-    void on_bVBack4_clicked();
-    void on_bVForward4_clicked();
-    void on_cbVStepRepeatUnit_currentIndexChanged(const QString &arg1);
-    void on_dsbVRepeatValue_valueChanged(double arg1);
-    void on_cbVSelectSUnit_currentIndexChanged(int index);
+
     void closeEvent(QCloseEvent *event);
     void on_cbVSelectSType_currentIndexChanged(int index);
     void on_bClearLogTable_clicked();
@@ -136,6 +111,24 @@ private slots:
     void setupComboBoxes();
 
     void on_cbSelectProfileMain_2_currentIndexChanged(int index);
+
+    void on_bStartTest_3_pressed();
+
+    void on_ZoomInHor_pressed();
+
+    void on_ZoomInHor_clicked();
+
+    void on_ZoomOutHor_clicked();
+
+    void on_ZoomInVer_clicked();
+
+    void on_ZoomOutVer_clicked();
+
+    bool on_bTemperatureSet_clicked();
+
+    void on_bSetTemperatureStart_clicked();
+
+    void on_bSetTemperatureStop_clicked();
 
 private:
     Ui::MainWindow *ui;
