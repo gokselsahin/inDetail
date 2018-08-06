@@ -137,13 +137,62 @@ background: qradialgradient(cx: 0.7, cy: -0.4,
 fx: 0.7, fy: -0.4,
 /*radius: 2, stop: 0 #A8EB12, stop: 1 #65BAAB );*/
 radius: 2, stop: 0 #fff, stop: 1 #222 );
+}
+
+QPushButton {
+color: #fff;
+font-family: &quot;Gill Sans MT&quot;;
+font-size: 21px;
+border: 2px solid #c3fcf1;
+border-radius: 11px;
+padding: 5px;
+background: qradialgradient(cx: 0.3, cy: -0.6,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #65BAAB, stop: 1 #0E62A0);
+min-width: 80px;
+}
+QPushButton:hover {
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #65BAAB, stop: 1 #0E62A0);
+}
+QPushButton:pressed {
+background: qradialgradient(cx: 0.4, cy: -0.1,
+fx: 0.4, fy: -0.1,
+radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
+}
+QPushButton:disabled {
+color: #888;
+background: qradialgradient(cx: 0.4, cy: -0.1,
+fx: 0.4, fy: -0.1,
+radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
+}
+
+QLabel{
+color : #fff;
+font: 45 14pt &quot;Gill Sans MT&quot;;
+}
+
+QDoubleSpinBox{
+color : #666;
+font: 75 14pt &quot;Gill Sans MT&quot;;
+}
+
+QSpinBox{
+color : #666;
+font: 75 14pt &quot;Gill Sans MT&quot;;
+}
+
+QComboBox{
+color : #666;
+font: 75 14pt &quot;Gill Sans MT&quot;;
 }</string>
       </property>
       <property name="tabShape">
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>6</number>
+       <number>3</number>
       </property>
       <property name="iconSize">
        <size>
@@ -166,8 +215,8 @@ radius: 2, stop: 0 #fff, stop: 1 #222 );
          <rect>
           <x>11</x>
           <y>11</y>
-          <width>751</width>
-          <height>41</height>
+          <width>687</width>
+          <height>39</height>
          </rect>
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout_19" stretch="25,0,0,30,30">
@@ -175,12 +224,16 @@ radius: 2, stop: 0 #fff, stop: 1 #222 );
           <widget class="QComboBox" name="cbSelectProfileMain">
            <property name="font">
             <font>
+             <family>Gill Sans MT</family>
              <pointsize>14</pointsize>
+             <weight>9</weight>
+             <italic>false</italic>
+             <bold>false</bold>
             </font>
            </property>
            <item>
             <property name="text">
-             <string>Bir test reçetesi seçin</string>
+             <string>Bir test recetesi seciniz</string>
             </property>
            </item>
           </widget>
@@ -209,7 +262,11 @@ radius: 2, stop: 0 #fff, stop: 1 #222 );
             <widget class="QLabel" name="label_57">
              <property name="font">
               <font>
+               <family>Gill Sans MT</family>
                <pointsize>14</pointsize>
+               <weight>5</weight>
+               <italic>false</italic>
+               <bold>false</bold>
               </font>
              </property>
              <property name="text">
@@ -221,7 +278,11 @@ radius: 2, stop: 0 #fff, stop: 1 #222 );
             <widget class="QLabel" name="laCommErr">
              <property name="font">
               <font>
+               <family>Gill Sans MT</family>
                <pointsize>14</pointsize>
+               <weight>5</weight>
+               <italic>false</italic>
+               <bold>false</bold>
               </font>
              </property>
              <property name="text">
@@ -262,7 +323,11 @@ radius: 2, stop: 0 #fff, stop: 1 #222 );
             <widget class="QLabel" name="label_8">
              <property name="font">
               <font>
+               <family>Gill Sans MT</family>
                <pointsize>14</pointsize>
+               <weight>5</weight>
+               <italic>false</italic>
+               <bold>false</bold>
               </font>
              </property>
              <property name="text">
@@ -274,7 +339,11 @@ radius: 2, stop: 0 #fff, stop: 1 #222 );
             <widget class="QLabel" name="laDate">
              <property name="font">
               <font>
+               <family>Gill Sans MT</family>
                <pointsize>14</pointsize>
+               <weight>5</weight>
+               <italic>false</italic>
+               <bold>false</bold>
               </font>
              </property>
              <property name="text">
@@ -299,7 +368,11 @@ radius: 2, stop: 0 #fff, stop: 1 #222 );
             <widget class="QLabel" name="label_65">
              <property name="font">
               <font>
+               <family>Gill Sans MT</family>
                <pointsize>14</pointsize>
+               <weight>5</weight>
+               <italic>false</italic>
+               <bold>false</bold>
               </font>
              </property>
              <property name="text">
@@ -311,7 +384,11 @@ radius: 2, stop: 0 #fff, stop: 1 #222 );
             <widget class="QLabel" name="laTime">
              <property name="font">
               <font>
+               <family>Gill Sans MT</family>
                <pointsize>14</pointsize>
+               <weight>5</weight>
+               <italic>false</italic>
+               <bold>false</bold>
               </font>
              </property>
              <property name="text">
@@ -332,7 +409,7 @@ radius: 2, stop: 0 #fff, stop: 1 #222 );
           <x>13</x>
           <y>53</y>
           <width>751</width>
-          <height>381</height>
+          <height>383</height>
          </rect>
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout_24">
@@ -442,7 +519,11 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
                   <widget class="QSpinBox" name="sbTTotalCycle">
                    <property name="font">
                     <font>
+                     <family>Gill Sans MT</family>
                      <pointsize>14</pointsize>
+                     <weight>9</weight>
+                     <italic>false</italic>
+                     <bold>false</bold>
                     </font>
                    </property>
                    <property name="minimum">
@@ -1089,6 +1170,345 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
         </layout>
        </widget>
       </widget>
+      <widget class="QWidget" name="tab_setTemp">
+       <attribute name="title">
+        <string>Sıcaklık Set</string>
+       </attribute>
+       <widget class="QCustomPlot" name="tTestGraph_3" native="true">
+        <property name="geometry">
+         <rect>
+          <x>240</x>
+          <y>10</y>
+          <width>521</width>
+          <height>421</height>
+         </rect>
+        </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
+       </widget>
+       <widget class="QWidget" name="layoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>11</y>
+          <width>211</width>
+          <height>231</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_9">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_50">
+           <item>
+            <widget class="QLabel" name="laSetTempValue">
+             <property name="font">
+              <font>
+               <family>Gill Sans MT</family>
+               <pointsize>14</pointsize>
+               <weight>9</weight>
+               <italic>false</italic>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel{
+color : #fff;
+font: 75 14pt &quot;Gill Sans MT&quot;;
+}</string>
+             </property>
+             <property name="text">
+              <string>Set Değer (°C)</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_38">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>13</width>
+               <height>17</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QDoubleSpinBox" name="dsbSetTempValue">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="font">
+              <font>
+               <family>Gill Sans MT</family>
+               <pointsize>14</pointsize>
+               <weight>9</weight>
+               <italic>false</italic>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="readOnly">
+              <bool>false</bool>
+             </property>
+             <property name="decimals">
+              <number>1</number>
+             </property>
+             <property name="minimum">
+              <double>-50.000000000000000</double>
+             </property>
+             <property name="maximum">
+              <double>250.000000000000000</double>
+             </property>
+             <property name="singleStep">
+              <double>0.100000000000000</double>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QPushButton" name="bTemperatureSet">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="font">
+            <font>
+             <family>Gill Sans MT</family>
+             <pointsize>-1</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+color: #fff;
+font-family: &quot;Gill Sans MT&quot;;
+font-size: 21px;
+border: 2px solid #c3fcf1;
+border-radius: 11px;
+padding: 5px;
+background: qradialgradient(cx: 0.3, cy: -0.6,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #65BAAB, stop: 1 #0E62A0);
+min-width: 80px;
+}
+QPushButton:hover {
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #65BAAB, stop: 1 #0E62A0);
+}
+QPushButton:pressed {
+background: qradialgradient(cx: 0.4, cy: -0.1,
+fx: 0.4, fy: -0.1,
+radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
+}
+QPushButton:disabled {
+color: #888;
+background: qradialgradient(cx: 0.4, cy: -0.1,
+fx: 0.4, fy: -0.1,
+radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
+}</string>
+           </property>
+           <property name="text">
+            <string>Set</string>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>24</width>
+             <height>15</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="bSetTemperatureStart">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="font">
+            <font>
+             <family>Gill Sans MT</family>
+             <pointsize>-1</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+color: #fff;
+font-family: &quot;Gill Sans MT&quot;;
+font-size: 21px;
+border: 2px solid #c3fcf1;
+border-radius: 11px;
+padding: 5px;
+background: qradialgradient(cx: 0.3, cy: -0.6,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #65BAAB, stop: 1 #0E62A0);
+min-width: 80px;
+}
+QPushButton:hover {
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #65BAAB, stop: 1 #0E62A0);
+}
+QPushButton:pressed {
+background: qradialgradient(cx: 0.4, cy: -0.1,
+fx: 0.4, fy: -0.1,
+radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
+}
+QPushButton:disabled {
+color: #888;
+background: qradialgradient(cx: 0.4, cy: -0.1,
+fx: 0.4, fy: -0.1,
+radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
+}</string>
+           </property>
+           <property name="text">
+            <string>Başlat</string>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>24</width>
+             <height>15</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="bSetTemperatureStop">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="font">
+            <font>
+             <family>Gill Sans MT</family>
+             <pointsize>-1</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+color: #fff;
+font-family: &quot;Gill Sans MT&quot;;
+font-size: 21px;
+border: 2px solid #c3fcf1;
+border-radius: 11px;
+padding: 5px;
+background: qradialgradient(cx: 0.3, cy: -0.6,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #65BAAB, stop: 1 #0E62A0);
+min-width: 80px;
+}
+QPushButton:hover {
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #65BAAB, stop: 1 #0E62A0);
+}
+QPushButton:pressed {
+background: qradialgradient(cx: 0.4, cy: -0.1,
+fx: 0.4, fy: -0.1,
+radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
+}
+QPushButton:disabled {
+color: #888;
+background: qradialgradient(cx: 0.4, cy: -0.1,
+fx: 0.4, fy: -0.1,
+radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
+}</string>
+           </property>
+           <property name="text">
+            <string>Durdur</string>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>24</width>
+             <height>15</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_49">
+           <item>
+            <widget class="QLabel" name="label_38">
+             <property name="font">
+              <font>
+               <family>Gill Sans MT</family>
+               <pointsize>14</pointsize>
+               <weight>9</weight>
+               <italic>false</italic>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel{
+color : #fff;
+font: 75 14pt &quot;Gill Sans MT&quot;;
+}</string>
+             </property>
+             <property name="text">
+              <string>Sıcaklık (°C)</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_35">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QDoubleSpinBox" name="dsbCabinTopTemp_3">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="font">
+              <font>
+               <family>Gill Sans MT</family>
+               <pointsize>14</pointsize>
+               <weight>9</weight>
+               <italic>false</italic>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="readOnly">
+              <bool>true</bool>
+             </property>
+             <property name="decimals">
+              <number>1</number>
+             </property>
+             <property name="minimum">
+              <double>-50.000000000000000</double>
+             </property>
+             <property name="maximum">
+              <double>250.000000000000000</double>
+             </property>
+             <property name="singleStep">
+              <double>0.100000000000000</double>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </widget>
       <widget class="QWidget" name="tab_Details">
        <property name="autoFillBackground">
         <bool>false</bool>
@@ -1110,7 +1530,11 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
         </property>
         <property name="font">
          <font>
+          <family>Gill Sans MT</family>
           <pointsize>14</pointsize>
+          <weight>9</weight>
+          <italic>false</italic>
+          <bold>false</bold>
          </font>
         </property>
         <item>
@@ -1134,8 +1558,8 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
          <rect>
           <x>30</x>
           <y>420</y>
-          <width>101</width>
-          <height>31</height>
+          <width>111</width>
+          <height>41</height>
          </rect>
         </property>
         <property name="text">
@@ -1171,7 +1595,11 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
         </property>
         <property name="font">
          <font>
-          <pointsize>8</pointsize>
+          <family>Gill Sans MT</family>
+          <pointsize>14</pointsize>
+          <weight>5</weight>
+          <italic>false</italic>
+          <bold>false</bold>
          </font>
         </property>
         <property name="text">
@@ -1189,7 +1617,11 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
         </property>
         <property name="font">
          <font>
-          <pointsize>8</pointsize>
+          <family>Gill Sans MT</family>
+          <pointsize>14</pointsize>
+          <weight>5</weight>
+          <italic>false</italic>
+          <bold>false</bold>
          </font>
         </property>
         <property name="text">
@@ -1207,7 +1639,11 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
         </property>
         <property name="font">
          <font>
-          <pointsize>8</pointsize>
+          <family>Gill Sans MT</family>
+          <pointsize>14</pointsize>
+          <weight>5</weight>
+          <italic>false</italic>
+          <bold>false</bold>
          </font>
         </property>
         <property name="text">
@@ -1225,7 +1661,11 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
         </property>
         <property name="font">
          <font>
-          <pointsize>8</pointsize>
+          <family>Gill Sans MT</family>
+          <pointsize>14</pointsize>
+          <weight>5</weight>
+          <italic>false</italic>
+          <bold>false</bold>
          </font>
         </property>
         <property name="text">
@@ -1243,7 +1683,11 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
         </property>
         <property name="font">
          <font>
-          <pointsize>8</pointsize>
+          <family>Gill Sans MT</family>
+          <pointsize>14</pointsize>
+          <weight>5</weight>
+          <italic>false</italic>
+          <bold>false</bold>
          </font>
         </property>
         <property name="text">
@@ -1261,7 +1705,11 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
         </property>
         <property name="font">
          <font>
-          <pointsize>8</pointsize>
+          <family>Gill Sans MT</family>
+          <pointsize>14</pointsize>
+          <weight>5</weight>
+          <italic>false</italic>
+          <bold>false</bold>
          </font>
         </property>
         <property name="text">
@@ -1279,7 +1727,11 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
         </property>
         <property name="font">
          <font>
-          <pointsize>8</pointsize>
+          <family>Gill Sans MT</family>
+          <pointsize>14</pointsize>
+          <weight>5</weight>
+          <italic>false</italic>
+          <bold>false</bold>
          </font>
         </property>
         <property name="text">
@@ -1297,7 +1749,11 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
         </property>
         <property name="font">
          <font>
-          <pointsize>8</pointsize>
+          <family>Gill Sans MT</family>
+          <pointsize>14</pointsize>
+          <weight>5</weight>
+          <italic>false</italic>
+          <bold>false</bold>
          </font>
         </property>
         <property name="text">
@@ -1315,7 +1771,11 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
         </property>
         <property name="font">
          <font>
-          <pointsize>8</pointsize>
+          <family>Gill Sans MT</family>
+          <pointsize>14</pointsize>
+          <weight>5</weight>
+          <italic>false</italic>
+          <bold>false</bold>
          </font>
         </property>
         <property name="text">
@@ -1333,7 +1793,11 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
         </property>
         <property name="font">
          <font>
-          <pointsize>8</pointsize>
+          <family>Gill Sans MT</family>
+          <pointsize>14</pointsize>
+          <weight>5</weight>
+          <italic>false</italic>
+          <bold>false</bold>
          </font>
         </property>
         <property name="text">
@@ -1351,7 +1815,11 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
         </property>
         <property name="font">
          <font>
-          <pointsize>8</pointsize>
+          <family>Gill Sans MT</family>
+          <pointsize>14</pointsize>
+          <weight>5</weight>
+          <italic>false</italic>
+          <bold>false</bold>
          </font>
         </property>
         <property name="text">
@@ -1369,7 +1837,11 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
         </property>
         <property name="font">
          <font>
-          <pointsize>8</pointsize>
+          <family>Gill Sans MT</family>
+          <pointsize>14</pointsize>
+          <weight>5</weight>
+          <italic>false</italic>
+          <bold>false</bold>
          </font>
         </property>
         <property name="text">
@@ -1387,7 +1859,11 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
         </property>
         <property name="font">
          <font>
-          <pointsize>8</pointsize>
+          <family>Gill Sans MT</family>
+          <pointsize>14</pointsize>
+          <weight>5</weight>
+          <italic>false</italic>
+          <bold>false</bold>
          </font>
         </property>
         <property name="text">
@@ -1405,7 +1881,11 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
         </property>
         <property name="font">
          <font>
-          <pointsize>8</pointsize>
+          <family>Gill Sans MT</family>
+          <pointsize>14</pointsize>
+          <weight>5</weight>
+          <italic>false</italic>
+          <bold>false</bold>
          </font>
         </property>
         <property name="text">
@@ -1608,7 +2088,7 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
           <x>190</x>
           <y>10</y>
           <width>191</width>
-          <height>33</height>
+          <height>37</height>
          </rect>
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout_25">
@@ -1653,7 +2133,11 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
            </property>
            <property name="font">
             <font>
-             <pointsize>11</pointsize>
+             <family>Gill Sans MT</family>
+             <pointsize>14</pointsize>
+             <weight>9</weight>
+             <italic>false</italic>
+             <bold>false</bold>
             </font>
            </property>
            <property name="readOnly">
@@ -1681,7 +2165,7 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
           <x>550</x>
           <y>10</y>
           <width>161</width>
-          <height>31</height>
+          <height>33</height>
          </rect>
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout_26">
@@ -1714,7 +2198,11 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
            </property>
            <property name="font">
             <font>
-             <pointsize>11</pointsize>
+             <family>Gill Sans MT</family>
+             <pointsize>14</pointsize>
+             <weight>9</weight>
+             <italic>false</italic>
+             <bold>false</bold>
             </font>
            </property>
            <property name="readOnly">
@@ -1734,650 +2222,12 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
         </layout>
        </widget>
       </widget>
-      <widget class="QWidget" name="tab_EditPro">
-       <property name="autoFillBackground">
-        <bool>false</bool>
-       </property>
-       <attribute name="title">
-        <string>Edit Profile</string>
-       </attribute>
-       <widget class="QComboBox" name="cbSelectProfileEdit">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>10</y>
-          <width>231</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <item>
-         <property name="text">
-          <string>Select a profile from list...</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 1</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 2</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 3</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 4</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 5</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 6</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 7</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 8</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 9</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 10</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 11</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 12</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 13</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 14</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 15</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 16</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 17</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 18</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 19</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 20</string>
-         </property>
-        </item>
-       </widget>
-       <widget class="QComboBox" name="cbSelectPTypeEdit">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>280</x>
-          <y>10</y>
-          <width>221</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <item>
-         <property name="text">
-          <string>Select a profile type from list...</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Temperature</string>
-         </property>
-        </item>
-       </widget>
-       <widget class="QComboBox" name="cbSelectStepEdit">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>540</x>
-          <y>10</y>
-          <width>221</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <item>
-         <property name="text">
-          <string>Select a step number...</string>
-         </property>
-        </item>
-       </widget>
-       <widget class="Line" name="line_3">
-        <property name="geometry">
-         <rect>
-          <x>260</x>
-          <y>50</y>
-          <width>20</width>
-          <height>361</height>
-         </rect>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-       </widget>
-       <widget class="Line" name="line_4">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>330</y>
-          <width>271</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-       <widget class="Line" name="line_5">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>120</y>
-          <width>271</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-       <widget class="Line" name="line_6">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>40</y>
-          <width>781</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-       <widget class="Line" name="line_18">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>420</y>
-          <width>781</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-       <widget class="QWidget" name="wdLinearEdit" native="true">
-        <property name="geometry">
-         <rect>
-          <x>280</x>
-          <y>330</y>
-          <width>181</width>
-          <height>71</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QWidget" name="layoutWidget">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>200</y>
-          <width>251</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <layout class="QHBoxLayout" name="horizontalLayout_5">
-         <item>
-          <widget class="QLabel" name="label_80">
-           <property name="styleSheet">
-            <string notr="true">QLabel{
-color : #fff;
-font: 75 14pt &quot;Gill Sans MT&quot;;
-}</string>
-           </property>
-           <property name="text">
-            <string>Time Unit</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_7">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QComboBox" name="cbSelectSUnitEdit">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <item>
-            <property name="text">
-             <string>Select a step time unit...</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Seconds</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Minutes</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Hours</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Days</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-       <widget class="QWidget" name="layoutWidget">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>140</y>
-          <width>211</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <layout class="QHBoxLayout" name="horizontalLayout_6">
-         <item>
-          <widget class="QLabel" name="label_84">
-           <property name="styleSheet">
-            <string notr="true">QLabel{
-color : #fff;
-font: 75 14pt &quot;Gill Sans MT&quot;;
-}</string>
-           </property>
-           <property name="text">
-            <string>Test Start Value</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_4">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QDoubleSpinBox" name="dsbStartValueEdit">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="decimals">
-            <number>1</number>
-           </property>
-           <property name="minimum">
-            <double>-40.000000000000000</double>
-           </property>
-           <property name="maximum">
-            <double>250.000000000000000</double>
-           </property>
-           <property name="singleStep">
-            <double>0.100000000000000</double>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="laTestStartEdit">
-           <property name="text">
-            <string>x</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-       <widget class="QWidget" name="layoutWidget">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>60</y>
-          <width>251</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <layout class="QHBoxLayout" name="horizontalLayout_7">
-         <item>
-          <widget class="QLabel" name="label_32">
-           <property name="styleSheet">
-            <string notr="true">QLabel{
-color : #fff;
-font: 75 14pt &quot;Gill Sans MT&quot;;
-}</string>
-           </property>
-           <property name="text">
-            <string>Profile Name</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_6">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="leProfileNameEdit">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="maxLength">
-            <number>20</number>
-           </property>
-           <property name="readOnly">
-            <bool>false</bool>
-           </property>
-           <property name="clearButtonEnabled">
-            <bool>false</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-       <widget class="QWidget" name="layoutWidget">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>90</y>
-          <width>131</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <layout class="QHBoxLayout" name="horizontalLayout_8">
-         <item>
-          <widget class="QLabel" name="label_13">
-           <property name="styleSheet">
-            <string notr="true">QLabel{
-color : #fff;
-font: 75 14pt &quot;Gill Sans MT&quot;;
-}</string>
-           </property>
-           <property name="text">
-            <string>Total Steps</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_5">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QLabel" name="laTotalStepEdit">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="text">
-            <string>0</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-       <widget class="QWidget" name="layoutWidget">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>250</y>
-          <width>241</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <layout class="QHBoxLayout" name="horizontalLayout_9">
-         <item>
-          <widget class="QLabel" name="label_82">
-           <property name="styleSheet">
-            <string notr="true">QLabel{
-color : #fff;
-font: 75 14pt &quot;Gill Sans MT&quot;;
-}</string>
-           </property>
-           <property name="text">
-            <string>Lin. Duration</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_8">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QDoubleSpinBox" name="dsbLDurationEdit">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="decimals">
-            <number>1</number>
-           </property>
-           <property name="minimum">
-            <double>0.100000000000000</double>
-           </property>
-           <property name="maximum">
-            <double>6553.000000000000000</double>
-           </property>
-           <property name="singleStep">
-            <double>0.100000000000000</double>
-           </property>
-           <property name="value">
-            <double>0.100000000000000</double>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="laLinDurationEdit">
-           <property name="text">
-            <string>x</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_9">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
-       </widget>
-       <widget class="QWidget" name="layoutWidget">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>283</y>
-          <width>261</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <layout class="QHBoxLayout" name="horizontalLayout_10">
-         <item>
-          <widget class="QLabel" name="label_83">
-           <property name="styleSheet">
-            <string notr="true">QLabel{
-color : #fff;
-font: 75 14pt &quot;Gill Sans MT&quot;;
-}</string>
-           </property>
-           <property name="text">
-            <string>Lin. Target</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_11">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QDoubleSpinBox" name="dsbLTargetEdit">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="decimals">
-            <number>1</number>
-           </property>
-           <property name="minimum">
-            <double>-40.000000000000000</double>
-           </property>
-           <property name="maximum">
-            <double>250.000000000000000</double>
-           </property>
-           <property name="singleStep">
-            <double>0.100000000000000</double>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="laLinTargetEdit">
-           <property name="text">
-            <string>x</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_10">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
-       </widget>
-      </widget>
       <widget class="QWidget" name="tab_NewPro">
        <property name="autoFillBackground">
         <bool>false</bool>
        </property>
        <attribute name="title">
-        <string>New Profile</string>
+        <string>Yeni Recete</string>
        </attribute>
        <widget class="QPushButton" name="bSavePro">
         <property name="enabled">
@@ -2385,14 +2235,14 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
         </property>
         <property name="geometry">
          <rect>
-          <x>660</x>
-          <y>360</y>
-          <width>101</width>
+          <x>650</x>
+          <y>410</y>
+          <width>111</width>
           <height>41</height>
          </rect>
         </property>
         <property name="text">
-         <string>Save Profile</string>
+         <string>Kaydet</string>
         </property>
        </widget>
        <widget class="QPushButton" name="bClearPro">
@@ -2402,22 +2252,22 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
         <property name="geometry">
          <rect>
           <x>530</x>
-          <y>360</y>
-          <width>101</width>
+          <y>410</y>
+          <width>111</width>
           <height>41</height>
          </rect>
         </property>
         <property name="text">
-         <string>Clear/Exit</string>
+         <string>Temizle</string>
         </property>
        </widget>
        <widget class="QCustomPlot" name="tPreview_2" native="true">
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>50</y>
+          <y>60</y>
           <width>501</width>
-          <height>351</height>
+          <height>391</height>
          </rect>
         </property>
        </widget>
@@ -2425,13 +2275,34 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
         <property name="geometry">
          <rect>
           <x>520</x>
-          <y>50</y>
+          <y>60</y>
           <width>251</width>
-          <height>301</height>
+          <height>341</height>
          </rect>
         </property>
         <property name="autoFillBackground">
          <bool>false</bool>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel{
+color : #666;
+font: 75 14pt &quot;Gill Sans MT&quot;;
+}
+
+QDoubleSpinBox{
+color : #666;
+font: 75 14pt &quot;Gill Sans MT&quot;;
+}
+
+QSpinBox{
+color : #666;
+font: 75 14pt &quot;Gill Sans MT&quot;;
+}
+
+QComboBox{
+color : #666;
+font: 75 14pt &quot;Gill Sans MT&quot;;
+}</string>
         </property>
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>
@@ -2447,53 +2318,58 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
           <property name="geometry">
            <rect>
             <x>10</x>
-            <y>250</y>
+            <y>270</y>
             <width>231</width>
             <height>41</height>
            </rect>
           </property>
           <property name="text">
-           <string>Add New Temperature Step</string>
+           <string>Yeni Sıcaklık Adımı</string>
           </property>
          </widget>
          <widget class="QLabel" name="label_28">
           <property name="geometry">
            <rect>
             <x>10</x>
-            <y>0</y>
+            <y>10</y>
             <width>211</width>
-            <height>16</height>
+            <height>31</height>
            </rect>
           </property>
           <property name="font">
            <font>
-            <weight>75</weight>
-            <bold>true</bold>
-            <underline>true</underline>
+            <family>Gill Sans MT</family>
+            <pointsize>14</pointsize>
+            <weight>9</weight>
+            <italic>false</italic>
+            <bold>false</bold>
            </font>
           </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
           <property name="text">
-           <string>Temperature Profile</string>
+           <string>Sıcaklık Reçetesi</string>
           </property>
          </widget>
          <widget class="QLabel" name="label_10">
           <property name="geometry">
            <rect>
             <x>10</x>
-            <y>30</y>
+            <y>50</y>
             <width>151</width>
             <height>21</height>
            </rect>
           </property>
           <property name="text">
-           <string>Total Steps</string>
+           <string>Toplam adım</string>
           </property>
          </widget>
          <widget class="QLabel" name="laTTotalStep">
           <property name="geometry">
            <rect>
             <x>170</x>
-            <y>30</y>
+            <y>50</y>
             <width>41</width>
             <height>20</height>
            </rect>
@@ -2506,13 +2382,13 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
           <property name="geometry">
            <rect>
             <x>10</x>
-            <y>55</y>
+            <y>90</y>
             <width>151</width>
             <height>21</height>
            </rect>
           </property>
           <property name="text">
-           <string>Start Value</string>
+           <string>Baslangic Degeri</string>
           </property>
          </widget>
          <widget class="QDoubleSpinBox" name="dsbTStartValue">
@@ -2521,9 +2397,9 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
           </property>
           <property name="geometry">
            <rect>
-            <x>170</x>
-            <y>55</y>
-            <width>41</width>
+            <x>160</x>
+            <y>90</y>
+            <width>51</width>
             <height>21</height>
            </rect>
           </property>
@@ -2552,29 +2428,32 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
             <height>41</height>
            </rect>
           </property>
+          <property name="currentText">
+           <string>Sıcaklık Zaman Birimi</string>
+          </property>
           <item>
            <property name="text">
-            <string>Select a step time unit...</string>
+            <string>Sıcaklık Zaman Birimi</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>Seconds</string>
+            <string>Saniye</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>Minutes</string>
+            <string>Dakika</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>Hours</string>
+            <string>Saat</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>Days</string>
+            <string>Gün</string>
            </property>
           </item>
          </widget>
@@ -2582,7 +2461,7 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
           <property name="geometry">
            <rect>
             <x>10</x>
-            <y>80</y>
+            <y>130</y>
             <width>151</width>
             <height>21</height>
            </rect>
@@ -2595,7 +2474,7 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
           <property name="geometry">
            <rect>
             <x>170</x>
-            <y>80</y>
+            <y>130</y>
             <width>41</width>
             <height>20</height>
            </rect>
@@ -2608,7 +2487,7 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
           <property name="geometry">
            <rect>
             <x>221</x>
-            <y>55</y>
+            <y>90</y>
             <width>20</width>
             <height>16</height>
            </rect>
@@ -2624,7 +2503,7 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
           <property name="geometry">
            <rect>
             <x>221</x>
-            <y>80</y>
+            <y>130</y>
             <width>20</width>
             <height>16</height>
            </rect>
@@ -2642,79 +2521,81 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
           <property name="geometry">
            <rect>
             <x>10</x>
-            <y>80</y>
+            <y>90</y>
             <width>141</width>
             <height>21</height>
            </rect>
           </property>
           <property name="text">
-           <string>Lin. Target</string>
+           <string>Adım Hedefi</string>
           </property>
          </widget>
          <widget class="QLabel" name="label_11">
           <property name="geometry">
            <rect>
             <x>10</x>
-            <y>40</y>
+            <y>50</y>
             <width>141</width>
             <height>21</height>
            </rect>
           </property>
           <property name="text">
-           <string>Lin. Duration</string>
+           <string>Adım Süresi</string>
           </property>
          </widget>
          <widget class="QLabel" name="label_31">
           <property name="geometry">
            <rect>
             <x>10</x>
-            <y>0</y>
+            <y>10</y>
             <width>211</width>
-            <height>16</height>
+            <height>31</height>
            </rect>
           </property>
           <property name="font">
            <font>
-            <weight>75</weight>
-            <bold>true</bold>
-            <underline>true</underline>
+            <family>Gill Sans MT</family>
+            <pointsize>14</pointsize>
+            <weight>9</weight>
+            <italic>false</italic>
+            <bold>false</bold>
            </font>
           </property>
           <property name="text">
-           <string>Temperature Profile</string>
+           <string>Sıcaklık Reçetesi</string>
           </property>
          </widget>
          <widget class="QPushButton" name="bTForward2">
           <property name="geometry">
            <rect>
-            <x>140</x>
-            <y>250</y>
-            <width>101</width>
+            <x>130</x>
+            <y>290</y>
+            <width>111</width>
             <height>41</height>
            </rect>
           </property>
           <property name="text">
-           <string>Forward</string>
+           <string>Ileri</string>
           </property>
          </widget>
          <widget class="QPushButton" name="bTBack2">
           <property name="geometry">
            <rect>
             <x>10</x>
-            <y>250</y>
-            <width>101</width>
+            <y>290</y>
+            <width>111</width>
             <height>41</height>
            </rect>
           </property>
           <property name="text">
-           <string>Back</string>
+           <string>Geri</string>
           </property>
          </widget>
          <widget class="QDoubleSpinBox" name="dsbTLTarget">
           <property name="geometry">
            <rect>
             <x>160</x>
-            <y>80</y>
+            <y>90</y>
             <width>51</width>
             <height>21</height>
            </rect>
@@ -2736,7 +2617,7 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
           <property name="geometry">
            <rect>
             <x>160</x>
-            <y>40</y>
+            <y>50</y>
             <width>51</width>
             <height>21</height>
            </rect>
@@ -2752,7 +2633,7 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
           <property name="geometry">
            <rect>
             <x>220</x>
-            <y>80</y>
+            <y>90</y>
             <width>20</width>
             <height>16</height>
            </rect>
@@ -2768,7 +2649,7 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
           <property name="geometry">
            <rect>
             <x>220</x>
-            <y>40</y>
+            <y>50</y>
             <width>20</width>
             <height>16</height>
            </rect>
@@ -2786,9 +2667,9 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
           <property name="geometry">
            <rect>
             <x>10</x>
-            <y>50</y>
+            <y>70</y>
             <width>231</width>
-            <height>181</height>
+            <height>191</height>
            </rect>
           </property>
          </widget>
@@ -2796,66 +2677,70 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
           <property name="geometry">
            <rect>
             <x>10</x>
-            <y>0</y>
+            <y>10</y>
             <width>211</width>
-            <height>16</height>
+            <height>31</height>
            </rect>
           </property>
           <property name="font">
            <font>
-            <weight>75</weight>
-            <bold>true</bold>
-            <underline>true</underline>
+            <family>Gill Sans MT</family>
+            <pointsize>14</pointsize>
+            <weight>9</weight>
+            <italic>false</italic>
+            <bold>false</bold>
            </font>
           </property>
           <property name="text">
-           <string>Temperature Profile</string>
+           <string>Sıcaklık Recetesi</string>
           </property>
          </widget>
          <widget class="QPushButton" name="bTSaveStep">
           <property name="geometry">
            <rect>
-            <x>140</x>
-            <y>250</y>
-            <width>101</width>
+            <x>130</x>
+            <y>290</y>
+            <width>111</width>
             <height>41</height>
            </rect>
           </property>
           <property name="text">
-           <string>Save Step</string>
+           <string>Adım Onay</string>
           </property>
          </widget>
          <widget class="QPushButton" name="bTBack3">
           <property name="geometry">
            <rect>
-            <x>20</x>
-            <y>250</y>
-            <width>101</width>
+            <x>10</x>
+            <y>290</y>
+            <width>111</width>
             <height>41</height>
            </rect>
           </property>
           <property name="text">
-           <string>Back</string>
+           <string>Geri</string>
           </property>
          </widget>
          <widget class="QLabel" name="label_68">
           <property name="geometry">
            <rect>
             <x>10</x>
-            <y>30</y>
+            <y>50</y>
             <width>231</width>
             <height>16</height>
            </rect>
           </property>
           <property name="font">
            <font>
-            <weight>75</weight>
-            <bold>true</bold>
-            <underline>true</underline>
+            <family>Gill Sans MT</family>
+            <pointsize>14</pointsize>
+            <weight>9</weight>
+            <italic>false</italic>
+            <bold>false</bold>
            </font>
           </property>
           <property name="text">
-           <string>Current Step Preview:</string>
+           <string>Önizleme</string>
           </property>
          </widget>
         </widget>
@@ -2866,7 +2751,7 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
           <x>20</x>
           <y>0</y>
           <width>721</width>
-          <height>49</height>
+          <height>54</height>
          </rect>
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout_14">
@@ -2889,12 +2774,16 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
           <widget class="QComboBox" name="cbSelectProfile">
            <property name="font">
             <font>
+             <family>Gill Sans MT</family>
              <pointsize>14</pointsize>
+             <weight>9</weight>
+             <italic>false</italic>
+             <bold>false</bold>
             </font>
            </property>
            <item>
             <property name="text">
-             <string>Select a profile slot...</string>
+             <string>Bir Recete Slotu Secin</string>
             </property>
            </item>
            <item>
@@ -3006,11 +2895,12 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
            </property>
            <property name="font">
             <font>
-             <pointsize>14</pointsize>
+             <family>Gill Sans MT</family>
+             <pointsize>-1</pointsize>
             </font>
            </property>
            <property name="text">
-            <string>Create New Profile</string>
+            <string>Yeni Recete</string>
            </property>
           </widget>
          </item>
@@ -3035,11 +2925,15 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
             <widget class="QLabel" name="label_29">
              <property name="font">
               <font>
+               <family>Gill Sans MT</family>
                <pointsize>14</pointsize>
+               <weight>5</weight>
+               <italic>false</italic>
+               <bold>false</bold>
               </font>
              </property>
              <property name="text">
-              <string>Profile Name</string>
+              <string>Recete Adı</string>
              </property>
             </widget>
            </item>
@@ -3077,19 +2971,20 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
         <bool>false</bool>
        </property>
        <attribute name="title">
-        <string>Manual Control</string>
+        <string>Test Kontrol</string>
        </attribute>
        <widget class="QLabel" name="label_122">
         <property name="geometry">
          <rect>
           <x>10</x>
           <y>140</y>
-          <width>151</width>
-          <height>16</height>
+          <width>181</width>
+          <height>41</height>
          </rect>
         </property>
         <property name="text">
-         <string>Temp. Time Value To Start</string>
+         <string>Test Recetesi  Baslangic 
+Zamanı</string>
         </property>
        </widget>
        <widget class="QSpinBox" name="sbTCycleSetManual">
@@ -3099,7 +2994,7 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
         <property name="geometry">
          <rect>
           <x>210</x>
-          <y>290</y>
+          <y>340</y>
           <width>61</width>
           <height>21</height>
          </rect>
@@ -3118,13 +3013,13 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>200</y>
+          <y>220</y>
           <width>151</width>
-          <height>16</height>
+          <height>21</height>
          </rect>
         </property>
         <property name="text">
-         <string>Temp. Step To Start</string>
+         <string>Baslangıç Adımı</string>
         </property>
        </widget>
        <widget class="QSpinBox" name="sbTStepRepeatSetManual">
@@ -3134,7 +3029,7 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
         <property name="geometry">
          <rect>
           <x>210</x>
-          <y>230</y>
+          <y>260</y>
           <width>61</width>
           <height>21</height>
          </rect>
@@ -3153,16 +3048,16 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>230</y>
-          <width>161</width>
-          <height>16</height>
+          <y>260</y>
+          <width>171</width>
+          <height>21</height>
          </rect>
         </property>
         <property name="autoFillBackground">
          <bool>false</bool>
         </property>
         <property name="text">
-         <string>Temp. Step Elapsed Seconds</string>
+         <string>Adım ilerleme zamanı</string>
         </property>
        </widget>
        <widget class="QSpinBox" name="sbTStepSetManual">
@@ -3172,7 +3067,7 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
         <property name="geometry">
          <rect>
           <x>210</x>
-          <y>200</y>
+          <y>220</y>
           <width>61</width>
           <height>21</height>
          </rect>
@@ -3191,17 +3086,17 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>80</y>
+          <y>90</y>
           <width>301</width>
           <height>31</height>
          </rect>
         </property>
         <property name="currentText">
-         <string>Select a manual control method...</string>
+         <string>Test Kontrol Modunu secin</string>
         </property>
         <item>
          <property name="text">
-          <string>Select a manual control method...</string>
+          <string>Test Kontrol Modunu secin</string>
          </property>
         </item>
         <item>
@@ -3219,20 +3114,20 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>290</y>
+          <y>340</y>
           <width>151</width>
           <height>16</height>
          </rect>
         </property>
         <property name="text">
-         <string>Temp. Elapsed Cycle To Start</string>
+         <string>Islenmıs Saykıl</string>
         </property>
        </widget>
        <widget class="QSpinBox" name="sbTTotalCycleManual">
         <property name="geometry">
          <rect>
           <x>210</x>
-          <y>260</y>
+          <y>300</y>
           <width>61</width>
           <height>21</height>
          </rect>
@@ -3251,7 +3146,7 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
         <property name="geometry">
          <rect>
           <x>360</x>
-          <y>330</y>
+          <y>380</y>
           <width>171</width>
           <height>61</height>
          </rect>
@@ -3303,7 +3198,7 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
         <property name="geometry">
          <rect>
           <x>670</x>
-          <y>330</y>
+          <y>380</y>
           <width>101</width>
           <height>61</height>
          </rect>
@@ -3345,14 +3240,14 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
        <widget class="QLabel" name="laSelectedProfileManual">
         <property name="geometry">
          <rect>
-          <x>170</x>
-          <y>50</y>
-          <width>141</width>
-          <height>16</height>
+          <x>150</x>
+          <y>60</y>
+          <width>161</width>
+          <height>20</height>
          </rect>
         </property>
         <property name="text">
-         <string>No Profile Selected</string>
+         <string>Recete Seçilmedi</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -3369,7 +3264,7 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
         </property>
         <item>
          <property name="text">
-          <string>Select a profile from list...</string>
+          <string>Bir Recete Secin</string>
          </property>
         </item>
         <item>
@@ -3477,26 +3372,26 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>260</y>
+          <y>300</y>
           <width>191</width>
           <height>20</height>
          </rect>
         </property>
         <property name="text">
-         <string>Total Cycle for Temp. Profile</string>
+         <string>Toplam işlenecek saykıl</string>
         </property>
        </widget>
        <widget class="QLabel" name="label_112">
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>50</y>
-          <width>101</width>
-          <height>16</height>
+          <y>60</y>
+          <width>141</width>
+          <height>21</height>
          </rect>
         </property>
         <property name="text">
-         <string>Selected Profile</string>
+         <string>Secilen Recete</string>
         </property>
        </widget>
        <widget class="QPushButton" name="bSendProfileManual">
@@ -3506,7 +3401,7 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
         <property name="geometry">
          <rect>
           <x>50</x>
-          <y>330</y>
+          <y>380</y>
           <width>171</width>
           <height>61</height>
          </rect>
@@ -3557,7 +3452,7 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
           <x>310</x>
           <y>10</y>
           <width>20</width>
-          <height>401</height>
+          <height>451</height>
          </rect>
         </property>
         <property name="orientation">
@@ -3568,7 +3463,7 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
         <property name="geometry">
          <rect>
           <x>0</x>
-          <y>160</y>
+          <y>180</y>
           <width>321</width>
           <height>20</height>
          </rect>
@@ -3581,7 +3476,7 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
         <property name="geometry">
          <rect>
           <x>0</x>
-          <y>110</y>
+          <y>120</y>
           <width>321</width>
           <height>20</height>
          </rect>
@@ -3597,7 +3492,7 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
         <property name="geometry">
          <rect>
           <x>210</x>
-          <y>140</y>
+          <y>150</y>
           <width>62</width>
           <height>21</height>
          </rect>
@@ -3616,7 +3511,7 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
         <property name="geometry">
          <rect>
           <x>550</x>
-          <y>330</y>
+          <y>380</y>
           <width>101</width>
           <height>61</height>
          </rect>
@@ -3661,7 +3556,7 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
         <bool>false</bool>
        </property>
        <attribute name="title">
-        <string>Maintenance</string>
+        <string>Bakım</string>
        </attribute>
        <widget class="QLabel" name="label_64">
         <property name="geometry">
@@ -4101,337 +3996,6 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
-       </widget>
-      </widget>
-      <widget class="QWidget" name="tab_setTemp">
-       <attribute name="title">
-        <string>Sıcaklık Set</string>
-       </attribute>
-       <widget class="QCustomPlot" name="tTestGraph_3" native="true">
-        <property name="geometry">
-         <rect>
-          <x>240</x>
-          <y>10</y>
-          <width>521</width>
-          <height>421</height>
-         </rect>
-        </property>
-        <property name="autoFillBackground">
-         <bool>false</bool>
-        </property>
-       </widget>
-       <widget class="QWidget" name="layoutWidget">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>11</y>
-          <width>215</width>
-          <height>231</height>
-         </rect>
-        </property>
-        <layout class="QVBoxLayout" name="verticalLayout_9">
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_50">
-           <item>
-            <widget class="QLabel" name="laSetTempValue">
-             <property name="font">
-              <font>
-               <family>Gill Sans MT</family>
-               <pointsize>14</pointsize>
-               <weight>9</weight>
-               <italic>false</italic>
-               <bold>false</bold>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QLabel{
-color : #fff;
-font: 75 14pt &quot;Gill Sans MT&quot;;
-}</string>
-             </property>
-             <property name="text">
-              <string>Set Değer (°C)</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <spacer name="horizontalSpacer_38">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>13</width>
-               <height>17</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item>
-            <widget class="QDoubleSpinBox" name="dsbSetTempValue">
-             <property name="enabled">
-              <bool>false</bool>
-             </property>
-             <property name="font">
-              <font>
-               <pointsize>11</pointsize>
-              </font>
-             </property>
-             <property name="readOnly">
-              <bool>false</bool>
-             </property>
-             <property name="decimals">
-              <number>1</number>
-             </property>
-             <property name="minimum">
-              <double>-50.000000000000000</double>
-             </property>
-             <property name="maximum">
-              <double>250.000000000000000</double>
-             </property>
-             <property name="singleStep">
-              <double>0.100000000000000</double>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <widget class="QPushButton" name="bTemperatureSet">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="font">
-            <font>
-             <family>Gill Sans MT</family>
-             <pointsize>-1</pointsize>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QPushButton {
-color: #fff;
-font-family: &quot;Gill Sans MT&quot;;
-font-size: 21px;
-border: 2px solid #c3fcf1;
-border-radius: 11px;
-padding: 5px;
-background: qradialgradient(cx: 0.3, cy: -0.6,
-fx: 0.3, fy: -0.4,
-radius: 1.35, stop: 0 #65BAAB, stop: 1 #0E62A0);
-min-width: 80px;
-}
-QPushButton:hover {
-background: qradialgradient(cx: 0.3, cy: -0.4,
-fx: 0.3, fy: -0.4,
-radius: 1.35, stop: 0 #65BAAB, stop: 1 #0E62A0);
-}
-QPushButton:pressed {
-background: qradialgradient(cx: 0.4, cy: -0.1,
-fx: 0.4, fy: -0.1,
-radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
-}
-QPushButton:disabled {
-color: #888;
-background: qradialgradient(cx: 0.4, cy: -0.1,
-fx: 0.4, fy: -0.1,
-radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
-}</string>
-           </property>
-           <property name="text">
-            <string>Set</string>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>24</width>
-             <height>15</height>
-            </size>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="bSetTemperatureStart">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="font">
-            <font>
-             <family>Gill Sans MT</family>
-             <pointsize>-1</pointsize>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QPushButton {
-color: #fff;
-font-family: &quot;Gill Sans MT&quot;;
-font-size: 21px;
-border: 2px solid #c3fcf1;
-border-radius: 11px;
-padding: 5px;
-background: qradialgradient(cx: 0.3, cy: -0.6,
-fx: 0.3, fy: -0.4,
-radius: 1.35, stop: 0 #65BAAB, stop: 1 #0E62A0);
-min-width: 80px;
-}
-QPushButton:hover {
-background: qradialgradient(cx: 0.3, cy: -0.4,
-fx: 0.3, fy: -0.4,
-radius: 1.35, stop: 0 #65BAAB, stop: 1 #0E62A0);
-}
-QPushButton:pressed {
-background: qradialgradient(cx: 0.4, cy: -0.1,
-fx: 0.4, fy: -0.1,
-radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
-}
-QPushButton:disabled {
-color: #888;
-background: qradialgradient(cx: 0.4, cy: -0.1,
-fx: 0.4, fy: -0.1,
-radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
-}</string>
-           </property>
-           <property name="text">
-            <string>Başlat</string>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>24</width>
-             <height>15</height>
-            </size>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="bSetTemperatureStop">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="font">
-            <font>
-             <family>Gill Sans MT</family>
-             <pointsize>-1</pointsize>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QPushButton {
-color: #fff;
-font-family: &quot;Gill Sans MT&quot;;
-font-size: 21px;
-border: 2px solid #c3fcf1;
-border-radius: 11px;
-padding: 5px;
-background: qradialgradient(cx: 0.3, cy: -0.6,
-fx: 0.3, fy: -0.4,
-radius: 1.35, stop: 0 #65BAAB, stop: 1 #0E62A0);
-min-width: 80px;
-}
-QPushButton:hover {
-background: qradialgradient(cx: 0.3, cy: -0.4,
-fx: 0.3, fy: -0.4,
-radius: 1.35, stop: 0 #65BAAB, stop: 1 #0E62A0);
-}
-QPushButton:pressed {
-background: qradialgradient(cx: 0.4, cy: -0.1,
-fx: 0.4, fy: -0.1,
-radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
-}
-QPushButton:disabled {
-color: #888;
-background: qradialgradient(cx: 0.4, cy: -0.1,
-fx: 0.4, fy: -0.1,
-radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
-}</string>
-           </property>
-           <property name="text">
-            <string>Durdur</string>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>24</width>
-             <height>15</height>
-            </size>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="verticalSpacer">
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>20</width>
-             <height>40</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_49">
-           <item>
-            <widget class="QLabel" name="label_38">
-             <property name="font">
-              <font>
-               <family>Gill Sans MT</family>
-               <pointsize>14</pointsize>
-               <weight>9</weight>
-               <italic>false</italic>
-               <bold>false</bold>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QLabel{
-color : #fff;
-font: 75 14pt &quot;Gill Sans MT&quot;;
-}</string>
-             </property>
-             <property name="text">
-              <string>Temp. (°C)</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <spacer name="horizontalSpacer_35">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item>
-            <widget class="QDoubleSpinBox" name="dsbCabinTopTemp_3">
-             <property name="enabled">
-              <bool>false</bool>
-             </property>
-             <property name="font">
-              <font>
-               <pointsize>11</pointsize>
-              </font>
-             </property>
-             <property name="readOnly">
-              <bool>true</bool>
-             </property>
-             <property name="decimals">
-              <number>1</number>
-             </property>
-             <property name="minimum">
-              <double>-50.000000000000000</double>
-             </property>
-             <property name="maximum">
-              <double>250.000000000000000</double>
-             </property>
-             <property name="singleStep">
-              <double>0.100000000000000</double>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-        </layout>
        </widget>
       </widget>
      </widget>

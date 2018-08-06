@@ -44,6 +44,7 @@ float pipe5Pressure;
 float pipe6Pressure;
 float cabinBottomTemperature;
 float cabinTopTemperature;
+float cabinAverageTemp;
 float waterTankTemperature;
 bool waterTankLiquidLevel;
 float pipeVibrationFrequency;
@@ -417,7 +418,7 @@ void MainWindow::setupVisuals()
     //   ui->vWidget->setCurrentIndex(0);
 
     //ui->wdRepeatEdit->setVisible(false);
-    ui->wdLinearEdit->setVisible(false);
+    //ui->wdLinearEdit->setVisible(false);
     //ui->wdTrapEdit->setVisible(false);
     //ui->wdSinEdit->setVisible(false);
     //ui->wdLogEdit->setVisible(false);
@@ -456,9 +457,9 @@ void MainWindow::setupVisuals()
     ui->dsbVRepeatTime->setButtonSymbols(QAbstractSpinBox::NoButtons);
 */
    // ui->dsbRepeatDurationEdit->setButtonSymbols(QAbstractSpinBox::NoButtons);
-    ui->dsbStartValueEdit->setButtonSymbols(QAbstractSpinBox::NoButtons);
-    ui->dsbLDurationEdit->setButtonSymbols(QAbstractSpinBox::NoButtons);
-    ui->dsbLTargetEdit->setButtonSymbols(QAbstractSpinBox::NoButtons);
+    //ui->dsbStartValueEdit->setButtonSymbols(QAbstractSpinBox::NoButtons);
+   // ui->dsbLDurationEdit->setButtonSymbols(QAbstractSpinBox::NoButtons);
+   // ui->dsbLTargetEdit->setButtonSymbols(QAbstractSpinBox::NoButtons);
    /* ui->dsbTRiseEdit->setButtonSymbols(QAbstractSpinBox::NoButtons);
     ui->dsbTUpEdit->setButtonSymbols(QAbstractSpinBox::NoButtons);
     ui->dsbTFallEdit->setButtonSymbols(QAbstractSpinBox::NoButtons);
@@ -511,7 +512,7 @@ void MainWindow::setupVisuals()
     //ui->sbPCycleSetManual->setButtonSymbols(QAbstractSpinBox::NoButtons);
     //ui->sbVCycleSetManual->setButtonSymbols(QAbstractSpinBox::NoButtons);
 
-    ui->laTestStartEdit->setText("");
+    //ui->laTestStartEdit->setText("");
 
      ui->bTemperatureSet->setEnabled(true);
      ui->dsbSetTempValue->setEnabled(true);
@@ -587,11 +588,11 @@ void MainWindow::serialMessage(uint command, QByteArray data)
         cabinTopTemperature = qint16(((data[1] & 0xff) << 8) | (data[0] & 0xff)) / 10.0;
         cabinBottomTemperature = qint16(((data[3] & 0xff) << 8) | (data[2] & 0xff)) / 10.0;
         //       pipeVibrationFrequency = quint16(((data[8] & 0xff) << 8) | (data[7] & 0xff)) / 10.0;
-
+        cabinAverageTemp = (cabinTopTemperature + cabinBottomTemperature)/2;
         //ui->dsbTankTemp->setValue(waterTankTemperature);
         //ui->dsbTankTempMaintenance->setValue(waterTankTemperature);
-        ui->dsbCabinTopTemp->setValue(cabinTopTemperature);
-        ui->dsbCabinTopTempMaintenance->setValue(cabinTopTemperature);
+        ui->dsbCabinTopTemp->setValue(cabinAverageTemp);
+        ui->dsbCabinTopTempMaintenance->setValue(cabinAverageTemp);
         //ui->dsbPipeVibration->setValue(pipeVibrationFrequency);
         //ui->dsbPipeVibrationMaintenance->setValue(pipeVibrationFrequency);
 
@@ -661,7 +662,7 @@ void MainWindow::updateInfo(quint8 index, QByteArray data)
 
                     ui->sbTTotalCycle->setEnabled(true);
 
-
+                   ui->bSetTemperatureStop->setEnabled(false);
 
 
                     ui->cbSelectProfileManual->setCurrentIndex(0);
@@ -729,8 +730,6 @@ void MainWindow::updateInfo(quint8 index, QByteArray data)
                     //    ui->sbVTotalCycleManual->setEnabled(false);
                     //    ui->dsbTankTempSetManual->setEnabled(false);
                     //    ui->chbEllipticalVibrationSetManual->setEnabled(false);
-
-
                 }
             }
         }
@@ -773,11 +772,11 @@ void MainWindow::updateInfo(quint8 index, QByteArray data)
                 if (myPLC.deviceState)
                 {
                     writeToLogTable("Bakım modu aktif");
-                    ui->bSetTemperatureStop->setEnabled(true);
+
                 }
             }
         }
-        else if (data[0] = char(0x05))
+        else if (data[0] == char(0x05))
         {
             if (myPLC.deviceState == (data[0]))
             {
@@ -789,6 +788,11 @@ void MainWindow::updateInfo(quint8 index, QByteArray data)
                 if (myPLC.deviceState)
                 {
                     writeToLogTable("Sıcaklık sabitleme modu aktif");
+                    ui->bSetTemperatureStart->setEnabled(false);
+                    ui->bSetTemperatureStop->setEnabled(true);
+                    ui->bStartTest->setEnabled(false);
+                    ui->bStopTest->setEnabled(true);
+                    ui->bPauseTest->setEnabled(false);
                 }
             }
         }
@@ -2890,7 +2894,7 @@ bool MainWindow::readProfiles(char rType, int index)
 
                 if (rProfile[pos] == '/')
                 {
-                    ui->leProfileNameEdit->setText("No Name Given");
+               //   ui->leProfileNameEdit->setText("No Name Given");
                 }
                 else
                 {
@@ -2899,7 +2903,7 @@ bool MainWindow::readProfiles(char rType, int index)
                         name.append(char(rProfile[pos]));
                         pos++;
                     }
-                    ui->leProfileNameEdit->setText(name);
+             //       ui->leProfileNameEdit->setText(name);
                 }
                 pos=pos+26;
 
@@ -3471,7 +3475,7 @@ void MainWindow::on_bSavePro_clicked()
     ui->tabWidget->setTabEnabled(5, true);
 
 }
-
+/*
 void MainWindow::on_cbSelectProfileEdit_currentIndexChanged(int index)
 {
     if (index == 0)
@@ -3495,7 +3499,8 @@ void MainWindow::on_cbSelectProfileEdit_currentIndexChanged(int index)
         readProfiles('e', index);
     }
 }
-
+*/
+/*
 void MainWindow::on_cbSelectPTypeEdit_currentIndexChanged(int index)
 {
     if (index == 0)
@@ -3539,7 +3544,7 @@ void MainWindow::on_cbSelectPTypeEdit_currentIndexChanged(int index)
 
         ui->laTestStartEdit->setText("°C");
     }
- /*
+
     else if (index == 2)
     {
         ui->cbSelectStepEdit->setEnabled(true);
@@ -3589,9 +3594,11 @@ void MainWindow::on_cbSelectPTypeEdit_currentIndexChanged(int index)
 
         ui->laTestStartEdit->setText("Hz");
     }
-*/
-}
 
+}
+*/
+
+/*
 void MainWindow::on_cbSelectStepEdit_currentIndexChanged(int index)
 {
     if (ui->cbSelectPTypeEdit->currentIndex() == 0)
@@ -3645,7 +3652,6 @@ void MainWindow::on_cbSelectStepEdit_currentIndexChanged(int index)
    //    ui->laStepDurationEdit->setText("");
    //     ui->cbSRepeatUnitEdit->setCurrentIndex(0);
     } 
-/*
     else if (ui->cbSelectPTypeEdit->currentIndex() == 2)
     {
         ui->cbSelectSUnitEdit->setCurrentIndex(pProfileEdit[ui->cbSelectProfileEdit->currentIndex()-1].step[index-1].stepUnit);
@@ -3810,8 +3816,9 @@ void MainWindow::on_cbSelectStepEdit_currentIndexChanged(int index)
         }
 
     }
-*/
+
 }
+*/
 
 /*
 void MainWindow::on_cbSelectSTypeEdit_currentIndexChanged(int index)
@@ -3980,7 +3987,7 @@ void MainWindow::on_cbSelectSTypeEdit_currentIndexChanged(int index)
 
 }
 */
-
+/*
 void MainWindow::on_cbSelectSUnitEdit_currentIndexChanged(int index)
 {
     if (index == 0)
@@ -4039,6 +4046,9 @@ void MainWindow::on_cbSelectSUnitEdit_currentIndexChanged(int index)
     }
 
 }
+*/
+
+
 
 void MainWindow::on_cbSelectProfileMain_currentIndexChanged(int index)
 {
@@ -4541,8 +4551,8 @@ void MainWindow::updateTPlot()
     tKey = tElapsedSeconds + (double(tempPeriod)/1000.0) ;
 
     // add data to lines:
-    ui->tTestGraph->graph(0)->addData(tKey, cabinTopTemperature);
-    ui->tTestGraph->graph(1)->addData(tKey, cabinBottomTemperature);
+    ui->tTestGraph->graph(0)->addData(tKey, cabinAverageTemp);
+    ui->tTestGraph->graph(1)->addData(tKey, cabinAverageTemp);
     // rescale key (horizontal) axis to fit the current data:
     //  ui->tTestGraph->graph(0)->rescaleKeyAxis();
     // replot the graph with the added data
@@ -5662,3 +5672,6 @@ void MainWindow::on_bSetTemperatureStop_clicked()
     cantTouchThis.append(0x01);
     proc->insertCommandMessage(mySerial::makeMessage(0x0A,cantTouchThis));
 }
+
+
+

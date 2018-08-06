@@ -110,7 +110,7 @@ private slots:
     void mouseWheel();
     void setupComboBoxes();
 
-    void on_cbSelectProfileMain_2_currentIndexChanged(int index);
+  //  void on_cbSelectProfileMain_2_currentIndexChanged(int index);
 
     void on_bStartTest_3_pressed();
 
