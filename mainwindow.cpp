@@ -195,6 +195,14 @@ void MainWindow::closeEvent (QCloseEvent *event)
 
 void MainWindow::profileSent()
 {
+    /// Test Profili bilgisi PLC'ye gönderildi.
+    ///
+    /// Test profili bilgisi PLC'ye seri haberleşeme
+    /// ile gönderildikten sonra PLC'den onay cevabı gelir
+    /// ve Test başlatma prosedürü devam ettirilir.
+
+
+
     ui->bStartTest->setEnabled(true);
     ui->bStartTestManual->setEnabled(true);
 
@@ -205,6 +213,7 @@ void MainWindow::profileSent()
 
 void MainWindow::commInfo(bool status)
 {
+
     if (status == true)
     {
         ui->laCommErr->setStyleSheet("QLabel { color : green; }");
@@ -593,6 +602,7 @@ void MainWindow::serialMessage(uint command, QByteArray data)
         //ui->dsbTankTempMaintenance->setValue(waterTankTemperature);
         ui->dsbCabinTopTemp->setValue(cabinAverageTemp);
         ui->dsbCabinTopTempMaintenance->setValue(cabinAverageTemp);
+        ui->dsbSetTempCabinAvrTemp->setValue(cabinAverageTemp);
         //ui->dsbPipeVibration->setValue(pipeVibrationFrequency);
         //ui->dsbPipeVibrationMaintenance->setValue(pipeVibrationFrequency);
 
@@ -1278,7 +1288,7 @@ void MainWindow::on_bEditPro_clicked()
     ui->bClearPro->setEnabled(true);
     ui->bEditPro->setEnabled(false);
 
-    ui->bNewTStep->setEnabled(true);
+    ui->bNewTStep->setEnabled(false);
     //  ui->bNewPStep->setEnabled(true);
     //  ui->bNewVStep->setEnabled(true);
 
@@ -1294,6 +1304,7 @@ void MainWindow::on_bEditPro_clicked()
     //  ui->dsbVStartValue->setEnabled(true);
 
     ui->leProfileName->setEnabled(true);
+    ui->bSavePro->setEnabled(false);
 }
 
 void MainWindow::on_bClearPro_clicked()
@@ -1371,16 +1382,22 @@ void MainWindow::on_bNewTStep_clicked()
 {
     if (tProfileSave[currentProfile].totalStep == 0)
     {
-        oldTValue = ui->dsbTStartValue->value();
-        ui->laOldTValue->setText(QString::number(oldTValue));
+       ///Eger kullanıcı baslangic adimindaysa
+
+
+        oldTValue = ui->dsbTStartValue->value();    /// OldTValue eski degerin tutulması icin baslangic degeri olarak kaydedilir.
+        ui->laOldTValue->setText(QString::number(oldTValue));   ///OldTValue ekranda gösterilir.
     }
+
 
     if (  ( ui->cbTSelectSUnit->currentIndex() == 0 ) )
     {
+
         //nothing selected for neither step type nor step time unit. Going forward should be banned.
     }
     else
     {
+        ui->bNewTStep->setEnabled(true);
         if ( ui->cbTSelectSUnit->currentIndex() == 1 )
         {
             //second selected for step time unit, do what you gotta do.
@@ -1421,8 +1438,8 @@ void MainWindow::on_bNewTStep_clicked()
 
             ui->laTLinDurationSave->setText("d.");
         }
-        tProfileSave[currentProfile].step[currentTStep].stepType = 1;
-        ui->tWidget->setCurrentIndex(ui->tWidget->currentIndex() + 1);
+        tProfileSave[currentProfile].step[currentTStep].stepType = 1; /// Sıcaklık adımı tipi linner olarak belirtildi.
+        ui->tWidget->setCurrentIndex(ui->tWidget->currentIndex() + 1); ///bir sonraki pencereye geçildi
     }
 }
 
@@ -1509,13 +1526,16 @@ void MainWindow::on_bTSaveStep_clicked()
     ui->cbTSelectSUnit->setCurrentIndex(0);
 
     ui->tWidget->setCurrentIndex(0);
+    ui->bSavePro->setEnabled(true);
 }
 
 void MainWindow::updateTPreview()
 {
     //ui->tPreview->clearPlottables();
-    //ui->tPreview->xAxis->setRange(0, ui->dsbTLTarget->value());
-    //ui->tPreview->yAxis->setRange(-40, 250);
+    ui->tPreview->xAxis->setRange(0, ui->dsbTLTarget->value());
+    ui->tPreview->yAxis->setRange(-40, 250);
+
+
 
     if (tProfileSave[currentProfile].step[currentTStep].stepUnit == 1)
     {
@@ -1539,7 +1559,7 @@ void MainWindow::updateTPreview()
     }
 
 
-    float delta;
+    float delta = 0;
     float duration = tProfileSave[currentProfile].step[currentTStep].lDuration;
     float startValue = tProfileSave[currentProfile].startValue;
     float oldTarget = tProfileSave[currentProfile].step[currentTStep-1].lTarget;
@@ -1551,7 +1571,7 @@ void MainWindow::updateTPreview()
 
     if (currentTStep == 0)
     {
-        tPreviewY[0] = startValue;
+       tPreviewY[0] = startValue;
         tPreviewX[0] = 0;
         delta = target - startValue;
         tPreviewY_2[1] = target;
@@ -1623,9 +1643,12 @@ void MainWindow::updateTPreview()
 
     connect(ui->tPreview_2->xAxis, SIGNAL(rangeChanged(QCPRange)), ui->tPreview_2->xAxis2, SLOT(setRange(QCPRange)));
     connect(ui->tPreview_2->yAxis, SIGNAL(rangeChanged(QCPRange)), ui->tPreview_2->yAxis2, SLOT(setRange(QCPRange)));
+
+
     ui->tPreview_2->graph(0)->setData(tPreviewX_2, tPreviewY_2);
     ui->tPreview_2->graph(0)->rescaleAxes();
     ui->tPreview_2->replot();
+
 
 }
 
@@ -3219,6 +3242,15 @@ void MainWindow::on_bSavePro_clicked()
 {
 
     QByteArray profile;
+       ui->tPreview_2->graph(0)->data().clear();
+       ui->tPreview_2->removeGraph(0);
+       ui->tPreview_2->clearGraphs();
+       ui->tPreview_2->clearItems();
+       ui->tPreview_2->clearMask();
+       ui->tPreview_2->clearPlottables();
+       ui->tPreview_2->replot();
+
+        setupPreviewGraphs();
 
 #ifdef Q_OS_LINUX
     //linux code goes here
@@ -3402,6 +3434,7 @@ void MainWindow::on_bSavePro_clicked()
     profile.append("/End of Profile.");
 
 
+
     QString name = QString::number(currentProfile + 1) +" - "+ ui->leProfileName->text();
     ui->cbSelectProfileMain->setItemText(currentProfile + 1, name);
 
@@ -3433,7 +3466,19 @@ void MainWindow::on_bSavePro_clicked()
     //  ui->cbPSelectSType->setEnabled(false);
     //  ui->cbVSelectSType->setEnabled(false);
 
-    ui->tPreview->clearPlottables();
+    ui->tPreview->graph(0)->data().clear();
+//    ui->tPreview->clearPlottables();
+//    ui->tPreview->clearGraphs();
+//    ui->tPreview->clearItems();
+    ui->tPreview->replot();
+
+    ui->tPreview_2->graph(0)->data().clear();
+//    ui->tPreview_2->clearPlottables();
+//    ui->tPreview_2->clearGraphs();
+//    ui->tPreview_2->clearItems();
+    ui->tPreview_2->replot();
+
+
     //  ui->pPreview->clearPlottables();
     //  ui->vPreview->clearPlottables();
 
@@ -3473,6 +3518,8 @@ void MainWindow::on_bSavePro_clicked()
     ui->tabWidget->setTabEnabled(2, true);
     ui->tabWidget->setTabEnabled(4, true);
     ui->tabWidget->setTabEnabled(5, true);
+
+
 
 }
 /*
@@ -3597,7 +3644,6 @@ void MainWindow::on_cbSelectPTypeEdit_currentIndexChanged(int index)
 
 }
 */
-
 /*
 void MainWindow::on_cbSelectStepEdit_currentIndexChanged(int index)
 {
@@ -5370,12 +5416,25 @@ void MainWindow::on_tabWidget_currentChanged(int index)
     }
     else if (index == 1)
     {
-        ui->cbSelectGraph->setCurrentIndex(0);
-        qApp->processEvents();
+
+
     }
     else if (index == 2)
     {
-
+        ui->cbSelectGraph->setCurrentIndex(1);
+        ui->tTestGraph->setVisible(false);
+        ui->pTestGraph->setVisible(false);
+        //ui->vTestGraph->setVisible(false);
+        ui->tTestGraph->setVisible(true);
+        ui->laTCycleCounterDetails->setVisible(true);
+        ui->laTStepCounterDetails->setVisible(true);
+        ui->laPCycleCounterDetails->setVisible(false);
+        ui->laPStepCounterDetails->setVisible(false);
+        ui->laPRepeatCounterDetails->setVisible(false);
+        ui->laVCycleCounterDetails->setVisible(false);
+        ui->laVStepCounterDetails->setVisible(false);
+        ui->laVRepeatCounterDetails->setVisible(false);
+        qApp->processEvents();
     }
     else if (index == 3)
     {
@@ -5673,5 +5732,14 @@ void MainWindow::on_bSetTemperatureStop_clicked()
     proc->insertCommandMessage(mySerial::makeMessage(0x0A,cantTouchThis));
 }
 
-
-
+void MainWindow::on_cbTSelectSUnit_currentIndexChanged(int index)
+{
+    if (index =! 0)
+    {
+        ui->bNewTStep->setEnabled(true);
+    }
+    else
+    {
+        ui->bNewTStep->setEnabled(false);
+    }
+}

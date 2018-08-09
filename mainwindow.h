@@ -130,6 +130,8 @@ private slots:
 
     void on_bSetTemperatureStop_clicked();
 
+    void on_cbTSelectSUnit_currentIndexChanged(int index);
+
 private:
     Ui::MainWindow *ui;
 

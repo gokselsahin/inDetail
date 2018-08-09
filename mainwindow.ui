@@ -186,13 +186,17 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
 QComboBox{
 color : #666;
 font: 75 14pt &quot;Gill Sans MT&quot;;
+}
+QCheckBox{
+color : #fff;
+font: 75 14pt &quot;Gill Sans MT&quot;;
 }</string>
       </property>
       <property name="tabShape">
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>1</number>
       </property>
       <property name="iconSize">
        <size>
@@ -1474,7 +1478,7 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
             </spacer>
            </item>
            <item>
-            <widget class="QDoubleSpinBox" name="dsbCabinTopTemp_3">
+            <widget class="QDoubleSpinBox" name="dsbSetTempCabinAvrTemp">
              <property name="enabled">
               <bool>false</bool>
              </property>
@@ -1489,6 +1493,9 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
              </property>
              <property name="readOnly">
               <bool>true</bool>
+             </property>
+             <property name="buttonSymbols">
+              <enum>QAbstractSpinBox::NoButtons</enum>
              </property>
              <property name="decimals">
               <number>1</number>
@@ -1517,7 +1524,7 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
         <string notr="true"/>
        </property>
        <attribute name="title">
-        <string>Details</string>
+        <string>Grafik</string>
        </attribute>
        <widget class="QComboBox" name="cbSelectGraph">
         <property name="geometry">
@@ -1536,6 +1543,9 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
           <italic>false</italic>
           <bold>false</bold>
          </font>
+        </property>
+        <property name="currentIndex">
+         <number>1</number>
         </property>
         <item>
          <property name="text">
@@ -2280,6 +2290,11 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
           <height>341</height>
          </rect>
         </property>
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
         <property name="autoFillBackground">
          <bool>false</bool>
         </property>
@@ -2308,7 +2323,7 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
          <enum>QFrame::StyledPanel</enum>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="page">
          <widget class="QPushButton" name="bNewTStep">
@@ -2467,7 +2482,7 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
            </rect>
           </property>
           <property name="text">
-           <string>Previous Value</string>
+           <string>Onceki deger</string>
           </property>
          </widget>
          <widget class="QLabel" name="laOldTValue">
@@ -3101,12 +3116,12 @@ Zamanı</string>
         </item>
         <item>
          <property name="text">
-          <string>Enter elapsed seconds to start...</string>
+          <string>Test saniyesini gir..</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>Enter step number / step elapsed seconds to start...</string>
+          <string>Adım sayısını ve Adım ilerleme süresini gir...</string>
          </property>
         </item>
        </widget>
@@ -3558,29 +3573,266 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
        <attribute name="title">
         <string>Bakım</string>
        </attribute>
-       <widget class="QLabel" name="label_64">
+       <widget class="QPushButton" name="bStartMaintenance">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
         <property name="geometry">
          <rect>
-          <x>19</x>
-          <y>190</y>
-          <width>111</width>
-          <height>21</height>
+          <x>10</x>
+          <y>20</y>
+          <width>201</width>
+          <height>41</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+color: #fff;
+font-family: &quot;Gill Sans MT&quot;;
+font-size: 21px;
+border: 2px solid #c3fcf1;
+border-radius: 11px;
+padding: 5px;
+background: qradialgradient(cx: 0.3, cy: -0.6,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #65BAAB, stop: 1 #0E62A0);
+min-width: 80px;
+}
+QPushButton:hover {
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #65BAAB, stop: 1 #0E62A0);
+}
+QPushButton:pressed {
+background: qradialgradient(cx: 0.4, cy: -0.1,
+fx: 0.4, fy: -0.1,
+radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
+}
+QPushButton:disabled {
+color: #888;
+background: qradialgradient(cx: 0.4, cy: -0.1,
+fx: 0.4, fy: -0.1,
+radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
+}</string>
+        </property>
         <property name="text">
-         <string>Pipe-1 Pressure</string>
+         <string>Bakım Moduna Gir</string>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
         </property>
        </widget>
-       <widget class="QDoubleSpinBox" name="dsbCabinTopTempMaintenance">
+       <widget class="QPushButton" name="bStartCooler">
         <property name="enabled">
          <bool>false</bool>
         </property>
         <property name="geometry">
          <rect>
-          <x>140</x>
-          <y>150</y>
-          <width>51</width>
+          <x>520</x>
+          <y>20</y>
+          <width>111</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+color: #fff;
+font-family: &quot;Gill Sans MT&quot;;
+font-size: 21px;
+border: 2px solid #c3fcf1;
+border-radius: 11px;
+padding: 5px;
+background: qradialgradient(cx: 0.3, cy: -0.6,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #65BAAB, stop: 1 #0E62A0);
+min-width: 80px;
+}
+QPushButton:hover {
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #65BAAB, stop: 1 #0E62A0);
+}
+QPushButton:pressed {
+background: qradialgradient(cx: 0.4, cy: -0.1,
+fx: 0.4, fy: -0.1,
+radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
+}
+QPushButton:disabled {
+color: #888;
+background: qradialgradient(cx: 0.4, cy: -0.1,
+fx: 0.4, fy: -0.1,
+radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
+}</string>
+        </property>
+        <property name="text">
+         <string>Sogutucu</string>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="Line" name="line_13">
+        <property name="geometry">
+         <rect>
+          <x>220</x>
+          <y>0</y>
+          <width>20</width>
+          <height>221</height>
+         </rect>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+       <widget class="Line" name="line_7">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>70</y>
+          <width>231</width>
           <height>21</height>
+         </rect>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+       <widget class="Line" name="line_14">
+        <property name="geometry">
+         <rect>
+          <x>500</x>
+          <y>0</y>
+          <width>20</width>
+          <height>221</height>
+         </rect>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+       <widget class="Line" name="line_8">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>210</y>
+          <width>771</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+       <widget class="Line" name="line_15">
+        <property name="geometry">
+         <rect>
+          <x>360</x>
+          <y>0</y>
+          <width>20</width>
+          <height>221</height>
+         </rect>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+       <widget class="Line" name="line_16">
+        <property name="geometry">
+         <rect>
+          <x>630</x>
+          <y>0</y>
+          <width>20</width>
+          <height>221</height>
+         </rect>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="bStartCooler_2">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>650</x>
+          <y>20</y>
+          <width>111</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+color: #fff;
+font-family: &quot;Gill Sans MT&quot;;
+font-size: 21px;
+border: 2px solid #c3fcf1;
+border-radius: 11px;
+padding: 5px;
+background: qradialgradient(cx: 0.3, cy: -0.6,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #65BAAB, stop: 1 #0E62A0);
+min-width: 80px;
+}
+QPushButton:hover {
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #65BAAB, stop: 1 #0E62A0);
+}
+QPushButton:pressed {
+background: qradialgradient(cx: 0.4, cy: -0.1,
+fx: 0.4, fy: -0.1,
+radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
+}
+QPushButton:disabled {
+color: #888;
+background: qradialgradient(cx: 0.4, cy: -0.1,
+fx: 0.4, fy: -0.1,
+radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
+}</string>
+        </property>
+        <property name="text">
+         <string>Baca</string>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="chbFan1_2">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>660</x>
+          <y>70</y>
+          <width>92</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Baca</string>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="tristate">
+         <bool>false</bool>
+        </property>
+       </widget>
+       <widget class="QDoubleSpinBox" name="dsbExhaustValveAutoValue">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>650</x>
+          <y>160</y>
+          <width>81</width>
+          <height>31</height>
          </rect>
         </property>
         <property name="readOnly">
@@ -3599,58 +3851,125 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
          <double>0.100000000000000</double>
         </property>
        </widget>
-       <widget class="QDoubleSpinBox" name="dsbPipe1PressureMaintenance">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
-          <x>140</x>
-          <y>190</y>
-          <width>51</width>
-          <height>21</height>
+          <x>10</x>
+          <y>90</y>
+          <width>212</width>
+          <height>107</height>
          </rect>
         </property>
-        <property name="readOnly">
-         <bool>true</bool>
-        </property>
-        <property name="decimals">
-         <number>2</number>
-        </property>
-        <property name="maximum">
-         <double>10.000000000000000</double>
-        </property>
-        <property name="singleStep">
-         <double>0.100000000000000</double>
-        </property>
+        <layout class="QFormLayout" name="formLayout">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_94">
+           <property name="text">
+            <string>Kabin Sıcaklık Üst</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QDoubleSpinBox" name="dsbCabinTopTempMaintenance">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+           <property name="decimals">
+            <number>1</number>
+           </property>
+           <property name="minimum">
+            <double>-40.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>250.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_95">
+           <property name="text">
+            <string>Kabin Sıcaklık Alt</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QDoubleSpinBox" name="dsbCabinTopTempMaintenance_2">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+           <property name="decimals">
+            <number>1</number>
+           </property>
+           <property name="minimum">
+            <double>-40.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>250.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_64">
+           <property name="text">
+            <string>Basınç </string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QDoubleSpinBox" name="dsbPipe1PressureMaintenance">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+           <property name="decimals">
+            <number>2</number>
+           </property>
+           <property name="maximum">
+            <double>10.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </widget>
-       <widget class="QLabel" name="label_94">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
-          <x>19</x>
-          <y>150</y>
-          <width>111</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Cabin Temp.</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="bStartMaintenance">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>370</x>
+          <x>240</x>
           <y>20</y>
-          <width>261</width>
-          <height>71</height>
+          <width>121</width>
+          <height>196</height>
          </rect>
         </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
+        <layout class="QVBoxLayout" name="verticalLayout_7">
+         <item>
+          <widget class="QPushButton" name="bRes">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
 color: #fff;
 font-family: &quot;Gill Sans MT&quot;;
 font-size: 21px;
@@ -3678,28 +3997,78 @@ background: qradialgradient(cx: 0.4, cy: -0.1,
 fx: 0.4, fy: -0.1,
 radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
 }</string>
-        </property>
-        <property name="text">
-         <string>Start Maintenance Mode</string>
-        </property>
-        <property name="checkable">
-         <bool>true</bool>
-        </property>
+           </property>
+           <property name="text">
+            <string>Isıtıcı</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_5">
+           <item>
+            <widget class="QCheckBox" name="chbRes1">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string>Rezistans 1</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="chbRes2">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string>Rezistans 2</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="chbRes3">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string>Rezistans 3</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="chbResTank">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string>Rezistans 4</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
        </widget>
-       <widget class="QPushButton" name="bRes">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
-          <x>220</x>
-          <y>160</y>
-          <width>121</width>
-          <height>71</height>
+          <x>390</x>
+          <y>20</y>
+          <width>96</width>
+          <height>161</height>
          </rect>
         </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
+        <layout class="QVBoxLayout" name="verticalLayout_8">
+         <item>
+          <widget class="QPushButton" name="bFan">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
 color: #fff;
 font-family: &quot;Gill Sans MT&quot;;
 font-size: 21px;
@@ -3727,275 +4096,415 @@ background: qradialgradient(cx: 0.4, cy: -0.1,
 fx: 0.4, fy: -0.1,
 radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
 }</string>
-        </property>
-        <property name="text">
-         <string>Start Heater</string>
-        </property>
-        <property name="checkable">
-         <bool>true</bool>
-        </property>
+           </property>
+           <property name="text">
+            <string>Fan</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_6">
+           <item>
+            <widget class="QCheckBox" name="chbFan1">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string>Fan 1</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="chbFan2">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string>Fan 2</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="chbFan3">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string>Fan 3</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
        </widget>
-       <widget class="QPushButton" name="bFan">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
-          <x>440</x>
-          <y>290</y>
-          <width>121</width>
-          <height>71</height>
+          <x>20</x>
+          <y>240</y>
+          <width>741</width>
+          <height>151</height>
          </rect>
         </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-color: #fff;
-font-family: &quot;Gill Sans MT&quot;;
-font-size: 21px;
-border: 2px solid #c3fcf1;
-border-radius: 11px;
-padding: 5px;
-background: qradialgradient(cx: 0.3, cy: -0.6,
-fx: 0.3, fy: -0.4,
-radius: 1.35, stop: 0 #65BAAB, stop: 1 #0E62A0);
-min-width: 80px;
-}
-QPushButton:hover {
-background: qradialgradient(cx: 0.3, cy: -0.4,
-fx: 0.3, fy: -0.4,
-radius: 1.35, stop: 0 #65BAAB, stop: 1 #0E62A0);
-}
-QPushButton:pressed {
-background: qradialgradient(cx: 0.4, cy: -0.1,
-fx: 0.4, fy: -0.1,
-radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
-}
-QPushButton:disabled {
-color: #888;
-background: qradialgradient(cx: 0.4, cy: -0.1,
-fx: 0.4, fy: -0.1,
-radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
-}</string>
-        </property>
-        <property name="text">
-         <string>Start Fan</string>
-        </property>
-        <property name="checkable">
-         <bool>true</bool>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="bStartCooler">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>580</x>
-          <y>160</y>
-          <width>121</width>
-          <height>71</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-color: #fff;
-font-family: &quot;Gill Sans MT&quot;;
-font-size: 21px;
-border: 2px solid #c3fcf1;
-border-radius: 11px;
-padding: 5px;
-background: qradialgradient(cx: 0.3, cy: -0.6,
-fx: 0.3, fy: -0.4,
-radius: 1.35, stop: 0 #65BAAB, stop: 1 #0E62A0);
-min-width: 80px;
-}
-QPushButton:hover {
-background: qradialgradient(cx: 0.3, cy: -0.4,
-fx: 0.3, fy: -0.4,
-radius: 1.35, stop: 0 #65BAAB, stop: 1 #0E62A0);
-}
-QPushButton:pressed {
-background: qradialgradient(cx: 0.4, cy: -0.1,
-fx: 0.4, fy: -0.1,
-radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
-}
-QPushButton:disabled {
-color: #888;
-background: qradialgradient(cx: 0.4, cy: -0.1,
-fx: 0.4, fy: -0.1,
-radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
-}</string>
-        </property>
-        <property name="text">
-         <string>Start Cooler</string>
-        </property>
-        <property name="checkable">
-         <bool>true</bool>
-        </property>
-       </widget>
-       <widget class="Line" name="line_13">
-        <property name="geometry">
-         <rect>
-          <x>190</x>
-          <y>10</y>
-          <width>20</width>
-          <height>401</height>
-         </rect>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-       </widget>
-       <widget class="QCheckBox" name="chbRes1">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>360</x>
-          <y>135</y>
-          <width>121</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Resistance 1</string>
-        </property>
-       </widget>
-       <widget class="QCheckBox" name="chbRes2">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>360</x>
-          <y>160</y>
-          <width>121</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Resistance 2</string>
-        </property>
-       </widget>
-       <widget class="QCheckBox" name="chbRes3">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>360</x>
-          <y>190</y>
-          <width>121</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Resistance 3</string>
-        </property>
-       </widget>
-       <widget class="QCheckBox" name="chbFan1">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>290</x>
-          <y>370</y>
-          <width>91</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Fan 1</string>
-        </property>
-       </widget>
-       <widget class="QCheckBox" name="chbFan2">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>470</x>
-          <y>370</y>
-          <width>91</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Fan 2</string>
-        </property>
-       </widget>
-       <widget class="QCheckBox" name="chbFan3">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>620</x>
-          <y>370</y>
-          <width>91</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Fan 3</string>
-        </property>
-       </widget>
-       <widget class="QCheckBox" name="chbResTank">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>360</x>
-          <y>230</y>
-          <width>121</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Resistance Tank</string>
-        </property>
-       </widget>
-       <widget class="Line" name="line_7">
-        <property name="geometry">
-         <rect>
-          <x>200</x>
-          <y>100</y>
-          <width>581</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-       <widget class="Line" name="line_14">
-        <property name="geometry">
-         <rect>
-          <x>490</x>
-          <y>110</y>
-          <width>20</width>
-          <height>171</height>
-         </rect>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-       </widget>
-       <widget class="Line" name="line_8">
-        <property name="geometry">
-         <rect>
-          <x>200</x>
-          <y>270</y>
-          <width>581</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
+        <layout class="QGridLayout" name="gridLayout_2" rowstretch="0,0,0,0" rowminimumheight="20,20,20,20">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item row="1" column="1">
+          <widget class="QDoubleSpinBox" name="dsbCalCabinTopTempInput">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+           <property name="decimals">
+            <number>1</number>
+           </property>
+           <property name="minimum">
+            <double>-40.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>250.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_96">
+           <property name="text">
+            <string>Kabin Sıcaklık Üst</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_98">
+           <property name="text">
+            <string>Kalibrasyon</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="3">
+          <widget class="QDoubleSpinBox" name="dsbCalCabinTopTempCoeff">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+           <property name="decimals">
+            <number>1</number>
+           </property>
+           <property name="minimum">
+            <double>-40.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>250.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="4">
+          <widget class="QDoubleSpinBox" name="dsbCalCabinTopTempOut">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+           <property name="decimals">
+            <number>1</number>
+           </property>
+           <property name="minimum">
+            <double>-40.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>250.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_97">
+           <property name="text">
+            <string>Kabin Sıcaklık Alt</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QDoubleSpinBox" name="dsbCalCabinBottomInput">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+           <property name="decimals">
+            <number>1</number>
+           </property>
+           <property name="minimum">
+            <double>-40.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>250.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="2">
+          <widget class="QDoubleSpinBox" name="dsbCalCabinBottomTempErr">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+           <property name="decimals">
+            <number>1</number>
+           </property>
+           <property name="minimum">
+            <double>-40.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>250.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="QDoubleSpinBox" name="dsbCalCabinTopTempErr">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+           <property name="decimals">
+            <number>1</number>
+           </property>
+           <property name="minimum">
+            <double>-40.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>250.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="3">
+          <widget class="QDoubleSpinBox" name="dsbCalCabinBottomTempCoeff">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+           <property name="decimals">
+            <number>1</number>
+           </property>
+           <property name="minimum">
+            <double>-40.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>250.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="label_66">
+           <property name="text">
+            <string>Basınç </string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="2">
+          <widget class="QDoubleSpinBox" name="dsbCalPipePressure1Err">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+           <property name="decimals">
+            <number>1</number>
+           </property>
+           <property name="minimum">
+            <double>-40.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>250.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="4">
+          <widget class="QDoubleSpinBox" name="dsbCalCabinBottomTempOut">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+           <property name="decimals">
+            <number>1</number>
+           </property>
+           <property name="minimum">
+            <double>-40.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>250.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="3">
+          <widget class="QDoubleSpinBox" name="dsbPipePressure1Coeff">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+           <property name="decimals">
+            <number>1</number>
+           </property>
+           <property name="minimum">
+            <double>-40.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>250.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QDoubleSpinBox" name="dsbCalPipePressure1Input">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+           <property name="decimals">
+            <number>1</number>
+           </property>
+           <property name="minimum">
+            <double>-40.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>250.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="4">
+          <widget class="QDoubleSpinBox" name="dsbCalPipePressure1Out">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+           <property name="decimals">
+            <number>1</number>
+           </property>
+           <property name="minimum">
+            <double>-40.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>250.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QLabel" name="label_100">
+           <property name="text">
+            <string>Fark</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="3">
+          <widget class="QLabel" name="label_101">
+           <property name="text">
+            <string>Carpan</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLabel" name="label_99">
+           <property name="text">
+            <string>Gelen</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="4">
+          <widget class="QLabel" name="label_102">
+           <property name="text">
+            <string>Sonuc</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </widget>
       </widget>
      </widget>
