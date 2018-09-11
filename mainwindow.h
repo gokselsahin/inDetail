@@ -52,9 +52,9 @@ private slots:
     void on_bTSaveStep_clicked();
 
     bool readProfiles(char rType, int index);
-    void on_cbSelectProfileEdit_currentIndexChanged(int index);
-    void on_cbSelectStepEdit_currentIndexChanged(int index);
-    void on_cbSelectPTypeEdit_currentIndexChanged(int index);
+ //   void on_cbSelectProfileEdit_currentIndexChanged(int index);
+ //   void on_cbSelectStepEdit_currentIndexChanged(int index);
+ //   void on_cbSelectPTypeEdit_currentIndexChanged(int index);
     void on_cbSelectProfileMain_currentIndexChanged(int index);
     bool sendProfileOverSerial(QString mode, int index);
     void on_bStartTest_clicked();
@@ -91,14 +91,14 @@ private slots:
 
 
     void closeEvent(QCloseEvent *event);
-    void on_cbVSelectSType_currentIndexChanged(int index);
+ //   void on_cbVSelectSType_currentIndexChanged(int index);
     void on_bClearLogTable_clicked();
     void clearProfileSlot(char sType, char pType, quint8 index);
     void on_cbSelectMethodManual_currentIndexChanged(int index);
     void on_cbSelectProfileManual_currentIndexChanged(int index);
     void on_tabWidget_currentChanged(int index);
-    void on_cbSelectSTypeEdit_currentIndexChanged(int index);
-    void on_cbSelectSUnitEdit_currentIndexChanged(int index);
+ //   void on_cbSelectSTypeEdit_currentIndexChanged(int index);
+ //   void on_cbSelectSUnitEdit_currentIndexChanged(int index);
     void on_bSendProfileMain_clicked();
     void on_bStartTestManual_clicked();
     void on_bStopTestManual_clicked();
@@ -111,10 +111,6 @@ private slots:
     void setupComboBoxes();
 
   //  void on_cbSelectProfileMain_2_currentIndexChanged(int index);
-
-    void on_bStartTest_3_pressed();
-
-    void on_ZoomInHor_pressed();
 
     void on_ZoomInHor_clicked();
 
@@ -131,6 +127,22 @@ private slots:
     void on_bSetTemperatureStop_clicked();
 
     void on_cbTSelectSUnit_currentIndexChanged(int index);
+
+    void on_ZoomCenter_clicked();
+
+    void on_bSetExhaustValve_clicked();
+
+    void saveValueExhaustValve(int value);
+
+    void loadValueExhaustValve();
+
+    void saveValueTopTempSensorCalibration();
+    void saveValueBottomTempSensorCalibration();
+    void loadValueTopTempSensorCalibration();
+    void loadValueBottomTempSensorCalibration();
+    void on_bSaveCalibrationValues_clicked();
+
+    void on_bCabinDoor_clicked();
 
 private:
     Ui::MainWindow *ui;

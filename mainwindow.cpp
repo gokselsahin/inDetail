@@ -33,6 +33,7 @@ int vibPeriod;
 int pressurePeriod;
 
 double tKey = 0;
+double tKeyElapsed = 0;
 double pKey = 0;
 double vKey = 0;
 
@@ -42,19 +43,21 @@ float pipe3Pressure;
 float pipe4Pressure;
 float pipe5Pressure;
 float pipe6Pressure;
-float cabinBottomTemperature;
-float cabinTopTemperature;
+float cabinBottomTemperatureIn;
+float cabinTopTemperatureIn;
+float cabinBottomTemperatureValue;
+float cabinTopTemperatureValue;
 float cabinAverageTemp;
 float waterTankTemperature;
-bool waterTankLiquidLevel;
+bool  waterTankLiquidLevel;
 float pipeVibrationFrequency;
 
 quint32 tElapsedSeconds;
 quint32 pElapsedSeconds;
 quint32 vElapsedSeconds;
-quint8 tStep;
-quint8 pStep;
-quint8 vStep;
+quint8  tStep;
+quint8  pStep;
+quint8  vStep;
 quint32 pStepRepeat;
 quint32 vStepRepeat;
 quint16 tCycle;
@@ -171,16 +174,17 @@ void MainWindow::closeEvent (QCloseEvent *event)
     if ( myPLC.deviceState == char(0x02) )
     {
         resBtn = QMessageBox::question( this, appName,
-                                        tr("There is a test in progress. Are you sure you want to exit?"),
+                                        tr("Devam eden Test var! Uygulamadan çıkmak istiyor musunuz?"),
                                         QMessageBox::Cancel | QMessageBox::No | QMessageBox::Yes,
                                         QMessageBox::Yes);
     }
     else
     {
         resBtn = QMessageBox::question( this, appName,
-                                        tr("Are you sure you want to exit?"),
+                                        tr("Uygulamadan çıkmak istiyor musunuz?"),
                                         QMessageBox::Cancel | QMessageBox::No | QMessageBox::Yes,
                                         QMessageBox::Yes);
+
     }
 
     if (resBtn != QMessageBox::Yes)
@@ -199,7 +203,7 @@ void MainWindow::profileSent()
     ///
     /// Test profili bilgisi PLC'ye seri haberleşeme
     /// ile gönderildikten sonra PLC'den onay cevabı gelir
-    /// ve Test başlatma prosedürü devam ettirilir.
+    /// ve Test başlatma prosedürü devam ettirilir.   
 
 
 
@@ -213,6 +217,9 @@ void MainWindow::profileSent()
 
 void MainWindow::commInfo(bool status)
 {
+    /// Haberleşme durumunu ekranda göster.
+    /// Eğer haberleşme açıksa ekranda yeşil OK yazısı yazılır.
+    /// Değilse kırmızı NOK yazısı yazılır ve haberleşme değişkenleri temizlenir.
 
     if (status == true)
     {
@@ -225,7 +232,7 @@ void MainWindow::commInfo(bool status)
         ui->laCommErr->setText("NOK");
         proc->stop();
         proc->commandMessages.clear();
-        proc->profileMessages.clear();
+        proc->profileMessages.clear();        
     }
 
 }
@@ -271,6 +278,8 @@ void MainWindow::setupTGraph()
     connect(ui->tTestGraph, SIGNAL(mouseWheel(QWheelEvent*)), this, SLOT(mouseWheel()));
     connect(ui->tTestGraph->xAxis, SIGNAL(rangeChanged(QCPRange)), ui->tTestGraph->xAxis2, SLOT(setRange(QCPRange)));
     connect(ui->tTestGraph->yAxis, SIGNAL(rangeChanged(QCPRange)), ui->tTestGraph->yAxis2, SLOT(setRange(QCPRange)));
+
+
 }
 
 void MainWindow::setupPGraphs()
@@ -352,6 +361,13 @@ void MainWindow::setupVGraph()
 
 void MainWindow::setupPreviewGraphs()
 {
+    /// Önizleme grafiklerini hazırla.
+    /// Sıcaklık Profili oluşturulurken biri güncel adımı  diğeri
+    /// profil bütününü görselleştirmek için 2 grafik için
+    /// hazırlık parametreleri giriliyor.
+
+
+    ///adım önizlemesi için tPreview alanına grafik ekle.
     ui->tPreview->addGraph();
     QPen tPen;
     tPen.setWidth(3);
@@ -525,7 +541,9 @@ void MainWindow::setupVisuals()
 
      ui->bTemperatureSet->setEnabled(true);
      ui->dsbSetTempValue->setEnabled(true);
-
+    loadValueExhaustValve();
+    loadValueTopTempSensorCalibration();
+    loadValueBottomTempSensorCalibration();
 }
 
 void MainWindow::serialMessage(uint command, QByteArray data)
@@ -594,19 +612,32 @@ void MainWindow::serialMessage(uint command, QByteArray data)
 
         //       waterTankLiquidLevel = quint8(data[0]);
         //       waterTankTemperature = qint16(((data[2] & 0xff) << 8) | (data[1] & 0xff)) / 10.0;
-        cabinTopTemperature = qint16(((data[1] & 0xff) << 8) | (data[0] & 0xff)) / 10.0;
-        cabinBottomTemperature = qint16(((data[3] & 0xff) << 8) | (data[2] & 0xff)) / 10.0;
+        cabinTopTemperatureIn = qint16(((data[1] & 0xff) << 8) | (data[0] & 0xff));
+        cabinBottomTemperatureIn = qint16(((data[3] & 0xff) << 8) | (data[2] & 0xff));
         //       pipeVibrationFrequency = quint16(((data[8] & 0xff) << 8) | (data[7] & 0xff)) / 10.0;
-        cabinAverageTemp = (cabinTopTemperature + cabinBottomTemperature)/2;
+        double calCabinTopTempCoeff = ui->dsbCalCabinTopTempCoeff->value();
+        double calCabinTopTempErr   = ui->dsbCalCabinTopTempErr->value();
+        double  calCabinBottomTempCoeff = ui->dsbCalCabinBottomTempCoeff->value();
+        double  calCabinBottomTempErr       =  ui->dsbCalCabinBottomTempErr->value();
+
+        cabinBottomTemperatureValue = (cabinBottomTemperatureIn * calCabinBottomTempCoeff) + calCabinBottomTempErr ;
+        cabinTopTemperatureValue = (cabinTopTemperatureIn * calCabinTopTempCoeff) + calCabinTopTempErr;
+
+        cabinAverageTemp = (cabinTopTemperatureValue + cabinBottomTemperatureValue)/2;
         //ui->dsbTankTemp->setValue(waterTankTemperature);
         //ui->dsbTankTempMaintenance->setValue(waterTankTemperature);
+
         ui->dsbCabinTopTemp->setValue(cabinAverageTemp);
         ui->dsbCabinTopTempMaintenance->setValue(cabinAverageTemp);
         ui->dsbSetTempCabinAvrTemp->setValue(cabinAverageTemp);
+
+        ui->dsbCalCabinBottomInput->setValue(cabinBottomTemperatureIn);
+        ui->dsbCalCabinTopTempInput->setValue(cabinTopTemperatureIn);
+
+        ui->dsbCalCabinBottomTempOut->setValue(cabinBottomTemperatureValue);
+        ui->dsbCalCabinTopTempOut->setValue(cabinTopTemperatureValue);
         //ui->dsbPipeVibration->setValue(pipeVibrationFrequency);
         //ui->dsbPipeVibrationMaintenance->setValue(pipeVibrationFrequency);
-
-
 
         break;
 
@@ -817,11 +848,11 @@ void MainWindow::updateInfo(quint8 index, QByteArray data)
 
             if (myPLC.pressurePrepActive)
             {
-                writeToLogTable("Pressure prep. started.");
+                writeToLogTable("Basınç Hazırlık Adımı Başladı.");
             }
             else
             {
-                writeToLogTable("Pressure prep. completed.");
+                writeToLogTable("Basınç Hazırlık Adımı Tamamlandı.");
             }
         }
 
@@ -835,7 +866,7 @@ void MainWindow::updateInfo(quint8 index, QByteArray data)
 
             if (myPLC.pressureTestCompleted)
             {
-                writeToLogTable("Pressure test completed.");
+                writeToLogTable("Basınç testi tamamlandı.");
             }
             else
             {
@@ -853,7 +884,7 @@ void MainWindow::updateInfo(quint8 index, QByteArray data)
 
             if (myPLC.pressureTestActive)
             {
-                writeToLogTable("Pressure test started.");
+                writeToLogTable("Basıç testi aktif.");
             }
             else
             {
@@ -863,7 +894,7 @@ void MainWindow::updateInfo(quint8 index, QByteArray data)
                 }
                 else
                 {
-                    writeToLogTable("Pressure test canceled.");
+                    writeToLogTable("Basınç testi iptal edildi");
                 }
             }
         }
@@ -939,11 +970,11 @@ void MainWindow::updateInfo(quint8 index, QByteArray data)
 
             if (myPLC.temperaturePrepActive)
             {
-                writeToLogTable("Temp. prep. started.");
+                writeToLogTable("Sıcaklık hazırlığı başladı.");
             }
             else
             {
-                writeToLogTable("Temp. prep. completed.");
+                writeToLogTable("Sicaklik hazirligi tamamlandi.");
             }
         }
 
@@ -957,7 +988,7 @@ void MainWindow::updateInfo(quint8 index, QByteArray data)
 
             if (myPLC.temperatureTestCompleted)
             {
-                writeToLogTable("Temp. test completed.");
+                writeToLogTable("sicaklik testi tamamlandi.");
             }
             else
             {
@@ -975,7 +1006,7 @@ void MainWindow::updateInfo(quint8 index, QByteArray data)
 
             if (myPLC.temperatureTestActive)
             {
-                writeToLogTable("Temp. test started.");
+                writeToLogTable("Sicaklik testi basladi.");
             }
             else
             {
@@ -985,7 +1016,7 @@ void MainWindow::updateInfo(quint8 index, QByteArray data)
                 }
                 else
                 {
-                    writeToLogTable("Temp. test canceled.");
+                    writeToLogTable("Sicaklik testi iptal edildi.");
                 }
             }
         }
@@ -1000,7 +1031,7 @@ void MainWindow::updateInfo(quint8 index, QByteArray data)
 
             if (myPLC.profileActive)
             {
-                writeToLogTable("Profile started.");
+                writeToLogTable("Profil basladi.");
                 prepareTestTimers();
             }
             else
@@ -2901,8 +2932,13 @@ bool MainWindow::readProfiles(char rType, int index)
             }
             else
             {
-                ui->cbSelectProfileMain->addItem(QString::number(index) + " - empty slot");
+                ui->cbSelectProfileMain->addItem(QString::number(index) + " - bos slot");
                 ui->cbSelectProfileMain->setItemData(index, QColor( Qt::gray ), Qt::TextColorRole );
+                ui->cbSelectProfile->addItem(QString::number(index) + " - bos slot");
+                ui->cbSelectProfile->setItemData(index, QColor( Qt::gray ), Qt::TextColorRole );
+                ui->cbSelectProfileManual->addItem(QString::number(index) + " - bos slot");
+                ui->cbSelectProfileManual->setItemData(index, QColor( Qt::gray ), Qt::TextColorRole );
+
             }
         }
         else
@@ -3220,7 +3256,8 @@ bool MainWindow::readProfiles(char rType, int index)
                 if (rProfile[pos] == '/')
                 {
                     ui->cbSelectProfileMain->addItem(QString::number(index) + " - " + "isimsiz");
-
+                    ui->cbSelectProfile->addItem(QString::number(index) + " - " + "isimsiz");
+                    ui->cbSelectProfileManual->addItem(QString::number(index) + " - " + "isimsiz");
                 }
                 else
                 {
@@ -3230,6 +3267,8 @@ bool MainWindow::readProfiles(char rType, int index)
                         pos++;
                     }
                     ui->cbSelectProfileMain->addItem( QString::number(index) + " - " + name);
+                    ui->cbSelectProfile->addItem(QString::number(index) + " - " + name);
+                    ui->cbSelectProfileManual->addItem(QString::number(index) + " - " + name);
                 }
 
             }
@@ -3437,6 +3476,8 @@ void MainWindow::on_bSavePro_clicked()
 
     QString name = QString::number(currentProfile + 1) +" - "+ ui->leProfileName->text();
     ui->cbSelectProfileMain->setItemText(currentProfile + 1, name);
+    ui->cbSelectProfile->setItemText(currentProfile + 1, name);
+    ui->cbSelectProfileManual->setItemText(currentProfile + 1, name);
 
     ui->cbSelectProfile->setCurrentIndex(0);
     ui->cbSelectProfile->setEnabled(true);
@@ -3522,6 +3563,7 @@ void MainWindow::on_bSavePro_clicked()
 
 
 }
+
 /*
 void MainWindow::on_cbSelectProfileEdit_currentIndexChanged(int index)
 {
@@ -4094,8 +4136,6 @@ void MainWindow::on_cbSelectSUnitEdit_currentIndexChanged(int index)
 }
 */
 
-
-
 void MainWindow::on_cbSelectProfileMain_currentIndexChanged(int index)
 {
     //ui->laCurrentTCycleMain->setText("0");
@@ -4474,7 +4514,7 @@ bool MainWindow::sendProfileOverSerial(QString mode, int index)
             cantTouchThis.append( (pStepSecondToStart) >> 8);
             cantTouchThis.append( (vStepSecondToStart) & 0x00FF);
             cantTouchThis.append( (vStepSecondToStart) >> 8);
- */           cantTouchThis.append( (tCycleToStart) & 0x00FF);
+ */         cantTouchThis.append( (tCycleToStart) & 0x00FF);
             cantTouchThis.append( (tCycleToStart) >> 8);
             /*           cantTouchThis.append( (pCycleToStart) & 0x00FF);
             cantTouchThis.append( (pCycleToStart) >> 8);
@@ -4594,8 +4634,8 @@ void MainWindow::getCurrentDateTime()
 
 void MainWindow::updateTPlot()
 {
-    tKey = tElapsedSeconds + (double(tempPeriod)/1000.0) ;
-
+    tKeyElapsed = tElapsedSeconds + (double(tempPeriod)/1000.0) ;
+    tKey = QTime::currentTime().msecsSinceStartOfDay()/1000;
     // add data to lines:
     ui->tTestGraph->graph(0)->addData(tKey, cabinAverageTemp);
     ui->tTestGraph->graph(1)->addData(tKey, cabinAverageTemp);
@@ -4619,15 +4659,16 @@ void MainWindow::updateTPlot()
     if (file.open(QFile::WriteOnly|QFile::Append))
     {
         QTextStream stream(&file);
-        stream << tKey << "," << cabinTopTemperature << "\n";
+        stream << tKeyElapsed << "," << cabinTopTemperatureValue << "\n";
         file.close();
     }
 }
 
 void MainWindow::updatePPlots()
 {
-    pKey = pKey + (double(pressurePeriod)/1000.0);
+  //  pKey = pKey + (double(pressurePeriod)/1000.0);
 
+    pKey = QTime::currentTime().msecsSinceStartOfDay()/1000;
     ui->pTestGraph->graph(0)->addData(pKey, pipe1Pressure);
     ui->pTestGraph->graph(1)->addData(pKey, pipe2Pressure);
     ui->pTestGraph->graph(2)->addData(pKey, pipe3Pressure);
@@ -4636,7 +4677,7 @@ void MainWindow::updatePPlots()
     ui->pTestGraph->graph(5)->addData(pKey, pipe6Pressure);
 
     // make key axis range scroll with the data (at a constant range size of 30):
-    ui->pTestGraph->xAxis->setRange(pKey, 60, Qt::AlignRight);
+//    ui->pTestGraph->xAxis->setRange(pKey, 60, Qt::AlignRight);
 
     /*
     // rescale key (horizontal) axis to fit the current data:
@@ -4755,10 +4796,16 @@ void MainWindow::on_bStartMaintenance_clicked()
                 ui->chbRes2->setEnabled(true);
                 ui->chbRes3->setEnabled(true);
                 ui->chbResTank->setEnabled(true);
+
+                ui->chbExhaustValve->setEnabled(true);
                 ui->bFan->setEnabled(true);
                 ui->chbFan1->setEnabled(true);
                 ui->chbFan2->setEnabled(true);
                 ui->chbFan3->setEnabled(true);
+
+                ui->bExhaustValve->setEnabled(true);
+                ui->bSetExhaustValve->setEnabled(true);
+                ui->dsbExhaustValveAutoValue->setEnabled(true);
 
                 QByteArray cantTouchThis;
                 cantTouchThis.clear();
@@ -5602,28 +5649,6 @@ void MainWindow::setupComboBoxes()
     }
 }
 
-void MainWindow::on_bStartTest_3_pressed()
-{
- /*
-      proc->stop();
-
-      QByteArray cantTouchThis;           // bu satırda artık mıcıtmıyorum
-      float tStart = tProfileLoad[index-1].startValue*10.0;
-
-      cantTouchThis.append(tProfileLoad[index-1].active);
-      cantTouchThis.append(qint16(tStart) & 0x00FF);
-      cantTouchThis.append(qint16(tStart) >> 8);
-
-      proc->insertProfileMessage(mySerial::makeMessage(0x64,cantTouchThis));
-
-      cantTouchThis.clear();
-
-      proc->setProfile();
-
-      return true;     
-      */
-}
-
 void MainWindow::on_ZoomInHor_clicked()
 {
     ui->tTestGraph->xAxis->scaleRange(.85, ui->tTestGraph->xAxis->range().center());
@@ -5742,4 +5767,238 @@ void MainWindow::on_cbTSelectSUnit_currentIndexChanged(int index)
     {
         ui->bNewTStep->setEnabled(false);
     }
+}
+
+void MainWindow::on_ZoomCenter_clicked()
+{
+    ui->pTestGraph->xAxis->setRange(pKey, 60, Qt::AlignRight);
+    ui->pTestGraph->replot();
+    ui->tTestGraph->graph(0)->rescaleKeyAxis();
+    ui->tTestGraph->replot();
+}
+
+void MainWindow::on_bSetExhaustValve_clicked()
+{
+    int tExhaustValveSetTemp;
+    QByteArray cantTouchThis;
+
+    cantTouchThis.clear();
+    tExhaustValveSetTemp = ui->dsbExhaustValveAutoValue->value();
+
+    if (ui->chbExhaustValve->isChecked())
+    {
+        cantTouchThis.append(char(0x01));
+    }
+    else
+    {
+        cantTouchThis.append(char(0x00));
+    }
+     cantTouchThis.append(qint16(tExhaustValveSetTemp) & 0x00FF);
+     cantTouchThis.append(qint16(tExhaustValveSetTemp) >> 8);
+     proc->insertCommandMessage(mySerial::makeMessage(0x6F,cantTouchThis));
+
+     saveValueExhaustValve(tExhaustValveSetTemp);
+}
+
+void MainWindow::saveValueExhaustValve(int value)
+{
+    #ifdef Q_OS_LINUX
+        //linux code goes here
+        QString filePath = "/home/pi/InDetail/settings/" +"ExhaustValveSet.txt";
+    #endif
+
+    #ifdef Q_OS_WIN
+        // windows code goes here
+        QString filePath = "Settings\\ExhaustValveSet.txt";
+    #endif
+
+        QFile file(filePath);
+
+        if (file.open(QFile::WriteOnly|QFile::Truncate))
+        {
+            QTextStream stream(&file);
+
+            stream <<  value ;
+            file.close();
+        }
+}
+
+void MainWindow::loadValueExhaustValve()
+{
+#ifdef Q_OS_LINUX
+    //linux code goes here
+    QString filePath = "/home/pi/InDetail/settings/" +"ExhaustValveSet.txt";
+#endif
+
+#ifdef Q_OS_WIN
+    // windows code goes here
+    QString filePath = "Settings\\ExhaustValveSet.txt";
+#endif
+
+    QFile file(filePath);
+
+    if (file.open(QFile::ReadOnly))
+    {
+    QTextStream stream(&file);
+         while (!stream.atEnd())
+         {
+          QString line = stream.readLine();
+            ui->dsbExhaustValveAutoValue->setValue(line.toInt());
+         }
+    }
+}
+
+void MainWindow::on_bSaveCalibrationValues_clicked()
+{
+    saveValueTopTempSensorCalibration();
+    saveValueBottomTempSensorCalibration();
+}
+
+void MainWindow::saveValueTopTempSensorCalibration()
+{
+    #ifdef Q_OS_LINUX
+        //linux code goes here
+        QString filePath = "/home/pi/InDetail/settings/" +"calibrationTopTemp.txt";
+    #endif
+
+    #ifdef Q_OS_WIN
+        // windows code goes here
+         QString filePath = "Settings\\calibrationTopTemp.txt";
+    #endif
+
+    QFile file(filePath);
+
+    if (file.open(QFile::WriteOnly|QFile::Truncate))
+    {
+        QTextStream stream(&file);
+
+        stream <<  ui->dsbCalCabinTopTempErr->value() << ","
+                <<  ui->dsbCalCabinTopTempCoeff->value() ;
+        file.close();
+    }
+
+}
+
+void MainWindow::saveValueBottomTempSensorCalibration()
+{
+    #ifdef Q_OS_LINUX
+        //linux code goes here
+        QString filePath = "/home/pi/InDetail/settings/" +"calibrationBottomTemp.txt";
+    #endif
+
+    #ifdef Q_OS_WIN
+        // windows code goes here
+         QString filePath = "Settings\\calibrationBottomTemp.txt";
+    #endif
+
+    QFile file(filePath);
+
+    if (file.open(QFile::WriteOnly|QFile::Truncate))
+    {
+        QTextStream stream(&file);
+
+        stream <<  ui->dsbCalCabinBottomTempErr->value() << ","
+                <<  ui->dsbCalCabinBottomTempCoeff->value() ;
+        file.close();
+    }
+
+}
+
+void MainWindow::loadValueTopTempSensorCalibration()
+{
+    #ifdef Q_OS_LINUX
+    //linux code goes here
+        QString filePath = "/home/pi/InDetail/settings/" +"calibrationTopTemp.txt";
+    #endif
+
+    #ifdef Q_OS_WIN
+    // windows code goes here
+        QString filePath = "Settings\\calibrationTopTemp.txt";
+    #endif
+
+    QStringList wordList;
+//     QList<double> dList;
+//     QByteArray dList;
+     QFile file(filePath);
+    QString line;
+    if (file.open(QFile::ReadOnly))
+    {
+
+        while (!file.atEnd())
+        {
+   //      dList = file.readLine();
+         line = file.readLine();
+
+        }
+       double v = line.split(",")[0].toDouble();
+       double y = line.split(",")[1].toDouble();
+        ui->dsbCalCabinTopTempErr->setValue(v);
+        ui->dsbCalCabinTopTempCoeff->setValue(y);
+        file.close();
+   //     ui->dsbCalCabinTopTempErr->setValue(dList[1]);
+    //    ui->dsbCalCabinTopTempCoeff->setValue(dList[2]);
+    }
+
+ }
+
+void MainWindow::loadValueBottomTempSensorCalibration()
+{
+    #ifdef Q_OS_LINUX
+    //linux code goes here
+        QString filePath = "/home/pi/InDetail/settings/" +"calibrationBottomTemp.txt";
+    #endif
+
+    #ifdef Q_OS_WIN
+    // windows code goes here
+        QString filePath = "Settings\\calibrationBottomTemp.txt";
+    #endif
+
+    QStringList wordList;
+//     QList<double> dList;
+//     QByteArray dList;
+     QFile file(filePath);
+    QString line;
+    if (file.open(QFile::ReadOnly))
+    {
+
+        while (!file.atEnd())
+        {
+   //      dList = file.readLine();
+         line = file.readLine();
+
+        }
+       double v = line.split(",")[0].toDouble();
+       double y = line.split(",")[1].toDouble();
+        ui->dsbCalCabinBottomTempErr->setValue(v);
+        ui->dsbCalCabinBottomTempCoeff->setValue(y);
+        file.close();
+   //     ui->dsbCalCabinTopTempErr->setValue(dList[1]);
+    //    ui->dsbCalCabinTopTempCoeff->setValue(dList[2]);
+    }
+
+ }
+
+void MainWindow::on_bCabinDoor_clicked()
+{
+   if (myPLC.deviceState == 0 )
+   {
+    QMessageBox::information( this, "Cihazı Kapat", "Cihazı şimdi kapatabilirsiniz.");
+   }
+   else if(myPLC.deviceState == 1)
+   {
+     QMessageBox::information( this, "Cihazı Kapat", "kapatma prosedürü işletiliyor. lütfen bekleyiniz.");
+   }
+   else
+   {
+       timerTemp->stop();
+       //    timerVib->stop();
+       timerPressure->stop();
+
+       proc->stop();
+
+       QByteArray cantTouchThis;
+       cantTouchThis.clear();
+       cantTouchThis.append(0x01);
+       proc->insertCommandMessage(mySerial::makeMessage(0x0A,cantTouchThis));
+   }
 }

@@ -196,7 +196,7 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>2</number>
       </property>
       <property name="iconSize">
        <size>
@@ -1100,7 +1100,7 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
 }</string>
                </property>
                <property name="text">
-                <string>Cabin Door</string>
+                <string>Cihazı Kapat</string>
                </property>
                <property name="checkable">
                 <bool>true</bool>
@@ -1566,10 +1566,10 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
        <widget class="QPushButton" name="bScreenshot">
         <property name="geometry">
          <rect>
-          <x>30</x>
-          <y>420</y>
+          <x>640</x>
+          <y>390</y>
           <width>111</width>
-          <height>41</height>
+          <height>61</height>
          </rect>
         </property>
         <property name="text">
@@ -1582,7 +1582,7 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
           <x>180</x>
           <y>50</y>
           <width>581</width>
-          <height>350</height>
+          <height>321</height>
          </rect>
         </property>
         <property name="font">
@@ -1908,7 +1908,7 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
           <x>180</x>
           <y>50</y>
           <width>581</width>
-          <height>350</height>
+          <height>321</height>
          </rect>
         </property>
         <property name="font">
@@ -1923,10 +1923,10 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
        <widget class="QPushButton" name="ZoomInHor">
         <property name="geometry">
          <rect>
-          <x>250</x>
-          <y>410</y>
-          <width>94</width>
-          <height>51</height>
+          <x>310</x>
+          <y>390</y>
+          <width>111</width>
+          <height>61</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -1966,10 +1966,10 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
        <widget class="QPushButton" name="ZoomOutHor">
         <property name="geometry">
          <rect>
-          <x>150</x>
-          <y>410</y>
-          <width>94</width>
-          <height>51</height>
+          <x>170</x>
+          <y>390</y>
+          <width>111</width>
+          <height>61</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -2010,9 +2010,9 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
         <property name="geometry">
          <rect>
           <x>30</x>
-          <y>300</y>
-          <width>94</width>
-          <height>51</height>
+          <y>240</y>
+          <width>111</width>
+          <height>61</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -2053,9 +2053,9 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
         <property name="geometry">
          <rect>
           <x>30</x>
-          <y>360</y>
-          <width>94</width>
-          <height>51</height>
+          <y>310</y>
+          <width>111</width>
+          <height>61</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -2174,7 +2174,7 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
          <rect>
           <x>550</x>
           <y>10</y>
-          <width>161</width>
+          <width>168</width>
           <height>33</height>
          </rect>
         </property>
@@ -2197,7 +2197,7 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
 }</string>
            </property>
            <property name="text">
-            <string>Pres. (bar)</string>
+            <string>Basınc (bar)</string>
            </property>
           </widget>
          </item>
@@ -2230,6 +2230,49 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
           </widget>
          </item>
         </layout>
+       </widget>
+       <widget class="QPushButton" name="ZoomCenter">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>390</y>
+          <width>111</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+color: #fff;
+font-family: &quot;Gill Sans MT&quot;;
+font-size: 21px;
+border: 2px solid #c3fcf1;
+border-radius: 11px;
+padding: 5px;
+background: qradialgradient(cx: 0.3, cy: -0.6,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #65BAAB, stop: 1 #0E62A0);
+min-width: 80px;
+}
+QPushButton:hover {
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #65BAAB, stop: 1 #0E62A0);
+}
+QPushButton:pressed {
+background: qradialgradient(cx: 0.4, cy: -0.1,
+fx: 0.4, fy: -0.1,
+radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
+}
+QPushButton:disabled {
+color: #888;
+background: qradialgradient(cx: 0.4, cy: -0.1,
+fx: 0.4, fy: -0.1,
+radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
+}</string>
+        </property>
+        <property name="text">
+         <string>Merkezle</string>
+        </property>
        </widget>
       </widget>
       <widget class="QWidget" name="tab_NewPro">
@@ -2801,106 +2844,6 @@ font: 75 14pt &quot;Gill Sans MT&quot;;
              <string>Bir Recete Slotu Secin</string>
             </property>
            </item>
-           <item>
-            <property name="text">
-             <string>Profile 1</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Profile 2</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Profile 3</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Profile 4</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Profile 5</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Profile 6</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Profile 7</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Profile 8</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Profile 9</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Profile 10</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Profile 11</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Profile 12</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Profile 13</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Profile 14</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Profile 15</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Profile 16</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Profile 17</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Profile 18</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Profile 19</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>Profile 20</string>
-            </property>
-           </item>
           </widget>
          </item>
          <item>
@@ -3197,7 +3140,7 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
 }</string>
         </property>
         <property name="text">
-         <string>Start</string>
+         <string>Baslat</string>
         </property>
         <property name="iconSize">
          <size>
@@ -3249,7 +3192,7 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
 }</string>
         </property>
         <property name="text">
-         <string>Stop</string>
+         <string>Iptal</string>
         </property>
        </widget>
        <widget class="QLabel" name="laSelectedProfileManual">
@@ -3280,106 +3223,6 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
         <item>
          <property name="text">
           <string>Bir Recete Secin</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 1</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 2</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 3</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 4</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 5</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 6</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 7</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 8</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 9</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 10</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 11</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 12</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 13</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 14</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 15</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 16</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 17</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 18</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 19</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Profile 20</string>
          </property>
         </item>
        </widget>
@@ -3452,7 +3295,7 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
 }</string>
         </property>
         <property name="text">
-         <string>Send Profile</string>
+         <string>Receteyi Onayla</string>
         </property>
         <property name="iconSize">
          <size>
@@ -3562,7 +3405,7 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
 }</string>
         </property>
         <property name="text">
-         <string>Pause</string>
+         <string>Beklet</string>
         </property>
        </widget>
       </widget>
@@ -3749,7 +3592,7 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
          <enum>Qt::Vertical</enum>
         </property>
        </widget>
-       <widget class="QPushButton" name="bStartCooler_2">
+       <widget class="QPushButton" name="bExhaustValve">
         <property name="enabled">
          <bool>false</bool>
         </property>
@@ -3798,7 +3641,7 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
          <bool>true</bool>
         </property>
        </widget>
-       <widget class="QCheckBox" name="chbFan1_2">
+       <widget class="QCheckBox" name="chbExhaustValve">
         <property name="enabled">
          <bool>false</bool>
         </property>
@@ -3829,14 +3672,14 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
         </property>
         <property name="geometry">
          <rect>
-          <x>650</x>
-          <y>160</y>
+          <x>660</x>
+          <y>130</y>
           <width>81</width>
           <height>31</height>
          </rect>
         </property>
         <property name="readOnly">
-         <bool>true</bool>
+         <bool>false</bool>
         </property>
         <property name="decimals">
          <number>1</number>
@@ -3879,11 +3722,14 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
            <property name="readOnly">
             <bool>true</bool>
            </property>
+           <property name="buttonSymbols">
+            <enum>QAbstractSpinBox::NoButtons</enum>
+           </property>
            <property name="decimals">
             <number>1</number>
            </property>
            <property name="minimum">
-            <double>-40.000000000000000</double>
+            <double>-50.000000000000000</double>
            </property>
            <property name="maximum">
             <double>250.000000000000000</double>
@@ -3911,11 +3757,14 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
            <property name="readOnly">
             <bool>true</bool>
            </property>
+           <property name="buttonSymbols">
+            <enum>QAbstractSpinBox::NoButtons</enum>
+           </property>
            <property name="decimals">
             <number>1</number>
            </property>
            <property name="minimum">
-            <double>-40.000000000000000</double>
+            <double>-50.000000000000000</double>
            </property>
            <property name="maximum">
             <double>250.000000000000000</double>
@@ -3939,6 +3788,9 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
            </property>
            <property name="readOnly">
             <bool>true</bool>
+           </property>
+           <property name="buttonSymbols">
+            <enum>QAbstractSpinBox::NoButtons</enum>
            </property>
            <property name="decimals">
             <number>2</number>
@@ -4145,12 +3997,12 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
         <property name="geometry">
          <rect>
           <x>20</x>
-          <y>240</y>
-          <width>741</width>
-          <height>151</height>
+          <y>280</y>
+          <width>731</width>
+          <height>141</height>
          </rect>
         </property>
-        <layout class="QGridLayout" name="gridLayout_2" rowstretch="0,0,0,0" rowminimumheight="20,20,20,20">
+        <layout class="QGridLayout" name="gridLayout_2" rowstretch="20,0,0,0">
          <property name="leftMargin">
           <number>0</number>
          </property>
@@ -4163,159 +4015,19 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
          <property name="bottomMargin">
           <number>0</number>
          </property>
-         <item row="1" column="1">
-          <widget class="QDoubleSpinBox" name="dsbCalCabinTopTempInput">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="readOnly">
-            <bool>true</bool>
-           </property>
-           <property name="decimals">
-            <number>1</number>
-           </property>
-           <property name="minimum">
-            <double>-40.000000000000000</double>
-           </property>
-           <property name="maximum">
-            <double>250.000000000000000</double>
-           </property>
-           <property name="singleStep">
-            <double>0.100000000000000</double>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QLabel" name="label_96">
-           <property name="text">
-            <string>Kabin Sıcaklık Üst</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="0">
-          <widget class="QLabel" name="label_98">
-           <property name="text">
-            <string>Kalibrasyon</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="3">
-          <widget class="QDoubleSpinBox" name="dsbCalCabinTopTempCoeff">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="readOnly">
-            <bool>true</bool>
-           </property>
-           <property name="decimals">
-            <number>1</number>
-           </property>
-           <property name="minimum">
-            <double>-40.000000000000000</double>
-           </property>
-           <property name="maximum">
-            <double>250.000000000000000</double>
-           </property>
-           <property name="singleStep">
-            <double>0.100000000000000</double>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="4">
-          <widget class="QDoubleSpinBox" name="dsbCalCabinTopTempOut">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="readOnly">
-            <bool>true</bool>
-           </property>
-           <property name="decimals">
-            <number>1</number>
-           </property>
-           <property name="minimum">
-            <double>-40.000000000000000</double>
-           </property>
-           <property name="maximum">
-            <double>250.000000000000000</double>
-           </property>
-           <property name="singleStep">
-            <double>0.100000000000000</double>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="label_97">
-           <property name="text">
-            <string>Kabin Sıcaklık Alt</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="1">
-          <widget class="QDoubleSpinBox" name="dsbCalCabinBottomInput">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="readOnly">
-            <bool>true</bool>
-           </property>
-           <property name="decimals">
-            <number>1</number>
-           </property>
-           <property name="minimum">
-            <double>-40.000000000000000</double>
-           </property>
-           <property name="maximum">
-            <double>250.000000000000000</double>
-           </property>
-           <property name="singleStep">
-            <double>0.100000000000000</double>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="2">
-          <widget class="QDoubleSpinBox" name="dsbCalCabinBottomTempErr">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="readOnly">
-            <bool>true</bool>
-           </property>
-           <property name="decimals">
-            <number>1</number>
-           </property>
-           <property name="minimum">
-            <double>-40.000000000000000</double>
-           </property>
-           <property name="maximum">
-            <double>250.000000000000000</double>
-           </property>
-           <property name="singleStep">
-            <double>0.100000000000000</double>
-           </property>
-          </widget>
-         </item>
          <item row="1" column="2">
           <widget class="QDoubleSpinBox" name="dsbCalCabinTopTempErr">
            <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="readOnly">
             <bool>true</bool>
            </property>
+           <property name="readOnly">
+            <bool>false</bool>
+           </property>
            <property name="decimals">
-            <number>1</number>
+            <number>2</number>
            </property>
            <property name="minimum">
-            <double>-40.000000000000000</double>
+            <double>-60.000000000000000</double>
            </property>
            <property name="maximum">
             <double>250.000000000000000</double>
@@ -4325,22 +4037,25 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
            </property>
           </widget>
          </item>
-         <item row="2" column="3">
-          <widget class="QDoubleSpinBox" name="dsbCalCabinBottomTempCoeff">
+         <item row="3" column="4">
+          <widget class="QDoubleSpinBox" name="dsbCalPipePressure1Out">
            <property name="enabled">
             <bool>false</bool>
            </property>
            <property name="readOnly">
             <bool>true</bool>
            </property>
+           <property name="buttonSymbols">
+            <enum>QAbstractSpinBox::NoButtons</enum>
+           </property>
            <property name="decimals">
-            <number>1</number>
+            <number>2</number>
            </property>
            <property name="minimum">
             <double>-40.000000000000000</double>
            </property>
            <property name="maximum">
-            <double>250.000000000000000</double>
+            <double>65535.000000000000000</double>
            </property>
            <property name="singleStep">
             <double>0.100000000000000</double>
@@ -4354,28 +4069,6 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
            </property>
           </widget>
          </item>
-         <item row="3" column="2">
-          <widget class="QDoubleSpinBox" name="dsbCalPipePressure1Err">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="readOnly">
-            <bool>true</bool>
-           </property>
-           <property name="decimals">
-            <number>1</number>
-           </property>
-           <property name="minimum">
-            <double>-40.000000000000000</double>
-           </property>
-           <property name="maximum">
-            <double>250.000000000000000</double>
-           </property>
-           <property name="singleStep">
-            <double>0.100000000000000</double>
-           </property>
-          </widget>
-         </item>
          <item row="2" column="4">
           <widget class="QDoubleSpinBox" name="dsbCalCabinBottomTempOut">
            <property name="enabled">
@@ -4384,11 +4077,14 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
            <property name="readOnly">
             <bool>true</bool>
            </property>
+           <property name="buttonSymbols">
+            <enum>QAbstractSpinBox::NoButtons</enum>
+           </property>
            <property name="decimals">
-            <number>1</number>
+            <number>2</number>
            </property>
            <property name="minimum">
-            <double>-40.000000000000000</double>
+            <double>-50.000000000000000</double>
            </property>
            <property name="maximum">
             <double>250.000000000000000</double>
@@ -4398,16 +4094,16 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
            </property>
           </widget>
          </item>
-         <item row="3" column="3">
-          <widget class="QDoubleSpinBox" name="dsbPipePressure1Coeff">
+         <item row="3" column="2">
+          <widget class="QDoubleSpinBox" name="dsbCalPipePressure1Err">
            <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="readOnly">
             <bool>true</bool>
            </property>
+           <property name="readOnly">
+            <bool>false</bool>
+           </property>
            <property name="decimals">
-            <number>1</number>
+            <number>2</number>
            </property>
            <property name="minimum">
             <double>-40.000000000000000</double>
@@ -4428,27 +4124,8 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
            <property name="readOnly">
             <bool>true</bool>
            </property>
-           <property name="decimals">
-            <number>1</number>
-           </property>
-           <property name="minimum">
-            <double>-40.000000000000000</double>
-           </property>
-           <property name="maximum">
-            <double>250.000000000000000</double>
-           </property>
-           <property name="singleStep">
-            <double>0.100000000000000</double>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="4">
-          <widget class="QDoubleSpinBox" name="dsbCalPipePressure1Out">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="readOnly">
-            <bool>true</bool>
+           <property name="buttonSymbols">
+            <enum>QAbstractSpinBox::NoButtons</enum>
            </property>
            <property name="decimals">
             <number>1</number>
@@ -4457,27 +4134,17 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
             <double>-40.000000000000000</double>
            </property>
            <property name="maximum">
-            <double>250.000000000000000</double>
+            <double>65532.000000000000000</double>
            </property>
            <property name="singleStep">
             <double>0.100000000000000</double>
            </property>
           </widget>
          </item>
-         <item row="0" column="2">
-          <widget class="QLabel" name="label_100">
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_96">
            <property name="text">
-            <string>Fark</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="3">
-          <widget class="QLabel" name="label_101">
-           <property name="text">
-            <string>Carpan</string>
+            <string>Kabin Sıcaklık Üst</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -4504,7 +4171,308 @@ radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
            </property>
           </widget>
          </item>
+         <item row="1" column="1">
+          <widget class="QDoubleSpinBox" name="dsbCalCabinTopTempInput">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+           <property name="buttonSymbols">
+            <enum>QAbstractSpinBox::NoButtons</enum>
+           </property>
+           <property name="decimals">
+            <number>1</number>
+           </property>
+           <property name="minimum">
+            <double>-40.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>65532.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_98">
+           <property name="text">
+            <string>Kalibrasyon</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QLabel" name="label_100">
+           <property name="text">
+            <string>Fark</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="3">
+          <widget class="QDoubleSpinBox" name="dsbCalCabinBottomTempCoeff">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="readOnly">
+            <bool>false</bool>
+           </property>
+           <property name="decimals">
+            <number>9</number>
+           </property>
+           <property name="minimum">
+            <double>-40.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>250.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="3">
+          <widget class="QDoubleSpinBox" name="dsbCalCabinTopTempCoeff">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="readOnly">
+            <bool>false</bool>
+           </property>
+           <property name="decimals">
+            <number>9</number>
+           </property>
+           <property name="minimum">
+            <double>0.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_97">
+           <property name="text">
+            <string>Kabin Sıcaklık Alt</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="2">
+          <widget class="QDoubleSpinBox" name="dsbCalCabinBottomTempErr">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="readOnly">
+            <bool>false</bool>
+           </property>
+           <property name="decimals">
+            <number>2</number>
+           </property>
+           <property name="minimum">
+            <double>-60.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>250.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QDoubleSpinBox" name="dsbCalCabinBottomInput">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+           <property name="buttonSymbols">
+            <enum>QAbstractSpinBox::NoButtons</enum>
+           </property>
+           <property name="decimals">
+            <number>1</number>
+           </property>
+           <property name="minimum">
+            <double>-40.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>65532.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="4">
+          <widget class="QDoubleSpinBox" name="dsbCalCabinTopTempOut">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+           <property name="buttonSymbols">
+            <enum>QAbstractSpinBox::NoButtons</enum>
+           </property>
+           <property name="decimals">
+            <number>2</number>
+           </property>
+           <property name="minimum">
+            <double>-50.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>250.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="3">
+          <widget class="QLabel" name="label_101">
+           <property name="text">
+            <string>Carpan</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="3">
+          <widget class="QDoubleSpinBox" name="dsbPipePressure1Coeff">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="readOnly">
+            <bool>false</bool>
+           </property>
+           <property name="decimals">
+            <number>9</number>
+           </property>
+           <property name="minimum">
+            <double>-40.000000000000000</double>
+           </property>
+           <property name="maximum">
+            <double>250.000000000000000</double>
+           </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
+          </widget>
+         </item>
         </layout>
+       </widget>
+       <widget class="QPushButton" name="bSaveCalibrationValues">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>230</y>
+          <width>201</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+color: #fff;
+font-family: &quot;Gill Sans MT&quot;;
+font-size: 21px;
+border: 2px solid #c3fcf1;
+border-radius: 11px;
+padding: 5px;
+background: qradialgradient(cx: 0.3, cy: -0.6,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #65BAAB, stop: 1 #0E62A0);
+min-width: 80px;
+}
+QPushButton:hover {
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #65BAAB, stop: 1 #0E62A0);
+}
+QPushButton:pressed {
+background: qradialgradient(cx: 0.4, cy: -0.1,
+fx: 0.4, fy: -0.1,
+radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
+}
+QPushButton:disabled {
+color: #888;
+background: qradialgradient(cx: 0.4, cy: -0.1,
+fx: 0.4, fy: -0.1,
+radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
+}</string>
+        </property>
+        <property name="text">
+         <string>Kalibre Et</string>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="bSetExhaustValve">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>650</x>
+          <y>170</y>
+          <width>111</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+color: #fff;
+font-family: &quot;Gill Sans MT&quot;;
+font-size: 21px;
+border: 2px solid #c3fcf1;
+border-radius: 11px;
+padding: 5px;
+background: qradialgradient(cx: 0.3, cy: -0.6,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #65BAAB, stop: 1 #0E62A0);
+min-width: 80px;
+}
+QPushButton:hover {
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #65BAAB, stop: 1 #0E62A0);
+}
+QPushButton:pressed {
+background: qradialgradient(cx: 0.4, cy: -0.1,
+fx: 0.4, fy: -0.1,
+radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
+}
+QPushButton:disabled {
+color: #888;
+background: qradialgradient(cx: 0.4, cy: -0.1,
+fx: 0.4, fy: -0.1,
+radius: 1.35, stop: 0 #65BAAB, stop: 1 #ddd);
+}</string>
+        </property>
+        <property name="text">
+         <string>Set</string>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
        </widget>
       </widget>
      </widget>
