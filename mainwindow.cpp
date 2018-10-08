@@ -37,6 +37,8 @@ double tKeyElapsed = 0;
 double pKey = 0;
 double vKey = 0;
 
+
+float pipePressure1In;
 float pipe1Pressure;
 float pipe2Pressure;
 float pipe3Pressure;
@@ -45,6 +47,8 @@ float pipe5Pressure;
 float pipe6Pressure;
 float cabinBottomTemperatureIn;
 float cabinTopTemperatureIn;
+float cabinPIDTemperatureIn;
+float cabinSetTemperatureIn;
 float cabinBottomTemperatureValue;
 float cabinTopTemperatureValue;
 float cabinAverageTemp;
@@ -278,7 +282,6 @@ void MainWindow::setupTGraph()
     connect(ui->tTestGraph, SIGNAL(mouseWheel(QWheelEvent*)), this, SLOT(mouseWheel()));
     connect(ui->tTestGraph->xAxis, SIGNAL(rangeChanged(QCPRange)), ui->tTestGraph->xAxis2, SLOT(setRange(QCPRange)));
     connect(ui->tTestGraph->yAxis, SIGNAL(rangeChanged(QCPRange)), ui->tTestGraph->yAxis2, SLOT(setRange(QCPRange)));
-
 
 }
 
@@ -544,6 +547,7 @@ void MainWindow::setupVisuals()
     loadValueExhaustValve();
     loadValueTopTempSensorCalibration();
     loadValueBottomTempSensorCalibration();
+    loadValuePressureSensor1Calibration();
 }
 
 void MainWindow::serialMessage(uint command, QByteArray data)
@@ -587,15 +591,26 @@ void MainWindow::serialMessage(uint command, QByteArray data)
         pipe5Pressure = quint8(data[4]) / 10.0;
         pipe6Pressure = quint8(data[5]) / 10.0;
 */
-        pipe1Pressure = qint16(((data[1] & 0xff) << 8) | (data[0] & 0xff)) / 100.0;
+        double pipePressure1Coeff ;
+        double pipePressure1Err;
+
+
+        pipePressure1In = qint16(((data[1] & 0xff) << 8) | (data[0] & 0xff)) ;
         /*      pipe2Pressure = qint16(((data[3] & 0xff) << 8) | (data[2] & 0xff)) / 100.0;
         pipe3Pressure = qint16(((data[5] & 0xff) << 8) | (data[4] & 0xff)) / 100.0;
         pipe4Pressure = qint16(((data[7] & 0xff) << 8) | (data[6] & 0xff)) / 100.0;
         pipe5Pressure = qint16(((data[9] & 0xff) << 8) | (data[8] & 0xff)) / 100.0;
         pipe6Pressure = qint16(((data[11] & 0xff) << 8) | (data[10] & 0xff)) / 100.0;
 */
+
+        pipePressure1Coeff = ui->dsbCalPipePressure1Coeff->value();
+        pipePressure1Err = ui->dsbCalPipePressure1Err->value();
+
+        pipe1Pressure = ((pipePressure1Coeff * pipePressure1In) + pipePressure1Err);
         ui->dsbPipe1Pressure->setValue(pipe1Pressure);
         ui->dsbPipe1PressureMaintenance->setValue(pipe1Pressure);
+        ui->dsbCalPipePressure1Input->setValue(pipePressure1In);
+        ui->dsbCalPipePressure1Out->setValue(pipe1Pressure);
         /*     ui->dsbPipe2Pressure->setValue(pipe2Pressure);
         ui->dsbPipe2PressureMaintenance->setValue(pipe2Pressure);
         ui->dsbPipe3Pressure->setValue(pipe3Pressure);
@@ -606,7 +621,8 @@ void MainWindow::serialMessage(uint command, QByteArray data)
         ui->dsbPipe5PressureMaintenance->setValue(pipe5Pressure);
         ui->dsbPipe6Pressure->setValue(pipe6Pressure);
         ui->dsbPipe6PressureMaintenance->setValue(pipe6Pressure);
-*/        break;
+*/
+        break;
 
     case 0x33:
 
@@ -614,6 +630,8 @@ void MainWindow::serialMessage(uint command, QByteArray data)
         //       waterTankTemperature = qint16(((data[2] & 0xff) << 8) | (data[1] & 0xff)) / 10.0;
         cabinTopTemperatureIn = qint16(((data[1] & 0xff) << 8) | (data[0] & 0xff));
         cabinBottomTemperatureIn = qint16(((data[3] & 0xff) << 8) | (data[2] & 0xff));
+        cabinPIDTemperatureIn = qint16(((data[5] & 0xff) << 8) | (data[4] & 0xff))/10;
+        cabinSetTemperatureIn = qint16(((data[7] & 0xff) << 8) | (data[6] & 0xff))/10;
         //       pipeVibrationFrequency = quint16(((data[8] & 0xff) << 8) | (data[7] & 0xff)) / 10.0;
         double calCabinTopTempCoeff = ui->dsbCalCabinTopTempCoeff->value();
         double calCabinTopTempErr   = ui->dsbCalCabinTopTempErr->value();
@@ -630,6 +648,8 @@ void MainWindow::serialMessage(uint command, QByteArray data)
         ui->dsbCabinTopTemp->setValue(cabinAverageTemp);
         ui->dsbCabinTopTempMaintenance->setValue(cabinAverageTemp);
         ui->dsbSetTempCabinAvrTemp->setValue(cabinAverageTemp);
+        ui->dsbCabinSetTemp->setValue(cabinSetTemperatureIn);
+        ui->dsbCabinPIDTemp->setValue(cabinPIDTemperatureIn);
 
         ui->dsbCalCabinBottomInput->setValue(cabinBottomTemperatureIn);
         ui->dsbCalCabinTopTempInput->setValue(cabinTopTemperatureIn);
@@ -1096,13 +1116,13 @@ void MainWindow::updateInfo(quint8 index, QByteArray data)
         if (tCycle != quint16(((data[4] & 0xff) << 8) | (data[3] & 0xff)))
         {
             tCycle = quint16(((data[4] & 0xff) << 8) | (data[3] & 0xff));
-            //          ui->laCurrentTCycleMain->setText(QString::number(tCycle));
-            if (tCycle != 0)
+                     ui->laTTotalCycleMain->setText(QString::number(tCycle));
+         /*   if (tCycle != 0)
             {
                 tKey = 0;
                 ui->tTestGraph->clearPlottables();
                 setupTGraph();
-            }
+            }*/
         }
         if (profileId != data[5])
         {
@@ -1230,7 +1250,7 @@ void MainWindow::writeToLogTable(QString info)
 
 void MainWindow::on_cbSelectGraph_currentIndexChanged(int index)
 {
-    if (index == 0)
+ /*  if (index == 0)
     {
         ui->tTestGraph->setVisible(false);
         ui->pTestGraph->setVisible(false);
@@ -1247,7 +1267,8 @@ void MainWindow::on_cbSelectGraph_currentIndexChanged(int index)
         ui->laVStepCounterDetails->setVisible(false);
         ui->laVRepeatCounterDetails->setVisible(false);
     }
-    else if (index == 1)
+    */
+    if (index == 0)
     {
         ui->tTestGraph->setVisible(false);
         ui->pTestGraph->setVisible(false);
@@ -1263,7 +1284,7 @@ void MainWindow::on_cbSelectGraph_currentIndexChanged(int index)
         ui->laVRepeatCounterDetails->setVisible(false);
 
     }
-    else if (index == 2)
+    else if (index == 1)
     {
         ui->pTestGraph->setVisible(false);
         ui->tTestGraph->setVisible(false);
@@ -1277,22 +1298,6 @@ void MainWindow::on_cbSelectGraph_currentIndexChanged(int index)
         ui->laVCycleCounterDetails->setVisible(false);
         ui->laVStepCounterDetails->setVisible(false);
         ui->laVRepeatCounterDetails->setVisible(false);
-
-    }
-    else if (index == 3)
-    {
-        //ui->vTestGraph->setVisible(false);
-        ui->tTestGraph->setVisible(false);
-        ui->pTestGraph->setVisible(false);
-        //ui->vTestGraph->setVisible(true);
-        ui->laTCycleCounterDetails->setVisible(false);
-        ui->laTStepCounterDetails->setVisible(false);
-        ui->laPCycleCounterDetails->setVisible(false);
-        ui->laPStepCounterDetails->setVisible(false);
-        ui->laPRepeatCounterDetails->setVisible(false);
-        ui->laVCycleCounterDetails->setVisible(true);
-        ui->laVStepCounterDetails->setVisible(true);
-        ui->laVRepeatCounterDetails->setVisible(true);
 
     }
 }
@@ -3104,8 +3109,9 @@ bool MainWindow::readProfiles(char rType, int index)
 
                 if (rProfile[pos] == '/')
                 {
-                    ui->laSelectedProfileMain->setText("No Name Given");
-                    ui->laSelectedProfileManual->setText("No Name Given");
+                    ui->laSelectedProfileMain->setText("isimsiz");
+                    ui->laSelectedProfileManual->setText("isimsiz");
+                    ui->laTestName->setText("isimsiz");
                 }
                 else
                 {
@@ -3116,6 +3122,7 @@ bool MainWindow::readProfiles(char rType, int index)
                     }
                     ui->laSelectedProfileMain->setText(name);
                     ui->laSelectedProfileManual->setText(name);
+                    ui->laTestName->setText(name);
                 }
                 pos=pos+26;
 
@@ -3293,11 +3300,11 @@ void MainWindow::on_bSavePro_clicked()
 
 #ifdef Q_OS_LINUX
     //linux code goes here
-    QString filePath = "/home/pi/InDetail/profiles/" + ui->cbSelectProfile->currentText() + ".dat";
+    QString filePath = "/home/pi/InDetail/profiles/Profile " + QString::number( ui->cbSelectProfile->currentIndex()) + ".dat";
 #endif
 #ifdef Q_OS_WIN
     // windows code goes here
-    QString filePath = "profiles\\" + ui->cbSelectProfile->currentText() + ".dat";
+    QString filePath = "profiles\\Profile " + QString::number(ui->cbSelectProfile->currentIndex()) + ".dat";
 #endif
 
     QFile file(filePath);
@@ -4150,8 +4157,9 @@ void MainWindow::on_cbSelectProfileMain_currentIndexChanged(int index)
 
     if (index == 0)
     {
-        ui->laSelectedProfileMain->setText("No Profile Selected");
-        ui->laSelectedProfileManual->setText("No Profile Selected");
+        ui->laSelectedProfileMain->setText("Recete secilmedi");
+        ui->laSelectedProfileManual->setText("Recete secilmedi");
+        ui->laTestName->setText("Recete secilmedi");
         ui->bSendProfileMain->setEnabled(false);
         totalTestDuration = 0;
     }
@@ -4201,13 +4209,13 @@ bool MainWindow::sendProfileOverSerial(QString mode, int index)
     if (mode == "main")
     {
         tTotalCycle = ui->sbTTotalCycle->value();
-        ui->laTTotalCycleMain->setText(QString::number(tTotalCycle));
+        ui->laTTotalCycleMain->setText(QString::number(tCycle));
 
     }
     else if (mode == "manual")
     {
         tTotalCycle = ui->sbTTotalCycleManual->value();
-        ui->laTTotalCycleMain->setText(QString::number(tTotalCycle));
+        ui->laTTotalCycleMain->setText(QString::number(tCycle));
         //       tWaterTank = ui->dsbTankTempSetManual->value()*10.0;
     }
 
@@ -4635,7 +4643,9 @@ void MainWindow::getCurrentDateTime()
 void MainWindow::updateTPlot()
 {
     tKeyElapsed = tElapsedSeconds + (double(tempPeriod)/1000.0) ;
-    tKey = QTime::currentTime().msecsSinceStartOfDay()/1000;
+   // tKey = tElapsedSeconds + (double(tempPeriod)/1000.0) ;
+    //tKey = QTime::currentTime().msecsSinceStartOfDay()/1000;
+    tKey = tKey + (double(tempPeriod)/1000.0);
     // add data to lines:
     ui->tTestGraph->graph(0)->addData(tKey, cabinAverageTemp);
     ui->tTestGraph->graph(1)->addData(tKey, cabinAverageTemp);
@@ -4643,7 +4653,6 @@ void MainWindow::updateTPlot()
     //  ui->tTestGraph->graph(0)->rescaleKeyAxis();
     // replot the graph with the added data
     ui->tTestGraph->replot();
-
 
 #ifdef Q_OS_LINUX
     //linux code goes here
@@ -4666,9 +4675,9 @@ void MainWindow::updateTPlot()
 
 void MainWindow::updatePPlots()
 {
-  //  pKey = pKey + (double(pressurePeriod)/1000.0);
+    pKey = pKey + (double(pressurePeriod)/1000.0);
 
-    pKey = QTime::currentTime().msecsSinceStartOfDay()/1000;
+  //  pKey = QTime::currentTime().msecsSinceStartOfDay()/1000;
     ui->pTestGraph->graph(0)->addData(pKey, pipe1Pressure);
     ui->pTestGraph->graph(1)->addData(pKey, pipe2Pressure);
     ui->pTestGraph->graph(2)->addData(pKey, pipe3Pressure);
@@ -4679,11 +4688,12 @@ void MainWindow::updatePPlots()
     // make key axis range scroll with the data (at a constant range size of 30):
 //    ui->pTestGraph->xAxis->setRange(pKey, 60, Qt::AlignRight);
 
-    /*
-    // rescale key (horizontal) axis to fit the current data:
-    ui->pTestGraph->graph(0)->rescaleKeyAxis();
-    */
 
+    // rescale key (horizontal) axis to fit the current data:
+   // ui->pTestGraph->graph(0)->rescaleKeyAxis();
+
+    ui->pTestGraph->xAxis->setRangeUpper(pKey);
+    ui->pTestGraph->xAxis->setRangeLower(pKey-30);
     // replot the graph with the added data
     ui->pTestGraph->replot();
 
@@ -5398,8 +5408,9 @@ void MainWindow::on_cbSelectProfileManual_currentIndexChanged(int index)
 
     if (index == 0)
     {
-        ui->laSelectedProfileMain->setText("No Profile Selected");
-        ui->laSelectedProfileManual->setText("No Profile Selected");
+        ui->laSelectedProfileMain->setText("Recete secilmedi");
+        ui->laSelectedProfileManual->setText("Recete secilmedi");
+        ui->laTestName->setText("Recete secilmedi");
         ui->bSendProfileManual->setEnabled(false);
         ui->cbSelectMethodManual->setCurrentIndex(0);
         ui->cbSelectMethodManual->setEnabled(false);
@@ -5468,7 +5479,7 @@ void MainWindow::on_tabWidget_currentChanged(int index)
     }
     else if (index == 2)
     {
-        ui->cbSelectGraph->setCurrentIndex(1);
+        ui->cbSelectGraph->setCurrentIndex(0);
         ui->tTestGraph->setVisible(false);
         ui->pTestGraph->setVisible(false);
         //ui->vTestGraph->setVisible(false);
@@ -5651,8 +5662,11 @@ void MainWindow::setupComboBoxes()
 
 void MainWindow::on_ZoomInHor_clicked()
 {
+
     ui->tTestGraph->xAxis->scaleRange(.85, ui->tTestGraph->xAxis->range().center());
     ui->tTestGraph->replot();
+
+
 }
 
 void MainWindow::on_ZoomOutHor_clicked()
@@ -5664,13 +5678,32 @@ void MainWindow::on_ZoomOutHor_clicked()
 void MainWindow::on_ZoomInVer_clicked()
 {
     ui->tTestGraph->yAxis->scaleRange(.85, ui->tTestGraph->yAxis->range().center());
+    ui->tTestGraph->yAxis->range().bounded(-50,220);
     ui->tTestGraph->replot();
+
+    ui->pTestGraph->yAxis->scaleRange(.85, ui->pTestGraph->yAxis->range().center());
+    ui->pTestGraph->yAxis->setRangeLower(0);
+    ui->pTestGraph->replot();
 }
 
 void MainWindow::on_ZoomOutVer_clicked()
 {
     ui->tTestGraph->yAxis->scaleRange(1.15, ui->tTestGraph->yAxis->range().center());
     ui->tTestGraph->replot();
+    if (ui->tTestGraph->yAxis->range().upper > 220 || ui->tTestGraph->yAxis->range().upper < -50 )
+    {
+         ui->tTestGraph->yAxis->setRange(-50,220);
+         ui->tTestGraph->replot();
+    }
+
+    ui->pTestGraph->yAxis->scaleRange(1.15, ui->pTestGraph->yAxis->range().center());
+    ui->pTestGraph->yAxis->setRangeLower(0);
+    ui->pTestGraph->replot();
+    if (ui->pTestGraph->yAxis->range().upper > 10 || ui->pTestGraph->yAxis->range().upper < 0 )
+    {
+         ui->pTestGraph->yAxis->setRange(0,10);
+         ui->pTestGraph->replot();
+    }
 }
 
 bool MainWindow::on_bTemperatureSet_clicked()
@@ -5772,8 +5805,13 @@ void MainWindow::on_cbTSelectSUnit_currentIndexChanged(int index)
 void MainWindow::on_ZoomCenter_clicked()
 {
     ui->pTestGraph->xAxis->setRange(pKey, 60, Qt::AlignRight);
+    ui->tTestGraph->yAxis->setRange(0,10);
+    ui->tTestGraph->yAxis->range().bounded(0,10);
     ui->pTestGraph->replot();
+
     ui->tTestGraph->graph(0)->rescaleKeyAxis();
+    ui->tTestGraph->yAxis->setRange(-50,220);
+    ui->tTestGraph->yAxis->range().bounded(-50,220);
     ui->tTestGraph->replot();
 }
 
@@ -5783,7 +5821,7 @@ void MainWindow::on_bSetExhaustValve_clicked()
     QByteArray cantTouchThis;
 
     cantTouchThis.clear();
-    tExhaustValveSetTemp = ui->dsbExhaustValveAutoValue->value();
+    tExhaustValveSetTemp = ui->dsbExhaustValveAutoValue->value() * 10;
 
     if (ui->chbExhaustValve->isChecked())
     {
@@ -5852,6 +5890,7 @@ void MainWindow::on_bSaveCalibrationValues_clicked()
 {
     saveValueTopTempSensorCalibration();
     saveValueBottomTempSensorCalibration();
+    saveValuePressureSensor1Calibration();
 }
 
 void MainWindow::saveValueTopTempSensorCalibration()
@@ -5901,7 +5940,6 @@ void MainWindow::saveValueBottomTempSensorCalibration()
                 <<  ui->dsbCalCabinBottomTempCoeff->value() ;
         file.close();
     }
-
 }
 
 void MainWindow::loadValueTopTempSensorCalibration()
@@ -5919,11 +5957,10 @@ void MainWindow::loadValueTopTempSensorCalibration()
     QStringList wordList;
 //     QList<double> dList;
 //     QByteArray dList;
-     QFile file(filePath);
+    QFile file(filePath);
     QString line;
     if (file.open(QFile::ReadOnly))
     {
-
         while (!file.atEnd())
         {
    //      dList = file.readLine();
@@ -5938,8 +5975,7 @@ void MainWindow::loadValueTopTempSensorCalibration()
    //     ui->dsbCalCabinTopTempErr->setValue(dList[1]);
     //    ui->dsbCalCabinTopTempCoeff->setValue(dList[2]);
     }
-
- }
+}
 
 void MainWindow::loadValueBottomTempSensorCalibration()
 {
@@ -6001,4 +6037,58 @@ void MainWindow::on_bCabinDoor_clicked()
        cantTouchThis.append(0x01);
        proc->insertCommandMessage(mySerial::makeMessage(0x0A,cantTouchThis));
    }
+}
+
+void MainWindow::saveValuePressureSensor1Calibration()
+{
+    #ifdef Q_OS_LINUX
+        //linux code goes here
+        QString filePath = "/home/pi/InDetail/settings/" +"calibrationPressure1.txt";
+    #endif
+
+    #ifdef Q_OS_WIN
+        // windows code goes here
+         QString filePath = "Settings\\calibrationPressure1.txt";
+    #endif
+
+    QFile file(filePath);
+
+    if (file.open(QFile::WriteOnly|QFile::Truncate))
+    {
+        QTextStream stream(&file);
+
+        stream <<  ui->dsbCalPipePressure1Err->value() << ","
+                <<  ui->dsbCalPipePressure1Coeff->value() ;
+        file.close();
+    }
+}
+
+void MainWindow::loadValuePressureSensor1Calibration()
+{
+    #ifdef Q_OS_LINUX
+    //linux code goes here
+        QString filePath = "/home/pi/InDetail/settings/" +"calibrationPressure1.txt";
+    #endif
+
+    #ifdef Q_OS_WIN
+    // windows code goes here
+        QString filePath = "Settings\\calibrationPressure1.txt";
+    #endif
+
+    //     QList<double> dList;
+    //     QByteArray dList;
+    QFile file(filePath);
+    QString line;
+    if (file.open(QFile::ReadOnly))
+    {
+        while (!file.atEnd())
+        {
+             line = file.readLine();
+        }
+       double v = line.split(",")[0].toDouble();
+       double y = line.split(",")[1].toDouble();
+        ui->dsbCalPipePressure1Err->setValue(v);
+        ui->dsbCalPipePressure1Coeff->setValue(y);
+        file.close();
+    }
 }

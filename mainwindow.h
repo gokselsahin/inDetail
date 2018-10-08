@@ -138,8 +138,11 @@ private slots:
 
     void saveValueTopTempSensorCalibration();
     void saveValueBottomTempSensorCalibration();
+    void saveValuePressureSensor1Calibration();
+
     void loadValueTopTempSensorCalibration();
     void loadValueBottomTempSensorCalibration();
+    void loadValuePressureSensor1Calibration();
     void on_bSaveCalibrationValues_clicked();
 
     void on_bCabinDoor_clicked();
